@@ -1,0 +1,909 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 15px;              /* 15px — modern dashboard baseline */
+
+  /* ════════════════════════════════════════════════════════
+   *  COLOUR PALETTE
+   *  Zinc neutrals · one brand accent (Emerald) · no mixed hues
+   * ════════════════════════════════════════════════════════ */
+
+  /* surfaces */
+  --background:         #F7F7F8;   /* Zinc-50 — off-white page, creates depth */
+  --card:               #FFFFFF;   /* white cards float above the page */
+  --popover:            #FFFFFF;
+  --card-foreground:    #09090B;
+  --popover-foreground: #09090B;
+
+  /* text */
+  --foreground:         #09090B;   /* Zinc-950 */
+
+  /* interactive */
+  --primary:            #18181B;   /* Zinc-900 — dark buttons */
+  --primary-foreground: #FAFAFA;
+  --secondary:          #F4F4F5;   /* Zinc-100 */
+  --secondary-foreground: #18181B;
+
+  /* surfaces */
+  --muted:              #F4F4F5;   /* Zinc-100 */
+  --muted-foreground:   #71717A;   /* Zinc-500 */
+  --accent:             #F4F4F5;   /* Zinc-100 — hover tint */
+  --accent-foreground:  #18181B;
+
+  /* semantic */
+  --destructive:        #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* borders / inputs */
+  --border:             #E4E4E7;   /* Zinc-200 — clean, visible */
+  --input:              #E4E4E7;
+  --input-background:   #FFFFFF;
+  --switch-background:  #D4D4D8;   /* Zinc-300 */
+
+  /* brand accent used for focus rings, active states */
+  --ring:               #10B981;   /* Emerald-500 — the one accent */
+
+  /* charts */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6  0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* ════════════════════════════════════════════════════════
+   *  SIDEBAR — intentionally always dark
+   *  Premium "dark chrome + white content" layout pattern
+   * ════════════════════════════════════════════════════════ */
+  --sidebar:                       #111113;   /* near-black */
+  --sidebar-foreground:            #A1A1AA;   /* Zinc-400 */
+  --sidebar-primary:               rgba(255,255,255,0.09);
+  --sidebar-primary-foreground:    #FFFFFF;
+  --sidebar-accent:                rgba(255,255,255,0.06);
+  --sidebar-accent-foreground:     #F4F4F5;
+  --sidebar-border:                rgba(255,255,255,0.07);
+  --sidebar-ring:                  rgba(255,255,255,0.12);
+
+  /* ════════════════════════════════════════════════════════
+   *  BORDER RADIUS
+   * ════════════════════════════════════════════════════════ */
+  --radius:         0.5rem;   /*  8px — inputs, badges, small elements */
+  --radius-card:    0.75rem;  /* 12px — cards */
+  --radius-button:  0.5rem;   /*  8px — buttons */
+
+  /* ====== TYPOGRAPHY TOKENS ====== */
+  --text-h1-mobile: 1.5rem;
+  --text-h1-tablet: 1.75rem;
+  --text-h1-desktop: 2rem;
+  --text-h2-mobile: 1.25rem;
+  --text-h2-tablet: 1.375rem;
+  --text-h2-desktop: 1.5rem;
+  --text-h3-mobile: 1.125rem;
+  --text-h3-tablet: 1.125rem;
+  --text-h3-desktop: 1.25rem;
+  --text-body-mobile: 1rem;
+  --text-body-tablet: 1.0625rem;
+  --text-body-desktop: 1.125rem;
+  --text-small-mobile: 0.875rem;
+  --text-small-tablet: 0.875rem;
+  --text-small-desktop: 0.875rem;
+  --text-caption-mobile: 0.75rem;
+  --text-caption-tablet: 0.75rem;
+  --text-caption-desktop: 0.75rem;
+
+  /* Line Heights */
+  --line-height-h1-mobile: 2rem;
+  --line-height-h1-tablet: 2.25rem;
+  --line-height-h1-desktop: 2.5rem;
+  --line-height-h2-mobile: 1.75rem;
+  --line-height-h2-tablet: 1.875rem;
+  --line-height-h2-desktop: 2rem;
+  --line-height-h3-mobile: 1.5rem;
+  --line-height-h3-tablet: 1.625rem;
+  --line-height-h3-desktop: 1.75rem;
+  --line-height-body-mobile: 1.5rem;
+  --line-height-body-tablet: 1.5rem;
+  --line-height-body-desktop: 1.625rem;
+  --line-height-small: 1.25rem;
+  --line-height-caption: 1rem;
+
+  /* ====== SPACING TOKENS (8PT GRID) ====== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Component-Specific Padding */
+  --padding-mobile: 1rem;
+  --padding-tablet: 1.5rem;
+  --padding-desktop: 2rem;
+
+  /* Section Spacing */
+  --section-spacing-mobile: 1.5rem;
+  --section-spacing-tablet: 2rem;
+  --section-spacing-desktop: 2.5rem;
+
+  /* Card Padding */
+  --card-padding-mobile: 1rem;
+  --card-padding-tablet: 1.25rem;
+  --card-padding-desktop: 1.5rem;
+
+  /* ====== COMPONENT SIZING ====== */
+  --button-height-mobile: 2.25rem;
+  --button-height-desktop: 2.5rem;
+  --input-height: 2.5rem;
+  --icon-size-mobile: 1.25rem;
+  --icon-size-desktop: 1.5rem;
+
+}
+/* (sidebar tokens now live in the palette block above) */
+
+.dark {
+  --background:         #0C0C0D;   /* Zinc-950 */
+  --card:               #18181B;   /* Zinc-900 */
+  --popover:            #1C1C1F;
+  --card-foreground:    #FAFAFA;
+  --popover-foreground: #FAFAFA;
+  --foreground:         #FAFAFA;
+  --primary:            #FAFAFA;
+  --primary-foreground: #09090B;
+  --secondary:          #27272A;
+  --secondary-foreground: #FAFAFA;
+  --muted:              #27272A;   /* Zinc-800 */
+  --muted-foreground:   #71717A;   /* Zinc-500 */
+  --accent:             #27272A;
+  --accent-foreground:  #FAFAFA;
+  --destructive:        #F87171;
+  --destructive-foreground: #09090B;
+  --border:             rgba(255,255,255,0.08);
+  --input:              rgba(255,255,255,0.08);
+  --input-background:   #27272A;
+  --ring:               #10B981;
+  --switch-background:  #3F3F46;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17  162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  /* Dark sidebar slightly deeper than dark card */
+  --sidebar:                    #09090B;
+  --sidebar-foreground:         #71717A;
+  --sidebar-primary:            rgba(255,255,255,0.08);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent:             rgba(255,255,255,0.05);
+  --sidebar-accent-foreground:  #FAFAFA;
+  --sidebar-border:             rgba(255,255,255,0.05);
+  --sidebar-ring:               rgba(255,255,255,0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: 'cv02','cv03','cv04','cv11';   /* Inter numeric/stylistic alternates */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
+
+/* Bold Contemporary Luxury - Custom Utilities */
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .vybe-page {
+    @apply space-y-5;
+  }
+
+  .vybe-header-eyebrow {
+    @apply text-[10px] tracking-[0.05em] uppercase font-bold text-black/40 dark:text-white/40;
+  }
+
+  /* ── override old hard-coded page title/subtitle with token versions ── */
+  .vybe-page-title {
+    font-size: var(--text-h1-desktop);
+    line-height: var(--line-height-h1-desktop);
+    font-weight: var(--font-weight-medium);
+    color: var(--foreground);
+  }
+
+  .vybe-page-subtitle {
+    font-size: var(--text-small-desktop);
+    line-height: var(--line-height-small);
+    color: var(--muted-foreground);
+  }
+
+  /* ════════════════════════════════════════════════════════
+   *  KPI / STAT CARD
+   *  Single number + label. Tight vertical padding,
+   *  heavy numeral, consistent height across all screens.
+   * ════════════════════════════════════════════════════════ */
+  .vybe-kpi-card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 1.125rem 1.5rem 1.25rem;   /* tighter top, standard sides, slightly more bottom */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 5.25rem;               /* 84px — uniform across all stat strips */
+    justify-content: space-between;
+  }
+
+  .vybe-kpi-label {
+    font-size: 0.6875rem;              /* 11px */
+    font-weight: 600;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+  }
+
+  .vybe-kpi-value {
+    font-size: 2rem;                   /* 32px */
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--foreground);
+  }
+
+  /* ════════════════════════════════════════════════════════
+   *  CARD PRIMITIVES
+   *  Elevation via shadow, not heavy borders
+   * ════════════════════════════════════════════════════════ */
+  .vybe-card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  }
+
+  .vybe-card-padded {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding-desktop);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  }
+
+  .vybe-card-title {
+    font-size: var(--text-body-desktop);
+    font-weight: var(--font-weight-medium);
+    color: var(--card-foreground);
+    line-height: 1.5;
+  }
+
+  .vybe-card-note {
+    font-size: var(--text-caption-desktop);
+    color: var(--muted-foreground);
+    line-height: var(--line-height-caption);
+  }
+
+  .vybe-meta-label {
+    font-size: var(--text-caption-desktop);
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: var(--line-height-caption);
+  }
+
+  .vybe-table-head {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.6875rem;       /* 11px */
+    font-weight: 600;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+    background-color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* table row hover */
+  .vybe-table-row {
+    border-bottom: 1px solid var(--border);
+    transition: background-color 100ms;
+  }
+  .vybe-table-row:hover { background-color: #FAFAFA; }
+  .vybe-table-row:last-child { border-bottom: none; }
+  
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Safe Area Insets */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* ====== RESPONSIVE TYPOGRAPHY UTILITIES ====== */
+
+  .text-h1 {
+    font-size: var(--text-h1-mobile);
+    line-height: var(--line-height-h1-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h1 {
+      font-size: var(--text-h1-tablet);
+      line-height: var(--line-height-h1-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h1 {
+      font-size: var(--text-h1-desktop);
+      line-height: var(--line-height-h1-desktop);
+    }
+  }
+
+  .text-h2 {
+    font-size: var(--text-h2-mobile);
+    line-height: var(--line-height-h2-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h2 {
+      font-size: var(--text-h2-tablet);
+      line-height: var(--line-height-h2-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h2 {
+      font-size: var(--text-h2-desktop);
+      line-height: var(--line-height-h2-desktop);
+    }
+  }
+
+  .text-h3 {
+    font-size: var(--text-h3-mobile);
+    line-height: var(--line-height-h3-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h3 {
+      font-size: var(--text-h3-tablet);
+      line-height: var(--line-height-h3-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h3 {
+      font-size: var(--text-h3-desktop);
+      line-height: var(--line-height-h3-desktop);
+    }
+  }
+
+  .text-body {
+    font-size: var(--text-body-mobile);
+    line-height: var(--line-height-body-mobile);
+    font-weight: var(--font-weight-normal);
+  }
+
+  @media (min-width: 768px) {
+    .text-body {
+      font-size: var(--text-body-tablet);
+      line-height: var(--line-height-body-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-body {
+      font-size: var(--text-body-desktop);
+      line-height: var(--line-height-body-desktop);
+    }
+  }
+
+  .text-small {
+    font-size: var(--text-small-mobile);
+    line-height: var(--line-height-small);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .text-caption {
+    font-size: var(--text-caption-mobile);
+    line-height: var(--line-height-caption);
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* ====== RESPONSIVE PADDING UTILITIES ====== */
+
+  .container-padding {
+    padding-left: var(--padding-mobile);
+    padding-right: var(--padding-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .container-padding {
+      padding-left: var(--padding-tablet);
+      padding-right: var(--padding-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container-padding {
+      padding-left: var(--padding-desktop);
+      padding-right: var(--padding-desktop);
+    }
+  }
+
+  .card-padding {
+    padding: var(--card-padding-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .card-padding {
+      padding: var(--card-padding-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .card-padding {
+      padding: var(--card-padding-desktop);
+    }
+  }
+
+  /* ====== SECTION SPACING ====== */
+
+  .section-spacing {
+    margin-bottom: var(--section-spacing-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      margin-bottom: var(--section-spacing-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .section-spacing {
+      margin-bottom: var(--section-spacing-desktop);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * VYBE ADMIN SHARED PRIMITIVES
+   * Single source of truth — use these classes everywhere so that
+   * every admin screen is visually identical.
+   * ═══════════════════════════════════════════════════════════════ */
+
+  /* ── Page header ─────────────────────────────────────────────── */
+  .vybe-page-header {
+    margin-bottom: var(--space-6);
+  }
+
+  /* flex row: title on left, action button on right */
+  .vybe-page-header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  /* ── Search input ─────────────────────────────────────────────── */
+  .vybe-search {
+    width: 100%;
+    height: var(--input-height);
+    padding-left: 2.5rem;
+    padding-right: var(--space-4);
+    background-color: var(--input-background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-small-desktop);
+    color: var(--foreground);
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .vybe-search::placeholder { color: var(--muted-foreground); }
+  .vybe-search:focus {
+    outline: none;
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
+  }
+
+  /* ── Filter / secondary-control button ─────────────────────────── */
+  .vybe-filter-btn {
+    height: var(--input-height);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    background-color: var(--card);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-small-desktop);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+    transition: background-color 120ms, border-color 120ms;
+  }
+  .vybe-filter-btn:hover { background-color: var(--muted); border-color: #D4D4D8; }
+
+  /* ── Primary action button ─────────────────────────────────────── */
+  .vybe-btn-primary {
+    height: var(--button-height-desktop);
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: 1px solid transparent;
+    border-radius: var(--radius-button);
+    font-size: var(--text-small-desktop);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: background-color 120ms, box-shadow 120ms, transform 80ms;
+  }
+  .vybe-btn-primary:hover {
+    background-color: #27272A;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: translateY(-1px);
+  }
+  .vybe-btn-primary:active { transform: translateY(0); box-shadow: 0 1px 1px rgba(0,0,0,0.2); }
+  .vybe-btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.35);
+  }
+  .vybe-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  /* ── Secondary / ghost button ─────────────────────────────────── */
+  .vybe-btn-secondary {
+    height: var(--button-height-desktop);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    background-color: var(--card);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    font-size: var(--text-small-desktop);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: background-color 120ms, border-color 120ms, box-shadow 120ms;
+  }
+  .vybe-btn-secondary:hover { background-color: var(--muted); border-color: #D4D4D8; }
+  .vybe-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(16,185,129,0.35); }
+
+  /* ── Form input & select ──────────────────────────────────────── */
+  .vybe-input {
+    width: 100%;
+    height: var(--input-height);
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    background-color: var(--input-background);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-small-desktop);
+    font-family: inherit;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .vybe-input::placeholder { color: var(--muted-foreground); }
+  .vybe-input:hover:not(:focus):not(:disabled) { border-color: #A1A1AA; }
+  .vybe-input:focus {
+    outline: none;
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.12), 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .vybe-input:disabled, .vybe-input[readonly] { opacity: 0.5; cursor: default; background-color: var(--muted); }
+
+  /* Input with leading icon */
+  .vybe-input-icon { padding-left: 2.5rem; }
+
+  /* ── Textarea ─────────────────────────────────────────────────── */
+  .vybe-textarea {
+    width: 100%;
+    padding: var(--space-3);
+    background-color: var(--input-background);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-small-desktop);
+    font-family: inherit;
+    resize: vertical;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .vybe-textarea::placeholder { color: var(--muted-foreground); }
+  .vybe-textarea:hover:not(:focus) { border-color: #A1A1AA; }
+  .vybe-textarea:focus {
+    outline: none;
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.12), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  /* ── Field label ──────────────────────────────────────────────── */
+  .vybe-label {
+    display: block;
+    font-size: 0.6875rem;       /* 11px — crisp label size */
+    font-weight: 600;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+  }
+
+  /* ── Modal overlay & container ────────────────────────────────── */
+  .vybe-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(9,9,11,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: var(--space-4);
+    overflow-y: auto;
+  }
+
+  .vybe-modal {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding-desktop);
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    /* layered shadow: ring + diffused depth */
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.06),
+      0 4px 12px rgba(0,0,0,0.06),
+      0 20px 50px rgba(0,0,0,0.14);
+    flex-shrink: 0;
+  }
+
+  .vybe-modal-wide { max-width: 680px; }
+  .vybe-modal-xl   { max-width: 900px; }
+
+  .vybe-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+  }
+
+  /* ── Status / service badge ───────────────────────────────────── */
+  .vybe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;           /* pill — modern */
+    border: 1px solid transparent;
+    font-size: 0.6875rem;           /* 11px */
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+  /* Semantic colour modifiers */
+  .vybe-badge-green  { background: #ECFDF5; color: #059669; border-color: #A7F3D0; }
+  .vybe-badge-amber  { background: #FFFBEB; color: #D97706; border-color: #FDE68A; }
+  .vybe-badge-red    { background: #FEF2F2; color: #DC2626; border-color: #FECACA; }
+  .vybe-badge-blue   { background: #EFF6FF; color: #2563EB; border-color: #BFDBFE; }
+  .vybe-badge-purple { background: #F5F3FF; color: #7C3AED; border-color: #DDD6FE; }
+  .vybe-badge-muted  { background: var(--muted); color: var(--muted-foreground); border-color: var(--border); }
+
+  /* ── Tabs strip (underline style) ────────────────────────────── */
+  .vybe-tabs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-6);
+  }
+
+  .vybe-tab {
+    padding-bottom: var(--space-3);
+    font-size: var(--text-small-desktop);
+    font-weight: 500;
+    color: var(--muted-foreground);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 150ms;
+    white-space: nowrap;
+  }
+  .vybe-tab:hover { color: var(--foreground); }
+
+  .vybe-tab[data-active='true'],
+  .vybe-tab.active {
+    color: var(--foreground);
+    font-weight: 600;
+    border-bottom-color: #10B981;   /* emerald underline for active tab */
+  }
+
+  /* ── Icon button ──────────────────────────────────────────────── */
+  .vybe-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius);
+    color: var(--muted-foreground);
+    transition: background-color 120ms, color 120ms;
+  }
+  .vybe-icon-btn:hover { background-color: var(--muted); color: var(--foreground); }
+
+  /* ════════════════════════════════════════════════════════
+   *  DARK MODE OVERRIDES
+   *  Fix all hardcoded light-mode colours that break on dark.
+   * ════════════════════════════════════════════════════════ */
+
+  /* ── Badges: replace light pastels with dark semi-transparent tints ── */
+  .dark .vybe-badge-green  { background: rgba(16,185,129,0.15);  color: #34D399; border-color: rgba(16,185,129,0.25); }
+  .dark .vybe-badge-amber  { background: rgba(245,158,11,0.15);  color: #FBBF24; border-color: rgba(245,158,11,0.25); }
+  .dark .vybe-badge-red    { background: rgba(239,68,68,0.15);   color: #F87171; border-color: rgba(239,68,68,0.25); }
+  .dark .vybe-badge-blue   { background: rgba(59,130,246,0.15);  color: #60A5FA; border-color: rgba(59,130,246,0.25); }
+  .dark .vybe-badge-purple { background: rgba(124,58,237,0.15);  color: #A78BFA; border-color: rgba(124,58,237,0.25); }
+
+  /* ── Table row hover: dark surface instead of near-white ── */
+  .dark .vybe-table-row:hover { background-color: rgba(255,255,255,0.04); }
+
+  /* ── Input / textarea hover border: visible on dark ── */
+  .dark .vybe-input:hover:not(:focus):not(:disabled) { border-color: rgba(255,255,255,0.2); }
+  .dark .vybe-textarea:hover:not(:focus) { border-color: rgba(255,255,255,0.2); }
+
+  /* ── Filter & secondary button hover border: visible on dark ── */
+  .dark .vybe-filter-btn:hover   { border-color: rgba(255,255,255,0.15); }
+  .dark .vybe-btn-secondary:hover { border-color: rgba(255,255,255,0.15); }
+
+  /* ── Card / KPI card shadows: boost opacity on dark bg ── */
+  .dark .vybe-card,
+  .dark .vybe-card-padded,
+  .dark .vybe-kpi-card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ── Modal shadow: richer depth on dark bg ── */
+  .dark .vybe-modal {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 4px 12px rgba(0,0,0,0.35),
+      0 24px 60px rgba(0,0,0,0.55);
+  }
+
+  /* ── Primary button on dark: invert hover to stay legible ── */
+  /* In dark mode, --primary = #FAFAFA (white btn). Hover must stay light. */
+  .dark .vybe-btn-primary:hover {
+    background-color: #E4E4E7;   /* Zinc-200 — subtle darkening of white btn */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .dark .vybe-btn-primary {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+}
