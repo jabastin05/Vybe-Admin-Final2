@@ -326,7 +326,7 @@ export function DocumentVault() {
 
   // Categories
   const categories = [
-    { id: 'Ownership', label: 'Ownership', color: 'emerald', count: documents.filter(d => d.category === 'Ownership').length },
+    { id: 'Ownership', label: 'Ownership', color: 'primary', count: documents.filter(d => d.category === 'Ownership').length },
     { id: 'Compliance', label: 'Compliance', color: 'blue', count: documents.filter(d => d.category === 'Compliance').length },
     { id: 'Financial', label: 'Financial', color: 'purple', count: documents.filter(d => d.category === 'Financial').length },
     { id: 'Land Records', label: 'Land Records', color: 'orange', count: documents.filter(d => d.category === 'Land Records').length },
@@ -356,51 +356,51 @@ export function DocumentVault() {
       case 'DOC':
         return <File className="w-5 h-5 text-blue-500" />;
       case 'XLS':
-        return <FileSpreadsheet className="w-5 h-5 text-emerald-500" />;
+        return <FileSpreadsheet className="w-5 h-5 text-primary-700" />;
       case 'JPG':
       case 'PNG':
         return <FileImage className="w-5 h-5 text-purple-500" />;
       default:
-        return <FileText className="w-5 h-5 text-black/40 dark:text-white/40" />;
+        return <FileText className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0A0A0A]">
+    <div className="min-h-screen bg-background dark:bg-neutral-900">
       <SideNav />
       
       {/* Premium Vault Header with Security Indicators */}
-      <div className="ml-[72px] border-b border-black/[0.06] dark:border-white/[0.08] bg-gradient-to-br from-white via-white to-emerald-50/30 dark:from-[#0A0A0A] dark:via-[#0A0A0A] dark:to-emerald-950/10 backdrop-blur-xl sticky top-0 z-40">
+      <div className="ml-[72px] border-b border-black/[0.06] dark:border-white/[0.08] bg-gradient-to-br from-white via-white to-primary-100/30 dark:from-[#0A0A0A] dark:via-[#0A0A0A] dark:to-primary-900/10 backdrop-blur-xl sticky top-0 z-40">
         <div className="max-w-[1600px] mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="w-10 h-10 rounded-[var(--radius-card)] bg-primary-700/10 dark:bg-primary-700/20 flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-primary-700 dark:text-primary-400" />
                 </div>
-                <h1 className="text-[10px] tracking-[0.15em] uppercase text-black/40 dark:text-white/40 font-bold">
+                <h1 className="text-caption tracking-[0.15em] uppercase text-muted-foreground dark:text-neutral-300/60 font-medium">
                   Secure Document Vault
                 </h1>
               </div>
-              <div className="text-[32px] tracking-tight text-black dark:text-white/95 mb-2">
+              <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 mb-2">
                 My Documents
               </div>
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg">
-                  <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span className="text-[11px] font-bold tracking-wide text-emerald-700 dark:text-emerald-400">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-primary-700/10 dark:bg-primary-700/20 rounded-[var(--radius)]">
+                  <Lock className="w-3.5 h-3.5 text-primary-700 dark:text-primary-400" />
+                  <span className="text-caption font-medium tracking-wide text-primary-700 dark:text-primary-400">
                     BANK-GRADE ENCRYPTION
                   </span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-black/5 dark:bg-white/5 rounded-lg">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-black/60 dark:text-white/60" />
-                  <span className="text-[11px] font-medium text-black/60 dark:text-white/60">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-neutral-900/5 dark:bg-card/5 rounded-[var(--radius)]">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-neutral-700/80 dark:text-neutral-300/80" />
+                  <span className="text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80">
                     {documents.filter(d => d.verified).length} Verified Documents
                   </span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-black/5 dark:bg-white/5 rounded-lg">
-                  <Building2 className="w-3.5 h-3.5 text-black/60 dark:text-white/60" />
-                  <span className="text-[11px] font-medium text-black/60 dark:text-white/60">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-neutral-900/5 dark:bg-card/5 rounded-[var(--radius)]">
+                  <Building2 className="w-3.5 h-3.5 text-neutral-700/80 dark:text-neutral-300/80" />
+                  <span className="text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80">
                     {properties.length} Properties
                   </span>
                 </div>
@@ -420,18 +420,18 @@ export function DocumentVault() {
             {/* Search Bar */}
             <div className="flex items-center gap-4">
               <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40 dark:text-white/40 z-10" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-neutral-300/60 z-10" />
                 <input
                   type="text"
                   placeholder="Search documents or properties..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 bg-white/80 dark:bg-white/[0.03] border border-black/[0.08] dark:border-white/[0.08] rounded-xl text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/30 backdrop-blur-xl transition-all"
+                  className="w-full pl-12 pr-4 py-3.5 bg-card/80 dark:bg-card/[0.03] border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:ring-2 focus:ring-primary-700/20 focus:border-primary-700/30 backdrop-blur-xl transition-all"
                 />
               </div>
               <button 
                 onClick={() => navigate(id ? `/property/${id}/documents/upload` : '/documents/upload')}
-                className="px-5 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-all shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.4)] flex items-center gap-2 text-[14px] font-medium"
+                className="px-5 py-3.5 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] transition-all shadow-[0_4px_16px_rgba(28,117,188,0.3)] hover:shadow-[0_8px_24px_rgba(28,117,188,0.4)] flex items-center gap-2 text-small font-medium"
               >
                 <Upload className="w-4 h-4" />
                 Upload Document
@@ -448,10 +448,10 @@ export function DocumentVault() {
                       setShowPropertyFilter(!showPropertyFilter);
                       setShowCategoryFilter(false);
                     }}
-                    className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all flex items-center gap-2 ${
+                    className={`px-4 py-2.5 rounded-[var(--radius-card)] text-small font-medium transition-all flex items-center gap-2 ${
                       selectedProperty !== 'all'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
-                        : 'bg-white/80 dark:bg-white/[0.03] border border-black/[0.08] dark:border-white/[0.08] text-black dark:text-white hover:bg-black/[0.02] dark:hover:bg-white/[0.05]'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
+                        : 'bg-card/80 dark:bg-card/[0.03] border border-black/[0.08] dark:border-white/[0.08] text-foreground dark:text-neutral-0 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.05]'
                     }`}
                   >
                     <Building2 className="w-4 h-4" />
@@ -460,9 +460,9 @@ export function DocumentVault() {
                   </button>
 
                   {showPropertyFilter && (
-                    <div className="absolute top-full left-0 mt-2 w-80 bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
+                    <div className="absolute top-full left-0 mt-2 w-80 bg-card/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
                       <div className="p-3 border-b border-black/5 dark:border-white/5">
-                        <div className="text-[10px] tracking-[0.1em] uppercase text-black/40 dark:text-white/40 font-bold mb-3 px-2">
+                        <div className="text-caption tracking-[0.1em] uppercase text-muted-foreground dark:text-neutral-300/60 font-medium mb-3 px-2">
                           Filter by Property
                         </div>
                         <button
@@ -470,17 +470,17 @@ export function DocumentVault() {
                             setSelectedProperty('all');
                             setShowPropertyFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                             selectedProperty === 'all'
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
-                              : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02] text-black dark:text-white'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
+                              : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] text-foreground dark:text-neutral-0'
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <FolderOpen className="w-4 h-4" />
-                            <span className="text-[13px] font-medium">All Properties</span>
+                            <span className="text-small font-medium">All Properties</span>
                           </div>
-                          <span className="text-[11px] text-black/40 dark:text-white/40">{documents.length}</span>
+                          <span className="text-caption text-muted-foreground dark:text-neutral-300/60">{documents.length}</span>
                         </button>
                         {/* Independent Documents Option */}
                         <button
@@ -488,17 +488,17 @@ export function DocumentVault() {
                             setSelectedProperty('Independent');
                             setShowPropertyFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all ${
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[var(--radius)] transition-all ${
                             selectedProperty === 'Independent'
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
-                              : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02] text-black dark:text-white'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
+                              : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] text-foreground dark:text-neutral-0'
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <FileText className="w-4 h-4" />
-                            <span className="text-[13px] font-medium">Independent</span>
+                            <span className="text-small font-medium">Independent</span>
                           </div>
-                          <span className="text-[11px] text-black/40 dark:text-white/40">{documents.filter(d => d.isIndependent).length}</span>
+                          <span className="text-caption text-muted-foreground dark:text-neutral-300/60">{documents.filter(d => d.isIndependent).length}</span>
                         </button>
                       </div>
                       <div className="p-3 max-h-80 overflow-y-auto">
@@ -509,34 +509,34 @@ export function DocumentVault() {
                               setSelectedProperty(property.name);
                               setShowPropertyFilter(false);
                             }}
-                            className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-all mb-1 ${
+                            className={`w-full flex items-center justify-between px-3 py-3 rounded-[var(--radius)] transition-all mb-1 ${
                               selectedProperty === property.name
-                                ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
-                                : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
+                                ? 'bg-primary-700/10 dark:bg-primary-700/20'
+                                : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02]'
                             }`}
                           >
                             <div className="flex items-center gap-3 flex-1 min-w-0">
-                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                              <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0 ${
                                 selectedProperty === property.name
-                                  ? 'bg-emerald-500'
-                                  : 'bg-black/[0.04] dark:bg-white/[0.04]'
+                                  ? 'bg-primary-700'
+                                  : 'bg-neutral-900/[0.04] dark:bg-card/[0.04]'
                               }`}>
                                 <Building2 className={`w-5 h-5 ${
                                   selectedProperty === property.name
-                                    ? 'text-white'
-                                    : 'text-black/60 dark:text-white/60'
+                                    ? 'text-neutral-0'
+                                    : 'text-neutral-700/80 dark:text-neutral-300/80'
                                 }`} />
                               </div>
                               <div className="text-left min-w-0 flex-1">
-                                <div className="text-[13px] font-medium text-black dark:text-white truncate">
+                                <div className="text-small font-medium text-foreground dark:text-neutral-0 truncate">
                                   {property.name}
                                 </div>
-                                <div className="text-[11px] text-black/60 dark:text-white/60 truncate">
+                                <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 truncate">
                                   {property.location}
                                 </div>
                               </div>
                             </div>
-                            <span className="text-[11px] text-black/40 dark:text-white/40 ml-2 flex-shrink-0">
+                            <span className="text-caption text-muted-foreground dark:text-neutral-300/60 ml-2 flex-shrink-0">
                               {property.count}
                             </span>
                           </button>
@@ -553,10 +553,10 @@ export function DocumentVault() {
                       setShowCategoryFilter(!showCategoryFilter);
                       setShowPropertyFilter(false);
                     }}
-                    className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all flex items-center gap-2 ${
+                    className={`px-4 py-2.5 rounded-[var(--radius-card)] text-small font-medium transition-all flex items-center gap-2 ${
                       selectedCategory !== 'all'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
-                        : 'bg-white/80 dark:bg-white/[0.03] border border-black/[0.08] dark:border-white/[0.08] text-black dark:text-white hover:bg-black/[0.02] dark:hover:bg-white/[0.05]'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
+                        : 'bg-card/80 dark:bg-card/[0.03] border border-black/[0.08] dark:border-white/[0.08] text-foreground dark:text-neutral-0 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.05]'
                     }`}
                   >
                     <Filter className="w-4 h-4" />
@@ -565,9 +565,9 @@ export function DocumentVault() {
                   </button>
 
                   {showCategoryFilter && (
-                    <div className="absolute top-full left-0 mt-2 w-72 bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
+                    <div className="absolute top-full left-0 mt-2 w-72 bg-card/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
                       <div className="p-3">
-                        <div className="text-[10px] tracking-[0.1em] uppercase text-black/40 dark:text-white/40 font-bold mb-3 px-2">
+                        <div className="text-caption tracking-[0.1em] uppercase text-muted-foreground dark:text-neutral-300/60 font-medium mb-3 px-2">
                           Filter by Category
                         </div>
                         <button
@@ -575,17 +575,17 @@ export function DocumentVault() {
                             setSelectedCategory('all');
                             setShowCategoryFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                             selectedCategory === 'all'
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
-                              : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02] text-black dark:text-white'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
+                              : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] text-foreground dark:text-neutral-0'
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <FileText className="w-4 h-4" />
-                            <span className="text-[13px] font-medium">All Categories</span>
+                            <span className="text-small font-medium">All Categories</span>
                           </div>
-                          <span className="text-[11px] text-black/40 dark:text-white/40">{documents.length}</span>
+                          <span className="text-caption text-muted-foreground dark:text-neutral-300/60">{documents.length}</span>
                         </button>
                         <div className="my-2 border-t border-black/5 dark:border-white/5" />
                         {categories.map((category) => (
@@ -595,17 +595,17 @@ export function DocumentVault() {
                               setSelectedCategory(category.id);
                               setShowCategoryFilter(false);
                             }}
-                            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${
+                            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                               selectedCategory === category.id
-                                ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
-                                : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
+                                ? 'bg-primary-700/10 dark:bg-primary-700/20'
+                                : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02]'
                             }`}
                           >
                             <div className="flex items-center gap-3">
                               <div className={`w-2 h-2 rounded-full bg-${category.color}-500`} />
-                              <span className="text-[13px] font-medium text-black dark:text-white">{category.label}</span>
+                              <span className="text-small font-medium text-foreground dark:text-neutral-0">{category.label}</span>
                             </div>
-                            <span className="text-[11px] text-black/40 dark:text-white/40">{category.count}</span>
+                            <span className="text-caption text-muted-foreground dark:text-neutral-300/60">{category.count}</span>
                           </button>
                         ))}
                       </div>
@@ -616,13 +616,13 @@ export function DocumentVault() {
                 {/* Active Filters Count */}
                 {(selectedProperty !== 'all' || selectedCategory !== 'all') && (
                   <div className="flex items-center gap-2">
-                    <div className="h-6 w-px bg-black/10 dark:bg-white/10" />
+                    <div className="h-6 w-px bg-neutral-900/10 dark:bg-card/10" />
                     <button
                       onClick={() => {
                         setSelectedProperty('all');
                         setSelectedCategory('all');
                       }}
-                      className="text-[12px] text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium flex items-center gap-1.5"
+                      className="text-caption text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 font-medium flex items-center gap-1.5"
                     >
                       <X className="w-3.5 h-3.5" />
                       Clear Filters
@@ -633,16 +633,16 @@ export function DocumentVault() {
 
               {/* View Mode Toggle */}
               <div className="flex items-center gap-4">
-                <div className="text-[13px] text-black/60 dark:text-white/60">
-                  <span className="font-medium text-black dark:text-white">{filteredDocuments.length}</span> documents
+                <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">
+                  <span className="font-medium text-foreground dark:text-neutral-0">{filteredDocuments.length}</span> documents
                 </div>
-                <div className="flex items-center gap-2 bg-white/80 dark:bg-white/[0.03] border border-black/[0.08] dark:border-white/[0.08] rounded-lg p-1">
+                <div className="flex items-center gap-2 bg-card/80 dark:bg-card/[0.03] border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius)] p-1">
                   <button
                     onClick={() => setViewMode('table')}
                     className={`p-2 rounded transition-all ${
                       viewMode === 'table'
-                        ? 'bg-emerald-500 text-white shadow-sm'
-                        : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-sm'
+                        : 'text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground dark:hover:text-neutral-0'
                     }`}
                   >
                     <List className="w-4 h-4" />
@@ -651,8 +651,8 @@ export function DocumentVault() {
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded transition-all ${
                       viewMode === 'grid'
-                        ? 'bg-emerald-500 text-white shadow-sm'
-                        : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-sm'
+                        : 'text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground dark:hover:text-neutral-0'
                     }`}
                   >
                     <Grid3x3 className="w-4 h-4" />
@@ -665,26 +665,26 @@ export function DocumentVault() {
           {/* Documents Display */}
           {viewMode === 'table' ? (
             /* Table View */
-            <div className="bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+            <div className="bg-card/80 dark:bg-card/[0.03] backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] rounded-[var(--radius-card)] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
               {/* Table Header */}
-              <div className="bg-black/[0.02] dark:bg-white/[0.02] border-b border-black/5 dark:border-white/5 px-6 py-4">
+              <div className="bg-neutral-900/[0.02] dark:bg-card/[0.02] border-b border-black/5 dark:border-white/5 px-6 py-4">
                 <div className="grid grid-cols-12 gap-4 items-center">
-                  <div className="col-span-4 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93]">
+                  <div className="col-span-4 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500">
                     Document Name
                   </div>
-                  <div className="col-span-3 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93]">
+                  <div className="col-span-3 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500">
                     Property
                   </div>
-                  <div className="col-span-2 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93]">
+                  <div className="col-span-2 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500">
                     Category
                   </div>
-                  <div className="col-span-1 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93]">
+                  <div className="col-span-1 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500">
                     Type
                   </div>
-                  <div className="col-span-1 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93]">
+                  <div className="col-span-1 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500">
                     Upload Date
                   </div>
-                  <div className="col-span-1 text-[10px] tracking-[0.1em] uppercase font-bold text-[#8E8E93] text-right">
+                  <div className="col-span-1 text-caption tracking-[0.1em] uppercase font-medium text-neutral-500 text-right">
                     Actions
                   </div>
                 </div>
@@ -695,7 +695,7 @@ export function DocumentVault() {
                 {filteredDocuments.map((doc) => (
                   <div
                     key={doc.id}
-                    className="px-6 py-4 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors group"
+                    className="px-6 py-4 hover:bg-neutral-900/[0.01] dark:hover:bg-card/[0.01] transition-colors group"
                   >
                     <div className="grid grid-cols-12 gap-4 items-center">
                       {/* Document Name */}
@@ -705,14 +705,14 @@ export function DocumentVault() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
-                            <div className="text-[14px] font-medium text-black dark:text-white truncate">
+                            <div className="text-small font-medium text-foreground dark:text-neutral-0 truncate">
                               {doc.name}
                             </div>
                             {doc.isStarred && (
                               <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500 flex-shrink-0" />
                             )}
                           </div>
-                          <div className="text-[12px] text-black/60 dark:text-white/60">
+                          <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                             {doc.size} • Uploaded by {doc.uploadedBy}
                           </div>
                         </div>
@@ -720,17 +720,17 @@ export function DocumentVault() {
 
                       {/* Property */}
                       <div className="col-span-3 min-w-0">
-                        <div className="text-[13px] text-black dark:text-white truncate font-medium">
+                        <div className="text-small text-foreground dark:text-neutral-0 truncate font-medium">
                           {doc.propertyName}
                         </div>
-                        <div className="text-[12px] text-black/60 dark:text-white/60 truncate">
+                        <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 truncate">
                           {doc.propertyLocation}
                         </div>
                       </div>
 
                       {/* Category */}
                       <div className="col-span-2">
-                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold tracking-wide uppercase bg-${getCategoryColor(doc.category)}-500/10 text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400 border border-${getCategoryColor(doc.category)}-500/20`}>
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--radius)] text-caption font-medium tracking-wide uppercase bg-${getCategoryColor(doc.category)}-500/10 text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400 border border-${getCategoryColor(doc.category)}-500/20`}>
                           <div className={`w-1.5 h-1.5 rounded-full bg-${getCategoryColor(doc.category)}-500`} />
                           {doc.category}
                         </span>
@@ -738,7 +738,7 @@ export function DocumentVault() {
 
                       {/* Type */}
                       <div className="col-span-1">
-                        <span className="text-[12px] font-mono text-black/60 dark:text-white/60">
+                        <span className="text-caption font-mono text-neutral-700/80 dark:text-neutral-300/80">
                           {doc.type}
                         </span>
                       </div>
@@ -746,8 +746,8 @@ export function DocumentVault() {
                       {/* Upload Date */}
                       <div className="col-span-1">
                         <div className="flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5 text-[#8E8E93]" />
-                          <span className="text-[12px] text-black dark:text-white">
+                          <Calendar className="w-3.5 h-3.5 text-neutral-500" />
+                          <span className="text-caption text-foreground dark:text-neutral-0">
                             {doc.uploadDate}
                           </span>
                         </div>
@@ -757,12 +757,12 @@ export function DocumentVault() {
                       <div className="col-span-1 flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button 
                           onClick={() => setViewingDocument(doc)}
-                          className="p-2 hover:bg-emerald-500/10 dark:hover:bg-emerald-500/20 rounded-lg transition-all"
+                          className="p-2 hover:bg-primary-700/10 dark:hover:bg-primary-700/20 rounded-[var(--radius)] transition-all"
                         >
-                          <Eye className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                          <Eye className="w-4 h-4 text-primary-700 dark:text-primary-400" />
                         </button>
-                        <button className="p-2 hover:bg-emerald-500/10 dark:hover:bg-emerald-500/20 rounded-lg transition-all">
-                          <Download className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        <button className="p-2 hover:bg-primary-700/10 dark:hover:bg-primary-700/20 rounded-[var(--radius)] transition-all">
+                          <Download className="w-4 h-4 text-primary-700 dark:text-primary-400" />
                         </button>
                       </div>
                     </div>
@@ -770,7 +770,7 @@ export function DocumentVault() {
                     {/* Verification Badge */}
                     {doc.verified && (
                       <div className="mt-2 ml-8">
-                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-emerald-500/10 dark:bg-emerald-500/20 rounded text-[10px] font-bold text-emerald-700 dark:text-emerald-400 tracking-wide">
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-primary-700/10 dark:bg-primary-700/20 rounded text-caption font-medium text-primary-700 dark:text-primary-400 tracking-wide">
                           <CheckCircle2 className="w-3 h-3" />
                           VERIFIED
                         </div>
@@ -783,13 +783,13 @@ export function DocumentVault() {
               {/* Empty State */}
               {filteredDocuments.length === 0 && (
                 <div className="py-20 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
-                    <FileText className="w-8 h-8 text-black/40 dark:text-white/40" />
+                  <div className="w-16 h-16 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-4">
+                    <FileText className="w-8 h-8 text-muted-foreground dark:text-neutral-300/60" />
                   </div>
-                  <p className="text-[14px] text-black/60 dark:text-white/60 mb-1">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-1">
                     No documents found
                   </p>
-                  <p className="text-[12px] text-[#8E8E93]">
+                  <p className="text-caption text-neutral-500">
                     Try adjusting your filters or search query
                   </p>
                 </div>
@@ -801,7 +801,7 @@ export function DocumentVault() {
               {filteredDocuments.map((doc) => (
                 <div
                   key={doc.id}
-                  className="group bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl overflow-hidden hover:border-emerald-500/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] transition-all duration-300"
+                  className="group bg-card/80 dark:bg-card/[0.03] backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] overflow-hidden hover:border-primary-700/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] transition-all duration-300"
                 >
                   {/* Document Preview */}
                   <div className="aspect-[4/3] bg-gradient-to-br from-black/[0.02] to-black/[0.04] dark:from-white/[0.02] dark:to-white/[0.04] relative flex items-center justify-center">
@@ -810,15 +810,15 @@ export function DocumentVault() {
                     </div>
 
                     {/* Hover Actions */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-neutral-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                       <button 
                         onClick={() => setViewingDocument(doc)}
-                        className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-all hover:scale-110"
+                        className="w-10 h-10 rounded-[var(--radius-card)] bg-card/20 hover:bg-card/30 backdrop-blur-sm flex items-center justify-center transition-all hover:scale-110"
                       >
-                        <Eye className="w-5 h-5 text-white" />
+                        <Eye className="w-5 h-5 text-neutral-0" />
                       </button>
-                      <button className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-all hover:scale-110">
-                        <Download className="w-5 h-5 text-white" />
+                      <button className="w-10 h-10 rounded-[var(--radius-card)] bg-card/20 hover:bg-card/30 backdrop-blur-sm flex items-center justify-center transition-all hover:scale-110">
+                        <Download className="w-5 h-5 text-neutral-0" />
                       </button>
                     </div>
 
@@ -832,8 +832,8 @@ export function DocumentVault() {
                     {/* Verified Badge */}
                     {doc.verified && (
                       <div className="absolute top-3 left-3">
-                        <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
-                          <CheckCircle2 className="w-4 h-4 text-white" />
+                        <div className="w-6 h-6 rounded-full bg-primary-700 flex items-center justify-center">
+                          <CheckCircle2 className="w-4 h-4 text-neutral-0" />
                         </div>
                       </div>
                     )}
@@ -841,28 +841,28 @@ export function DocumentVault() {
 
                   {/* Document Info */}
                   <div className="p-4">
-                    <div className="text-[13px] font-medium text-black dark:text-white mb-2 truncate">
+                    <div className="text-small font-medium text-foreground dark:text-neutral-0 mb-2 truncate">
                       {doc.name}
                     </div>
                     
                     <div className="flex items-center gap-2 mb-3">
-                      <Building2 className="w-3.5 h-3.5 text-black/40 dark:text-white/40 flex-shrink-0" />
-                      <div className="text-[11px] text-black/60 dark:text-white/60 truncate">
+                      <Building2 className="w-3.5 h-3.5 text-muted-foreground dark:text-neutral-300/60 flex-shrink-0" />
+                      <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 truncate">
                         {doc.propertyName}
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase bg-${getCategoryColor(doc.category)}-500/10 text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400`}>
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-caption font-medium tracking-wide uppercase bg-${getCategoryColor(doc.category)}-500/10 text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400`}>
                         <div className={`w-1 h-1 rounded-full bg-${getCategoryColor(doc.category)}-500`} />
                         {doc.category}
                       </span>
-                      <span className="text-[10px] text-black/40 dark:text-white/40 font-mono">
+                      <span className="text-caption text-muted-foreground dark:text-neutral-300/60 font-mono">
                         {doc.type}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] text-black/60 dark:text-white/60 pt-3 border-t border-black/5 dark:border-white/5">
+                    <div className="flex items-center justify-between text-caption text-neutral-700/80 dark:text-neutral-300/80 pt-3 border-t border-black/5 dark:border-white/5">
                       <span>{doc.size}</span>
                       <span>{doc.uploadDate}</span>
                     </div>
@@ -873,13 +873,13 @@ export function DocumentVault() {
               {/* Empty State */}
               {filteredDocuments.length === 0 && (
                 <div className="col-span-full py-20 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
-                    <FileText className="w-8 h-8 text-black/40 dark:text-white/40" />
+                  <div className="w-16 h-16 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-4">
+                    <FileText className="w-8 h-8 text-muted-foreground dark:text-neutral-300/60" />
                   </div>
-                  <p className="text-[14px] text-black/60 dark:text-white/60 mb-1">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-1">
                     No documents found
                   </p>
-                  <p className="text-[12px] text-[#8E8E93]">
+                  <p className="text-caption text-neutral-500">
                     Try adjusting your filters or search query
                   </p>
                 </div>
@@ -902,40 +902,40 @@ export function DocumentVault() {
 
       {/* Document Viewer Modal */}
       {viewingDocument && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md">
-          <div className="relative bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-xl rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.4)] border border-white/60 dark:border-white/10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-neutral-900/80 backdrop-blur-md">
+          <div className="relative bg-card/95 dark:bg-neutral-900/95 backdrop-blur-xl rounded-[var(--radius-card)] max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.4)] border border-white/60 dark:border-white/10">
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
               <div className="flex items-center gap-4">
                 {getFileIcon(viewingDocument.type)}
                 <div>
-                  <div className="text-[16px] font-medium text-black dark:text-white">
+                  <div className="text-[16px] font-medium text-foreground dark:text-neutral-0">
                     {viewingDocument.name}
                   </div>
-                  <div className="text-[12px] text-black/60 dark:text-white/60">
+                  <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                     {viewingDocument.size} • {viewingDocument.uploadDate}
                   </div>
                 </div>
               </div>
               <button
                 onClick={() => setViewingDocument(null)}
-                className="w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center transition-colors"
+                className="w-10 h-10 rounded-full hover:bg-neutral-900/5 dark:hover:bg-card/5 flex items-center justify-center transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
             {/* Document Preview */}
             <div className="p-8">
-              <div className="w-full aspect-[1.414/1] bg-gradient-to-br from-black/[0.02] to-black/[0.04] dark:from-white/[0.02] dark:to-white/[0.04] rounded-xl flex items-center justify-center">
+              <div className="w-full aspect-[1.414/1] bg-gradient-to-br from-black/[0.02] to-black/[0.04] dark:from-white/[0.02] dark:to-white/[0.04] rounded-[var(--radius-card)] flex items-center justify-center">
                 <div className="text-center">
                   <div className="scale-[2.5] mb-8">
                     {getFileIcon(viewingDocument.type)}
                   </div>
-                  <div className="text-[14px] text-black/60 dark:text-white/60 mb-4">
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-4">
                     Document Preview
                   </div>
-                  <div className="text-[12px] text-black/40 dark:text-white/40">
+                  <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                     Full preview available after download
                   </div>
                 </div>
@@ -943,29 +943,29 @@ export function DocumentVault() {
             </div>
 
             {/* Footer with Actions */}
-            <div className="flex items-center justify-between p-6 border-t border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
+            <div className="flex items-center justify-between p-6 border-t border-black/5 dark:border-white/5 bg-neutral-900/[0.01] dark:bg-card/[0.01]">
               <div className="flex items-center gap-3">
                 {viewingDocument.verified && (
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 tracking-wide">
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-primary-700/10 dark:bg-primary-700/20 rounded-[var(--radius)]">
+                    <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-400" />
+                    <span className="text-caption font-medium text-primary-700 dark:text-primary-400 tracking-wide">
                       VERIFIED
                     </span>
                   </div>
                 )}
-                <div className="text-[12px] text-black/60 dark:text-white/60">
-                  <span className="font-medium text-black dark:text-white">{viewingDocument.propertyName}</span>
+                <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
+                  <span className="font-medium text-foreground dark:text-neutral-0">{viewingDocument.propertyName}</span>
                   {viewingDocument.propertyLocation && <span> • {viewingDocument.propertyLocation}</span>}
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className="px-4 py-2 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white rounded-lg transition-all text-[13px] font-medium flex items-center gap-2">
+                <button className="px-4 py-2 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 rounded-[var(--radius)] transition-all text-small font-medium flex items-center gap-2">
                   <Download className="w-4 h-4" />
                   Download
                 </button>
                 <button
                   onClick={() => setViewingDocument(null)}
-                  className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-all text-[13px] font-medium"
+                  className="px-4 py-2 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius)] transition-all text-small font-medium"
                 >
                   Close
                 </button>

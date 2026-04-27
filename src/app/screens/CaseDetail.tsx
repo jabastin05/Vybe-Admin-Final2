@@ -45,14 +45,14 @@ export function CaseDetail() {
 
   if (!caseItem) {
     return (
-      <div className="flex min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F]">
+      <div className="flex min-h-screen bg-background dark:bg-neutral-900">
         <SideNav />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h2 className="text-[24px] text-black dark:text-white mb-4">Case not found</h2>
+            <h2 className="text-h2 text-foreground dark:text-neutral-0 mb-4">Case not found</h2>
             <Link 
               to="/properties"
-              className="text-emerald-500 hover:text-emerald-400 text-[14px] font-medium"
+              className="text-primary-700 hover:text-primary-600 text-small font-medium"
             >
               Back to Case Management
             </Link>
@@ -137,16 +137,16 @@ export function CaseDetail() {
       case 'Property Service':
         return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
       case 'Lease & Rent':
-        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+        return 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20';
       case 'Sell or Liquidate':
         return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20';
       default:
-        return 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20';
+        return 'bg-neutral-500/10 text-neutral-500 dark:text-neutral-300 border-gray-500/20';
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F]">
+    <div className="flex min-h-screen bg-background dark:bg-neutral-900">
       <SideNav />
       <div className="flex-1 pt-8 pb-24 px-8">
         <div className="max-w-7xl mx-auto">
@@ -154,8 +154,8 @@ export function CaseDetail() {
           <div className="mb-8">
             <Link
               to={backUrl}
-              className="inline-flex items-center gap-2 text-[14px] text-black/60 dark:text-white/60
-                         hover:text-black dark:hover:text-white transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-small text-neutral-700/80 dark:text-neutral-300/80
+                         hover:text-foreground dark:hover:text-neutral-0 transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
               {backLabel}
@@ -163,15 +163,15 @@ export function CaseDetail() {
 
             <div className="flex items-start justify-between">
               <div>
-                <div className="text-[10px] tracking-[0.05em] uppercase font-bold text-black/40 dark:text-white/40 mb-2">
+                <div className="text-caption tracking-[0.05em] uppercase font-medium text-muted-foreground dark:text-neutral-300/60 mb-2">
                   Case Details
                 </div>
-                <h1 className="text-[32px] tracking-tight text-black dark:text-white leading-none mb-3">
+                <h1 className="text-h1 tracking-tight text-foreground dark:text-neutral-0 leading-none mb-3">
                   {caseItem.caseId}
                 </h1>
                 
                 {/* Service Badge */}
-                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-[11px] font-medium ${
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-[var(--radius-card)] border text-caption font-medium ${
                   getServiceColor(caseItem.serviceRequested)
                 }`}>
                   <FileText className="w-4 h-4" />
@@ -183,16 +183,16 @@ export function CaseDetail() {
                 {/* Chat Button */}
                 <button
                   onClick={() => navigate(`/case/${id}/chat`)}
-                  className="flex items-center gap-2 px-4 py-3 bg-emerald-500 hover:bg-emerald-600 
-                             text-white rounded-xl transition-all text-[13px] font-medium
-                             shadow-[0_4px_12px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.4)]
+                  className="flex items-center gap-2 px-4 py-3 bg-primary-700 hover:bg-primary-900 
+                             text-neutral-0 rounded-[var(--radius-card)] transition-all text-small font-medium
+                             shadow-[0_4px_12px_rgba(28,117,188,0.3)] hover:shadow-[0_6px_16px_rgba(28,117,188,0.4)]
                              relative"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Chat
                   {/* Notification Badge */}
                   {caseItem.unreadMessages && caseItem.unreadMessages > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold 
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-neutral-0 text-caption font-medium 
                                    rounded-full w-5 h-5 flex items-center justify-center
                                    shadow-lg animate-pulse">
                       {caseItem.unreadMessages}
@@ -201,17 +201,17 @@ export function CaseDetail() {
                 </button>
 
                 {/* Status Badge */}
-                <div className={`flex items-center gap-2 px-5 py-3 rounded-xl border ${
+                <div className={`flex items-center gap-2 px-5 py-3 rounded-[var(--radius-card)] border ${
                   caseItem.status === 'Open'
-                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
-                    : 'bg-black/5 dark:bg-white/5 text-black/60 dark:text-white/60 border-black/10 dark:border-white/10'
+                    ? 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20'
+                    : 'bg-neutral-900/5 dark:bg-card/5 text-neutral-700/80 dark:text-neutral-300/80 border-black/10 dark:border-white/10'
                 }`}>
                   {caseItem.status === 'Open' ? (
                     <Clock className="w-5 h-5" />
                   ) : (
                     <CheckCircle2 className="w-5 h-5" />
                   )}
-                  <span className="text-[14px] font-medium">{caseItem.status}</span>
+                  <span className="text-small font-medium">{caseItem.status}</span>
                 </div>
               </div>
             </div>
@@ -219,12 +219,12 @@ export function CaseDetail() {
 
           {/* Case Progress */}
           {caseItem.milestones && caseItem.milestones.length > 0 && (
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8 mb-6">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8 mb-6">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-[14px] font-medium text-black dark:text-white">
+                <h2 className="text-small font-medium text-foreground dark:text-neutral-0">
                   Case progress
                 </h2>
-                <div className="text-[14px] text-black/60 dark:text-white/60">
+                <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                   {caseItem.progress || 0}% complete
                 </div>
               </div>
@@ -235,11 +235,11 @@ export function CaseDetail() {
                 <div className="hidden lg:block">
                   <div className="relative flex items-start justify-between mb-4">
                     {/* Background Line */}
-                    <div className="absolute top-[12px] left-0 right-0 h-[2px] bg-black/5 dark:bg-white/5" />
+                    <div className="absolute top-[12px] left-0 right-0 h-[2px] bg-neutral-900/5 dark:bg-card/5" />
                     
                     {/* Progress Line */}
                     <div 
-                      className="absolute top-[12px] left-0 h-[2px] bg-black dark:bg-white transition-all duration-500"
+                      className="absolute top-[12px] left-0 h-[2px] bg-neutral-900 dark:bg-card transition-all duration-500"
                       style={{ width: `${caseItem.progress || 0}%` }}
                     />
 
@@ -257,29 +257,29 @@ export function CaseDetail() {
                           className={`
                             relative z-10 w-6 h-6 rounded-full flex-shrink-0 transition-all duration-300 mb-3
                             ${milestone.status === 'completed'
-                              ? 'bg-black dark:bg-white cursor-pointer hover:scale-125 shadow-lg'
-                              : 'bg-white dark:bg-[#111111] border-2 border-black/10 dark:border-white/10 cursor-pointer hover:border-black/30 dark:hover:border-white/30 hover:scale-110'
+                              ? 'bg-neutral-900 dark:bg-card cursor-pointer hover:scale-125 shadow-lg'
+                              : 'bg-card border-2 border-black/10 dark:border-white/10 cursor-pointer hover:border-black/30 dark:hover:border-white/30 hover:scale-110'
                             }
                             ${isUpdating ? 'opacity-50 cursor-not-allowed' : ''}
                           `}
                         >
                           {milestone.status === 'completed' && (
                             <div className="w-full h-full flex items-center justify-center">
-                              <div className="w-2.5 h-2.5 bg-white dark:bg-black rounded-full" />
+                              <div className="w-2.5 h-2.5 bg-card dark:bg-neutral-900 rounded-full" />
                             </div>
                           )}
                         </button>
 
                         {/* Milestone Info */}
                         <div className="text-center max-w-[120px]">
-                          <div className={`text-[12px] mb-1 transition-colors leading-tight ${ 
+                          <div className={`text-caption mb-1 transition-colors leading-tight ${ 
                             milestone.status === 'completed'
-                              ? 'text-black dark:text-white font-medium'
-                              : 'text-black/40 dark:text-white/40'
+                              ? 'text-foreground dark:text-neutral-0 font-medium'
+                              : 'text-muted-foreground dark:text-neutral-300/60'
                           }`}>
                             {milestone.title}
                           </div>
-                          <div className="text-[10px] text-black/40 dark:text-white/40">
+                          <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                             {milestone.date || 'Pending'}
                           </div>
                         </div>
@@ -291,9 +291,9 @@ export function CaseDetail() {
                 {/* Mobile/Tablet: Compact Grid */}
                 <div className="lg:hidden">
                   {/* Progress Bar */}
-                  <div className="relative w-full h-1 bg-black/5 dark:bg-white/5 rounded-full mb-6 overflow-hidden">
+                  <div className="relative w-full h-1 bg-neutral-900/5 dark:bg-card/5 rounded-full mb-6 overflow-hidden">
                     <div 
-                      className="absolute top-0 left-0 h-full bg-black dark:bg-white rounded-full transition-all duration-500"
+                      className="absolute top-0 left-0 h-full bg-neutral-900 dark:bg-card rounded-full transition-all duration-500"
                       style={{ width: `${caseItem.progress || 0}%` }}
                     />
                   </div>
@@ -306,9 +306,9 @@ export function CaseDetail() {
                         onClick={() => handleMilestoneToggle(milestone.id)}
                         disabled={isUpdating}
                         className={`
-                          flex items-start gap-3 p-3 rounded-xl border transition-all
+                          flex items-start gap-3 p-3 rounded-[var(--radius-card)] border transition-all
                           ${milestone.status === 'completed'
-                            ? 'bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10'
+                            ? 'bg-neutral-900/5 dark:bg-card/5 border-black/10 dark:border-white/10'
                             : 'border-black/5 dark:border-white/5 hover:border-black/20 dark:hover:border-white/20'
                           }
                           ${isUpdating ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
@@ -317,26 +317,26 @@ export function CaseDetail() {
                         <div className={`
                           w-5 h-5 rounded-full flex-shrink-0 transition-all mt-0.5
                           ${milestone.status === 'completed'
-                            ? 'bg-black dark:bg-white'
-                            : 'bg-white dark:bg-[#111111] border-2 border-black/10 dark:border-white/10'
+                            ? 'bg-neutral-900 dark:bg-card'
+                            : 'bg-card border-2 border-black/10 dark:border-white/10'
                           }
                         `}>
                           {milestone.status === 'completed' && (
                             <div className="w-full h-full flex items-center justify-center">
-                              <div className="w-2 h-2 bg-white dark:bg-black rounded-full" />
+                              <div className="w-2 h-2 bg-card dark:bg-neutral-900 rounded-full" />
                             </div>
                           )}
                         </div>
 
                         <div className="flex-1 text-left">
-                          <div className={`text-[12px] mb-0.5 transition-colors leading-tight ${
+                          <div className={`text-caption mb-0.5 transition-colors leading-tight ${
                             milestone.status === 'completed'
-                              ? 'text-black dark:text-white font-medium'
-                              : 'text-black/40 dark:text-white/40'
+                              ? 'text-foreground dark:text-neutral-0 font-medium'
+                              : 'text-muted-foreground dark:text-neutral-300/60'
                           }`}>
                             {milestone.title}
                           </div>
-                          <div className="text-[10px] text-black/40 dark:text-white/40">
+                          <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                             {milestone.date || 'Pending'}
                           </div>
                         </div>
@@ -348,7 +348,7 @@ export function CaseDetail() {
 
               {/* Info Message */}
               <div className="mt-6 pt-6 border-t border-black/5 dark:border-white/5">
-                <p className="text-[12px] text-black/40 dark:text-white/40">
+                <p className="text-caption text-muted-foreground dark:text-neutral-300/60">
                   💡 Click on any milestone to update its status
                 </p>
               </div>
@@ -357,21 +357,21 @@ export function CaseDetail() {
 
           {/* HABU Report Preview Section (Only for closed HABU cases) */}
           {isHABU && caseItem.status === 'Closed' && caseItem.habuPlans && caseItem.habuPlans.length > 0 && (
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8 mb-6">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8 mb-6">
               <div className="mb-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-[18px] font-medium text-black dark:text-white mb-1">
+                  <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0 mb-1">
                     HABU Report Ready
                   </h2>
-                  <p className="text-[13px] text-black/50 dark:text-white/50">
+                  <p className="text-small text-muted-foreground dark:text-neutral-0/50">
                     Your High-value Analysis & Best-use Understanding report analysis is now available below
                   </p>
                 </div>
                 <Link
                   to="/report/habu"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl text-[13px] font-medium transition-all whitespace-nowrap shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(16,185,129,0.2)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(16,185,129,0.4)] relative overflow-hidden group"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-700 hover:bg-primary-600 text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all whitespace-nowrap shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(28,117,188,0.2)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(28,117,188,0.4)] relative overflow-hidden group"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-[var(--radius-card)]" />
                   <ExternalLink className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform" />
                   <span className="relative z-10">Open Full Report</span>
                 </Link>
@@ -384,15 +384,15 @@ export function CaseDetail() {
                     switch (theme) {
                       case 'green':
                         return {
-                          bg: 'bg-emerald-50/80 dark:bg-emerald-950/20',
-                          border: 'border-emerald-200/50 dark:border-emerald-800/30',
-                          iconBg: 'bg-emerald-500/10',
-                          iconColor: 'text-emerald-600 dark:text-emerald-400',
-                          insightBg: 'bg-emerald-100/80 dark:bg-emerald-900/20',
-                          insightBorder: 'border-emerald-200/50 dark:border-emerald-800/30',
-                          insightText: 'text-emerald-900 dark:text-emerald-100',
-                          highlightBg: 'bg-emerald-500/10',
-                          highlightText: 'text-emerald-700 dark:text-emerald-300'
+                          bg: 'bg-primary-100/80 dark:bg-primary-900/20',
+                          border: 'border-primary-200/50 dark:border-primary-800/30',
+                          iconBg: 'bg-primary-700/10',
+                          iconColor: 'text-primary-700 dark:text-primary-400',
+                          insightBg: 'bg-primary-100/80 dark:bg-primary-800/20',
+                          insightBorder: 'border-primary-200/50 dark:border-primary-800/30',
+                          insightText: 'text-primary-700 dark:text-primary-100',
+                          highlightBg: 'bg-primary-700/10',
+                          highlightText: 'text-primary-700 dark:text-primary-400'
                         };
                       case 'pink':
                         return {
@@ -420,15 +420,15 @@ export function CaseDetail() {
                         };
                       default:
                         return {
-                          bg: 'bg-gray-50/80 dark:bg-gray-950/20',
-                          border: 'border-gray-200/50 dark:border-gray-800/30',
-                          iconBg: 'bg-gray-500/10',
-                          iconColor: 'text-gray-600 dark:text-gray-400',
-                          insightBg: 'bg-gray-100/80 dark:bg-gray-900/20',
-                          insightBorder: 'border-gray-200/50 dark:border-gray-800/30',
-                          insightText: 'text-gray-900 dark:text-gray-100',
-                          highlightBg: 'bg-gray-500/10',
-                          highlightText: 'text-gray-700 dark:text-gray-300'
+                          bg: 'bg-neutral-50/80 dark:bg-gray-950/20',
+                          border: 'border-neutral-200/50 dark:border-gray-800/30',
+                          iconBg: 'bg-neutral-500/10',
+                          iconColor: 'text-neutral-500 dark:text-neutral-300',
+                          insightBg: 'bg-neutral-100/80 dark:bg-neutral-900/20',
+                          insightBorder: 'border-neutral-200/50 dark:border-gray-800/30',
+                          insightText: 'text-neutral-900 dark:text-neutral-100',
+                          highlightBg: 'bg-neutral-500/10',
+                          highlightText: 'text-neutral-700 dark:text-neutral-300'
                         };
                     }
                   };
@@ -451,25 +451,25 @@ export function CaseDetail() {
                   return (
                     <div
                       key={plan.id}
-                      className={`border rounded-[24px] p-5 ${themeStyles.bg} ${themeStyles.border} relative`}
+                      className={`border rounded-[var(--radius-card)] p-5 ${themeStyles.bg} ${themeStyles.border} relative`}
                     >
                       {/* Header */}
                       <div className="flex items-start gap-3 mb-4">
-                        <div className={`w-8 h-8 rounded-xl ${themeStyles.iconBg} flex items-center justify-center flex-shrink-0`}>
+                        <div className={`w-8 h-8 rounded-[var(--radius-card)] ${themeStyles.iconBg} flex items-center justify-center flex-shrink-0`}>
                           {getIcon(plan.icon)}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="text-[9px] tracking-[0.05em] uppercase font-bold text-black/40 dark:text-white/40">
+                            <span className="text-caption tracking-[0.05em] uppercase font-medium text-muted-foreground dark:text-neutral-300/60">
                               OPTION {plan.optionNumber}
                             </span>
                             {plan.badge === 'recommended' && (
-                              <span className="px-1.5 py-0.5 bg-emerald-500 text-white text-[9px] font-bold tracking-wider uppercase rounded">
+                              <span className="px-1.5 py-0.5 bg-primary-700 text-neutral-0 text-caption font-medium tracking-wider uppercase rounded">
                                 RECOMMENDED
                               </span>
                             )}
                           </div>
-                          <h3 className="text-[16px] font-semibold text-black dark:text-white leading-tight">
+                          <h3 className="text-[16px] font-medium text-foreground dark:text-neutral-0 leading-tight">
                             {plan.title}
                           </h3>
                         </div>
@@ -480,24 +480,24 @@ export function CaseDetail() {
                         {plan.metrics?.map((metric, index) => (
                           <div
                             key={index}
-                            className={`p-3 rounded-xl ${
+                            className={`p-3 rounded-[var(--radius-card)] ${
                               metric.highlight 
                                 ? `${themeStyles.highlightBg} border ${themeStyles.border}` 
-                                : 'bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5'
+                                : 'bg-card border border-black/5 dark:border-white/5'
                             }`}
                           >
-                            <div className="text-[9px] tracking-[0.05em] uppercase font-bold text-black/40 dark:text-white/40 mb-1">
+                            <div className="text-caption tracking-[0.05em] uppercase font-medium text-muted-foreground dark:text-neutral-300/60 mb-1">
                               {metric.label}
                             </div>
-                            <div className={`text-[16px] font-bold tracking-tight ${
+                            <div className={`text-[16px] font-medium tracking-tight ${
                               metric.highlight 
                                 ? themeStyles.highlightText 
-                                : 'text-black dark:text-white'
+                                : 'text-foreground dark:text-neutral-0'
                             }`}>
                               {metric.value}
                             </div>
                             {metric.subtext && (
-                              <div className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+                              <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-0.5">
                                 {metric.subtext}
                               </div>
                             )}
@@ -506,15 +506,15 @@ export function CaseDetail() {
                       </div>
 
                       {/* Insights Section */}
-                      <div className={`rounded-xl p-4 border ${themeStyles.insightBg} ${themeStyles.insightBorder}`}>
-                        <div className="text-[9px] tracking-[0.05em] uppercase font-bold mb-2"
+                      <div className={`rounded-[var(--radius-card)] p-4 border ${themeStyles.insightBg} ${themeStyles.insightBorder}`}>
+                        <div className="text-caption tracking-[0.05em] uppercase font-medium mb-2"
                              style={{ color: plan.insights?.type === 'why' ? '#16a34a' : '#dc2626' }}>
                           {plan.insights?.type === 'why' ? 'WHY THIS WORKS' : 'FOR MORE DETAILS DOWNLOAD HABU REPORT'}
                         </div>
                         <ul className={`space-y-1.5 ${themeStyles.insightText}`}>
                           {plan.insights?.points?.map((point, index) => (
-                            <li key={index} className="flex items-start gap-2 text-[12px]">
-                              <span className="text-black/40 dark:text-white/40 mt-0.5">•</span>
+                            <li key={index} className="flex items-start gap-2 text-caption">
+                              <span className="text-muted-foreground dark:text-neutral-300/60 mt-0.5">•</span>
                               <span className="flex-1">{point}</span>
                             </li>
                           ))}
@@ -531,23 +531,23 @@ export function CaseDetail() {
             {/* Left Column - Main Info */}
             <div className="lg:col-span-2 space-y-6">
               {/* Property Information */}
-              <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8">
-                <h2 className="text-[12px] uppercase tracking-wider text-black/40 dark:text-white/40 mb-6">
+              <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8">
+                <h2 className="text-caption uppercase tracking-wider text-muted-foreground dark:text-neutral-300/60 mb-6">
                   Property Information
                 </h2>
                 
                 <div className="space-y-4">
                   <div>
-                    <div className="text-[12px] text-black/40 dark:text-white/40 mb-1">Property Name</div>
-                    <div className="text-[18px] font-medium text-black dark:text-white">
+                    <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1">Property Name</div>
+                    <div className="text-h3 font-medium text-foreground dark:text-neutral-0">
                       {caseItem.propertyName}
                     </div>
                   </div>
 
                   <div>
-                    <div className="text-[12px] text-black/40 dark:text-white/40 mb-1">Location</div>
-                    <div className="flex items-center gap-2 text-[14px] text-black/80 dark:text-white/80">
-                      <MapPin className="w-4 h-4 text-black/40 dark:text-white/40" />
+                    <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1">Location</div>
+                    <div className="flex items-center gap-2 text-small text-foreground/80 dark:text-neutral-0/80">
+                      <MapPin className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                       {caseItem.propertyLocation}
                     </div>
                   </div>
@@ -555,7 +555,7 @@ export function CaseDetail() {
                   {property && (
                     <Link
                       to={`/property/${property.id}/detail`}
-                      className="inline-flex items-center gap-2 text-[13px] text-emerald-500 hover:text-emerald-400
+                      className="inline-flex items-center gap-2 text-small text-primary-700 hover:text-primary-600
                                  font-medium transition-colors mt-2"
                     >
                       View Property Details
@@ -567,14 +567,14 @@ export function CaseDetail() {
 
               {/* Documents (Only for owned properties) */}
               {property && hasDocuments && (
-                <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8">
+                <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8">
                   <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-[12px] uppercase tracking-wider text-black/40 dark:text-white/40">
+                    <h2 className="text-caption uppercase tracking-wider text-muted-foreground dark:text-neutral-300/60">
                       Linked Documents
                     </h2>
                     <Link
                       to={`/property/${property.id}/documents`}
-                      className="text-[13px] text-emerald-500 hover:text-emerald-400 font-medium"
+                      className="text-small text-primary-700 hover:text-primary-600 font-medium"
                     >
                       View All
                     </Link>
@@ -584,26 +584,26 @@ export function CaseDetail() {
                     {property.documents?.slice(0, 5).map((doc) => (
                       <div
                         key={doc.id}
-                        className="flex items-center justify-between p-4 rounded-xl border border-black/5 dark:border-white/5
-                                   hover:border-emerald-500/30 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all group"
+                        className="flex items-center justify-between p-4 rounded-[var(--radius-card)] border border-black/5 dark:border-white/5
+                                   hover:border-primary-700/30 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-all group"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-[var(--radius)] bg-purple-500/10 flex items-center justify-center">
                             <FileText className="w-5 h-5 text-purple-500" />
                           </div>
                           <div>
-                            <div className="text-[14px] font-medium text-black dark:text-white">
+                            <div className="text-small font-medium text-foreground dark:text-neutral-0">
                               {doc.name}
                             </div>
-                            <div className="text-[12px] text-black/40 dark:text-white/40">
+                            <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                               {doc.size}
                             </div>
                           </div>
                         </div>
 
-                        <div className={`px-3 py-1 rounded-lg text-[11px] font-medium ${
+                        <div className={`px-3 py-1 rounded-[var(--radius)] text-caption font-medium ${
                           doc.status === 'verified'
-                            ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                            ? 'bg-primary-700/10 text-primary-700 dark:text-primary-400'
                             : 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400'
                         }`}>
                           {doc.status === 'verified' ? 'Verified' : 'Processing'}
@@ -616,9 +616,9 @@ export function CaseDetail() {
 
               {/* Case Documents (Documents attached directly to the case) */}
               {caseDocuments.length > 0 && (
-                <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8">
+                <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8">
                   <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-[12px] uppercase tracking-wider text-black/40 dark:text-white/40">
+                    <h2 className="text-caption uppercase tracking-wider text-muted-foreground dark:text-neutral-300/60">
                       Case Documents
                     </h2>
                   </div>
@@ -627,24 +627,24 @@ export function CaseDetail() {
                     {caseDocuments.map((doc) => (
                       <div
                         key={doc.id}
-                        className="flex items-center justify-between p-4 rounded-xl border border-black/5 dark:border-white/5
-                                   hover:border-emerald-500/30 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all group"
+                        className="flex items-center justify-between p-4 rounded-[var(--radius-card)] border border-black/5 dark:border-white/5
+                                   hover:border-primary-700/30 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-all group"
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center ${
                             doc.status === 'requested' ? 'bg-amber-500/10' : 'bg-purple-500/10'
                           }`}>
                             <FileText className="w-5 h-5 text-purple-500" />
                           </div>
                           <div>
-                            <div className="text-[14px] font-medium text-black dark:text-white">
+                            <div className="text-small font-medium text-foreground dark:text-neutral-0">
                               {doc.name}
                             </div>
-                            <div className="text-[12px] text-black/40 dark:text-white/40">
+                            <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                               {doc.size} • {doc.uploadedDate}
                             </div>
                             {(doc.uploadedByName || doc.uploadedByRole) && (
-                              <div className="text-[12px] text-black/40 dark:text-white/40">
+                              <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                                 {doc.status === 'requested' ? 'Requested' : 'Uploaded'} by {doc.uploadedByName || 'Team'}{doc.uploadedByRole ? ` (${doc.uploadedByRole})` : ''}
                               </div>
                             )}
@@ -654,15 +654,15 @@ export function CaseDetail() {
                         {doc.status === 'uploaded' && doc.dataUrl ? (
                           <button
                             onClick={() => handleCaseDocumentDownload(doc.name, doc.dataUrl)}
-                            className="p-2 rounded-lg border border-black/10 dark:border-white/10 text-black/40 dark:text-white/40 group-hover:text-emerald-500 hover:border-emerald-500/30"
+                            className="p-2 rounded-[var(--radius)] border border-black/10 dark:border-white/10 text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700 hover:border-primary-700/30"
                           >
                             <Download className="w-4 h-4" />
                           </button>
                         ) : (
-                          <span className={`px-3 py-1 rounded-lg text-[11px] font-medium ${
+                          <span className={`px-3 py-1 rounded-[var(--radius)] text-caption font-medium ${
                             doc.status === 'requested'
                               ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
-                              : 'bg-black/5 dark:bg-white/5 text-black/40 dark:text-white/40'
+                              : 'bg-neutral-900/5 dark:bg-card/5 text-muted-foreground dark:text-neutral-300/60'
                           }`}>
                             {doc.status === 'requested' ? 'Requested' : 'Unavailable'}
                           </span>
@@ -675,10 +675,10 @@ export function CaseDetail() {
 
               {/* Message when documents not available */}
               {!property && (
-                <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-8">
+                <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-8">
                   <div className="text-center py-6">
-                    <FileText className="w-12 h-12 text-black/20 dark:text-white/20 mx-auto mb-3" />
-                    <p className="text-[14px] text-black/60 dark:text-white/40">
+                    <FileText className="w-12 h-12 text-foreground/20 dark:text-neutral-0/20 mx-auto mb-3" />
+                    <p className="text-small text-neutral-700/80 dark:text-neutral-300/60">
                       Documents not available for non-owned properties
                     </p>
                   </div>
@@ -689,8 +689,8 @@ export function CaseDetail() {
             {/* Right Column - Timeline & Metadata */}
             <div className="space-y-6">
               {/* Quick Actions */}
-              <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl p-6">
-                <h2 className="text-[12px] uppercase tracking-wider text-black/40 dark:text-white/40 mb-4">
+              <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6">
+                <h2 className="text-caption uppercase tracking-wider text-muted-foreground dark:text-neutral-300/60 mb-4">
                   Quick Actions
                 </h2>
 
@@ -698,41 +698,41 @@ export function CaseDetail() {
                   {property && (
                     <Link
                       to={`/property/${property.id}/detail`}
-                      className="flex items-center justify-between p-3 rounded-lg border border-black/5 dark:border-white/5
-                                 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all group"
+                      className="flex items-center justify-between p-3 rounded-[var(--radius)] border border-black/5 dark:border-white/5
+                                 hover:border-primary-700/30 hover:bg-primary-700/5 transition-all group"
                     >
                       <div className="flex items-center gap-3">
-                        <Building2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-emerald-500" />
-                        <span className="text-[13px] text-black dark:text-white">View Property</span>
+                        <Building2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700" />
+                        <span className="text-small text-foreground dark:text-neutral-0">View Property</span>
                       </div>
-                      <ExternalLink className="w-3.5 h-3.5 text-black/20 dark:text-white/20 group-hover:text-emerald-500" />
+                      <ExternalLink className="w-3.5 h-3.5 text-foreground/20 dark:text-neutral-0/20 group-hover:text-primary-700" />
                     </Link>
                   )}
 
                   {property && (
                     <Link
                       to={`/property/${property.id}/documents`}
-                      className="flex items-center justify-between p-3 rounded-lg border border-black/5 dark:border-white/5
-                                 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all group"
+                      className="flex items-center justify-between p-3 rounded-[var(--radius)] border border-black/5 dark:border-white/5
+                                 hover:border-primary-700/30 hover:bg-primary-700/5 transition-all group"
                     >
                       <div className="flex items-center gap-3">
-                        <FileText className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-emerald-500" />
-                        <span className="text-[13px] text-black dark:text-white">View Documents</span>
+                        <FileText className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700" />
+                        <span className="text-small text-foreground dark:text-neutral-0">View Documents</span>
                       </div>
-                      <ExternalLink className="w-3.5 h-3.5 text-black/20 dark:text-white/20 group-hover:text-emerald-500" />
+                      <ExternalLink className="w-3.5 h-3.5 text-foreground/20 dark:text-neutral-0/20 group-hover:text-primary-700" />
                     </Link>
                   )}
 
                   <Link
                     to="/services"
-                    className="flex items-center justify-between p-3 rounded-lg border border-black/5 dark:border-white/5
-                              hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all group"
+                    className="flex items-center justify-between p-3 rounded-[var(--radius)] border border-black/5 dark:border-white/5
+                              hover:border-primary-700/30 hover:bg-primary-700/5 transition-all group"
                   >
                     <div className="flex items-center gap-3">
-                      <FileText className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-emerald-500" />
-                      <span className="text-[13px] text-black dark:text-white">Request New Service</span>
+                      <FileText className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700" />
+                      <span className="text-small text-foreground dark:text-neutral-0">Request New Service</span>
                     </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-black/20 dark:text-white/20 group-hover:text-emerald-500" />
+                    <ExternalLink className="w-3.5 h-3.5 text-foreground/20 dark:text-neutral-0/20 group-hover:text-primary-700" />
                   </Link>
                 </div>
               </div>

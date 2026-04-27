@@ -175,9 +175,9 @@ export function EnhancedServiceConfiguration() {
   return (
     <AdminLayout>
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -194,7 +194,7 @@ export function EnhancedServiceConfiguration() {
           </div>
           <div className="vybe-kpi-card min-w-[200px]">
             <div className="vybe-kpi-label">ENABLED</div>
-            <div className="vybe-kpi-value" style={{ color: '#10B981' }}>{services.filter(s => s.enabled).length}</div>
+            <div className="vybe-kpi-value" style={{ color: '#1C75BC' }}>{services.filter(s => s.enabled).length}</div>
           </div>
         </div>
         <button onClick={() => handleOpenModal()} className="h-[var(--button-height-desktop)] px-[var(--space-5)] bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-button)] text-small font-medium transition-colors flex items-center gap-[var(--space-2)] shadow-sm">
@@ -216,8 +216,8 @@ export function EnhancedServiceConfiguration() {
           <div key={service.id} className="vybe-card-padded">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-start gap-4 flex-1">
-                <div className={`p-3 rounded-[12px] ${service.enabled ? 'bg-emerald-500/10' : 'bg-muted'}`}>
-                  <SettingsIcon className={`w-5 h-5 ${service.enabled ? 'text-emerald-500' : 'text-muted-foreground'}`} />
+                <div className={`p-3 rounded-[var(--radius-card)] ${service.enabled ? 'bg-primary-700/10' : 'bg-muted'}`}>
+                  <SettingsIcon className={`w-5 h-5 ${service.enabled ? 'text-primary-700' : 'text-muted-foreground'}`} />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
@@ -230,19 +230,19 @@ export function EnhancedServiceConfiguration() {
                   
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                     <div>
-                      <p className="text-caption font-bold tracking-[0.05em] text-muted-foreground uppercase mb-1">Category</p>
+                      <p className="text-caption font-medium tracking-[0.05em] text-muted-foreground uppercase mb-1">Category</p>
                       <p className="text-small text-foreground">{service.serviceCategory}</p>
                     </div>
                     <div>
-                      <p className="text-caption font-bold tracking-[0.05em] text-muted-foreground uppercase mb-1">Pricing</p>
+                      <p className="text-caption font-medium tracking-[0.05em] text-muted-foreground uppercase mb-1">Pricing</p>
                       <p className="text-small text-foreground">{service.pricingModel} {service.pricingAmount && `(${service.pricingAmount})`}</p>
                     </div>
                     <div>
-                      <p className="text-caption font-bold tracking-[0.05em] text-muted-foreground uppercase mb-1">TAT</p>
+                      <p className="text-caption font-medium tracking-[0.05em] text-muted-foreground uppercase mb-1">TAT</p>
                       <p className="text-small text-foreground">{service.expectedTAT}</p>
                     </div>
                     <div>
-                      <p className="text-caption font-bold tracking-[0.05em] text-muted-foreground uppercase mb-1">Partner Role</p>
+                      <p className="text-caption font-medium tracking-[0.05em] text-muted-foreground uppercase mb-1">Partner Role</p>
                       <p className="text-small text-foreground">{service.assignedPartnerRole}</p>
                     </div>
                   </div>
@@ -259,14 +259,14 @@ export function EnhancedServiceConfiguration() {
               </div>
 
               <div className="flex items-center gap-2">
-                <button onClick={() => handleToggleEnabled(service.id)} className={`p-2 rounded-lg transition-colors ${service.enabled ? 'bg-emerald-500/10 hover:bg-emerald-500/20' : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10'}`}>
-                  {service.enabled ? <Power className="w-4 h-4 text-emerald-500" /> : <PowerOff className="w-4 h-4 text-black/40 dark:text-white/40" />}
+                <button onClick={() => handleToggleEnabled(service.id)} className={`p-2 rounded-[var(--radius)] transition-colors ${service.enabled ? 'bg-primary-700/10 hover:bg-primary-700/20' : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10'}`}>
+                  {service.enabled ? <Power className="w-4 h-4 text-primary-700" /> : <PowerOff className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />}
                 </button>
-                <button onClick={() => handleOpenModal(service)} className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors">
-                  <Edit2 className="w-4 h-4 text-black/40 dark:text-white/40" />
+                <button onClick={() => handleOpenModal(service)} className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors">
+                  <Edit2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                 </button>
-                <button onClick={() => handleDelete(service.id)} className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group">
-                  <Trash2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                <button onClick={() => handleDelete(service.id)} className="p-2 hover:bg-red-500/10 rounded-[var(--radius)] transition-colors group">
+                  <Trash2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                 </button>
               </div>
             </div>
@@ -280,7 +280,7 @@ export function EnhancedServiceConfiguration() {
           <div className="vybe-modal vybe-modal-xl" style={{ padding: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
             {/* Sticky header */}
             <div className="vybe-modal-header shrink-0" style={{ padding: 'var(--card-padding-desktop)', borderBottom: '1px solid var(--border)', marginBottom: 0 }}>
-              <h2 className="text-[20px] font-semibold text-foreground">{editingService ? 'Edit Service' : 'Add Service'}</h2>
+              <h2 className="text-h3 font-medium text-foreground">{editingService ? 'Edit Service' : 'Add Service'}</h2>
               <button onClick={handleCloseModal} className="vybe-icon-btn">
                 <X className="w-5 h-5" />
               </button>
@@ -321,13 +321,13 @@ export function EnhancedServiceConfiguration() {
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)}
                     className="vybe-input flex-1" placeholder="Add building type" />
-                  <button onClick={addBuildingType} className="vybe-btn-primary text-emerald-500">Add</button>
+                  <button onClick={addBuildingType} className="vybe-btn-primary text-primary-700">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.applicableBuilding?.map((item, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-500 text-white rounded-[8px] text-[13px] font-medium">
+                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-500 text-neutral-0 rounded-[var(--radius)] text-small font-medium">
                       {item}
-                      <button onClick={() => setFormData({ ...formData, applicableBuilding: formData.applicableBuilding?.filter(i => i !== item) })} className="hover:bg-white/20 rounded-full p-0.5 transition-colors">
+                      <button onClick={() => setFormData({ ...formData, applicableBuilding: formData.applicableBuilding?.filter(i => i !== item) })} className="hover:bg-card/20 rounded-full p-0.5 transition-colors">
                         <X className="w-3.5 h-3.5" />
                       </button>
                     </span>
@@ -341,13 +341,13 @@ export function EnhancedServiceConfiguration() {
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)}
                     className="vybe-input flex-1" placeholder="Add property type" />
-                  <button onClick={addPropertyType} className="vybe-btn-primary text-emerald-500">Add</button>
+                  <button onClick={addPropertyType} className="vybe-btn-primary text-primary-700">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.propertyTypes?.map((item, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 text-white rounded-[8px] text-[13px] font-medium">
+                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 text-neutral-0 rounded-[var(--radius)] text-small font-medium">
                       {item}
-                      <button onClick={() => setFormData({ ...formData, propertyTypes: formData.propertyTypes?.filter(i => i !== item) })} className="hover:bg-white/20 rounded-full p-0.5 transition-colors">
+                      <button onClick={() => setFormData({ ...formData, propertyTypes: formData.propertyTypes?.filter(i => i !== item) })} className="hover:bg-card/20 rounded-full p-0.5 transition-colors">
                         <X className="w-3.5 h-3.5" />
                       </button>
                     </span>
@@ -361,13 +361,13 @@ export function EnhancedServiceConfiguration() {
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={newGeoItem} onChange={(e) => setNewGeoItem(e.target.value)}
                     className="vybe-input flex-1" placeholder="Add city" />
-                  <button onClick={addGeography} className="vybe-btn-primary text-emerald-500">Add</button>
+                  <button onClick={addGeography} className="vybe-btn-primary text-primary-700">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.geographyApplicability?.map((city, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-white rounded-[8px] text-[13px] font-medium">
+                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-700 text-neutral-0 rounded-[var(--radius)] text-small font-medium">
                       {city}
-                      <button onClick={() => setFormData({ ...formData, geographyApplicability: formData.geographyApplicability?.filter(c => c !== city) })} className="hover:bg-white/20 rounded-full p-0.5 transition-colors">
+                      <button onClick={() => setFormData({ ...formData, geographyApplicability: formData.geographyApplicability?.filter(c => c !== city) })} className="hover:bg-card/20 rounded-full p-0.5 transition-colors">
                         <X className="w-3.5 h-3.5" />
                       </button>
                     </span>
@@ -407,13 +407,13 @@ export function EnhancedServiceConfiguration() {
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={newDocItem} onChange={(e) => setNewDocItem(e.target.value)}
                     className="vybe-input flex-1" placeholder="Add document" />
-                  <button onClick={addDocument} className="vybe-btn-primary text-emerald-500">Add</button>
+                  <button onClick={addDocument} className="vybe-btn-primary text-primary-700">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.requiredDocumentsAndInputs?.map((doc, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-500 text-white rounded-[8px] text-[13px] font-medium">
+                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-500 text-neutral-0 rounded-[var(--radius)] text-small font-medium">
                       {doc}
-                      <button onClick={() => setFormData({ ...formData, requiredDocumentsAndInputs: formData.requiredDocumentsAndInputs?.filter(d => d !== doc) })} className="hover:bg-white/20 rounded-full p-0.5 transition-colors">
+                      <button onClick={() => setFormData({ ...formData, requiredDocumentsAndInputs: formData.requiredDocumentsAndInputs?.filter(d => d !== doc) })} className="hover:bg-card/20 rounded-full p-0.5 transition-colors">
                         <X className="w-3.5 h-3.5" />
                       </button>
                     </span>
@@ -426,9 +426,9 @@ export function EnhancedServiceConfiguration() {
                 <label className="vybe-label">Output Artifacts</label>
                 <div className="grid grid-cols-2 gap-3">
                   {(['PDF report', 'Checklist', 'Advisory note', 'Feasibility sheet'] as const).map((artifact) => (
-                    <label key={artifact} className="flex items-center gap-2 cursor-pointer p-3 bg-muted rounded-[var(--radius)] border border-border hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors">
+                    <label key={artifact} className="flex items-center gap-2 cursor-pointer p-3 bg-muted rounded-[var(--radius)] border border-border hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] transition-colors">
                       <input type="checkbox" checked={formData.outputArtifacts?.includes(artifact)} onChange={() => toggleOutputArtifact(artifact)}
-                        className="w-4 h-4 rounded border-border text-emerald-500 focus:ring-emerald-500" />
+                        className="w-4 h-4 rounded border-border text-primary-700 focus:ring-primary-700" />
                       <span className="text-small text-foreground">{artifact}</span>
                     </label>
                   ))}
@@ -463,7 +463,7 @@ export function EnhancedServiceConfiguration() {
 
             {/* Sticky footer */}
             <div className="flex items-center gap-3 shrink-0" style={{ padding: 'var(--card-padding-desktop)', borderTop: '1px solid var(--border)' }}>
-              <button onClick={handleCloseModal} className="flex-1 px-4 py-2.5 bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">Cancel</button>
+              <button onClick={handleCloseModal} className="flex-1 px-4 py-2.5 bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">Cancel</button>
               <button onClick={handleSubmit} className="flex-1 h-[var(--button-height-desktop)] px-4 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius)] text-small font-medium transition-colors shadow-sm">{editingService ? 'Update' : 'Create'}</button>
             </div>
           </div>

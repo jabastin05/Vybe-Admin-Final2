@@ -9,7 +9,7 @@ export function ExecutionDashboard() {
   const property = mockPropertyCases.find(p => p.id === id);
 
   if (!property) {
-    return <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex items-center justify-center text-black/40 dark:text-white/40">Property not found</div>;
+    return <div className="min-h-screen bg-background dark:bg-neutral-900 flex items-center justify-center text-muted-foreground dark:text-neutral-300/60">Property not found</div>;
   }
 
   const activities = [
@@ -31,32 +31,32 @@ export function ExecutionDashboard() {
   const progressPercentage = (completedMilestones / totalMilestones) * 100;
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header - Full Width */}
-      <div className="border-b border-black/5 dark:border-white/5 bg-white dark:bg-black/40">
+      <div className="border-b border-black/5 dark:border-white/5 bg-card dark:bg-neutral-900/40">
         <div className="max-w-7xl mx-auto px-8 py-6">
-          <Link to="/dashboard" className="inline-flex items-center gap-2 text-black/40 dark:text-white/40 hover:text-black/60 dark:hover:text-white/60 transition-colors text-[14px] mb-4">
+          <Link to="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground dark:text-neutral-300/60 hover:text-neutral-700/80 dark:hover:text-neutral-300/80 transition-colors text-small mb-4">
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
           </Link>
           <div className="flex items-start justify-between">
             <div>
-              <div className="text-[12px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-2">
+              <div className="text-caption tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                 Execution Dashboard
               </div>
-              <div className="text-[32px] tracking-tight text-black dark:text-white/95 mb-2">
+              <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 mb-2">
                 {property.name}
               </div>
-              <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-3 py-1.5 rounded-md text-[12px] tracking-wide border border-purple-500/20">
+              <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-3 py-1.5 rounded-[var(--radius)] text-caption tracking-wide border border-purple-500/20">
                 In Execution
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-[12px] text-black/40 dark:text-white/40 mb-1 tracking-wide uppercase">Overall Progress</div>
-                <div className="text-[28px] tracking-tight text-black dark:text-white/95">{Math.round(progressPercentage)}%</div>
+                <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wide uppercase">Overall Progress</div>
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95">{Math.round(progressPercentage)}%</div>
               </div>
               <ThemeToggle />
             </div>
@@ -67,63 +67,63 @@ export function ExecutionDashboard() {
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Status Cards */}
         <div className="grid grid-cols-4 gap-6 mb-12">
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-md bg-emerald-500/10 flex items-center justify-center">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center">
+                <CheckCircle2 className="w-5 h-5 text-primary-600" />
               </div>
-              <div className="text-[12px] text-black/40 dark:text-white/40 tracking-wide uppercase">Completed</div>
+              <div className="text-caption text-muted-foreground dark:text-neutral-300/60 tracking-wide uppercase">Completed</div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95">
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95">
               {completedMilestones}/{totalMilestones}
             </div>
           </div>
 
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-md bg-blue-500/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-blue-500/10 flex items-center justify-center">
                 <Clock className="w-5 h-5 text-blue-400" />
               </div>
-              <div className="text-[12px] text-black/40 dark:text-white/40 tracking-wide uppercase">In Progress</div>
+              <div className="text-caption text-muted-foreground dark:text-neutral-300/60 tracking-wide uppercase">In Progress</div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95">
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95">
               {mockMilestones.filter(m => m.status === 'in-progress').length}
             </div>
           </div>
 
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-md bg-yellow-500/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-yellow-500/10 flex items-center justify-center">
                 <AlertCircle className="w-5 h-5 text-yellow-400" />
               </div>
-              <div className="text-[12px] text-black/40 dark:text-white/40 tracking-wide uppercase">Risk Alerts</div>
+              <div className="text-caption text-muted-foreground dark:text-neutral-300/60 tracking-wide uppercase">Risk Alerts</div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95">0</div>
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95">0</div>
           </div>
 
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-purple-500/10 flex items-center justify-center">
                 <FileText className="w-5 h-5 text-purple-400" />
               </div>
-              <div className="text-[12px] text-black/40 dark:text-white/40 tracking-wide uppercase">Documents</div>
+              <div className="text-caption text-muted-foreground dark:text-neutral-300/60 tracking-wide uppercase">Documents</div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95">{documents.length}</div>
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95">{documents.length}</div>
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-6">
           {/* Milestone Tracker */}
-          <div className="col-span-2 bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10">
-            <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+          <div className="col-span-2 bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10">
+            <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
               Milestone Timeline
             </h3>
             
             {/* Progress Bar */}
-            <div className="mb-10">
-              <div className="h-2 rounded-full bg-black/5 dark:bg-white/5 overflow-hidden">
+            <div className="mb-[var(--space-10)]">
+              <div className="h-2 rounded-full bg-neutral-900/5 dark:bg-card/5 overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-blue-500 to-primary-700 transition-all duration-500"
                   style={{ width: `${progressPercentage}%` }}
                 />
               </div>
@@ -140,21 +140,21 @@ export function ExecutionDashboard() {
                     <div className="flex flex-col items-center">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                         isCompleted 
-                          ? 'bg-emerald-500/20 border-2 border-emerald-500' 
+                          ? 'bg-primary-700/20 border-2 border-primary-700' 
                           : isInProgress 
                           ? 'bg-blue-500/20 border-2 border-blue-500 animate-pulse' 
-                          : 'bg-white/5 border-2 border-white/10'
+                          : 'bg-card/5 border-2 border-white/10'
                       }`}>
                         {isCompleted ? (
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                          <CheckCircle2 className="w-5 h-5 text-primary-600" />
                         ) : (
-                          <span className={`text-[12px] ${isInProgress ? 'text-blue-400' : 'text-black/40 dark:text-white/40'}`}>
+                          <span className={`text-caption ${isInProgress ? 'text-blue-400' : 'text-muted-foreground dark:text-neutral-300/60'}`}>
                             {index + 1}
                           </span>
                         )}
                       </div>
                       {index < mockMilestones.length - 1 && (
-                        <div className={`w-0.5 h-12 ${isCompleted ? 'bg-emerald-500/30' : 'bg-white/5'}`} />
+                        <div className={`w-0.5 h-12 ${isCompleted ? 'bg-primary-700/30' : 'bg-card/5'}`} />
                       )}
                     </div>
 
@@ -162,11 +162,11 @@ export function ExecutionDashboard() {
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <h4 className={`text-[15px] tracking-tight mb-1 ${
-                            isCompleted || isInProgress ? 'text-black/95 dark:text-white/95' : 'text-black/50 dark:text-white/50'
+                            isCompleted || isInProgress ? 'text-foreground/95 dark:text-neutral-0/95' : 'text-muted-foreground dark:text-neutral-0/50'
                           }`}>
                             {milestone.title}
                           </h4>
-                          <p className="text-[12px] text-black/40 dark:text-white/40">
+                          <p className="text-caption text-muted-foreground dark:text-neutral-300/60">
                             Due: {new Date(milestone.dueDate).toLocaleDateString('en-US', { 
                               month: 'short', 
                               day: 'numeric', 
@@ -175,12 +175,12 @@ export function ExecutionDashboard() {
                           </p>
                         </div>
                         {isCompleted && milestone.completedDate && (
-                          <span className="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">
+                          <span className="text-caption text-primary-600 bg-primary-700/10 px-2 py-1 rounded">
                             Completed {new Date(milestone.completedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           </span>
                         )}
                         {isInProgress && (
-                          <span className="text-[11px] text-blue-400 bg-blue-500/10 px-2 py-1 rounded">
+                          <span className="text-caption text-blue-400 bg-blue-500/10 px-2 py-1 rounded">
                             In Progress
                           </span>
                         )}
@@ -195,23 +195,23 @@ export function ExecutionDashboard() {
           {/* Right Column */}
           <div className="space-y-6">
             {/* Documents */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-8">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-8">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40">
+                <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60">
                   Documents
                 </h3>
-                <button className="p-2 bg-black/5 dark:bg-white/5 rounded-md hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                  <Upload className="w-4 h-4 text-black/60 dark:text-white/60" />
+                <button className="p-2 bg-neutral-900/5 dark:bg-card/5 rounded-[var(--radius)] hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors">
+                  <Upload className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                 </button>
               </div>
               <div className="space-y-3">
                 {documents.map((doc, index) => (
-                  <div key={index} className="bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-md p-4">
+                  <div key={index} className="bg-neutral-900/[0.02] dark:bg-card/[0.02] border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-4">
                     <div className="flex items-start gap-3">
-                      <FileText className="w-4 h-4 text-black/40 dark:text-white/40 mt-0.5 flex-shrink-0" />
+                      <FileText className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 mt-0.5 flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <div className="text-[12px] text-black dark:text-white/95 mb-1 truncate">{doc.name}</div>
-                        <div className="text-[11px] text-black/40 dark:text-white/40">{doc.size} • {doc.date}</div>
+                        <div className="text-caption text-foreground dark:text-neutral-0/95 mb-1 truncate">{doc.name}</div>
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60">{doc.size} • {doc.date}</div>
                       </div>
                     </div>
                   </div>
@@ -220,34 +220,34 @@ export function ExecutionDashboard() {
             </div>
 
             {/* Partner Contact */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-8">
-              <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-6">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-8">
+              <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-6">
                 Your Partner
               </h3>
               <div className="flex items-center gap-3 mb-4">
                 <img
                   src={mockPartner.photo}
                   alt={mockPartner.name}
-                  className="w-12 h-12 rounded-lg object-cover"
+                  className="w-12 h-12 rounded-[var(--radius)] object-cover"
                 />
                 <div>
-                  <div className="text-[14px] text-black dark:text-white/95">{mockPartner.name}</div>
-                  <div className="text-[12px] text-black/40 dark:text-white/40">{mockPartner.role}</div>
+                  <div className="text-small text-foreground dark:text-neutral-0/95">{mockPartner.name}</div>
+                  <div className="text-caption text-muted-foreground dark:text-neutral-300/60">{mockPartner.role}</div>
                 </div>
               </div>
-              <button className="w-full flex items-center justify-center gap-2 bg-black/5 dark:bg-white/5 text-black dark:text-white/95 px-4 py-2.5 rounded-md hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-[13px] tracking-wide border border-black/10 dark:border-white/10">
+              <button className="w-full flex items-center justify-center gap-2 bg-neutral-900/5 dark:bg-card/5 text-foreground dark:text-neutral-0/95 px-4 py-2.5 rounded-[var(--radius)] hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-small tracking-wide border border-black/10 dark:border-white/10">
                 <MessageSquare className="w-4 h-4" />
                 Send Message
               </button>
             </div>
 
             {/* Risk Alerts */}
-            <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-lg p-6">
+            <div className="bg-primary-700/5 border border-primary-700/10 rounded-[var(--radius)] p-6">
               <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                <div className="text-[13px] text-black dark:text-white/95">All Clear</div>
+                <CheckCircle2 className="w-5 h-5 text-primary-600" />
+                <div className="text-small text-foreground dark:text-neutral-0/95">All Clear</div>
               </div>
-              <p className="text-[12px] text-black/50 dark:text-white/50">
+              <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                 No active risk alerts. Project is progressing as planned.
               </p>
             </div>
@@ -255,21 +255,21 @@ export function ExecutionDashboard() {
         </div>
 
         {/* Activity Log */}
-        <div className="mt-6 bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10">
-          <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+        <div className="mt-6 bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10">
+          <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
             Activity Log
           </h3>
           <div className="space-y-4">
             {activities.map((activity, index) => (
               <div key={index} className="flex items-start gap-4 py-3 border-b border-black/5 dark:border-white/5 last:border-0">
-                <div className="text-[12px] text-black/40 dark:text-white/40 w-32 flex-shrink-0">
+                <div className="text-caption text-muted-foreground dark:text-neutral-300/60 w-32 flex-shrink-0">
                   {activity.date}
                   <br />
                   {activity.time}
                 </div>
                 <div className="flex-1">
-                  <p className="text-[13px] text-black dark:text-white/95 mb-1">{activity.message}</p>
-                  <p className="text-[12px] text-black/40 dark:text-white/40">by {activity.user}</p>
+                  <p className="text-small text-foreground dark:text-neutral-0/95 mb-1">{activity.message}</p>
+                  <p className="text-caption text-muted-foreground dark:text-neutral-300/60">by {activity.user}</p>
                 </div>
               </div>
             ))}

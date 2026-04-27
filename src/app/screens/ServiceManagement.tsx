@@ -92,7 +92,7 @@ const services: Service[] = [
     name: 'Property Service',
     description: 'End-to-end property management and maintenance services',
     icon: Home,
-    color: 'from-emerald-500 to-green-500',
+    color: 'from-primary-700 to-green-500',
     features: [
       'Property maintenance',
       'Tenant management',
@@ -412,27 +412,27 @@ export function ServiceManagement() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header */}
-      <div className="border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A]">
+      <div className="border-b border-black/5 dark:border-white/10 bg-card dark:bg-neutral-900">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {flowStep !== 'service-selection' && (
                 <button 
                   onClick={handleBackToServices}
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
               )}
               <div>
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-2">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">
                   Service Management
                 </div>
-                <div className="text-[24px] tracking-[-0.01em] text-black dark:text-white">
+                <div className="text-h2 tracking-[-0.01em] text-foreground dark:text-neutral-0">
                   {flowStep === 'service-selection' && 'Select a Service'}
                   {flowStep === 'sub-service-selection' && 'Select a Sub-Service'}
                   {flowStep === 'ownership-type' && services.find(s => s.id === selectedService)?.name}
@@ -440,7 +440,7 @@ export function ServiceManagement() {
                   {flowStep === 'property-details' && 'Property Details'}
                   {flowStep === 'case-generated' && 'Request Submitted'}
                 </div>
-                <p className="text-[13px] text-black/60 dark:text-white/60 mt-0.5">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 mt-0.5">
                   {flowStep === 'service-selection' && 'Choose the service that best fits your property needs'}
                   {flowStep === 'sub-service-selection' && 'Select a sub-service for detailed analysis'}
                   {flowStep === 'ownership-type' && 'Is this service for your own property or for a non-owned property?'}
@@ -475,7 +475,7 @@ export function ServiceManagement() {
                     onMouseEnter={() => setHoveredService(service.id)}
                     onMouseLeave={() => setHoveredService(null)}
                     onClick={() => navigate(`/service/${service.id}`)}
-                    className="relative bg-white/90 dark:bg-[#111111]/90 backdrop-blur-[40px] rounded-[24px] p-8 cursor-pointer
+                    className="relative bg-card/90 dark:bg-card/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8 cursor-pointer
                                shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                                border border-white/60 dark:border-white/10
                                hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
@@ -488,7 +488,7 @@ export function ServiceManagement() {
                     {service.badge && (
                       <div className="absolute top-6 right-6">
                         <div className="px-3 py-1.5 bg-[#FFC700]/20 rounded-full border border-[#FFC700]/30">
-                          <span className="text-[10px] font-bold tracking-[0.05em] uppercase text-[#FFC700]">
+                          <span className="text-caption font-medium tracking-[0.05em] uppercase text-[#FFC700]">
                             {service.badge}
                           </span>
                         </div>
@@ -498,21 +498,21 @@ export function ServiceManagement() {
                     <div className="flex items-start gap-6 mb-6">
                       {/* Icon */}
                       <div className={`
-                        w-16 h-16 rounded-[16px] flex items-center justify-center flex-shrink-0
+                        w-16 h-16 rounded-[var(--radius-card)] flex items-center justify-center flex-shrink-0
                         bg-gradient-to-br ${service.color}
                         shadow-[0_8px_24px_rgba(0,0,0,0.15)]
                         ${isHovered ? 'scale-110' : 'scale-100'}
                         transition-transform duration-300
                       `}>
-                        <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                        <Icon className="w-8 h-8 text-neutral-0" strokeWidth={1.5} />
                       </div>
 
                       {/* Content */}
                       <div className="flex-1">
-                        <h3 className="text-[18px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                        <h3 className="text-h3 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                           {service.name}
                         </h3>
-                        <p className="text-[14px] text-black/60 dark:text-white/60 leading-relaxed">
+                        <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                           {service.description}
                         </p>
                       </div>
@@ -522,8 +522,8 @@ export function ServiceManagement() {
                     <div className="space-y-3">
                       {service.features.map((feature, index) => (
                         <div key={index} className="flex items-start gap-3">
-                          <div className="w-1 h-1 rounded-full bg-black/30 dark:bg-white/30 mt-2 flex-shrink-0" />
-                          <span className="text-[13px] text-black/70 dark:text-white/70 leading-relaxed">
+                          <div className="w-1 h-1 rounded-full bg-neutral-900/30 dark:bg-card/30 mt-2 flex-shrink-0" />
+                          <span className="text-small text-foreground/70 dark:text-neutral-0/70 leading-relaxed">
                             {feature}
                           </span>
                         </div>
@@ -536,12 +536,12 @@ export function ServiceManagement() {
                         <Link
                           to={`/service/${service.id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-2 text-[13px] font-bold text-emerald-500 dark:text-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
+                          className="flex items-center gap-2 text-small font-medium text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
                         >
                           View Details
                           <ArrowRight className="w-4 h-4" />
                         </Link>
-                        <div className="text-[11px] text-black/40 dark:text-white/40">
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                           Click card to request
                         </div>
                       </div>
@@ -552,16 +552,16 @@ export function ServiceManagement() {
             </div>
 
             {/* Info Card */}
-            <div className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 border border-blue-500/20 dark:border-blue-500/15 backdrop-blur-xl rounded-[24px] p-6">
+            <div className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 border border-blue-500/20 dark:border-blue-500/15 backdrop-blur-xl rounded-[var(--radius-card)] p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-[var(--radius-card)] bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-5 h-5 text-blue-500" />
                 </div>
                 <div>
-                  <h4 className="text-[14px] text-black dark:text-white/95 mb-1">
+                  <h4 className="text-small text-foreground dark:text-neutral-0/95 mb-1">
                     Need help choosing?
                   </h4>
-                  <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                     Our AI can recommend the best service based on your property details and investment goals. 
                     Contact our team for a personalized consultation.
                   </p>
@@ -580,11 +580,11 @@ export function ServiceManagement() {
                   key={subServiceDetail.name}
                   onClick={() => handleSubServiceSelect(subServiceDetail.name)}
                   className={`
-                    relative bg-white/90 dark:bg-[#111111]/90 backdrop-blur-[40px] rounded-[24px] p-6 cursor-pointer
+                    relative bg-card/90 dark:bg-card/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-6 cursor-pointer
                     shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                     transition-all duration-300 overflow-hidden
                     ${selectedSubService === subServiceDetail.name
-                      ? 'border-2 border-emerald-500 shadow-[0_8px_32px_rgba(16,185,129,0.2)]'
+                      ? 'border-2 border-primary-700 shadow-[0_8px_32px_rgba(28,117,188,0.2)]'
                       : 'border border-white/60 dark:border-white/10 hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-0.5'
                     }
                   `}
@@ -594,35 +594,35 @@ export function ServiceManagement() {
                   
                   {selectedSubService === subServiceDetail.name && (
                     <div className="absolute top-6 right-6">
-                      <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center shadow-[0_4px_12px_rgba(16,185,129,0.3)]">
-                        <CheckCircle2 className="w-5 h-5 text-white" strokeWidth={2.5} />
+                      <div className="w-8 h-8 rounded-full bg-primary-700 flex items-center justify-center shadow-[0_4px_12px_rgba(28,117,188,0.3)]">
+                        <CheckCircle2 className="w-5 h-5 text-neutral-0" strokeWidth={2.5} />
                       </div>
                     </div>
                   )}
 
                   <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_rgba(16,185,129,0.2)]">
-                      <Building2 className="w-7 h-7 text-white" strokeWidth={1.5} />
+                    <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-primary-700 to-green-500 flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_rgba(28,117,188,0.2)]">
+                      <Building2 className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[16px] tracking-[-0.01em] text-black dark:text-white/95 mb-2 font-medium">
+                      <div className="text-[16px] tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2 font-medium">
                         {subServiceDetail.name}
                       </div>
-                      <div className="text-[13px] text-black/60 dark:text-white/60 mb-4 leading-relaxed">
+                      <div className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-4 leading-relaxed">
                         {subServiceDetail.description}
                       </div>
                       
                       {/* ETA and Price Range */}
                       <div className="flex items-center gap-4 flex-wrap">
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg border border-blue-500/20">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 dark:bg-blue-500/20 rounded-[var(--radius)] border border-blue-500/20">
                           <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                          <span className="text-[11px] font-bold tracking-wider uppercase text-blue-700 dark:text-blue-400">
+                          <span className="text-caption font-medium tracking-wider uppercase text-blue-700 dark:text-blue-400">
                             {subServiceDetail.eta}
                           </span>
                         </div>
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg border border-emerald-500/20">
-                          <IndianRupee className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                          <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-700 dark:text-emerald-400">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-primary-700/10 dark:bg-primary-700/20 rounded-[var(--radius)] border border-primary-700/20">
+                          <IndianRupee className="w-3.5 h-3.5 text-primary-700 dark:text-primary-400" />
+                          <span className="text-caption font-medium tracking-wider uppercase text-primary-700 dark:text-primary-400">
                             {subServiceDetail.priceRange}
                           </span>
                         </div>
@@ -637,9 +637,9 @@ export function ServiceManagement() {
               <button
                 onClick={handleSubServiceContinue}
                 disabled={!selectedSubService}
-                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-4 rounded-[12px]
-                           transition-all duration-300 text-[14px] font-bold tracking-tight
-                           shadow-[0_8px_24px_rgba(16,185,129,0.25)] hover:shadow-[0_8px_32px_rgba(16,185,129,0.4)]
+                className="w-full bg-primary-700 hover:bg-primary-900 text-neutral-0 py-4 rounded-[var(--radius-card)]
+                           transition-all duration-300 text-small font-medium tracking-tight
+                           shadow-[0_8px_24px_rgba(28,117,188,0.25)] hover:shadow-[0_8px_32px_rgba(28,117,188,0.4)]
                            hover:-translate-y-0.5 active:translate-y-0
                            disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none
                            flex items-center justify-center gap-2"
@@ -656,12 +656,12 @@ export function ServiceManagement() {
           <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
             {/* Backdrop */}
             <div 
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm"
               onClick={handleBackToServices}
             />
             
             {/* Modal */}
-            <div className="relative bg-white/95 dark:bg-[#111111]/95 backdrop-blur-[60px] rounded-[24px] p-8 max-w-3xl w-full
+            <div className="relative bg-card/95 dark:bg-card/95 backdrop-blur-[60px] rounded-[var(--radius-card)] p-8 max-w-3xl w-full
                            shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)]
                            border border-white/60 dark:border-white/10 overflow-hidden
                            animate-in fade-in zoom-in-95 duration-300">
@@ -671,21 +671,21 @@ export function ServiceManagement() {
               {/* Close Button */}
               <button
                 onClick={handleBackToServices}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10
                            flex items-center justify-center transition-all group"
               >
-                <X className="w-5 h-5 text-black/40 dark:text-white/40 group-hover:text-black/70 dark:group-hover:text-white/70" />
+                <X className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60 group-hover:text-foreground/70 dark:group-hover:text-neutral-0/70" />
               </button>
 
               {/* Header */}
               <div className="mb-8 text-center">
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                   {services.find(s => s.id === selectedService)?.name}
                 </div>
-                <h2 className="text-[24px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                <h2 className="text-h2 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                   Select Property Type
                 </h2>
-                <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                   Is this service for your own property or for a non-owned property?
                 </p>
               </div>
@@ -694,7 +694,7 @@ export function ServiceManagement() {
               <div className="grid grid-cols-2 gap-6">
                 <button
                   onClick={() => handleOwnershipTypeSelect('own')}
-                  className="relative bg-white/90 dark:bg-[#0F0F0F]/90 backdrop-blur-[40px] rounded-[20px] p-8 text-left
+                  className="relative bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8 text-left
                              shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                              border border-white/60 dark:border-white/10
                              hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
@@ -704,20 +704,20 @@ export function ServiceManagement() {
                   {/* Top subtle highlight */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
                   
-                  <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(16,185,129,0.2)] group-hover:scale-110 transition-transform">
-                    <Building2 className="w-7 h-7 text-white" strokeWidth={1.5} />
+                  <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-primary-700 to-green-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(28,117,188,0.2)] group-hover:scale-110 transition-transform">
+                    <Building2 className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-[18px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                  <h3 className="text-h3 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                     Own Property
                   </h3>
-                  <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                     Select from your existing properties
                   </p>
                 </button>
 
                 <button
                   onClick={() => handleOwnershipTypeSelect('non-own')}
-                  className="relative bg-white/90 dark:bg-[#0F0F0F]/90 backdrop-blur-[40px] rounded-[20px] p-8 text-left
+                  className="relative bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8 text-left
                              shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                              border border-white/60 dark:border-white/10
                              hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
@@ -727,13 +727,13 @@ export function ServiceManagement() {
                   {/* Top subtle highlight */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
                   
-                  <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
-                    <UserCheck className="w-7 h-7 text-white" strokeWidth={1.5} />
+                  <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
+                    <UserCheck className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-[18px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                  <h3 className="text-h3 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                     Non-Owned Property
                   </h3>
-                  <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                     Provide property details and authorization
                   </p>
                 </button>
@@ -751,7 +751,7 @@ export function ServiceManagement() {
                   key={property.id}
                   onClick={() => handlePropertySelect(property)}
                   className={`
-                    relative bg-white/90 dark:bg-[#111111]/90 backdrop-blur-[40px] rounded-[24px] p-6 cursor-pointer
+                    relative bg-card/90 dark:bg-card/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-6 cursor-pointer
                     shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                     transition-all duration-300 overflow-hidden
                     ${selectedProperty?.id === property.id
@@ -766,20 +766,20 @@ export function ServiceManagement() {
                   {selectedProperty?.id === property.id && (
                     <div className="absolute top-6 right-6">
                       <div className="w-8 h-8 rounded-full bg-[#FFC700] flex items-center justify-center shadow-[0_4px_12px_rgba(255,199,0,0.3)]">
-                        <CheckCircle2 className="w-5 h-5 text-black" strokeWidth={2.5} />
+                        <CheckCircle2 className="w-5 h-5 text-foreground" strokeWidth={2.5} />
                       </div>
                     </div>
                   )}
 
                   <div className="flex items-center gap-5">
-                    <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_rgba(16,185,129,0.2)]">
-                      <Building2 className="w-7 h-7 text-white" strokeWidth={1.5} />
+                    <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-primary-700 to-green-500 flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_rgba(28,117,188,0.2)]">
+                      <Building2 className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1">
-                      <div className="text-[16px] tracking-[-0.01em] text-black dark:text-white/95 mb-1">
+                      <div className="text-[16px] tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-1">
                         {property.name}
                       </div>
-                      <div className="text-[13px] text-black/50 dark:text-white/50">
+                      <div className="text-small text-muted-foreground dark:text-neutral-0/50">
                         {property.type} • {property.location}
                       </div>
                     </div>
@@ -792,8 +792,8 @@ export function ServiceManagement() {
               <button
                 onClick={handleOwnPropertyContinue}
                 disabled={!selectedProperty}
-                className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-black py-4 rounded-[12px]
-                           transition-all duration-300 text-[14px] font-bold tracking-tight
+                className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-foreground py-4 rounded-[var(--radius-card)]
+                           transition-all duration-300 text-small font-medium tracking-tight
                            shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                            hover:-translate-y-0.5 active:translate-y-0
                            disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none
@@ -809,7 +809,7 @@ export function ServiceManagement() {
         {/* Property Details (Non-Owned Property) */}
         {flowStep === 'property-details' && propertyOwnership === 'non-own' && (
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-[40px] rounded-[24px] p-8
+            <div className="bg-card/90 dark:bg-card/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8
                            shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                            border border-white/60 dark:border-white/10 overflow-hidden">
               {/* Top subtle highlight */}
@@ -818,14 +818,14 @@ export function ServiceManagement() {
               <div className="space-y-6">
                 {/* Relationship to Property */}
                 <div>
-                  <label className="block text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                  <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                     Relationship to Property <span className="text-[#FFC700]">*</span>
                   </label>
                   <select
                     value={nonOwnedPropertyData.relationship}
                     onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, relationship: e.target.value })}
-                    className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 
-                               rounded-[12px] px-5 py-4 text-black dark:text-white/95 text-[14px] 
+                    className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
+                               rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
                                focus:outline-none focus:border-[#FFC700]/50 transition-all appearance-none cursor-pointer"
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
@@ -844,7 +844,7 @@ export function ServiceManagement() {
                 </div>
 
                 {/* Owner Authorization */}
-                <div className="bg-blue-500/5 border border-blue-500/20 dark:border-blue-500/15 rounded-[16px] p-6">
+                <div className="bg-blue-500/5 border border-blue-500/20 dark:border-blue-500/15 rounded-[var(--radius-card)] p-6">
                   <div className="flex items-start gap-4">
                     <input
                       type="checkbox"
@@ -854,10 +854,10 @@ export function ServiceManagement() {
                       className="mt-0.5 w-5 h-5 rounded border-2 border-blue-500/30 text-[#FFC700] focus:ring-[#FFC700] focus:ring-offset-0 cursor-pointer"
                     />
                     <label htmlFor="ownerAuthorization" className="flex-1 cursor-pointer">
-                      <div className="text-[14px] text-black dark:text-white/95 mb-1">
+                      <div className="text-small text-foreground dark:text-neutral-0/95 mb-1">
                         Owner Authorization Confirmation <span className="text-[#FFC700]">*</span>
                       </div>
-                      <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                      <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                         I confirm that I have authorization from the property owner to request this service on their behalf
                       </p>
                     </label>
@@ -866,7 +866,7 @@ export function ServiceManagement() {
 
                 {/* Property Name */}
                 <div>
-                  <label className="block text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                  <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                     Property Name <span className="text-[#FFC700]">*</span>
                   </label>
                   <input
@@ -874,16 +874,16 @@ export function ServiceManagement() {
                     value={nonOwnedPropertyData.propertyName}
                     onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, propertyName: e.target.value })}
                     placeholder="e.g., Skyline Apartments, Block B"
-                    className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 
-                               rounded-[12px] px-5 py-4 text-black dark:text-white/95 text-[14px] 
-                               placeholder:text-black/30 dark:placeholder:text-white/30 
+                    className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
+                               rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
+                               placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
                                focus:outline-none focus:border-[#FFC700]/50 transition-all"
                   />
                 </div>
 
                 {/* Property Location */}
                 <div>
-                  <label className="block text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                  <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                     Property Location <span className="text-[#FFC700]">*</span>
                   </label>
                   <div className="relative">
@@ -892,13 +892,13 @@ export function ServiceManagement() {
                       value={nonOwnedPropertyData.propertyLocation}
                       onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, propertyLocation: e.target.value })}
                       placeholder="e.g., Koramangala, Bangalore"
-                      className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 
-                                 rounded-[12px] px-5 py-4 pr-12 text-black dark:text-white/95 text-[14px] 
-                                 placeholder:text-black/30 dark:placeholder:text-white/30 
+                      className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
+                                 rounded-[var(--radius-card)] px-5 py-4 pr-12 text-foreground dark:text-neutral-0/95 text-small 
+                                 placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
                                  focus:outline-none focus:border-[#FFC700]/50 transition-all"
                     />
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <MapPin className="w-5 h-5 text-black/30 dark:text-white/30" />
+                      <MapPin className="w-5 h-5 text-foreground/30 dark:text-neutral-0/30" />
                     </div>
                   </div>
                 </div>
@@ -907,17 +907,17 @@ export function ServiceManagement() {
                 <div>
                   <button
                     onClick={() => setShowMap(!showMap)}
-                    className="flex items-center gap-2 bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 
-                               border border-black/10 dark:border-white/10 rounded-[12px] px-4 py-3 text-[13px] 
-                               text-black/70 dark:text-white/70 transition-all"
+                    className="flex items-center gap-2 bg-neutral-900/5 hover:bg-neutral-900/10 dark:bg-card/5 dark:hover:bg-card/10 
+                               border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-4 py-3 text-small 
+                               text-foreground/70 dark:text-neutral-0/70 transition-all"
                   >
                     <Navigation className="w-4 h-4" />
                     {showMap ? 'Hide Map' : 'Pin on Map (Optional)'}
                   </button>
                   
                   {showMap && (
-                    <div className="mt-4 bg-black/5 dark:bg-black/40 border border-black/10 dark:border-white/10 
-                                   rounded-[16px] overflow-hidden flex items-center justify-center">
+                    <div className="mt-4 bg-neutral-900/5 dark:bg-neutral-900/40 border border-black/10 dark:border-white/10 
+                                   rounded-[var(--radius-card)] overflow-hidden flex items-center justify-center">
                       <PropertyLocationMap
                         latitude={nonOwnedPropertyData.latitude}
                         longitude={nonOwnedPropertyData.longitude}
@@ -933,7 +933,7 @@ export function ServiceManagement() {
 
                 {/* Owner Name */}
                 <div>
-                  <label className="block text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                  <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                     Owner Name (Optional)
                   </label>
                   <input
@@ -941,26 +941,26 @@ export function ServiceManagement() {
                     value={nonOwnedPropertyData.ownerName}
                     onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, ownerName: e.target.value })}
                     placeholder="e.g., Rajesh Kumar"
-                    className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 
-                               rounded-[12px] px-5 py-4 text-black dark:text-white/95 text-[14px] 
-                               placeholder:text-black/30 dark:placeholder:text-white/30 
+                    className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
+                               rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
+                               placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
                                focus:outline-none focus:border-[#FFC700]/50 transition-all"
                   />
                 </div>
 
                 {/* Supporting Document */}
                 <div>
-                  <label className="block text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+                  <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                     Supporting Document (Optional)
                   </label>
-                  <div className="border-2 border-dashed border-black/10 dark:border-white/10 rounded-[16px] p-8 text-center transition-colors hover:border-black/20 dark:hover:border-white/20">
-                    <div className="w-12 h-12 rounded-[12px] bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-3">
-                      <Upload className="w-6 h-6 text-black/40 dark:text-white/40" />
+                  <div className="border-2 border-dashed border-black/10 dark:border-white/10 rounded-[var(--radius-card)] p-8 text-center transition-colors hover:border-black/20 dark:hover:border-white/20">
+                    <div className="w-12 h-12 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-3">
+                      <Upload className="w-6 h-6 text-muted-foreground dark:text-neutral-300/60" />
                     </div>
-                    <p className="text-[14px] text-black/70 dark:text-white/70 mb-2">
+                    <p className="text-small text-foreground/70 dark:text-neutral-0/70 mb-2">
                       Upload authorization letter or proof of relationship
                     </p>
-                    <label className="inline-block text-[13px] text-[#FFC700] cursor-pointer hover:text-[#F2BD00] transition-colors">
+                    <label className="inline-block text-small text-[#FFC700] cursor-pointer hover:text-[#F2BD00] transition-colors">
                       Browse files
                       <input
                         type="file"
@@ -971,8 +971,8 @@ export function ServiceManagement() {
                     </label>
                     {nonOwnedPropertyData.supportingDocument && (
                       <div className="mt-3 flex items-center justify-center gap-2">
-                        <FileCheck className="w-4 h-4 text-emerald-500" />
-                        <span className="text-[12px] text-black/60 dark:text-white/60">
+                        <FileCheck className="w-4 h-4 text-primary-700" />
+                        <span className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                           {nonOwnedPropertyData.supportingDocument.name}
                         </span>
                       </div>
@@ -985,8 +985,8 @@ export function ServiceManagement() {
                 <button
                   onClick={handleNonOwnPropertySubmit}
                   disabled={!nonOwnedPropertyData.relationship || !nonOwnedPropertyData.ownerAuthorization || !nonOwnedPropertyData.propertyName || !nonOwnedPropertyData.propertyLocation}
-                  className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-black py-4 rounded-[12px]
-                             transition-all duration-300 text-[14px] font-bold tracking-tight
+                  className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-foreground py-4 rounded-[var(--radius-card)]
+                             transition-all duration-300 text-small font-medium tracking-tight
                              shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                              hover:-translate-y-0.5 active:translate-y-0
                              disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none
@@ -1003,66 +1003,66 @@ export function ServiceManagement() {
         {/* Case Generated Success */}
         {flowStep === 'case-generated' && (
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-[40px] rounded-[24px] p-12 text-center
+            <div className="bg-card/90 dark:bg-card/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-12 text-center
                            shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                            border border-white/60 dark:border-white/10 relative overflow-hidden">
               {/* Top subtle highlight */}
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
               {/* Success Icon */}
-              <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6
-                             shadow-[0_8px_24px_rgba(16,185,129,0.15)]">
-                <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={2} />
+              <div className="w-20 h-20 rounded-full bg-primary-700/20 flex items-center justify-center mx-auto mb-6
+                             shadow-[0_8px_24px_rgba(28,117,188,0.15)]">
+                <CheckCircle2 className="w-10 h-10 text-primary-700" strokeWidth={2} />
               </div>
 
-              <h2 className="text-[24px] tracking-tight text-black dark:text-white mb-3">
+              <h2 className="text-h2 tracking-tight text-foreground dark:text-neutral-0 mb-3">
                 Case ID Generated
               </h2>
-              <p className="text-[14px] text-black/60 dark:text-white/60 max-w-lg mx-auto leading-relaxed mb-8">
+              <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 max-w-lg mx-auto leading-relaxed mb-8">
                 Your service request has been created successfully. Our team will review and contact you shortly.
               </p>
 
               {/* Case ID Display */}
-              <div className="bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/20 dark:border-emerald-500/15 rounded-[20px] p-8 mb-8">
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-3">
+              <div className="bg-gradient-to-br from-primary-700/5 to-green-500/5 border border-primary-700/20 dark:border-primary-700/15 rounded-[var(--radius-card)] p-8 mb-8">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-3">
                   Case ID
                 </div>
-                <div className="text-[32px] font-semibold tracking-tight text-black dark:text-white mb-6 font-mono">
+                <div className="text-h1 font-medium tracking-tight text-foreground dark:text-neutral-0 mb-6 font-mono">
                   {caseId}
                 </div>
                 <div className="grid grid-cols-2 gap-6 text-left">
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Service
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {services.find(s => s.id === selectedService)?.name}
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Property Type
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {propertyOwnership === 'own' ? 'Own Property' : 'Non-Owned Property'}
                     </div>
                   </div>
                   {selectedProperty && (
                     <div className="col-span-2">
-                      <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                      <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                         Property
                       </div>
-                      <div className="text-[14px] text-black dark:text-white/95">
+                      <div className="text-small text-foreground dark:text-neutral-0/95">
                         {selectedProperty.name}
                       </div>
                     </div>
                   )}
                   {nonOwnedPropertyData.propertyName && (
                     <div className="col-span-2">
-                      <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                      <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                         Property
                       </div>
-                      <div className="text-[14px] text-black dark:text-white/95">
+                      <div className="text-small text-foreground dark:text-neutral-0/95">
                         {nonOwnedPropertyData.propertyName}
                       </div>
                     </div>
@@ -1074,16 +1074,16 @@ export function ServiceManagement() {
               <div className="flex gap-4">
                 <button
                   onClick={handleBackToServices}
-                  className="flex-1 bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 
-                             hover:bg-black/10 dark:hover:bg-white/10 px-8 py-4 rounded-[12px] 
-                             text-[14px] font-bold tracking-tight transition-all"
+                  className="flex-1 bg-neutral-900/5 dark:bg-card/5 text-foreground/70 dark:text-neutral-0/70 
+                             hover:bg-neutral-900/10 dark:hover:bg-card/10 px-8 py-4 rounded-[var(--radius-card)] 
+                             text-small font-medium tracking-tight transition-all"
                 >
                   Request Another Service
                 </button>
                 <button
                   onClick={() => navigate('/properties')}
-                  className="flex-1 bg-[#FFC700] hover:bg-[#F2BD00] text-black px-8 py-4 rounded-[12px]
-                             transition-all duration-300 text-[14px] font-bold tracking-tight
+                  className="flex-1 bg-[#FFC700] hover:bg-[#F2BD00] text-foreground px-8 py-4 rounded-[var(--radius-card)]
+                             transition-all duration-300 text-small font-medium tracking-tight
                              shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                              hover:-translate-y-0.5 active:translate-y-0
                              flex items-center justify-center gap-2"

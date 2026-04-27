@@ -78,7 +78,7 @@ export function AdminCaseChat() {
             <h2 className="vybe-page-title mb-4">Case not found</h2>
             <Link
               to="/admin/cases"
-              className="text-emerald-500 hover:text-emerald-400 text-small font-medium"
+              className="text-primary-700 hover:text-primary-600 text-small font-medium"
             >
               Back to Case Management
             </Link>
@@ -142,7 +142,7 @@ export function AdminCaseChat() {
 
         <div className="flex items-start justify-between">
           <div>
-            <div className="text-caption uppercase font-bold text-muted-foreground tracking-wider mb-2">
+            <div className="text-caption uppercase font-medium text-muted-foreground tracking-wider mb-2">
               Case Chat
             </div>
             <h1 className="text-h1 text-foreground leading-none mb-2">
@@ -156,7 +156,7 @@ export function AdminCaseChat() {
           {/* Status Badge */}
           <div className={`flex items-center gap-2 px-5 py-3 rounded-[var(--radius)] border ${
             caseItem.status === 'Open'
-              ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
+              ? 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20'
               : 'bg-muted text-muted-foreground border-border'
           }`}>
             {caseItem.status === 'Open' ? (
@@ -164,7 +164,7 @@ export function AdminCaseChat() {
             ) : (
               <CheckCircle2 className="w-5 h-5" />
             )}
-            <span className="text-[14px] font-medium">{caseItem.status}</span>
+            <span className="text-small font-medium">{caseItem.status}</span>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@ export function AdminCaseChat() {
                 {/* Avatar (only for support/admin) */}
                 {isSupport && (
                   <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-[14px] font-medium text-purple-600 dark:text-purple-400">
+                    <span className="text-small font-medium text-purple-600 dark:text-purple-400">
                       A
                     </span>
                   </div>
@@ -207,13 +207,13 @@ export function AdminCaseChat() {
                   </div>
 
                   <div
-                    className={`rounded-2xl px-4 py-3 ${
+                    className={`rounded-[var(--radius-card)] px-4 py-3 ${
                       isSupport
                         ? 'bg-muted border border-border'
-                        : 'bg-emerald-500 text-white'
+                        : 'bg-primary-700 text-neutral-0'
                     }`}
                   >
-                    <p className={`text-small ${isSupport ? 'text-foreground' : 'text-white'}`}>
+                    <p className={`text-small ${isSupport ? 'text-foreground' : 'text-neutral-0'}`}>
                       {message.message}
                     </p>
                   </div>
@@ -229,8 +229,8 @@ export function AdminCaseChat() {
                             key={attachment.id}
                             className="flex items-center gap-3 p-3 bg-muted border border-border rounded-[var(--radius)]"
                           >
-                            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                              <FileIcon className="w-5 h-5 text-emerald-500" />
+                            <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                              <FileIcon className="w-5 h-5 text-primary-700" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-small text-foreground font-medium truncate">
@@ -252,8 +252,8 @@ export function AdminCaseChat() {
 
                 {/* Avatar (only for client messages) */}
                 {!isSupport && (
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-[14px] font-medium text-emerald-600 dark:text-emerald-400">
+                  <div className="w-10 h-10 rounded-full bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-small font-medium text-primary-700 dark:text-primary-400">
                       {caseItem.userName?.[0] || 'C'}
                     </span>
                   </div>
@@ -280,7 +280,7 @@ export function AdminCaseChat() {
                     <span className="text-caption text-foreground">{file.name}</span>
                     <button
                       onClick={() => removeAttachment(index)}
-                      className="p-0.5 hover:bg-black/10 dark:hover:bg-white/10 rounded"
+                      className="p-0.5 hover:bg-neutral-900/10 dark:hover:bg-card/10 rounded"
                     >
                       <X className="w-3 h-3 text-muted-foreground" />
                     </button>
@@ -324,9 +324,9 @@ export function AdminCaseChat() {
             <button
               onClick={handleSendMessage}
               disabled={!messageText.trim() && attachments.length === 0}
-              className="h-[var(--button-height-desktop)] px-[var(--space-3)] bg-emerald-500 hover:opacity-90 disabled:bg-muted disabled:hover:bg-muted rounded-[var(--radius-button)] transition-colors flex-shrink-0 disabled:cursor-not-allowed flex items-center"
+              className="h-[var(--button-height-desktop)] px-[var(--space-3)] bg-primary-700 hover:opacity-90 disabled:bg-muted disabled:hover:bg-muted rounded-[var(--radius-button)] transition-colors flex-shrink-0 disabled:cursor-not-allowed flex items-center"
             >
-              <Send className="w-5 h-5 text-white" />
+              <Send className="w-5 h-5 text-neutral-0" />
             </button>
           </div>
 

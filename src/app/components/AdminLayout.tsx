@@ -4,7 +4,7 @@ import {
   UserPlus, Users, Building2, LogOut, Shield, Settings, FolderOpen,
   Briefcase, Database, GitBranch, User, ChevronDown, LayoutDashboard, Phone,
 } from 'lucide-react';
-import vybeLogoImage from '../../assets/34582dcf9f86202dc7291352c31dcbccf4aff8ac.png';
+import vybeLogoImage from '../../assets/vybe-logo.svg';
 import { ThemeToggle } from './ThemeToggle';
 
 interface AdminLayoutProps {
@@ -132,16 +132,8 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
           {/* ── Left: logo + portal badge ─────────────────── */}
           <div className="flex items-center gap-[var(--space-3)] shrink-0">
-            {/* Logo mark */}
-            <div className="flex items-center gap-[var(--space-2)]">
-              <img src={vybeLogoImage} alt="VYBE" className="w-7 h-7 object-contain" />
-              <span
-                className="font-bold tracking-tight text-foreground"
-                style={{ fontSize: '0.9375rem', letterSpacing: '-0.01em' }}
-              >
-                VYBE
-              </span>
-            </div>
+            {/* Logo */}
+            <img src={vybeLogoImage} alt="VYBE" className="h-7 w-auto object-contain" />
 
             {/* Divider */}
             <div className="w-px h-5 bg-border" />
@@ -176,7 +168,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               >
                 {/* Avatar — solid foreground circle */}
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold"
+                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-medium"
                   style={{
                     background: 'var(--foreground)',
                     color: 'var(--background)',
@@ -229,7 +221,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                             }`}
                           >
                             <div
-                              className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-bold"
+                              className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-medium"
                               style={{
                                 fontSize: '0.625rem',
                                 background: active ? 'rgba(255,255,255,0.2)' : 'var(--muted)',
@@ -299,7 +291,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                           flex items-center gap-[var(--space-3)] px-[var(--space-3)] py-[var(--space-2)]
                           rounded-[var(--radius)] transition-all duration-150 relative
                           ${active
-                            ? 'bg-sidebar-primary text-white'
+                            ? 'bg-sidebar-primary text-neutral-0'
                             : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'}
                         `}
                       >
@@ -307,13 +299,13 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                         {active && (
                           <span
                             className="absolute left-0 top-1/2 -translate-y-1/2 rounded-r-full"
-                            style={{ width: '3px', height: '1.125rem', background: '#10B981' }}
+                            style={{ width: '3px', height: '1.125rem', background: '#1C75BC' }}
                           />
                         )}
                         <item.icon
                           className="w-[15px] h-[15px] shrink-0"
                           strokeWidth={active ? 2.2 : 1.6}
-                          style={{ color: active ? '#10B981' : undefined }}
+                          style={{ color: active ? '#1C75BC' : undefined }}
                         />
                         <span style={{ fontSize: '0.8125rem', fontWeight: active ? 600 : 500, letterSpacing: '-0.01em' }} className="whitespace-nowrap">
                           {item.label}
@@ -331,7 +323,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         <div className="px-[var(--space-3)] py-[var(--space-3)] border-t border-sidebar-border shrink-0">
           <div className="flex items-center gap-[var(--space-2)]">
             <div
-              className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-bold"
+              className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-medium"
               style={{
                 background: 'var(--sidebar-foreground)',
                 color: 'var(--sidebar)',

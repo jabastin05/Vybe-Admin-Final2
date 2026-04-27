@@ -72,14 +72,14 @@ export function CaseChat() {
 
   if (!caseItem) {
     return (
-      <div className="flex min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F]">
+      <div className="flex min-h-screen bg-background dark:bg-neutral-900">
         <SideNav />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h2 className="text-[24px] text-black dark:text-white mb-4">Case not found</h2>
+            <h2 className="text-h2 text-foreground dark:text-neutral-0 mb-4">Case not found</h2>
             <Link 
               to="/cases"
-              className="text-emerald-500 hover:text-emerald-400 text-[14px] font-medium"
+              className="text-primary-700 hover:text-primary-600 text-small font-medium"
             >
               Back to Case Management
             </Link>
@@ -127,29 +127,29 @@ export function CaseChat() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F]">
+    <div className="flex min-h-screen bg-background dark:bg-neutral-900">
       <SideNav />
       
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <div className="bg-white dark:bg-[#1A1A1A] border-b border-black/5 dark:border-white/10 px-8 py-6">
+        <div className="bg-card dark:bg-neutral-900 border-b border-black/5 dark:border-white/10 px-8 py-6">
           <div className="max-w-7xl mx-auto">
             <button
               onClick={() => navigate(`/case/${id}`)}
-              className="flex items-center gap-2 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white mb-4 transition-colors"
+              className="flex items-center gap-2 text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground dark:hover:text-neutral-0 mb-4 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="text-[13px] font-medium">Back to Case Details</span>
+              <span className="text-small font-medium">Back to Case Details</span>
             </button>
             
             <div>
-              <div className="text-[10px] tracking-[0.05em] uppercase font-bold text-black/40 dark:text-white/40 mb-2">
+              <div className="text-caption tracking-[0.05em] uppercase font-medium text-muted-foreground dark:text-neutral-300/60 mb-2">
                 Case Chat
               </div>
-              <h1 className="text-[32px] tracking-tight text-black dark:text-white leading-none mb-2">
+              <h1 className="text-h1 tracking-tight text-foreground dark:text-neutral-0 leading-none mb-2">
                 {caseItem.caseId}
               </h1>
-              <p className="text-[14px] text-black/60 dark:text-white/60">
+              <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                 {caseItem.subService || caseItem.serviceRequested} • {caseItem.propertyName}
               </p>
             </div>
@@ -167,23 +167,23 @@ export function CaseChat() {
                 <div className={`max-w-[70%] ${msg.sender === 'user' ? 'order-2' : 'order-1'}`}>
                   {/* Sender Name and Timestamp */}
                   <div className={`flex items-center gap-2 mb-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <span className="text-[12px] font-medium text-black/60 dark:text-white/60">
+                    <span className="text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80">
                       {msg.senderName}
                     </span>
-                    <span className="text-[11px] text-black/40 dark:text-white/40">
+                    <span className="text-caption text-muted-foreground dark:text-neutral-300/60">
                       {msg.timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
 
                   {/* Message Bubble */}
                   <div
-                    className={`rounded-2xl px-5 py-3 ${
+                    className={`rounded-[var(--radius-card)] px-5 py-3 ${
                       msg.sender === 'user'
-                        ? 'bg-emerald-500 text-white'
-                        : 'bg-white dark:bg-[#1A1A1A] border border-black/5 dark:border-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0'
+                        : 'bg-card dark:bg-neutral-900 border border-black/5 dark:border-white/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
-                    <p className="text-[14px] leading-relaxed whitespace-pre-wrap">{msg.message}</p>
+                    <p className="text-small leading-relaxed whitespace-pre-wrap">{msg.message}</p>
                     
                     {/* Attachments */}
                     {msg.attachments && msg.attachments.length > 0 && (
@@ -191,32 +191,32 @@ export function CaseChat() {
                         {msg.attachments.map((att) => (
                           <div
                             key={att.id}
-                            className={`flex items-center gap-3 p-3 rounded-xl ${
+                            className={`flex items-center gap-3 p-3 rounded-[var(--radius-card)] ${
                               msg.sender === 'user'
-                                ? 'bg-white/10'
-                                : 'bg-black/[0.02] dark:bg-white/[0.02]'
+                                ? 'bg-card/10'
+                                : 'bg-neutral-900/[0.02] dark:bg-card/[0.02]'
                             }`}
                           >
                             {getFileIcon(att.type)}
                             <div className="flex-1 min-w-0">
-                              <div className={`text-[13px] font-medium truncate ${
-                                msg.sender === 'user' ? 'text-white' : 'text-black dark:text-white'
+                              <div className={`text-small font-medium truncate ${
+                                msg.sender === 'user' ? 'text-neutral-0' : 'text-foreground dark:text-neutral-0'
                               }`}>
                                 {att.name}
                               </div>
-                              <div className={`text-[11px] ${
-                                msg.sender === 'user' ? 'text-white/70' : 'text-black/60 dark:text-white/60'
+                              <div className={`text-caption ${
+                                msg.sender === 'user' ? 'text-neutral-0/70' : 'text-neutral-700/80 dark:text-neutral-300/80'
                               }`}>
                                 {att.size}
                               </div>
                             </div>
-                            <button className={`p-2 rounded-lg transition-colors ${
+                            <button className={`p-2 rounded-[var(--radius)] transition-colors ${
                               msg.sender === 'user'
-                                ? 'hover:bg-white/10'
-                                : 'hover:bg-black/5 dark:hover:bg-white/5'
+                                ? 'hover:bg-card/10'
+                                : 'hover:bg-neutral-900/5 dark:hover:bg-card/5'
                             }`}>
                               <Download className={`w-4 h-4 ${
-                                msg.sender === 'user' ? 'text-white' : 'text-black/60 dark:text-white/60'
+                                msg.sender === 'user' ? 'text-neutral-0' : 'text-neutral-700/80 dark:text-neutral-300/80'
                               }`} />
                             </button>
                           </div>
@@ -231,7 +231,7 @@ export function CaseChat() {
         </div>
 
         {/* Message Input */}
-        <div className="bg-white dark:bg-[#1A1A1A] border-t border-black/5 dark:border-white/10 px-8 py-6">
+        <div className="bg-card dark:bg-neutral-900 border-t border-black/5 dark:border-white/10 px-8 py-6">
           <div className="max-w-4xl mx-auto">
             {/* Attachments Preview */}
             {attachments.length > 0 && (
@@ -239,18 +239,18 @@ export function CaseChat() {
                 {attachments.map((file, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-3 py-2 bg-emerald-500/10 dark:bg-emerald-500/20 
-                               border border-emerald-500/20 rounded-lg"
+                    className="flex items-center gap-2 px-3 py-2 bg-primary-700/10 dark:bg-primary-700/20 
+                               border border-primary-700/20 rounded-[var(--radius)]"
                   >
-                    <File className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-[12px] text-emerald-700 dark:text-emerald-400 font-medium max-w-[200px] truncate">
+                    <File className="w-4 h-4 text-primary-700 dark:text-primary-400" />
+                    <span className="text-caption text-primary-700 dark:text-primary-400 font-medium max-w-[200px] truncate">
                       {file.name}
                     </span>
                     <button
                       onClick={() => removeAttachment(idx)}
-                      className="p-0.5 hover:bg-emerald-500/20 rounded transition-colors"
+                      className="p-0.5 hover:bg-primary-700/20 rounded transition-colors"
                     >
-                      <X className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <X className="w-3.5 h-3.5 text-primary-700 dark:text-primary-400" />
                     </button>
                   </div>
                 ))}
@@ -269,15 +269,15 @@ export function CaseChat() {
               
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 
-                           rounded-xl transition-colors text-black/60 dark:text-white/60 
-                           hover:text-black dark:hover:text-white"
+                className="p-3 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 
+                           rounded-[var(--radius-card)] transition-colors text-neutral-700/80 dark:text-neutral-300/80 
+                           hover:text-foreground dark:hover:text-neutral-0"
               >
                 <Paperclip className="w-5 h-5" />
               </button>
 
-              <div className="flex-1 bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 
-                              rounded-xl overflow-hidden focus-within:border-emerald-500/50 transition-colors">
+              <div className="flex-1 bg-neutral-900/[0.02] dark:bg-card/[0.02] border border-black/10 dark:border-white/10 
+                              rounded-[var(--radius-card)] overflow-hidden focus-within:border-primary-700/50 transition-colors">
                 <textarea
                   value={messageText}
                   onChange={(e) => setMessageText(e.target.value)}
@@ -289,8 +289,8 @@ export function CaseChat() {
                   }}
                   placeholder="Type your message here..."
                   rows={1}
-                  className="w-full px-4 py-3 bg-transparent text-[14px] text-black dark:text-white 
-                             placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none 
+                  className="w-full px-4 py-3 bg-transparent text-small text-foreground dark:text-neutral-0 
+                             placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none 
                              resize-none max-h-32"
                 />
               </div>
@@ -298,17 +298,17 @@ export function CaseChat() {
               <button
                 onClick={handleSendMessage}
                 disabled={!messageText.trim() && attachments.length === 0}
-                className="p-3 bg-emerald-500 hover:bg-emerald-600 disabled:bg-black/10 dark:disabled:bg-white/10 
-                           disabled:text-black/40 dark:disabled:text-white/40 text-white rounded-xl 
-                           transition-all shadow-[0_4px_12px_rgba(16,185,129,0.3)] 
-                           hover:shadow-[0_6px_16px_rgba(16,185,129,0.4)] disabled:shadow-none 
+                className="p-3 bg-primary-700 hover:bg-primary-900 disabled:bg-neutral-900/10 dark:disabled:bg-card/10 
+                           disabled:text-muted-foreground dark:disabled:text-neutral-300/60 text-neutral-0 rounded-[var(--radius-card)] 
+                           transition-all shadow-[0_4px_12px_rgba(28,117,188,0.3)] 
+                           hover:shadow-[0_6px_16px_rgba(28,117,188,0.4)] disabled:shadow-none 
                            disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="mt-3 text-[11px] text-black/40 dark:text-white/40 text-center">
+            <div className="mt-3 text-caption text-muted-foreground dark:text-neutral-300/60 text-center">
               Press Enter to send • Shift + Enter for new line
             </div>
           </div>

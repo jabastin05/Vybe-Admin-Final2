@@ -7,7 +7,7 @@ export function Root() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <Outlet />
       <ScrollRestoration />
       {!isAdminRoute && <ChatButton />}

@@ -292,7 +292,7 @@ export function AdminDocumentVault() {
 
   // Categories
   const categories = [
-    { id: 'Ownership', label: 'Ownership', color: 'emerald' },
+    { id: 'Ownership', label: 'Ownership', color: 'primary' },
     { id: 'Compliance', label: 'Compliance', color: 'blue' },
     { id: 'Financial', label: 'Financial', color: 'purple' },
     { id: 'Land Records', label: 'Land Records', color: 'orange' },
@@ -384,12 +384,12 @@ export function AdminDocumentVault() {
       case 'DOC':
         return <File className="w-5 h-5 text-blue-500" />;
       case 'XLS':
-        return <FileSpreadsheet className="w-5 h-5 text-emerald-500" />;
+        return <FileSpreadsheet className="w-5 h-5 text-primary-700" />;
       case 'JPG':
       case 'PNG':
         return <FileImage className="w-5 h-5 text-purple-500" />;
       default:
-        return <FileText className="w-5 h-5 text-black/40 dark:text-white/40" />;
+        return <FileText className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60" />;
     }
   };
 
@@ -441,8 +441,8 @@ export function AdminDocumentVault() {
           <div className="vybe-modal w-full shadow-2xl">
             <div className="p-[var(--space-6)] border-b border-border">
               <div className="flex items-center gap-[var(--space-3)] mb-2">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="w-10 h-10 rounded-[var(--radius-card)] bg-primary-700/10 dark:bg-primary-700/20 flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-primary-700 dark:text-primary-400" />
                 </div>
                 <h2 className="text-h3 font-medium text-foreground">Verify Document</h2>
               </div>
@@ -589,7 +589,7 @@ export function AdminDocumentVault() {
           <div className="vybe-modal w-full shadow-2xl">
             <div className="p-[var(--space-6)] border-b border-border">
               <div className="flex items-center gap-[var(--space-3)] mb-2">
-                <div className="w-10 h-10 rounded-xl bg-red-500/10 dark:bg-red-500/20 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-[var(--radius-card)] bg-red-500/10 dark:bg-red-500/20 flex items-center justify-center">
                   <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
                 </div>
                 <h2 className="text-h3 font-medium text-foreground">Mark Document as Invalid</h2>
@@ -637,7 +637,7 @@ export function AdminDocumentVault() {
               </button>
               <button
                 onClick={confirmInvalidation}
-                className="px-[var(--space-6)] py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-[var(--radius)] text-small font-medium transition-all shadow-sm flex items-center gap-2"
+                className="px-[var(--space-6)] py-2.5 bg-red-500 hover:bg-red-600 text-neutral-0 rounded-[var(--radius)] text-small font-medium transition-all shadow-sm flex items-center gap-2"
               >
                 <AlertCircle className="w-4 h-4" />
                 Mark as Invalid
@@ -656,7 +656,7 @@ export function AdminDocumentVault() {
       <div className="grid grid-cols-4 gap-[var(--space-4)] mb-[var(--space-6)]">
         {[
           { label: 'Total Documents', value: documents.length,                                              valueStyle: { color: 'var(--foreground)' } },
-          { label: 'Verified',        value: documents.filter(d => d.verified && !d.isInvalid).length,     valueStyle: { color: '#2A9D62' } },
+          { label: 'Verified',        value: documents.filter(d => d.verified && !d.isInvalid).length,     valueStyle: { color: '#1C75BC' } },
           { label: 'Pending Review',  value: documents.filter(d => !d.verified && !d.isInvalid).length,    valueStyle: { color: '#E49B0F' } },
           { label: 'Invalid',         value: documents.filter(d => d.isInvalid).length,                    valueStyle: { color: '#E16A74' } },
         ].map(({ label, value, valueStyle }) => (
@@ -697,7 +697,7 @@ export function AdminDocumentVault() {
                 }}
                 className={`vybe-filter-btn px-[var(--space-4)] py-2.5 rounded-[var(--radius)] text-small font-medium transition-all flex items-center gap-2 ${
                   selectedClient !== 'all'
-                    ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                    ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
                     : ''
                 }`}
               >
@@ -718,9 +718,9 @@ export function AdminDocumentVault() {
                         setSelectedProperty('all');
                         setShowClientFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedClient === 'all'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
                           : 'hover:bg-accent text-foreground'
                       }`}
                     >
@@ -746,21 +746,21 @@ export function AdminDocumentVault() {
                             setSelectedProperty('all');
                             setShowClientFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-[var(--space-3)] rounded-lg transition-all mb-1 ${
+                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-[var(--space-3)] rounded-[var(--radius)] transition-all mb-1 ${
                             selectedClient === client.id
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20'
                               : 'hover:bg-accent'
                           }`}
                         >
                           <div className="flex items-center gap-[var(--space-3)] flex-1 min-w-0">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                            <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0 ${
                               selectedClient === client.id
-                                ? 'bg-emerald-500'
+                                ? 'bg-primary-700'
                                 : 'bg-muted'
                             }`}>
                               <User className={`w-5 h-5 ${
                                 selectedClient === client.id
-                                  ? 'text-white'
+                                  ? 'text-neutral-0'
                                   : 'text-muted-foreground'
                               }`} />
                             </div>
@@ -795,7 +795,7 @@ export function AdminDocumentVault() {
                 }}
                 className={`vybe-filter-btn px-[var(--space-4)] py-2.5 rounded-[var(--radius)] text-small font-medium transition-all flex items-center gap-2 ${
                   selectedProperty !== 'all'
-                    ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                    ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
                     : ''
                 }`}
               >
@@ -817,9 +817,9 @@ export function AdminDocumentVault() {
                         setSelectedProperty('all');
                         setShowPropertyFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedProperty === 'all'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
                           : 'hover:bg-accent text-foreground'
                       }`}
                     >
@@ -844,21 +844,21 @@ export function AdminDocumentVault() {
                             setSelectedProperty(property.id);
                             setShowPropertyFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-[var(--space-3)] rounded-lg transition-all mb-1 ${
+                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-[var(--space-3)] rounded-[var(--radius)] transition-all mb-1 ${
                             selectedProperty === property.id
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20'
                               : 'hover:bg-accent'
                           }`}
                         >
                           <div className="flex items-center gap-[var(--space-3)] flex-1 min-w-0">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                            <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0 ${
                               selectedProperty === property.id
-                                ? 'bg-emerald-500'
+                                ? 'bg-primary-700'
                                 : 'bg-muted'
                             }`}>
                               <Building2 className={`w-5 h-5 ${
                                 selectedProperty === property.id
-                                  ? 'text-white'
+                                  ? 'text-neutral-0'
                                   : 'text-muted-foreground'
                               }`} />
                             </div>
@@ -893,7 +893,7 @@ export function AdminDocumentVault() {
                 }}
                 className={`vybe-filter-btn px-[var(--space-4)] py-2.5 rounded-[var(--radius)] text-small font-medium transition-all flex items-center gap-2 ${
                   selectedCategory !== 'all'
-                    ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                    ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
                     : ''
                 }`}
               >
@@ -913,9 +913,9 @@ export function AdminDocumentVault() {
                         setSelectedCategory('all');
                         setShowCategoryFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedCategory === 'all'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
                           : 'hover:bg-accent text-foreground'
                       }`}
                     >
@@ -935,9 +935,9 @@ export function AdminDocumentVault() {
                             setSelectedCategory(category.id);
                             setShowCategoryFilter(false);
                           }}
-                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                          className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                             selectedCategory === category.id
-                              ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                              ? 'bg-primary-700/10 dark:bg-primary-700/20'
                               : 'hover:bg-accent'
                           }`}
                         >
@@ -965,7 +965,7 @@ export function AdminDocumentVault() {
                 }}
                 className={`vybe-filter-btn px-[var(--space-4)] py-2.5 rounded-[var(--radius)] text-small font-medium transition-all flex items-center gap-2 ${
                   selectedStatus !== 'all'
-                    ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                    ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
                     : ''
                 }`}
               >
@@ -985,9 +985,9 @@ export function AdminDocumentVault() {
                         setSelectedStatus('all');
                         setShowStatusFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedStatus === 'all'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
                           : 'hover:bg-accent text-foreground'
                       }`}
                     >
@@ -1003,14 +1003,14 @@ export function AdminDocumentVault() {
                         setSelectedStatus('verified');
                         setShowStatusFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedStatus === 'verified'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20'
                           : 'hover:bg-accent'
                       }`}
                     >
                       <div className="flex items-center gap-[var(--space-3)]">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-400" />
                         <span className="text-small font-medium">Verified</span>
                       </div>
                       <span className="text-caption text-muted-foreground">{documents.filter(d => d.verified && !d.isInvalid).length}</span>
@@ -1020,9 +1020,9 @@ export function AdminDocumentVault() {
                         setSelectedStatus('pending');
                         setShowStatusFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedStatus === 'pending'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20'
                           : 'hover:bg-accent'
                       }`}
                     >
@@ -1037,9 +1037,9 @@ export function AdminDocumentVault() {
                         setSelectedStatus('invalid');
                         setShowStatusFilter(false);
                       }}
-                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-lg transition-all mb-1 ${
+                      className={`w-full flex items-center justify-between px-[var(--space-3)] py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                         selectedStatus === 'invalid'
-                          ? 'bg-emerald-500/10 dark:bg-emerald-500/20'
+                          ? 'bg-primary-700/10 dark:bg-primary-700/20'
                           : 'hover:bg-accent'
                       }`}
                     >
@@ -1065,7 +1065,7 @@ export function AdminDocumentVault() {
                     setSelectedCategory('all');
                     setSelectedStatus('all');
                   }}
-                  className="text-caption text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium flex items-center gap-1.5"
+                  className="text-caption text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 font-medium flex items-center gap-1.5"
                 >
                   <X className="w-3.5 h-3.5" />
                   Clear Filters
@@ -1079,12 +1079,12 @@ export function AdminDocumentVault() {
             <div className="text-small text-muted-foreground">
               <span className="font-medium text-foreground">{filteredDocuments.length}</span> documents
             </div>
-            <div className="flex items-center gap-2 bg-muted border border-border rounded-lg p-1">
+            <div className="flex items-center gap-2 bg-muted border border-border rounded-[var(--radius)] p-1">
               <button
                 onClick={() => setViewMode('table')}
                 className={`p-2 rounded transition-all ${
                   viewMode === 'table'
-                    ? 'bg-emerald-500 text-white shadow-sm'
+                    ? 'bg-primary-700 text-neutral-0 shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -1094,7 +1094,7 @@ export function AdminDocumentVault() {
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded transition-all ${
                   viewMode === 'grid'
-                    ? 'bg-emerald-500 text-white shadow-sm'
+                    ? 'bg-primary-700 text-neutral-0 shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -1228,7 +1228,7 @@ export function AdminDocumentVault() {
             return (
               <div
                 key={doc.id}
-                className="vybe-card-padded hover:border-emerald-500/30 transition-all group"
+                className="vybe-card-padded hover:border-primary-700/30 transition-all group"
               >
                 <div className="flex items-start justify-between mb-[var(--space-4)]">
                   {getFileIcon(doc.type)}
@@ -1275,8 +1275,8 @@ export function AdminDocumentVault() {
                     </>
                   ) : doc.verified ? (
                     <>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-caption text-emerald-600 dark:text-emerald-400 font-medium">Verified</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary-700 dark:text-primary-400" />
+                      <span className="text-caption text-primary-700 dark:text-primary-400 font-medium">Verified</span>
                     </>
                   ) : (
                     <>
@@ -1295,14 +1295,14 @@ export function AdminDocumentVault() {
                     <>
                       <button
                         onClick={() => handleVerifyDocument(doc)}
-                        className="flex-1 px-[var(--space-3)] py-2 bg-primary text-primary-foreground hover:opacity-90 rounded-lg text-caption font-medium transition-colors flex items-center justify-center gap-1.5"
+                        className="flex-1 px-[var(--space-3)] py-2 bg-primary text-primary-foreground hover:opacity-90 rounded-[var(--radius)] text-caption font-medium transition-colors flex items-center justify-center gap-1.5"
                       >
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Verify
                       </button>
                       <button
                         onClick={() => handleInvalidateDocument(doc)}
-                        className="px-[var(--space-3)] py-2 bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
+                        className="px-[var(--space-3)] py-2 bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 rounded-[var(--radius)] transition-colors"
                         title="Mark as invalid"
                       >
                         <AlertCircle className="w-3.5 h-3.5" />
@@ -1311,14 +1311,14 @@ export function AdminDocumentVault() {
                   ) : (
                     <button
                       onClick={() => setViewingDocument(doc)}
-                      className="flex-1 px-[var(--space-3)] py-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 rounded-lg text-caption font-medium transition-colors flex items-center justify-center gap-1.5"
+                      className="flex-1 px-[var(--space-3)] py-2 bg-primary-700/10 text-primary-700 dark:text-primary-400 hover:bg-primary-700/20 rounded-[var(--radius)] text-caption font-medium transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       View
                     </button>
                   )}
                   <button
-                    className="px-[var(--space-3)] py-2 bg-muted hover:bg-accent rounded-lg transition-colors"
+                    className="px-[var(--space-3)] py-2 bg-muted hover:bg-accent rounded-[var(--radius)] transition-colors"
                     title="Download"
                   >
                     <Download className="w-3.5 h-3.5 text-muted-foreground" />

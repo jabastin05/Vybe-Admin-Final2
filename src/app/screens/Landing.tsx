@@ -54,27 +54,27 @@ export function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-primary-700/30">
       {/* Navbar */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold tracking-tight text-slate-900">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl bg-card/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-6 py-3 flex items-center justify-between">
+        <Link to="/" className="text-2xl font-medium tracking-tight text-slate-900">
           VYBE
         </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-          <a href="#platform" className="hover:text-emerald-600 transition-colors">Platform</a>
-          <a href="#features" className="hover:text-emerald-600 transition-colors">Features</a>
-          <a href="#insights" className="hover:text-emerald-600 transition-colors">Market Insights</a>
-          <a href="#how-it-works" className="hover:text-emerald-600 transition-colors">How It Works</a>
+          <a href="#platform" className="hover:text-primary-700 transition-colors">Platform</a>
+          <a href="#features" className="hover:text-primary-700 transition-colors">Features</a>
+          <a href="#insights" className="hover:text-primary-700 transition-colors">Market Insights</a>
+          <a href="#how-it-works" className="hover:text-primary-700 transition-colors">How It Works</a>
         </div>
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/signin" className="text-sm font-semibold text-slate-900 hover:text-emerald-600 transition-colors">
+          <Link to="/signin" className="text-sm font-medium text-slate-900 hover:text-primary-700 transition-colors">
             Login
           </Link>
-          <Link to="/signup" className="flex items-center gap-2 bg-slate-900 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
+          <Link to="/signup" className="flex items-center gap-2 bg-slate-900 hover:bg-primary-900 text-neutral-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-primary-700/20 hover:shadow-primary-700/40">
             Get Started
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -96,7 +96,7 @@ export function Landing() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col"
+            className="fixed inset-0 z-40 bg-card/95 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col"
           >
             <div className="flex flex-col gap-6 text-xl font-medium text-slate-900 mb-12">
               <a href="#platform" onClick={() => setIsMobileMenuOpen(false)}>Platform</a>
@@ -105,10 +105,10 @@ export function Landing() {
               <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
             </div>
             <div className="flex flex-col gap-4 mt-auto pb-12">
-              <Link to="/signin" className="w-full py-4 text-center border border-slate-200 rounded-2xl text-lg font-medium">
+              <Link to="/signin" className="w-full py-4 text-center border border-slate-200 rounded-[var(--radius-card)] text-lg font-medium">
                 Login
               </Link>
-              <Link to="/signup" className="w-full py-4 text-center bg-slate-900 text-white rounded-2xl text-lg font-medium">
+              <Link to="/signup" className="w-full py-4 text-center bg-slate-900 text-neutral-0 rounded-[var(--radius-card)] text-lg font-medium">
                 Get Started
               </Link>
             </div>
@@ -125,9 +125,9 @@ export function Landing() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-slate-200 backdrop-blur-md mb-8 text-sm font-medium text-slate-600 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-slate-200 backdrop-blur-md mb-8 text-sm font-medium text-slate-600 shadow-sm"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-primary-700 animate-pulse" />
             Institutional Intelligence for Real Estate owners.
           </motion.div>
           
@@ -145,7 +145,7 @@ export function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-600 max-w-2xl mb-16 leading-relaxed"
+            className="text-lg md:text-xl text-slate-600 max-w-2xl mb-[var(--space-12)] leading-relaxed"
           >
             Vybe analyzes your land through real-time market intelligence, structures the most viable investment path, and deploys verified execution partners to deliver results.
           </motion.p>
@@ -155,24 +155,24 @@ export function Landing() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="w-full max-w-4xl relative z-10 bg-white/80 backdrop-blur-2xl border border-white/40 p-6 md:p-8 rounded-[32px] shadow-[0_20px_60px_rgb(0,0,0,0.08)] flex flex-col md:flex-row items-center justify-between gap-6"
+            className="w-full max-w-4xl relative z-10 bg-card/80 backdrop-blur-2xl border border-white/40 p-6 md:p-8 rounded-[32px] shadow-[0_20px_60px_rgb(0,0,0,0.08)] flex flex-col md:flex-row items-center justify-between gap-6"
           >
             <div className="text-left flex-1">
-              <h3 className="text-xl font-semibold text-slate-900 mb-1">Check Real time Market Value</h3>
+              <h3 className="text-xl font-medium text-slate-900 mb-1">Check Real time Market Value</h3>
               <p className="text-sm text-slate-500">Enter details to generate AI-backed initial estimates</p>
             </div>
             <div className="flex w-full md:w-auto flex-col sm:flex-row gap-3 flex-1">
               <input 
                 type="text" 
                 placeholder="Name" 
-                className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
+                className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-[var(--radius-card)] focus:outline-none focus:ring-2 focus:ring-primary-700 w-full sm:w-1/2"
               />
               <input 
                 type="tel" 
                 placeholder="Phone number" 
-                className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
+                className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-[var(--radius-card)] focus:outline-none focus:ring-2 focus:ring-primary-700 w-full sm:w-1/2"
               />
-              <button className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-6 py-3 rounded-xl transition-colors shadow-lg shadow-emerald-500/20 whitespace-nowrap">
+              <button className="bg-primary-700 hover:bg-primary-900 text-neutral-0 font-medium px-6 py-3 rounded-[var(--radius-card)] transition-colors shadow-lg shadow-primary-700/20 whitespace-nowrap">
                 Analyze
               </button>
             </div>
@@ -198,7 +198,7 @@ export function Landing() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 px-6 bg-white relative">
+      <section id="features" className="py-24 px-6 bg-card relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900">
@@ -208,24 +208,24 @@ export function Landing() {
 
           <div className="bg-slate-50 rounded-[32px] border border-slate-200 overflow-hidden flex flex-col lg:flex-row">
             {/* Sidebar */}
-            <div className="w-full lg:w-2/5 flex flex-col border-b lg:border-b-0 lg:border-r border-slate-200 bg-white/50 backdrop-blur-sm">
+            <div className="w-full lg:w-2/5 flex flex-col border-b lg:border-b-0 lg:border-r border-slate-200 bg-card/50 backdrop-blur-sm">
               {features.map((feature, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveFeature(idx)}
                   className={`p-8 text-left transition-all relative ${
                     activeFeature === idx 
-                      ? 'bg-white shadow-[0_0_40px_rgb(0,0,0,0.05)] z-10' 
+                      ? 'bg-card shadow-[0_0_40px_rgb(0,0,0,0.05)] z-10' 
                       : 'hover:bg-slate-100'
                   }`}
                 >
                   {activeFeature === idx && (
                     <motion.div 
                       layoutId="active-pill"
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-primary-700"
                     />
                   )}
-                  <div className={`mb-4 inline-flex p-3 rounded-2xl ${activeFeature === idx ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`mb-4 inline-flex p-3 rounded-[var(--radius-card)] ${activeFeature === idx ? 'bg-primary-100 text-primary-700' : 'bg-slate-100 text-slate-500'}`}>
                     {feature.icon}
                   </div>
                   <h3 className={`text-2xl font-medium mb-3 tracking-tight ${activeFeature === idx ? 'text-slate-900' : 'text-slate-600'}`}>
@@ -244,7 +244,7 @@ export function Landing() {
                         className="grid grid-cols-2 gap-3"
                       >
                         {feature.tags.map((tag, tagIdx) => (
-                          <div key={tagIdx} className="bg-slate-100/80 border border-slate-200 rounded-xl p-3 text-xs font-medium text-slate-700">
+                          <div key={tagIdx} className="bg-slate-100/80 border border-slate-200 rounded-[var(--radius-card)] p-3 text-xs font-medium text-slate-700">
                             {tag}
                           </div>
                         ))}
@@ -264,12 +264,12 @@ export function Landing() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full h-full relative rounded-2xl overflow-hidden shadow-2xl max-h-[500px]"
+                  className="w-full h-full relative rounded-[var(--radius-card)] overflow-hidden shadow-2xl max-h-[500px]"
                 >
                   <img 
                     src={activeFeature === 0 ? imgFeatureImage : activeFeature === 1 ? imgContainer1 : imgContainer} 
                     alt={features[activeFeature].title}
-                    className="w-full h-full object-cover rounded-2xl"
+                    className="w-full h-full object-cover rounded-[var(--radius-card)]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
                 </motion.div>
@@ -282,8 +282,8 @@ export function Landing() {
       {/* Role Selection Section */}
       <section className="py-24 px-6 bg-slate-50 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+          <div className="text-center mb-[var(--space-12)]">
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900 mb-4">
               Choose Your Role
             </h2>
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">
@@ -295,14 +295,14 @@ export function Landing() {
             {/* Casual User Card */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-[#42D2B7] p-8 rounded-[24px] text-white relative cursor-pointer shadow-lg shadow-[#42D2B7]/20 flex flex-col h-full"
+              className="bg-[#42D2B7] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#42D2B7]/20 flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
-                <Eye className="w-8 h-8 text-white/90" strokeWidth={1.5} />
-                <div className="w-6 h-6 rounded-full bg-white/20" />
+                <Eye className="w-8 h-8 text-neutral-0/90" strokeWidth={1.5} />
+                <div className="w-6 h-6 rounded-full bg-card/20" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4">Casual User</h3>
-              <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
+              <h3 className="text-2xl font-medium mb-4">Casual User</h3>
+              <div className="space-y-4 text-neutral-0/90 text-sm md:text-base leading-relaxed">
                 <p>Stay informed on real estate trends</p>
                 <p>Access market insights, trends, and expert analysis to understand the real estate landscape.</p>
               </div>
@@ -311,14 +311,14 @@ export function Landing() {
             {/* Asset Owner Card */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-[#479E8E] p-8 rounded-[24px] text-white relative cursor-pointer shadow-lg shadow-[#479E8E]/20 flex flex-col h-full"
+              className="bg-[#479E8E] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#479E8E]/20 flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
-                <Building2 className="w-8 h-8 text-white/90" strokeWidth={1.5} />
-                <div className="w-6 h-6 rounded-full bg-white/20" />
+                <Building2 className="w-8 h-8 text-neutral-0/90" strokeWidth={1.5} />
+                <div className="w-6 h-6 rounded-full bg-card/20" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4">Asset Owner</h3>
-              <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
+              <h3 className="text-2xl font-medium mb-4">Asset Owner</h3>
+              <div className="space-y-4 text-neutral-0/90 text-sm md:text-base leading-relaxed">
                 <p>Maximize property value and performance</p>
                 <p>Get feasibility reports, optimization insights, and tools to unlock the full potential of your assets.</p>
               </div>
@@ -327,13 +327,13 @@ export function Landing() {
 
           <div className="mt-12 text-center flex items-center justify-center gap-2 text-sm text-slate-400">
             <span className="text-yellow-500 text-lg leading-none">💡</span>
-            <p><span className="font-semibold text-slate-500">Pro tip:</span> Start with "Casual User" mode to explore without commitment</p>
+            <p><span className="font-medium text-slate-500">Pro tip:</span> Start with "Casual User" mode to explore without commitment</p>
           </div>
         </div>
       </section>
 
       {/* Lifecycle Section */}
-      <section id="how-it-works" className="py-32 px-6 bg-slate-900 text-white relative overflow-hidden">
+      <section id="how-it-works" className="py-32 px-6 bg-slate-900 text-neutral-0 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img src={imgContainer} alt="Cityscape background" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-900/80" />
@@ -342,7 +342,7 @@ export function Landing() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-20">
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight">
-              The VYBE <span className="text-emerald-400">Lifecycle</span>
+              The VYBE <span className="text-primary-600">Lifecycle</span>
             </h2>
           </div>
 
@@ -350,7 +350,7 @@ export function Landing() {
             {/* Wavy connection line (desktop only) */}
             <div className="hidden md:block absolute top-[28px] left-0 w-full h-[2px] bg-slate-800">
               <motion.div 
-                className="absolute top-0 left-0 h-full bg-emerald-500"
+                className="absolute top-0 left-0 h-full bg-primary-700"
                 initial={{ width: "0%" }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -366,7 +366,7 @@ export function Landing() {
                     whileInView={{ scale: 1 }}
                     transition={{ delay: idx * 0.2, type: "spring", stiffness: 200 }}
                     viewport={{ once: true }}
-                    className="w-14 h-14 rounded-full bg-slate-800 border-2 border-emerald-500 flex items-center justify-center text-xl font-bold text-emerald-400 mb-6 relative z-10 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+                    className="w-14 h-14 rounded-full bg-slate-800 border-2 border-primary-700 flex items-center justify-center text-xl font-medium text-primary-600 mb-6 relative z-10 shadow-[0_0_20px_rgba(28,117,188,0.3)]"
                   >
                     {step.num}
                   </motion.div>
@@ -383,9 +383,9 @@ export function Landing() {
 
       {/* CTA Section */}
       <section className="py-32 px-6 bg-slate-50">
-        <div className="max-w-4xl mx-auto bg-white rounded-[40px] p-10 md:p-16 text-center shadow-[0_20px_60px_rgb(0,0,0,0.06)] border border-slate-100 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-card rounded-[40px] p-10 md:p-16 text-center shadow-[0_20px_60px_rgb(0,0,0,0.06)] border border-slate-100 relative overflow-hidden">
           {/* Decorative glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 blur-[80px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-700/10 blur-[80px] rounded-full pointer-events-none" />
           
           <div className="relative z-10">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-slate-600 mb-8">
@@ -401,7 +401,7 @@ export function Landing() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-              <Link to="/signup" className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-emerald-600 text-white rounded-full text-base font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+              <Link to="/signup" className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-primary-900 text-neutral-0 rounded-full text-base font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                 Get Started Now <ArrowRight className="w-4 h-4" />
               </Link>
               
@@ -409,15 +409,15 @@ export function Landing() {
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-slate-100">
               <div>
-                <div className="text-3xl font-bold text-slate-900 mb-1">10K+</div>
+                <div className="text-3xl font-medium text-slate-900 mb-1">10K+</div>
                 <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">Acres Analyzed</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-slate-900 mb-1">99.9%</div>
+                <div className="text-3xl font-medium text-slate-900 mb-1">99.9%</div>
                 <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">Uptime</div>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <div className="text-3xl font-bold text-slate-900 mb-1">18M+</div>
+                <div className="text-3xl font-medium text-slate-900 mb-1">18M+</div>
                 <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">USD Value Unlocked</div>
               </div>
             </div>
@@ -426,56 +426,56 @@ export function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#030213] text-white pt-24 pb-12 px-6">
+      <footer className="bg-[#030213] text-neutral-0 pt-24 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
             <div className="col-span-2">
-              <Link to="/" className="text-3xl font-bold tracking-tight mb-6 inline-block">
+              <Link to="/" className="text-3xl font-medium tracking-tight mb-6 inline-block">
                 VYBE
               </Link>
               <p className="text-slate-400 max-w-sm mb-8">
                 Premium intelligence-first real estate platform empowering UHNIs with strategy and execution.
               </p>
               <div className="flex items-center gap-4 text-slate-400">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-colors">
+                <a href="#" className="w-10 h-10 rounded-full bg-card/5 flex items-center justify-center hover:bg-primary-700 hover:text-neutral-0 transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-colors">
+                <a href="#" className="w-10 h-10 rounded-full bg-card/5 flex items-center justify-center hover:bg-primary-700 hover:text-neutral-0 transition-colors">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-colors">
+                <a href="#" className="w-10 h-10 rounded-full bg-card/5 flex items-center justify-center hover:bg-primary-700 hover:text-neutral-0 transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
               </div>
             </div>
             
             <div>
-              <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">Platform</h5>
+              <h5 className="font-medium text-neutral-0 mb-6 uppercase tracking-wider text-xs">Platform</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Security</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Integration</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Security</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Integration</a></li>
               </ul>
             </div>
             
             <div>
-              <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">Resources</h5>
+              <h5 className="font-medium text-neutral-0 mb-6 uppercase tracking-wider text-xs">Resources</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">API Reference</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Case Studies</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">API Reference</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Case Studies</a></li>
               </ul>
             </div>
             
             <div>
-              <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">Company</h5>
+              <h5 className="font-medium text-neutral-0 mb-6 uppercase tracking-wider text-xs">Company</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Partners</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-primary-600 transition-colors">Partners</a></li>
               </ul>
             </div>
           </div>
@@ -483,8 +483,8 @@ export function Landing() {
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
             <p>© 2026 VYBE Platform. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/privacy-policy" className="hover:text-neutral-0 transition-colors">Privacy Policy</Link>
+              <Link to="/terms-and-conditions" className="hover:text-neutral-0 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

@@ -43,22 +43,22 @@ export function HabuReportView() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex flex-col">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-black/80 backdrop-blur-md">
+      <div className="sticky top-0 z-50 border-b border-black/5 dark:border-white/5 bg-card/80 dark:bg-neutral-900/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => navigate(-1)} 
-              className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
-              <h1 className="text-[14px] font-medium text-black dark:text-white">
+              <h1 className="text-small font-medium text-foreground dark:text-neutral-0">
                 HABU Report
               </h1>
-              <p className="text-[12px] text-black/50 dark:text-white/50">
+              <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                 WHF-2024-0847
               </p>
             </div>
@@ -67,12 +67,12 @@ export function HabuReportView() {
           <div className="flex items-center gap-3">
             <button 
               onClick={handleShare}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 text-black dark:text-white rounded-xl text-[13px] font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900/5 hover:bg-neutral-900/10 dark:bg-card/5 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-colors"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Share2 className="w-4 h-4" />}
+              {copied ? <Check className="w-4 h-4 text-primary-700" /> : <Share2 className="w-4 h-4" />}
               {copied ? 'Link Copied!' : 'Share Link'}
             </button>
-            <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#1A1A1A] hover:bg-black dark:bg-white dark:hover:bg-gray-100 text-white dark:text-[#1A1A1A] rounded-xl text-[13px] font-medium transition-colors">
+            <button className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-neutral-900 dark:bg-card dark:hover:bg-neutral-100 text-neutral-0 dark:text-neutral-900 rounded-[var(--radius-card)] text-small font-medium transition-colors">
               <Download className="w-4 h-4" />
               Download PDF
             </button>
@@ -81,7 +81,7 @@ export function HabuReportView() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto bg-[#e5e7eb] dark:bg-[#111111]">
+      <div className="flex-1 overflow-auto bg-border dark:bg-card">
         <div className="min-w-[1200px] w-full min-h-full">
           <HabuReport />
         </div>

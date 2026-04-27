@@ -167,9 +167,9 @@ export function EnhancedUserManagement() {
   return (
     <AdminLayout>
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -182,7 +182,7 @@ export function EnhancedUserManagement() {
         <div className="grid grid-cols-3 gap-[var(--space-4)] flex-1">
           {[
             { label: 'Total Providers', value: partners.length,                                      valueStyle: { color: 'var(--foreground)' } },
-            { label: 'Enabled',         value: partners.filter(p => p.isEnabled).length,             valueStyle: { color: '#2A9D62' } },
+            { label: 'Enabled',         value: partners.filter(p => p.isEnabled).length,             valueStyle: { color: '#1C75BC' } },
             { label: 'Disabled',        value: partners.filter(p => !p.isEnabled).length,            valueStyle: { color: 'var(--muted-foreground)' } },
           ].map(({ label, value, valueStyle }) => (
             <div key={label} className="vybe-kpi-card">
@@ -279,7 +279,7 @@ export function EnhancedUserManagement() {
           <div className="vybe-modal vybe-modal-wide" style={{ padding: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
             {/* Sticky header */}
             <div className="vybe-modal-header shrink-0" style={{ padding: 'var(--card-padding-desktop)', borderBottom: '1px solid var(--border)', marginBottom: 0 }}>
-              <h2 className="text-[20px] font-semibold text-foreground">Add Service Provider</h2>
+              <h2 className="text-h3 font-medium text-foreground">Add Service Provider</h2>
               <button onClick={() => setIsModalOpen(false)} className="vybe-icon-btn">
                 <X className="w-5 h-5" />
               </button>
@@ -294,12 +294,12 @@ export function EnhancedUserManagement() {
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="radio" value="Company" checked={formData.partnerType === 'Company'} onChange={(e) => setFormData({ ...formData, partnerType: e.target.value as any })}
-                      className="w-4 h-4 text-emerald-500 focus:ring-emerald-500" />
+                      className="w-4 h-4 text-primary-700 focus:ring-primary-700" />
                     <span className="text-small text-foreground">Company</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="radio" value="Individual" checked={formData.partnerType === 'Individual'} onChange={(e) => setFormData({ ...formData, partnerType: e.target.value as any })}
-                      className="w-4 h-4 text-emerald-500 focus:ring-emerald-500" />
+                      className="w-4 h-4 text-primary-700 focus:ring-primary-700" />
                     <span className="text-small text-foreground">Individual</span>
                   </label>
                 </div>
@@ -339,13 +339,13 @@ export function EnhancedUserManagement() {
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={newCity} onChange={(e) => setNewCity(e.target.value)}
                     className="flex-1 vybe-input" placeholder="Add city" />
-                  <button onClick={handleAddCity} className="px-4 h-[var(--input-height)] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 rounded-[var(--radius)] text-small font-medium transition-colors">Add</button>
+                  <button onClick={handleAddCity} className="px-4 h-[var(--input-height)] bg-primary-700/10 hover:bg-primary-700/20 text-primary-700 rounded-[var(--radius)] text-small font-medium transition-colors">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.cityCoverage?.map((city, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-white rounded-[8px] text-[13px] font-medium">
+                    <span key={idx} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-700 text-neutral-0 rounded-[var(--radius)] text-small font-medium">
                       {city}
-                      <button onClick={() => handleRemoveCity(city)} className="hover:bg-white/20 rounded-full p-0.5 transition-colors">
+                      <button onClick={() => handleRemoveCity(city)} className="hover:bg-card/20 rounded-full p-0.5 transition-colors">
                         <X className="w-3.5 h-3.5" />
                       </button>
                     </span>
@@ -394,11 +394,11 @@ export function EnhancedUserManagement() {
                       <div className="flex-1 min-w-0">
                         <p className="text-caption text-muted-foreground">{label}</p>
                         {formData.documents?.[key] && (
-                          <p className="text-caption text-emerald-500 truncate">{formData.documents[key]}</p>
+                          <p className="text-caption text-primary-700 truncate">{formData.documents[key]}</p>
                         )}
                       </div>
-                      <label className="p-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg transition-colors cursor-pointer">
-                        <Upload className="w-3.5 h-3.5 text-emerald-500" />
+                      <label className="p-1.5 bg-primary-700/10 hover:bg-primary-700/20 rounded-[var(--radius)] transition-colors cursor-pointer">
+                        <Upload className="w-3.5 h-3.5 text-primary-700" />
                         <input type="file" className="hidden" onChange={(e) => handleFileUpload(key, e)} accept=".pdf,.jpg,.jpeg,.png" />
                       </label>
                     </div>
@@ -409,7 +409,7 @@ export function EnhancedUserManagement() {
             </div>{/* end scrollable body */}
 
             <div className="flex items-center gap-3 shrink-0" style={{ padding: 'var(--card-padding-desktop)', borderTop: '1px solid var(--border)' }}>
-              <button onClick={() => setIsModalOpen(false)} className="flex-1 px-4 h-[var(--button-height-desktop)] bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">Cancel</button>
+              <button onClick={() => setIsModalOpen(false)} className="flex-1 px-4 h-[var(--button-height-desktop)] bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">Cancel</button>
               <button onClick={handleSubmit} className="flex-1 px-4 h-[var(--button-height-desktop)] bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius)] text-small font-medium transition-colors shadow-sm">Add Partner</button>
             </div>
           </div>

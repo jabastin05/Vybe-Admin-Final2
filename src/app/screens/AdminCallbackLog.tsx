@@ -237,7 +237,7 @@ export function AdminCallbackLog() {
           {[
             { label: 'Total Callbacks', value: callbacks.length,  valueStyle: { color: 'var(--foreground)' } },
             { label: 'Pending',         value: pendingCount,       valueStyle: { color: '#E16A74' } },
-            { label: 'Resolved',        value: resolvedCount,      valueStyle: { color: '#2A9D62' } },
+            { label: 'Resolved',        value: resolvedCount,      valueStyle: { color: '#1C75BC' } },
           ].map(({ label, value, valueStyle }) => (
             <div key={label} className="vybe-kpi-card">
               <div className="vybe-kpi-label">{label}</div>
@@ -267,7 +267,7 @@ export function AdminCallbackLog() {
                 onClick={() => setShowStatusFilter(!showStatusFilter)}
                 className={`vybe-filter-btn ${
                   statusFilter !== 'all'
-                    ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                    ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.3)]'
                     : ''
                 }`}
               >
@@ -277,7 +277,7 @@ export function AdminCallbackLog() {
               </button>
 
               {showStatusFilter && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
+                <div className="absolute top-full right-0 mt-2 w-56 bg-card/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50">
                   <div className="p-3">
                     {['all', 'pending', 'resolved'].map((status) => (
                       <button
@@ -286,13 +286,13 @@ export function AdminCallbackLog() {
                           setStatusFilter(status as any);
                           setShowStatusFilter(false);
                         }}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[var(--radius)] transition-all mb-1 ${
                           statusFilter === status
-                            ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
-                            : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02] text-black dark:text-white'
+                            ? 'bg-primary-700/10 dark:bg-primary-700/20 text-primary-700 dark:text-primary-400'
+                            : 'hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] text-foreground dark:text-neutral-0'
                         }`}
                       >
-                        <span className="text-[13px] font-medium capitalize">{status}</span>
+                        <span className="text-small font-medium capitalize">{status}</span>
                       </button>
                     ))}
                   </div>
@@ -341,14 +341,14 @@ export function AdminCallbackLog() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                          <User className="w-5 h-5 text-emerald-500" />
+                        <div className="w-10 h-10 rounded-full bg-primary-700/10 border border-primary-700/20 flex items-center justify-center">
+                          <User className="w-5 h-5 text-primary-700" />
                         </div>
                         <div>
-                          <p className="text-[13px] font-medium text-black dark:text-white">
+                          <p className="text-small font-medium text-foreground dark:text-neutral-0">
                             {callback.userName}
                           </p>
-                          <p className="text-[11px] text-black/60 dark:text-white/60">
+                          <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                             ID: {callback.userId}
                           </p>
                         </div>
@@ -372,7 +372,7 @@ export function AdminCallbackLog() {
                     </td>
                     {(userRole === 'admin' || userRole === 'operator') && (
                       <td className="px-6 py-4">
-                        <p className="text-[13px] font-medium text-black dark:text-white">
+                        <p className="text-small font-medium text-foreground dark:text-neutral-0">
                           {callback.assignedRM}
                         </p>
                       </td>
@@ -396,13 +396,13 @@ export function AdminCallbackLog() {
                     <td className="px-6 py-4">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                          <Calendar className="w-3.5 h-3.5 text-primary-700" />
                           <span className="text-caption font-medium text-foreground">
                             {formatDate(callback.preferredDate)}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Clock className="w-3.5 h-3.5 text-emerald-500" />
+                          <Clock className="w-3.5 h-3.5 text-primary-700" />
                           <span className="text-caption font-medium text-foreground">
                             {formatPreferredTime(callback.preferredTime)}
                           </span>

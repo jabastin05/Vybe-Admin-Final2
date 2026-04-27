@@ -77,7 +77,7 @@ const servicesData: Record<string, ServiceData> = {
     tagline: 'AI-Powered Intelligence for Your Real Estate Assets',
     description: 'Get comprehensive, data-driven insights into your property with our proprietary HABU (Highest And Best Use) Engine. Combining AI analytics with expert validation to unlock hidden opportunities and mitigate risks.',
     icon: Sparkles,
-    color: 'emerald-500',
+    color: 'primary-700',
     gradient: 'from-[#FFC700] to-amber-500',
     pricing: {
       starting: '₹49,999',
@@ -206,8 +206,8 @@ const servicesData: Record<string, ServiceData> = {
     tagline: 'Hassle-Free Property Management & Maintenance',
     description: 'Comprehensive property care solutions designed for UHNIs who demand excellence. From routine maintenance to emergency repairs, we ensure your assets are always in pristine condition.',
     icon: Home,
-    color: 'emerald-500',
-    gradient: 'from-emerald-500 to-green-500',
+    color: 'primary-700',
+    gradient: 'from-primary-700 to-green-500',
     pricing: {
       starting: '₹15,000',
       plans: [
@@ -624,10 +624,10 @@ export function ServiceDetail() {
 
   if (!service) {
     return (
-      <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0A0A0A] flex items-center justify-center">
+      <div className="min-h-screen bg-background dark:bg-neutral-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-[32px] font-bold text-black dark:text-white mb-4">Service Not Found</h1>
-          <Link to="/services" className="text-emerald-500 hover:text-emerald-600">
+          <h1 className="text-h1 font-medium text-foreground dark:text-neutral-0 mb-4">Service Not Found</h1>
+          <Link to="/services" className="text-primary-700 hover:text-primary-700">
             Return to Services
           </Link>
         </div>
@@ -638,26 +638,26 @@ export function ServiceDetail() {
   const ServiceIcon = service.icon;
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0A0A0A]">
+    <div className="min-h-screen bg-background dark:bg-neutral-900">
       <SideNav />
       
       <div className="pl-[72px]">
         {/* Top Bar */}
-        <div className="sticky top-0 z-30 bg-white/80 dark:bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
+        <div className="sticky top-0 z-30 bg-card/80 dark:bg-neutral-900/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
           <div className="max-w-7xl mx-auto px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </Link>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">
                     Service Details
                   </div>
-                  <div className="text-[32px] tracking-tight text-black dark:text-white">
+                  <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">
                     {service.name}
                   </div>
                 </div>
@@ -681,19 +681,19 @@ export function ServiceDetail() {
             }} />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-8 py-16">
+          <div className="relative max-w-7xl mx-auto px-8 py-[var(--space-12)]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <div>
                 {/* Icon & Badge */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-16 h-16 rounded-[16px] bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-[0_8px_24px_rgba(16,185,129,0.25)]`}>
-                    <ServiceIcon className="w-8 h-8 text-white" />
+                  <div className={`w-16 h-16 rounded-[var(--radius-card)] bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-[0_8px_24px_rgba(28,117,188,0.25)]`}>
+                    <ServiceIcon className="w-8 h-8 text-neutral-0" />
                   </div>
-                  <div className="bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+                  <div className="bg-primary-700/10 border border-primary-700/20 px-3 py-1.5 rounded-full">
                     <div className="flex items-center gap-1.5">
-                      <Star className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 fill-current" />
-                      <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                      <Star className="w-3.5 h-3.5 text-primary-700 dark:text-primary-400 fill-current" />
+                      <span className="text-caption font-medium text-primary-700 dark:text-primary-400">
                         PREMIUM SERVICE
                       </span>
                     </div>
@@ -701,30 +701,30 @@ export function ServiceDetail() {
                 </div>
 
                 {/* Title */}
-                <h1 className="text-[48px] leading-[1.1] tracking-tight font-bold text-black dark:text-white mb-4">
+                <h1 className="text-[48px] leading-[1.1] tracking-tight font-medium text-foreground dark:text-neutral-0 mb-4">
                   {service.name}
                 </h1>
                 
                 {/* Tagline */}
-                <p className="text-[20px] text-black/70 dark:text-white/70 mb-6">
+                <p className="text-h3 text-foreground/70 dark:text-neutral-0/70 mb-6">
                   {service.tagline}
                 </p>
 
                 {/* Description */}
-                <p className="text-[15px] leading-relaxed text-black/60 dark:text-white/60 mb-8">
+                <p className="text-[15px] leading-relaxed text-neutral-700/80 dark:text-neutral-300/80 mb-8">
                   {service.description}
                 </p>
 
                 {/* Quick Stats - Only ETA */}
                 <div className="mb-8">
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-[12px] border border-black/5 dark:border-white/10 p-4 inline-block">
+                  <div className="bg-card/80 dark:bg-card/5 backdrop-blur-sm rounded-[var(--radius-card)] border border-black/5 dark:border-white/10 p-4 inline-block">
                     <div className="flex items-center gap-2 mb-2">
-                      <Clock className="w-4 h-4 text-emerald-500" />
-                      <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40">
+                      <Clock className="w-4 h-4 text-primary-700" />
+                      <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60">
                         Estimated Timeline
                       </div>
                     </div>
-                    <div className="text-[24px] font-bold text-black dark:text-white">
+                    <div className="text-h2 font-medium text-foreground dark:text-neutral-0">
                       {service.eta.min}-{service.eta.max} days
                     </div>
                   </div>
@@ -734,7 +734,7 @@ export function ServiceDetail() {
                 <div>
                   <button 
                     onClick={handleGetStarted}
-                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-[12px] text-[14px] font-bold transition-all shadow-[0_4px_12px_rgba(16,185,129,0.25)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
+                    className="bg-primary-700 hover:bg-primary-900 text-neutral-0 px-8 py-4 rounded-[var(--radius-card)] text-small font-medium transition-all shadow-[0_4px_12px_rgba(28,117,188,0.25)] hover:shadow-[0_8px_24px_rgba(28,117,188,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
                   >
                     Get Started
                     <ArrowRight className="w-5 h-5" />
@@ -744,15 +744,15 @@ export function ServiceDetail() {
 
               {/* Right Visual */}
               <div className="relative">
-                <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-4">
+                <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-4">
                     What You'll Get
                   </div>
                   <div className="space-y-3">
                     {service.benefits.slice(0, 5).map((benefit, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-[14px] text-black dark:text-white/90">
+                        <CheckCircle2 className="w-5 h-5 text-primary-700 flex-shrink-0 mt-0.5" />
+                        <span className="text-small text-foreground dark:text-neutral-0/90">
                           {benefit}
                         </span>
                       </div>
@@ -767,12 +767,12 @@ export function ServiceDetail() {
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-8 py-12">
           {/* Features Grid */}
-          <div className="mb-16">
+          <div className="mb-[var(--space-12)]">
             <div className="mb-12">
-              <h2 className="text-[32px] font-bold text-black dark:text-white mb-3">
+              <h2 className="text-h1 font-medium text-foreground dark:text-neutral-0 mb-3">
                 Key Features
               </h2>
-              <p className="text-[15px] text-black/60 dark:text-white/60">
+              <p className="text-[15px] text-neutral-700/80 dark:text-neutral-300/80">
                 Everything you need for {service.name.toLowerCase()}
               </p>
             </div>
@@ -783,15 +783,15 @@ export function ServiceDetail() {
                 return (
                   <div
                     key={index}
-                    className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:border-emerald-500/30 transition-all group"
+                    className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:border-primary-700/30 transition-all group"
                   >
-                    <div className="w-12 h-12 rounded-[12px] bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-all">
-                      <FeatureIcon className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-[var(--radius-card)] bg-primary-700/10 flex items-center justify-center mb-4 group-hover:bg-primary-700/20 transition-all">
+                      <FeatureIcon className="w-6 h-6 text-primary-700" />
                     </div>
-                    <h3 className="text-[16px] font-bold text-black dark:text-white mb-2">
+                    <h3 className="text-[16px] font-medium text-foreground dark:text-neutral-0 mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                    <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -801,34 +801,34 @@ export function ServiceDetail() {
           </div>
 
           {/* Process Timeline */}
-          <div className="mb-16">
+          <div className="mb-[var(--space-12)]">
             <div className="mb-12">
-              <h2 className="text-[32px] font-bold text-black dark:text-white mb-3">
+              <h2 className="text-h1 font-medium text-foreground dark:text-neutral-0 mb-3">
                 How It Works
               </h2>
-              <p className="text-[15px] text-black/60 dark:text-white/60">
+              <p className="text-[15px] text-neutral-700/80 dark:text-neutral-300/80">
                 Simple, transparent process from start to finish
               </p>
             </div>
 
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden md:block" />
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-700 via-primary-700/50 to-transparent hidden md:block" />
 
               <div className="space-y-8">
                 {service.process.map((step, index) => (
                   <div key={index} className="relative flex items-start gap-6">
                     {/* Step Number */}
-                    <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center text-white text-[18px] font-bold shadow-[0_4px_16px_rgba(16,185,129,0.3)]">
+                    <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-primary-700 to-green-500 flex items-center justify-center text-neutral-0 text-h3 font-medium shadow-[0_4px_16px_rgba(28,117,188,0.3)]">
                       {step.step}
                     </div>
 
                     {/* Step Content */}
-                    <div className="flex-1 bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
-                      <h3 className="text-[18px] font-bold text-black dark:text-white mb-2">
+                    <div className="flex-1 bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
+                      <h3 className="text-h3 font-medium text-foreground dark:text-neutral-0 mb-2">
                         {step.title}
                       </h3>
-                      <p className="text-[14px] text-black/60 dark:text-white/60 leading-relaxed">
+                      <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                         {step.description}
                       </p>
                     </div>
@@ -840,31 +840,31 @@ export function ServiceDetail() {
 
           {/* Testimonial */}
           {service.testimonial && (
-            <div className="mb-16">
-              <div className="bg-gradient-to-br from-emerald-500 to-green-500 rounded-[24px] p-12 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+            <div className="mb-[var(--space-12)]">
+              <div className="bg-gradient-to-br from-primary-700 to-green-500 rounded-[var(--radius-card)] p-12 text-neutral-0 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-card/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-card/10 rounded-full blur-3xl" />
                 
                 <div className="relative z-10 max-w-3xl mx-auto text-center">
                   <div className="mb-6">
                     <Star className="w-12 h-12 mx-auto mb-4 fill-current" />
-                    <p className="text-[24px] leading-relaxed font-medium mb-6">
+                    <p className="text-h2 leading-relaxed font-medium mb-6">
                       "{service.testimonial.quote}"
                     </p>
                   </div>
                   
                   <div className="flex items-center justify-center gap-4">
                     <div>
-                      <div className="text-[16px] font-bold">
+                      <div className="text-[16px] font-medium">
                         {service.testimonial.author}
                       </div>
-                      <div className="text-[13px] text-white/80">
+                      <div className="text-small text-neutral-0/80">
                         {service.testimonial.property}
                       </div>
                     </div>
-                    <div className="w-px h-12 bg-white/20" />
-                    <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <div className="text-[14px] font-bold">
+                    <div className="w-px h-12 bg-card/20" />
+                    <div className="bg-card/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                      <div className="text-small font-medium">
                         {service.testimonial.result}
                       </div>
                     </div>
@@ -875,23 +875,23 @@ export function ServiceDetail() {
           )}
 
           {/* CTA Section */}
-          <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-12 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] text-center">
-            <h2 className="text-[32px] font-bold text-black dark:text-white mb-4">
+          <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-12 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] text-center">
+            <h2 className="text-h1 font-medium text-foreground dark:text-neutral-0 mb-4">
               Ready to Get Started?
             </h2>
-            <p className="text-[15px] text-black/60 dark:text-white/60 mb-8 max-w-2xl mx-auto">
+            <p className="text-[15px] text-neutral-700/80 dark:text-neutral-300/80 mb-8 max-w-2xl mx-auto">
               Join hundreds of UHNIs who trust VYBE for their real estate needs. 
               Start your journey today with a complimentary consultation.
             </p>
             <div className="flex items-center justify-center gap-4">
               <button 
                 onClick={() => navigate('/services')}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-[12px] text-[14px] font-bold transition-all shadow-[0_4px_12px_rgba(16,185,129,0.25)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
+                className="bg-primary-700 hover:bg-primary-900 text-neutral-0 px-8 py-4 rounded-[var(--radius-card)] text-small font-medium transition-all shadow-[0_4px_12px_rgba(28,117,188,0.25)] hover:shadow-[0_8px_24px_rgba(28,117,188,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
               >
                 Start Your Case
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="px-8 py-4 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white rounded-[12px] text-[14px] font-bold transition-all">
+              <button className="px-8 py-4 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all">
                 Talk to Expert
               </button>
             </div>
@@ -904,12 +904,12 @@ export function ServiceDetail() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm"
             onClick={() => setShowOwnershipModal(false)}
           />
           
           {/* Modal */}
-          <div className="relative bg-white/95 dark:bg-[#111111]/95 backdrop-blur-[60px] rounded-[24px] p-8 max-w-3xl w-full
+          <div className="relative bg-card/95 dark:bg-card/95 backdrop-blur-[60px] rounded-[var(--radius-card)] p-8 max-w-3xl w-full
                          shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)]
                          border border-white/60 dark:border-white/10 overflow-hidden
                          animate-in fade-in zoom-in-95 duration-300">
@@ -919,21 +919,21 @@ export function ServiceDetail() {
             {/* Close Button */}
             <button
               onClick={() => setShowOwnershipModal(false)}
-              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10
                          flex items-center justify-center transition-all group"
             >
-              <X className="w-5 h-5 text-black/40 dark:text-white/40 group-hover:text-black/70 dark:group-hover:text-white/70" />
+              <X className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60 group-hover:text-foreground/70 dark:group-hover:text-neutral-0/70" />
             </button>
 
             {/* Header */}
             <div className="mb-8 text-center">
-              <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-3">
+              <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
                 HABU Report
               </div>
-              <h2 className="text-[24px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+              <h2 className="text-h2 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                 Select Property Type
               </h2>
-              <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+              <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                 Is this service for your own property or for a non-owned property?
               </p>
             </div>
@@ -942,46 +942,46 @@ export function ServiceDetail() {
             <div className="grid grid-cols-2 gap-6">
               <button
                 onClick={() => handleOwnershipSelect('own')}
-                className="relative bg-white/90 dark:bg-[#0F0F0F]/90 backdrop-blur-[40px] rounded-[20px] p-8 text-left
+                className="relative bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8 text-left
                            shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                            border border-white/60 dark:border-white/10
                            hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
-                           hover:border-emerald-500/30
+                           hover:border-primary-700/30
                            transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
               >
                 {/* Top subtle highlight */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
                 
-                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(16,185,129,0.2)] group-hover:scale-110 transition-transform">
-                  <Building2 className="w-7 h-7 text-white" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-primary-700 to-green-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(28,117,188,0.2)] group-hover:scale-110 transition-transform">
+                  <Building2 className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-[18px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                <h3 className="text-h3 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                   Own Property
                 </h3>
-                <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                   Select from your existing properties
                 </p>
               </button>
 
               <button
                 onClick={() => handleOwnershipSelect('non-own')}
-                className="relative bg-white/90 dark:bg-[#0F0F0F]/90 backdrop-blur-[40px] rounded-[20px] p-8 text-left
+                className="relative bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] p-8 text-left
                            shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                            border border-white/60 dark:border-white/10
                            hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
-                           hover:border-emerald-500/30
+                           hover:border-primary-700/30
                            transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
               >
                 {/* Top subtle highlight */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
                 
-                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
-                  <UserCheck className="w-7 h-7 text-white" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-[var(--radius-card)] bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-[0_8px_24px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
+                  <UserCheck className="w-7 h-7 text-neutral-0" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-[18px] tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                <h3 className="text-h3 tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                   Non-Owned Property
                 </h3>
-                <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                   Provide property details and authorization
                 </p>
               </button>

@@ -1,7 +1,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-size: 15px;              /* 15px — modern dashboard baseline */
+  --font-size: 16px;              /* 16px — increased for legibility */
 
   /* ════════════════════════════════════════════════════════
    *  COLOUR PALETTE
@@ -9,59 +9,59 @@
    * ════════════════════════════════════════════════════════ */
 
   /* surfaces */
-  --background:         #F7F7F8;   /* Zinc-50 — off-white page, creates depth */
-  --card:               #FFFFFF;   /* white cards float above the page */
+  --background:         #F4F7FA;   /* neutral page bg */
+  --card:               #FFFFFF;   /* card / modal */
   --popover:            #FFFFFF;
-  --card-foreground:    #09090B;
-  --popover-foreground: #09090B;
+  --card-foreground:    #1A1A1A;
+  --popover-foreground: #1A1A1A;
 
   /* text */
-  --foreground:         #09090B;   /* Zinc-950 */
+  --foreground:         #0F0F0F;   /* near-black — maximum legibility */
 
   /* interactive */
-  --primary:            #18181B;   /* Zinc-900 — dark buttons */
-  --primary-foreground: #FAFAFA;
-  --secondary:          #F4F4F5;   /* Zinc-100 */
-  --secondary-foreground: #18181B;
+  --primary:            #1C75BC;   /* primary-700 — base interactive */
+  --primary-foreground: #FFFFFF;
+  --secondary:          #EEF3F8;   /* section / panel bg */
+  --secondary-foreground: #4F4F4F;
 
   /* surfaces */
-  --muted:              #F4F4F5;   /* Zinc-100 */
-  --muted-foreground:   #71717A;   /* Zinc-500 */
-  --accent:             #F4F4F5;   /* Zinc-100 — hover tint */
-  --accent-foreground:  #18181B;
+  --muted:              #EEF3F8;   /* section bg */
+  --muted-foreground:   #525252;   /* darker — readable captions */
+  --accent:             #EDF5FB;   /* primary-100 tint */
+  --accent-foreground:  #155A8F;   /* primary-800 */
 
   /* semantic */
   --destructive:        #EF4444;
   --destructive-foreground: #FFFFFF;
 
   /* borders / inputs */
-  --border:             #E4E4E7;   /* Zinc-200 — clean, visible */
-  --input:              #E4E4E7;
+  --border:             #D8E2EE;
+  --input:              #D8E2EE;
   --input-background:   #FFFFFF;
-  --switch-background:  #D4D4D8;   /* Zinc-300 */
+  --switch-background:  #BDBDBD;   /* neutral-300 */
 
-  /* brand accent used for focus rings, active states */
-  --ring:               #10B981;   /* Emerald-500 — the one accent */
+  /* focus rings — primary-700 */
+  --ring:               #1C75BC;
 
-  /* charts */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6  0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* charts — design system palette */
+  --chart-1: #1C75BC;
+  --chart-2: #00B6BD;
+  --chart-3: #22C55E;
+  --chart-4: #F59E0B;
+  --chart-5: #EF4444;
 
   /* ════════════════════════════════════════════════════════
    *  SIDEBAR — intentionally always dark
    *  Premium "dark chrome + white content" layout pattern
    * ════════════════════════════════════════════════════════ */
-  --sidebar:                       #111113;   /* near-black */
-  --sidebar-foreground:            #A1A1AA;   /* Zinc-400 */
-  --sidebar-primary:               rgba(255,255,255,0.09);
+  --sidebar:                       #0F3E66;   /* primary-900 — dark navy sidebar */
+  --sidebar-foreground:            #B9DBF0;   /* primary-300 */
+  --sidebar-primary:               rgba(255,255,255,0.10);
   --sidebar-primary-foreground:    #FFFFFF;
-  --sidebar-accent:                rgba(255,255,255,0.06);
-  --sidebar-accent-foreground:     #F4F4F5;
-  --sidebar-border:                rgba(255,255,255,0.07);
-  --sidebar-ring:                  rgba(255,255,255,0.12);
+  --sidebar-accent:                rgba(255,255,255,0.08);
+  --sidebar-accent-foreground:     #EDF5FB;   /* primary-100 */
+  --sidebar-border:                rgba(255,255,255,0.08);
+  --sidebar-ring:                  rgba(28,117,188,0.5);
 
   /* ════════════════════════════════════════════════════════
    *  BORDER RADIUS
@@ -71,40 +71,40 @@
   --radius-button:  0.5rem;   /*  8px — buttons */
 
   /* ====== TYPOGRAPHY TOKENS ====== */
-  --text-h1-mobile: 1.5rem;
-  --text-h1-tablet: 1.75rem;
-  --text-h1-desktop: 2rem;
-  --text-h2-mobile: 1.25rem;
-  --text-h2-tablet: 1.375rem;
-  --text-h2-desktop: 1.5rem;
-  --text-h3-mobile: 1.125rem;
-  --text-h3-tablet: 1.125rem;
-  --text-h3-desktop: 1.25rem;
-  --text-body-mobile: 1rem;
-  --text-body-tablet: 1.0625rem;
-  --text-body-desktop: 1.125rem;
-  --text-small-mobile: 0.875rem;
-  --text-small-tablet: 0.875rem;
-  --text-small-desktop: 0.875rem;
-  --text-caption-mobile: 0.75rem;
-  --text-caption-tablet: 0.75rem;
-  --text-caption-desktop: 0.75rem;
+  --text-h1-mobile: 1.625rem;
+  --text-h1-tablet: 1.875rem;
+  --text-h1-desktop: 2.25rem;
+  --text-h2-mobile: 1.375rem;
+  --text-h2-tablet: 1.5rem;
+  --text-h2-desktop: 1.75rem;
+  --text-h3-mobile: 1.25rem;
+  --text-h3-tablet: 1.25rem;
+  --text-h3-desktop: 1.375rem;
+  --text-body-mobile: 1.0625rem;
+  --text-body-tablet: 1.125rem;
+  --text-body-desktop: 1.1875rem;
+  --text-small-mobile: 0.9375rem;
+  --text-small-tablet: 0.9375rem;
+  --text-small-desktop: 0.9375rem;
+  --text-caption-mobile: 0.8125rem;
+  --text-caption-tablet: 0.8125rem;
+  --text-caption-desktop: 0.8125rem;
 
   /* Line Heights */
-  --line-height-h1-mobile: 2rem;
-  --line-height-h1-tablet: 2.25rem;
-  --line-height-h1-desktop: 2.5rem;
-  --line-height-h2-mobile: 1.75rem;
-  --line-height-h2-tablet: 1.875rem;
-  --line-height-h2-desktop: 2rem;
-  --line-height-h3-mobile: 1.5rem;
-  --line-height-h3-tablet: 1.625rem;
-  --line-height-h3-desktop: 1.75rem;
-  --line-height-body-mobile: 1.5rem;
-  --line-height-body-tablet: 1.5rem;
-  --line-height-body-desktop: 1.625rem;
-  --line-height-small: 1.25rem;
-  --line-height-caption: 1rem;
+  --line-height-h1-mobile: 2.125rem;
+  --line-height-h1-tablet: 2.375rem;
+  --line-height-h1-desktop: 2.75rem;
+  --line-height-h2-mobile: 1.875rem;
+  --line-height-h2-tablet: 2rem;
+  --line-height-h2-desktop: 2.25rem;
+  --line-height-h3-mobile: 1.625rem;
+  --line-height-h3-tablet: 1.75rem;
+  --line-height-h3-desktop: 1.875rem;
+  --line-height-body-mobile: 1.625rem;
+  --line-height-body-tablet: 1.625rem;
+  --line-height-body-desktop: 1.75rem;
+  --line-height-small: 1.5rem;
+  --line-height-caption: 1.25rem;
 
   /* ====== SPACING TOKENS (8PT GRID) ====== */
   --space-1: 0.25rem;
@@ -143,41 +143,55 @@
 /* (sidebar tokens now live in the palette block above) */
 
 .dark {
-  --background:         #0C0C0D;   /* Zinc-950 */
-  --card:               #18181B;   /* Zinc-900 */
-  --popover:            #1C1C1F;
-  --card-foreground:    #FAFAFA;
-  --popover-foreground: #FAFAFA;
-  --foreground:         #FAFAFA;
-  --primary:            #FAFAFA;
-  --primary-foreground: #09090B;
-  --secondary:          #27272A;
-  --secondary-foreground: #FAFAFA;
-  --muted:              #27272A;   /* Zinc-800 */
-  --muted-foreground:   #71717A;   /* Zinc-500 */
-  --accent:             #27272A;
-  --accent-foreground:  #FAFAFA;
-  --destructive:        #F87171;
-  --destructive-foreground: #09090B;
-  --border:             rgba(255,255,255,0.08);
-  --input:              rgba(255,255,255,0.08);
-  --input-background:   #27272A;
-  --ring:               #10B981;
-  --switch-background:  #3F3F46;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17  162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  /* Dark sidebar slightly deeper than dark card */
-  --sidebar:                    #09090B;
-  --sidebar-foreground:         #71717A;
-  --sidebar-primary:            rgba(255,255,255,0.08);
+  /* ── Surfaces: neutral charcoal — no blue tint ── */
+  --background:         #121212;
+  --card:               #1E1E1E;
+  --popover:            #1E1E1E;
+  --card-foreground:    #F2F2F2;
+  --popover-foreground: #F2F2F2;
+
+  /* ── Text ── */
+  --foreground:         #F2F2F2;
+
+  /* ── Interactive — brand blue, brighter on dark ── */
+  --primary:            #3A8FD0;
+  --primary-foreground: #FFFFFF;
+
+  /* ── Surfaces 2 ── */
+  --secondary:          #2A2A2A;
+  --secondary-foreground: #D0D0D0;
+  --muted:              #2A2A2A;
+  --muted-foreground:   #A0A0A0;
+  --accent:             #2E2E2E;
+  --accent-foreground:  #F2F2F2;
+
+  /* ── Semantic ── */
+  --destructive:        #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* ── Borders & inputs ── */
+  --border:             rgba(255,255,255,0.10);
+  --input:              rgba(255,255,255,0.10);
+  --input-background:   #252525;
+  --ring:               #3A8FD0;
+  --switch-background:  #555555;
+
+  /* ── Charts ── */
+  --chart-1: #3A8FD0;
+  --chart-2: #26C7CD;
+  --chart-3: #4ADE80;
+  --chart-4: #FBBF24;
+  --chart-5: #F87171;
+
+  /* ── Sidebar: deep neutral, matches dark theme ── */
+  --sidebar:                    #161616;
+  --sidebar-foreground:         #A0A0A0;
+  --sidebar-primary:            rgba(255,255,255,0.06);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:             rgba(255,255,255,0.05);
-  --sidebar-accent-foreground:  #FAFAFA;
-  --sidebar-border:             rgba(255,255,255,0.05);
-  --sidebar-ring:               rgba(255,255,255,0.08);
+  --sidebar-accent:             rgba(255,255,255,0.06);
+  --sidebar-accent-foreground:  #F2F2F2;
+  --sidebar-border:             rgba(255,255,255,0.07);
+  --sidebar-ring:               rgba(58,143,208,0.4);
 }
 
 @theme inline {
@@ -202,6 +216,50 @@
   --color-input-background: var(--input-background);
   --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
+
+  /* ── Full palette — actual hex values ── */
+  --color-primary-900: #0F3E66;
+  --color-primary-800: #155A8F;
+  --color-primary-700: #1C75BC;
+  --color-primary-600: #3A8FD0;
+  --color-primary-500: #5FA6DA;
+  --color-primary-400: #8FC3E6;
+  --color-primary-300: #B9DBF0;
+  --color-primary-200: #D6EAF7;
+  --color-primary-100: #EDF5FB;
+
+  --color-secondary-900: #00686C;
+  --color-secondary-800: #008E93;
+  --color-secondary-700: #00B6BD;
+  --color-secondary-600: #26C7CD;
+  --color-secondary-500: #4DD6DA;
+  --color-secondary-400: #80E2E5;
+  --color-secondary-300: #AEECEF;
+  --color-secondary-200: #D2F5F7;
+  --color-secondary-100: #ECFBFC;
+
+  --color-neutral-900: #0F0F0F;
+  --color-neutral-800: #1A1A1A;
+  --color-neutral-700: #333333;
+  --color-neutral-500: #525252;
+  --color-neutral-300: #A3A3A3;
+  --color-neutral-200: #D8E2EE;
+  --color-neutral-100: #EEF3F8;
+  --color-neutral-50:  #F4F7FA;
+  --color-neutral-0:   #FFFFFF;
+
+  --color-success:       #22C55E;
+  --color-success-light: #DCFCE7;
+  --color-success-dark:  #15803D;
+  --color-warning:       #F59E0B;
+  --color-warning-light: #FEF3C7;
+  --color-warning-dark:  #B45309;
+  --color-error:         #EF4444;
+  --color-error-light:   #FEE2E2;
+  --color-error-dark:    #B91C1C;
+  --color-info:          #1C75BC;
+  --color-info-light:    #EDF5FB;
+  --color-info-dark:     #0F3E66;
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -228,8 +286,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    font-feature-settings: 'cv02','cv03','cv04','cv11';   /* Inter numeric/stylistic alternates */
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.01em;
@@ -617,8 +674,8 @@
   .vybe-search::placeholder { color: var(--muted-foreground); }
   .vybe-search:focus {
     outline: none;
-    border-color: #10B981;
-    box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
+    border-color: var(--color-primary-700);
+    box-shadow: 0 0 0 3px rgba(28,117,188,0.15);
   }
 
   /* ── Filter / secondary-control button ─────────────────────────── */
@@ -638,7 +695,7 @@
     white-space: nowrap;
     transition: background-color 120ms, border-color 120ms;
   }
-  .vybe-filter-btn:hover { background-color: var(--muted); border-color: #D4D4D8; }
+  .vybe-filter-btn:hover { background-color: var(--muted); border-color: var(--color-neutral-300); }
 
   /* ── Primary action button ─────────────────────────────────────── */
   .vybe-btn-primary {
@@ -660,14 +717,14 @@
     transition: background-color 120ms, box-shadow 120ms, transform 80ms;
   }
   .vybe-btn-primary:hover {
-    background-color: #27272A;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+    background-color: #155A8F;
+    box-shadow: 0 2px 4px rgba(15,62,102,0.3);
     transform: translateY(-1px);
   }
-  .vybe-btn-primary:active { transform: translateY(0); box-shadow: 0 1px 1px rgba(0,0,0,0.2); }
+  .vybe-btn-primary:active { transform: translateY(0); box-shadow: none; }
   .vybe-btn-primary:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(16,185,129,0.35);
+    box-shadow: 0 0 0 3px rgba(28,117,188,0.30);
   }
   .vybe-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
@@ -690,8 +747,8 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.04);
     transition: background-color 120ms, border-color 120ms, box-shadow 120ms;
   }
-  .vybe-btn-secondary:hover { background-color: var(--muted); border-color: #D4D4D8; }
-  .vybe-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(16,185,129,0.35); }
+  .vybe-btn-secondary:hover { background-color: var(--muted); border-color: var(--color-neutral-300); }
+  .vybe-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(28,117,188,0.35); }
 
   /* ── Form input & select ──────────────────────────────────────── */
   .vybe-input {
@@ -709,11 +766,11 @@
     transition: border-color 150ms, box-shadow 150ms;
   }
   .vybe-input::placeholder { color: var(--muted-foreground); }
-  .vybe-input:hover:not(:focus):not(:disabled) { border-color: #A1A1AA; }
+  .vybe-input:hover:not(:focus):not(:disabled) { border-color: var(--color-neutral-500); }
   .vybe-input:focus {
     outline: none;
-    border-color: #10B981;
-    box-shadow: 0 0 0 3px rgba(16,185,129,0.12), 0 1px 2px rgba(0,0,0,0.04);
+    border-color: var(--color-primary-700);
+    box-shadow: 0 0 0 3px rgba(28,117,188,0.15), 0 1px 2px rgba(0,0,0,0.04);
   }
   .vybe-input:disabled, .vybe-input[readonly] { opacity: 0.5; cursor: default; background-color: var(--muted); }
 
@@ -735,11 +792,11 @@
     transition: border-color 150ms, box-shadow 150ms;
   }
   .vybe-textarea::placeholder { color: var(--muted-foreground); }
-  .vybe-textarea:hover:not(:focus) { border-color: #A1A1AA; }
+  .vybe-textarea:hover:not(:focus) { border-color: var(--color-neutral-500); }
   .vybe-textarea:focus {
     outline: none;
-    border-color: #10B981;
-    box-shadow: 0 0 0 3px rgba(16,185,129,0.12), 0 1px 2px rgba(0,0,0,0.04);
+    border-color: var(--color-primary-700);
+    box-shadow: 0 0 0 3px rgba(28,117,188,0.15), 0 1px 2px rgba(0,0,0,0.04);
   }
 
   /* ── Field label ──────────────────────────────────────────────── */
@@ -810,13 +867,14 @@
     line-height: 1.4;
     letter-spacing: 0.02em;
   }
-  /* Semantic colour modifiers */
-  .vybe-badge-green  { background: #ECFDF5; color: #059669; border-color: #A7F3D0; }
-  .vybe-badge-amber  { background: #FFFBEB; color: #D97706; border-color: #FDE68A; }
-  .vybe-badge-red    { background: #FEF2F2; color: #DC2626; border-color: #FECACA; }
-  .vybe-badge-blue   { background: #EFF6FF; color: #2563EB; border-color: #BFDBFE; }
+  /* Semantic colour modifiers — design system tokens */
+  .vybe-badge-green  { background: #DCFCE7; color: #15803D; border-color: #86EFAC; }
+  .vybe-badge-amber  { background: #FEF3C7; color: #B45309; border-color: #FCD34D; }
+  .vybe-badge-red    { background: #FEE2E2; color: #B91C1C; border-color: #FCA5A5; }
+  .vybe-badge-blue   { background: #EDF5FB; color: #155A8F; border-color: #B9DBF0; }
+  .vybe-badge-teal   { background: #ECFBFC; color: #00686C; border-color: #AEECEF; }
   .vybe-badge-purple { background: #F5F3FF; color: #7C3AED; border-color: #DDD6FE; }
-  .vybe-badge-muted  { background: var(--muted); color: var(--muted-foreground); border-color: var(--border); }
+  .vybe-badge-muted  { background: #EEF3F8; color: #828282; border-color: #D8E2EE; }
 
   /* ── Tabs strip (underline style) ────────────────────────────── */
   .vybe-tabs {
@@ -843,7 +901,7 @@
   .vybe-tab.active {
     color: var(--foreground);
     font-weight: 600;
-    border-bottom-color: #10B981;   /* emerald underline for active tab */
+    border-bottom-color: var(--color-primary-700);   /* primary-700 underline for active tab */
   }
 
   /* ── Icon button ──────────────────────────────────────────────── */
@@ -864,11 +922,12 @@
    *  Fix all hardcoded light-mode colours that break on dark.
    * ════════════════════════════════════════════════════════ */
 
-  /* ── Badges: replace light pastels with dark semi-transparent tints ── */
-  .dark .vybe-badge-green  { background: rgba(16,185,129,0.15);  color: #34D399; border-color: rgba(16,185,129,0.25); }
+  /* ── Badges: dark mode tints ── */
+  .dark .vybe-badge-green  { background: rgba(34,197,94,0.15);   color: #4ADE80; border-color: rgba(34,197,94,0.25); }
   .dark .vybe-badge-amber  { background: rgba(245,158,11,0.15);  color: #FBBF24; border-color: rgba(245,158,11,0.25); }
   .dark .vybe-badge-red    { background: rgba(239,68,68,0.15);   color: #F87171; border-color: rgba(239,68,68,0.25); }
-  .dark .vybe-badge-blue   { background: rgba(59,130,246,0.15);  color: #60A5FA; border-color: rgba(59,130,246,0.25); }
+  .dark .vybe-badge-blue   { background: rgba(28,117,188,0.20);  color: #8FC3E6; border-color: rgba(28,117,188,0.35); }
+  .dark .vybe-badge-teal   { background: rgba(0,182,189,0.15);   color: #80E2E5; border-color: rgba(0,182,189,0.25); }
   .dark .vybe-badge-purple { background: rgba(124,58,237,0.15);  color: #A78BFA; border-color: rgba(124,58,237,0.25); }
 
   /* ── Table row hover: dark surface instead of near-white ── */
@@ -879,8 +938,8 @@
   .dark .vybe-textarea:hover:not(:focus) { border-color: rgba(255,255,255,0.2); }
 
   /* ── Filter & secondary button hover border: visible on dark ── */
-  .dark .vybe-filter-btn:hover   { border-color: rgba(255,255,255,0.15); }
-  .dark .vybe-btn-secondary:hover { border-color: rgba(255,255,255,0.15); }
+  .dark .vybe-filter-btn:hover    { border-color: rgba(224,230,237,0.25); }
+  .dark .vybe-btn-secondary:hover { border-color: rgba(224,230,237,0.25); }
 
   /* ── Card / KPI card shadows: boost opacity on dark bg ── */
   .dark .vybe-card,

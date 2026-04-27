@@ -24,7 +24,7 @@ export function MasterDataManagement() {
       title: 'Service Categories',
       description: 'Organize services into hierarchical categories',
       icon: Layers,
-      color: 'bg-emerald-500/10 text-emerald-500',
+      color: 'bg-primary-700/10 text-primary-700',
       path: '/admin/master-data/service-categories',
     },
     {

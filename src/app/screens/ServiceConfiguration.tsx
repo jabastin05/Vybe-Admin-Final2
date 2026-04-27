@@ -294,32 +294,32 @@ export function ServiceConfiguration() {
     <AdminLayout>
       {/* Success Message */}
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
       {/* Add Service Category Modal */}
       {isAddServiceModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[24px] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
+        <div className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
-              <h2 className="text-[20px] font-medium text-black dark:text-white">Add New Service Category</h2>
+              <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0">Add New Service Category</h2>
               <button
                 onClick={() => {
                   setIsAddServiceModalOpen(false);
                   resetServiceForm();
                 }}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Service Name *
                 </label>
                 <input
@@ -327,12 +327,12 @@ export function ServiceConfiguration() {
                   value={serviceName}
                   onChange={(e) => setServiceName(e.target.value)}
                   placeholder="e.g., Legal Services"
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Description
                 </label>
                 <textarea
@@ -340,12 +340,12 @@ export function ServiceConfiguration() {
                   onChange={(e) => setServiceDescription(e.target.value)}
                   placeholder="Brief description of the service"
                   rows={3}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50 resize-none"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50 resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   What You Get
                 </label>
                 <div className="space-y-2">
@@ -360,7 +360,7 @@ export function ServiceConfiguration() {
                           setServiceWhatYouGet(newItems);
                         }}
                         placeholder="e.g., Comprehensive legal support"
-                        className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                        className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                       />
                       {index > 0 && (
                         <button
@@ -369,35 +369,35 @@ export function ServiceConfiguration() {
                             newItems.splice(index, 1);
                             setServiceWhatYouGet(newItems);
                           }}
-                          className="ml-2 p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                          className="ml-2 p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                         >
-                          <Minus className="w-4 h-4 text-black/60 dark:text-white/60" />
+                          <Minus className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                         </button>
                       )}
                     </div>
                   ))}
                   <button
                     onClick={() => setServiceWhatYouGet([...serviceWhatYouGet, ''])}
-                    className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm"
+                    className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm"
                   >
                     Add Item
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-black/[0.02] dark:bg-white/[0.02] rounded-[12px]">
+              <div className="flex items-center justify-between p-4 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius-card)]">
                 <div>
-                  <p className="text-[14px] font-medium text-black dark:text-white">Enable Service</p>
-                  <p className="text-[12px] text-black/60 dark:text-white/60">Make service available to clients</p>
+                  <p className="text-small font-medium text-foreground dark:text-neutral-0">Enable Service</p>
+                  <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Make service available to clients</p>
                 </div>
                 <button
                   onClick={() => setServiceEnabled(!serviceEnabled)}
                   className={`relative w-12 h-6 rounded-full transition-colors ${
-                    serviceEnabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                    serviceEnabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                   }`}
                 >
                   <div
-                    className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                    className={`absolute top-0.5 w-5 h-5 bg-card rounded-full shadow-sm transition-transform ${
                       serviceEnabled ? 'translate-x-6' : 'translate-x-0.5'
                     }`}
                   />
@@ -411,14 +411,14 @@ export function ServiceConfiguration() {
                   setIsAddServiceModalOpen(false);
                   resetServiceForm();
                 }}
-                className="px-6 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                className="px-6 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small font-medium text-foreground dark:text-neutral-0 hover:bg-neutral-900/5 dark:hover:bg-card/10 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddService}
                 disabled={!serviceName.trim()}
-                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Add Service Category
               </button>
@@ -429,48 +429,48 @@ export function ServiceConfiguration() {
 
       {/* Edit Service Modal */}
       {isEditServiceModalOpen && selectedService && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[24px] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
+        <div className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
-              <h2 className="text-[20px] font-medium text-black dark:text-white">Edit Service Category</h2>
+              <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0">Edit Service Category</h2>
               <button
                 onClick={() => {
                   setIsEditServiceModalOpen(false);
                   resetServiceForm();
                 }}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Service Name *
                 </label>
                 <input
                   type="text"
                   value={serviceName}
                   onChange={(e) => setServiceName(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Description
                 </label>
                 <textarea
                   value={serviceDescription}
                   onChange={(e) => setServiceDescription(e.target.value)}
                   rows={3}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50 resize-none"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50 resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   What You Get
                 </label>
                 <div className="space-y-2">
@@ -485,7 +485,7 @@ export function ServiceConfiguration() {
                           setServiceWhatYouGet(newItems);
                         }}
                         placeholder="e.g., Comprehensive legal support"
-                        className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                        className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                       />
                       {index > 0 && (
                         <button
@@ -494,35 +494,35 @@ export function ServiceConfiguration() {
                             newItems.splice(index, 1);
                             setServiceWhatYouGet(newItems);
                           }}
-                          className="ml-2 p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                          className="ml-2 p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                         >
-                          <Minus className="w-4 h-4 text-black/60 dark:text-white/60" />
+                          <Minus className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                         </button>
                       )}
                     </div>
                   ))}
                   <button
                     onClick={() => setServiceWhatYouGet([...serviceWhatYouGet, ''])}
-                    className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm"
+                    className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm"
                   >
                     Add Item
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-black/[0.02] dark:bg-white/[0.02] rounded-[12px]">
+              <div className="flex items-center justify-between p-4 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius-card)]">
                 <div>
-                  <p className="text-[14px] font-medium text-black dark:text-white">Enable Service</p>
-                  <p className="text-[12px] text-black/60 dark:text-white/60">Make service available to clients</p>
+                  <p className="text-small font-medium text-foreground dark:text-neutral-0">Enable Service</p>
+                  <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Make service available to clients</p>
                 </div>
                 <button
                   onClick={() => setServiceEnabled(!serviceEnabled)}
                   className={`relative w-12 h-6 rounded-full transition-colors ${
-                    serviceEnabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                    serviceEnabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                   }`}
                 >
                   <div
-                    className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                    className={`absolute top-0.5 w-5 h-5 bg-card rounded-full shadow-sm transition-transform ${
                       serviceEnabled ? 'translate-x-6' : 'translate-x-0.5'
                     }`}
                   />
@@ -536,14 +536,14 @@ export function ServiceConfiguration() {
                   setIsEditServiceModalOpen(false);
                   resetServiceForm();
                 }}
-                className="px-6 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                className="px-6 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small font-medium text-foreground dark:text-neutral-0 hover:bg-neutral-900/5 dark:hover:bg-card/10 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={handleEditService}
                 disabled={!serviceName.trim()}
-                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Update Service Category
               </button>
@@ -554,27 +554,27 @@ export function ServiceConfiguration() {
 
       {/* Add Sub-Service Modal */}
       {isAddSubServiceModalOpen && selectedService && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[24px] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
+        <div className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
               <div>
-                <h2 className="text-[20px] font-medium text-black dark:text-white">Add Service</h2>
-                <p className="text-[12px] text-black/60 dark:text-white/60 mt-1">to {selectedService.name}</p>
+                <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0">Add Service</h2>
+                <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mt-1">to {selectedService.name}</p>
               </div>
               <button
                 onClick={() => {
                   setIsAddSubServiceModalOpen(false);
                   resetSubServiceForm();
                 }}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Service Name *
                 </label>
                 <input
@@ -582,12 +582,12 @@ export function ServiceConfiguration() {
                   value={subServiceName}
                   onChange={(e) => setSubServiceName(e.target.value)}
                   placeholder="e.g., Title Verification"
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Description
                 </label>
                 <textarea
@@ -595,12 +595,12 @@ export function ServiceConfiguration() {
                   onChange={(e) => setSubServiceDescription(e.target.value)}
                   placeholder="Brief description"
                   rows={3}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50 resize-none"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50 resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   ETA
                 </label>
                 <input
@@ -608,12 +608,12 @@ export function ServiceConfiguration() {
                   value={subServiceEta}
                   onChange={(e) => setSubServiceEta(e.target.value)}
                   placeholder="e.g., 1-2 weeks"
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Price Range
                 </label>
                 <input
@@ -621,18 +621,18 @@ export function ServiceConfiguration() {
                   value={subServicePriceRange}
                   onChange={(e) => setSubServicePriceRange(e.target.value)}
                   placeholder="e.g., ₹50,000 - ₹1,00,000"
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Role
                 </label>
                 <select
                   value={subServiceRole || ''}
                   onChange={(e) => setSubServiceRole(e.target.value as SubService['role'])}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 >
                   <option value="">Select Role</option>
                   <option value="legal-partner">Legal Partner</option>
@@ -644,19 +644,19 @@ export function ServiceConfiguration() {
                 </select>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-black/[0.02] dark:bg-white/[0.02] rounded-[12px]">
+              <div className="flex items-center justify-between p-4 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius-card)]">
                 <div>
-                  <p className="text-[14px] font-medium text-black dark:text-white">Enable Service</p>
-                  <p className="text-[12px] text-black/60 dark:text-white/60">Make available to clients</p>
+                  <p className="text-small font-medium text-foreground dark:text-neutral-0">Enable Service</p>
+                  <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Make available to clients</p>
                 </div>
                 <button
                   onClick={() => setSubServiceEnabled(!subServiceEnabled)}
                   className={`relative w-12 h-6 rounded-full transition-colors ${
-                    subServiceEnabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                    subServiceEnabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                   }`}
                 >
                   <div
-                    className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                    className={`absolute top-0.5 w-5 h-5 bg-card rounded-full shadow-sm transition-transform ${
                       subServiceEnabled ? 'translate-x-6' : 'translate-x-0.5'
                     }`}
                   />
@@ -670,14 +670,14 @@ export function ServiceConfiguration() {
                   setIsAddSubServiceModalOpen(false);
                   resetSubServiceForm();
                 }}
-                className="px-6 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                className="px-6 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small font-medium text-foreground dark:text-neutral-0 hover:bg-neutral-900/5 dark:hover:bg-card/10 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddSubService}
                 disabled={!subServiceName.trim()}
-                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Add Service
               </button>
@@ -688,81 +688,81 @@ export function ServiceConfiguration() {
 
       {/* Edit Sub-Service Modal */}
       {isEditSubServiceModalOpen && selectedService && selectedSubService && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[24px] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
+        <div className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
               <div>
-                <h2 className="text-[20px] font-medium text-black dark:text-white">Edit Service</h2>
-                <p className="text-[12px] text-black/60 dark:text-white/60 mt-1">under {selectedService.name}</p>
+                <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0">Edit Service</h2>
+                <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mt-1">under {selectedService.name}</p>
               </div>
               <button
                 onClick={() => {
                   setIsEditSubServiceModalOpen(false);
                   resetSubServiceForm();
                 }}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Service Name *
                 </label>
                 <input
                   type="text"
                   value={subServiceName}
                   onChange={(e) => setSubServiceName(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Description
                 </label>
                 <textarea
                   value={subServiceDescription}
                   onChange={(e) => setSubServiceDescription(e.target.value)}
                   rows={3}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50 resize-none"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50 resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   ETA
                 </label>
                 <input
                   type="text"
                   value={subServiceEta}
                   onChange={(e) => setSubServiceEta(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Price Range
                 </label>
                 <input
                   type="text"
                   value={subServicePriceRange}
                   onChange={(e) => setSubServicePriceRange(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-2 uppercase tracking-wide">
+                <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-2 uppercase tracking-wide">
                   Role
                 </label>
                 <select
                   value={subServiceRole || ''}
                   onChange={(e) => setSubServiceRole(e.target.value as SubService['role'])}
-                  className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+                  className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
                 >
                   <option value="">Select Role</option>
                   <option value="legal-partner">Legal Partner</option>
@@ -774,19 +774,19 @@ export function ServiceConfiguration() {
                 </select>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-black/[0.02] dark:bg-white/[0.02] rounded-[12px]">
+              <div className="flex items-center justify-between p-4 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius-card)]">
                 <div>
-                  <p className="text-[14px] font-medium text-black dark:text-white">Enable Service</p>
-                  <p className="text-[12px] text-black/60 dark:text-white/60">Make available to clients</p>
+                  <p className="text-small font-medium text-foreground dark:text-neutral-0">Enable Service</p>
+                  <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Make available to clients</p>
                 </div>
                 <button
                   onClick={() => setSubServiceEnabled(!subServiceEnabled)}
                   className={`relative w-12 h-6 rounded-full transition-colors ${
-                    subServiceEnabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                    subServiceEnabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                   }`}
                 >
                   <div
-                    className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                    className={`absolute top-0.5 w-5 h-5 bg-card rounded-full shadow-sm transition-transform ${
                       subServiceEnabled ? 'translate-x-6' : 'translate-x-0.5'
                     }`}
                   />
@@ -800,14 +800,14 @@ export function ServiceConfiguration() {
                   setIsEditSubServiceModalOpen(false);
                   resetSubServiceForm();
                 }}
-                className="px-6 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                className="px-6 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small font-medium text-foreground dark:text-neutral-0 hover:bg-neutral-900/5 dark:hover:bg-card/10 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={handleEditSubService}
                 disabled={!subServiceName.trim()}
-                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Update Service
               </button>
@@ -818,10 +818,10 @@ export function ServiceConfiguration() {
 
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-[24px] tracking-tight text-black dark:text-white/95 mb-1">
+        <h1 className="text-h2 tracking-tight text-foreground dark:text-neutral-0/95 mb-1">
           Service Configuration
         </h1>
-        <p className="text-[14px] text-black/60 dark:text-white/60">
+        <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
           Manage service categories, services, pricing, and availability for the VYBE platform.
         </p>
       </div>
@@ -829,18 +829,18 @@ export function ServiceConfiguration() {
       {/* Search and Add Controls */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 dark:text-white/40" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
           <input
             type="text"
             placeholder="Search service categories..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+            className="w-full pl-10 pr-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
           />
         </div>
         <button
           onClick={() => setIsAddServiceModalOpen(true)}
-          className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[12px] text-[14px] font-medium transition-all flex items-center gap-2 shadow-sm"
+          className="px-4 py-2.5 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-card)] text-small font-medium transition-all flex items-center gap-2 shadow-sm"
         >
           <Plus className="w-4 h-4" />
           Add Service Category
@@ -854,34 +854,34 @@ export function ServiceConfiguration() {
           return (
             <div
               key={service.id}
-              className="bg-white/85 dark:bg-white/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden"
+              className="bg-card/85 dark:bg-card/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden"
             >
               {/* Service Header */}
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className="text-[32px] w-12 h-12 flex items-center justify-center">
+                    <div className="text-h1 w-12 h-12 flex items-center justify-center">
                       {service.icon}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className="text-[18px] font-medium text-black dark:text-white">
+                        <h3 className="text-h3 font-medium text-foreground dark:text-neutral-0">
                           {service.name}
                         </h3>
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-wide ${
+                          className={`px-2 py-0.5 rounded-full text-caption font-medium uppercase tracking-wide ${
                             service.enabled
-                              ? 'bg-emerald-500/10 text-emerald-500'
-                              : 'bg-black/10 dark:bg-white/10 text-black/40 dark:text-white/40'
+                              ? 'bg-primary-700/10 text-primary-700'
+                              : 'bg-neutral-900/10 dark:bg-card/10 text-muted-foreground dark:text-neutral-300/60'
                           }`}
                         >
                           {service.enabled ? 'Enabled' : 'Disabled'}
                         </span>
                       </div>
-                      <p className="text-[14px] text-black/60 dark:text-white/60">
+                      <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                         {service.description}
                       </p>
-                      <p className="text-[12px] text-black/40 dark:text-white/40 mt-2">
+                      <p className="text-caption text-muted-foreground dark:text-neutral-300/60 mt-2">
                         {service.subServices.length} service{service.subServices.length !== 1 ? 's' : ''}
                       </p>
                     </div>
@@ -891,39 +891,39 @@ export function ServiceConfiguration() {
                     <button
                       onClick={() => handleToggleService(service.id)}
                       className={`relative w-12 h-6 rounded-full transition-colors ${
-                        service.enabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                        service.enabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                       }`}
                       title={service.enabled ? 'Disable service' : 'Enable service'}
                     >
                       <div
-                        className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                        className={`absolute top-0.5 w-5 h-5 bg-card rounded-full shadow-sm transition-transform ${
                           service.enabled ? 'translate-x-6' : 'translate-x-0.5'
                         }`}
                       />
                     </button>
                     <button
                       onClick={() => openEditServiceModal(service)}
-                      className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                      className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                       title="Edit service"
                     >
-                      <Edit2 className="w-4 h-4 text-black/60 dark:text-white/60" />
+                      <Edit2 className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                     </button>
                     <button
                       onClick={() => handleDeleteService(service)}
-                      className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors group"
+                      className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors group"
                       title="Delete service"
                     >
-                      <Trash2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                      <Trash2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                     </button>
                     <button
                       onClick={() => toggleServiceExpansion(service.id)}
-                      className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                      className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                       title={isExpanded ? 'Collapse' : 'Expand'}
                     >
                       {isExpanded ? (
-                        <ChevronDown className="w-4 h-4 text-black/60 dark:text-white/60" />
+                        <ChevronDown className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                       ) : (
-                        <ChevronRight className="w-4 h-4 text-black/60 dark:text-white/60" />
+                        <ChevronRight className="w-4 h-4 text-neutral-700/80 dark:text-neutral-300/80" />
                       )}
                     </button>
                   </div>
@@ -935,12 +935,12 @@ export function ServiceConfiguration() {
                 <div className="border-t border-black/5 dark:border-white/5">
                   <div className="p-6 space-y-3">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-[14px] font-medium text-black/60 dark:text-white/60 uppercase tracking-wide">
+                      <h4 className="text-small font-medium text-neutral-700/80 dark:text-neutral-300/80 uppercase tracking-wide">
                         Services
                       </h4>
                       <button
                         onClick={() => openAddSubServiceModal(service)}
-                        className="px-3 py-1.5 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 rounded-lg text-[12px] font-medium transition-colors flex items-center gap-1"
+                        className="px-3 py-1.5 bg-primary-700/10 text-primary-700 hover:bg-primary-700/20 rounded-[var(--radius)] text-caption font-medium transition-colors flex items-center gap-1"
                       >
                         <Plus className="w-3 h-3" />
                         Add Service
@@ -952,32 +952,32 @@ export function ServiceConfiguration() {
                         {service.subServices.map((subService) => (
                           <div
                             key={subService.id}
-                            className="flex items-center justify-between p-4 bg-white dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-[12px] hover:bg-black/[0.02] dark:hover:bg-white/[0.03] transition-colors"
+                            className="flex items-center justify-between p-4 bg-card dark:bg-card/5 border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.03] transition-colors"
                           >
                             <div className="flex-1 min-w-0 pr-4">
                               <div className="flex items-center gap-2 mb-1">
-                                <h5 className="text-[14px] font-medium text-black dark:text-white">
+                                <h5 className="text-small font-medium text-foreground dark:text-neutral-0">
                                   {subService.name}
                                 </h5>
                                 <span
-                                  className={`px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wide ${
+                                  className={`px-2 py-0.5 rounded-full text-caption font-medium uppercase tracking-wide ${
                                     subService.enabled
-                                      ? 'bg-emerald-500/10 text-emerald-500'
-                                      : 'bg-black/10 dark:bg-white/10 text-black/40 dark:text-white/40'
+                                      ? 'bg-primary-700/10 text-primary-700'
+                                      : 'bg-neutral-900/10 dark:bg-card/10 text-muted-foreground dark:text-neutral-300/60'
                                   }`}
                                 >
                                   {subService.enabled ? 'Active' : 'Inactive'}
                                 </span>
                                 {subService.role && (
-                                  <span className="px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wide bg-purple-500/10 text-purple-500">
+                                  <span className="px-2 py-0.5 rounded-full text-caption font-medium uppercase tracking-wide bg-purple-500/10 text-purple-500">
                                     {getRoleLabel(subService.role)}
                                   </span>
                                 )}
                               </div>
-                              <p className="text-[12px] text-black/60 dark:text-white/60 mb-1">
+                              <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mb-1">
                                 {subService.description}
                               </p>
-                              <p className="text-[14px] font-medium text-emerald-500">
+                              <p className="text-small font-medium text-primary-700">
                                 {subService.priceRange}
                               </p>
                             </div>
@@ -986,29 +986,29 @@ export function ServiceConfiguration() {
                               <button
                                 onClick={() => handleToggleSubService(service.id, subService.id)}
                                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                                  subService.enabled ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                                  subService.enabled ? 'bg-primary-700' : 'bg-neutral-900/20 dark:bg-card/20'
                                 }`}
                                 title={subService.enabled ? 'Disable' : 'Enable'}
                               >
                                 <div
-                                  className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${
+                                  className={`absolute top-0.5 w-4 h-4 bg-card rounded-full shadow-sm transition-transform ${
                                     subService.enabled ? 'translate-x-5' : 'translate-x-0.5'
                                   }`}
                                 />
                               </button>
                               <button
                                 onClick={() => openEditSubServiceModal(service, subService)}
-                                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                                 title="Edit sub-service"
                               >
-                                <Edit2 className="w-3.5 h-3.5 text-black/60 dark:text-white/60" />
+                                <Edit2 className="w-3.5 h-3.5 text-neutral-700/80 dark:text-neutral-300/80" />
                               </button>
                               <button
                                 onClick={() => handleDeleteSubService(service.id, subService.id)}
-                                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors group"
+                                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors group"
                                 title="Delete sub-service"
                               >
-                                <Trash2 className="w-3.5 h-3.5 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                                <Trash2 className="w-3.5 h-3.5 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                               </button>
                             </div>
                           </div>
@@ -1016,7 +1016,7 @@ export function ServiceConfiguration() {
                       </div>
                     ) : (
                       <div className="text-center py-8">
-                        <p className="text-[14px] text-black/40 dark:text-white/40">
+                        <p className="text-small text-muted-foreground dark:text-neutral-300/60">
                           No services yet. Click "Add Service" to get started.
                         </p>
                       </div>
@@ -1029,9 +1029,9 @@ export function ServiceConfiguration() {
         })}
 
         {filteredServices.length === 0 && (
-          <div className="bg-white/85 dark:bg-white/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[24px] p-12 text-center">
-            <Settings className="w-12 h-12 text-black/20 dark:text-white/20 mx-auto mb-4" />
-            <p className="text-[14px] text-black/40 dark:text-white/40">
+          <div className="bg-card/85 dark:bg-card/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-12 text-center">
+            <Settings className="w-12 h-12 text-foreground/20 dark:text-neutral-0/20 mx-auto mb-4" />
+            <p className="text-small text-muted-foreground dark:text-neutral-300/60">
               No services found. Click "Add Service" to create your first service.
             </p>
           </div>

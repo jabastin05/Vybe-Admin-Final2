@@ -91,40 +91,40 @@ export function ExecutionTracker() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed':
-        return { bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/20', icon: CheckCircle2 };
+        return { bg: 'bg-primary-700/10', text: 'text-primary-700 dark:text-primary-400', border: 'border-primary-700/20', icon: CheckCircle2 };
       case 'active':
         return { bg: 'bg-blue-500/10', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-500/20', icon: Clock };
       case 'pending':
-        return { bg: 'bg-black/5 dark:bg-white/5', text: 'text-black/40 dark:text-white/40', border: 'border-black/10 dark:border-white/10', icon: Clock };
+        return { bg: 'bg-neutral-900/5 dark:bg-card/5', text: 'text-muted-foreground dark:text-neutral-300/60', border: 'border-black/10 dark:border-white/10', icon: Clock };
       default:
-        return { bg: 'bg-black/5 dark:bg-white/5', text: 'text-black/40 dark:text-white/40', border: 'border-black/10 dark:border-white/10', icon: Clock };
+        return { bg: 'bg-neutral-900/5 dark:bg-card/5', text: 'text-muted-foreground dark:text-neutral-300/60', border: 'border-black/10 dark:border-white/10', icon: Clock };
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header - Full Width */}
-      <div className="border-b border-black/5 dark:border-white/5 bg-white dark:bg-black/40">
+      <div className="border-b border-black/5 dark:border-white/5 bg-card dark:bg-neutral-900/40">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             {/* Left: Back Button + Page Title */}
             <div className="flex items-center gap-4">
               <Link 
                 to="/properties"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-[var(--radius)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
               >
                 <ArrowLeft className="w-4 h-4" />
               </Link>
               <div>
-                <div className="text-[12px] tracking-wider uppercase text-black/40 dark:text-white/50 mb-2">
+                <div className="text-caption tracking-wider uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">
                   {caseId}
                 </div>
-                <div className="text-[32px] tracking-tight text-black dark:text-white">
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">
                   {propertyCase?.location || 'Property Location'}
                 </div>
-                <p className="text-[14px] text-black/50 dark:text-white/60 mt-1">
+                <p className="text-small text-muted-foreground dark:text-neutral-300/80 mt-1">
                   {propertyCase?.parcelSize ? `${propertyCase.parcelSize} • ` : ''}Real-time phase tracking and milestone completion status
                   {propertyCase?.surveyNumber && ` • Survey No. ${propertyCase.surveyNumber}`}
                 </p>
@@ -141,64 +141,64 @@ export function ExecutionTracker() {
 
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Summary Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-4 gap-4 mb-[var(--space-10)]">
           {/* Overall Progress */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-xl p-6">
-            <div className="text-[11px] tracking-widest uppercase text-black/40 dark:text-white/40 mb-3">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6">
+            <div className="text-caption tracking-widest uppercase text-muted-foreground dark:text-neutral-300/60 mb-3">
               Overall Progress
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95 font-light mb-3">
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 font-normal mb-3">
               40%
             </div>
-            <div className="h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full" style={{ width: '40%' }}></div>
+            <div className="h-2 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-blue-500 to-primary-700 rounded-full" style={{ width: '40%' }}></div>
             </div>
           </div>
 
           {/* Current Phase */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-xl p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6">
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="w-4 h-4 text-blue-500" />
-              <div className="text-[11px] tracking-widest uppercase text-black/40 dark:text-white/40">
+              <div className="text-caption tracking-widest uppercase text-muted-foreground dark:text-neutral-300/60">
                 Current Phase
               </div>
             </div>
-            <div className="text-[16px] tracking-tight text-black dark:text-white/95 font-medium">
+            <div className="text-[16px] tracking-tight text-foreground dark:text-neutral-0/95 font-medium">
               Regulatory Approvals
             </div>
-            <div className="text-[12px] text-black/50 dark:text-white/50 mt-1">
+            <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-1">
               60% complete
             </div>
           </div>
 
           {/* Days Elapsed */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-xl p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6">
             <div className="flex items-center gap-2 mb-3">
               <Calendar className="w-4 h-4 text-purple-500" />
-              <div className="text-[11px] tracking-widest uppercase text-black/40 dark:text-white/40">
+              <div className="text-caption tracking-widest uppercase text-muted-foreground dark:text-neutral-300/60">
                 Days Elapsed
               </div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95 font-light">
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 font-normal">
               178
             </div>
-            <div className="text-[12px] text-black/50 dark:text-white/50 mt-1">
+            <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-1">
               of 1,260 days
             </div>
           </div>
 
           {/* Active Milestones */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-xl p-6">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6">
             <div className="flex items-center gap-2 mb-3">
               <FileText className="w-4 h-4 text-orange-500" />
-              <div className="text-[11px] tracking-widest uppercase text-black/40 dark:text-white/40">
+              <div className="text-caption tracking-widest uppercase text-muted-foreground dark:text-neutral-300/60">
                 Active Tasks
               </div>
             </div>
-            <div className="text-[32px] tracking-tight text-black dark:text-white/95 font-light">
+            <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 font-normal">
               3
             </div>
-            <div className="text-[12px] text-black/50 dark:text-white/50 mt-1">
+            <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-1">
               in progress
             </div>
           </div>
@@ -208,12 +208,12 @@ export function ExecutionTracker() {
         <div className="grid grid-cols-[1fr_380px] gap-8">
           {/* Left Column: Timeline Overview */}
           <div>
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden">
               <div className="px-8 py-6 border-b border-black/5 dark:border-white/5">
-                <h3 className="text-[15px] tracking-tight text-black dark:text-white/95 font-medium">
+                <h3 className="text-[15px] tracking-tight text-foreground dark:text-neutral-0/95 font-medium">
                   Execution Timeline
                 </h3>
-                <p className="text-[13px] text-black/40 dark:text-white/40 mt-1">
+                <p className="text-small text-muted-foreground dark:text-neutral-300/60 mt-1">
                   Track phase completion and milestone progress
                 </p>
               </div>
@@ -229,7 +229,7 @@ export function ExecutionTracker() {
                     <div key={phase.id} className="mb-8 last:mb-0">
                       {/* Phase Header - Now Clickable */}
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-12 h-12 rounded-xl ${statusColors.bg} ${statusColors.text} border ${statusColors.border} flex items-center justify-center flex-shrink-0`}>
+                        <div className={`w-12 h-12 rounded-[var(--radius-card)] ${statusColors.bg} ${statusColors.text} border ${statusColors.border} flex items-center justify-center flex-shrink-0`}>
                           {phase.status === 'completed' ? (
                             <CheckCircle2 className="w-6 h-6" />
                           ) : (
@@ -242,19 +242,19 @@ export function ExecutionTracker() {
                             className="w-full flex items-center justify-between mb-2 text-left hover:opacity-80 transition-opacity"
                           >
                             <div>
-                              <h4 className="text-[16px] font-medium text-black dark:text-white/95 mb-1">
+                              <h4 className="text-[16px] font-medium text-foreground dark:text-neutral-0/95 mb-1">
                                 Phase {phase.id}: {phase.name}
                               </h4>
-                              <div className="text-[12px] text-black/40 dark:text-white/40">
+                              <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                                 {phase.startDate} - {phase.endDate} · {phase.timeline}
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
-                              <div className={`px-3 py-1.5 rounded-lg text-[11px] font-medium ${statusColors.bg} ${statusColors.text} border ${statusColors.border} capitalize`}>
+                              <div className={`px-3 py-1.5 rounded-[var(--radius)] text-caption font-medium ${statusColors.bg} ${statusColors.text} border ${statusColors.border} capitalize`}>
                                 {phase.status}
                               </div>
                               <ChevronDown 
-                                className={`w-5 h-5 text-black/40 dark:text-white/40 transition-transform duration-200 ${
+                                className={`w-5 h-5 text-muted-foreground dark:text-neutral-300/60 transition-transform duration-200 ${
                                   isExpanded ? 'rotate-180' : ''
                                 }`}
                               />
@@ -267,15 +267,15 @@ export function ExecutionTracker() {
                               {/* Progress Bar */}
                               <div className="mb-4">
                                 <div className="flex items-center justify-between mb-2">
-                                  <div className="text-[12px] text-black/50 dark:text-white/50">Progress</div>
-                                  <div className="text-[12px] font-medium text-black dark:text-white/95">{phase.progress}%</div>
+                                  <div className="text-caption text-muted-foreground dark:text-neutral-0/50">Progress</div>
+                                  <div className="text-caption font-medium text-foreground dark:text-neutral-0/95">{phase.progress}%</div>
                                 </div>
-                                <div className="h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-2 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
                                   <div 
                                     className={`h-full rounded-full ${
-                                      phase.status === 'completed' ? 'bg-emerald-500' :
+                                      phase.status === 'completed' ? 'bg-primary-700' :
                                       phase.status === 'active' ? 'bg-blue-500' :
-                                      'bg-black/10 dark:bg-white/10'
+                                      'bg-neutral-900/10 dark:bg-card/10'
                                     }`}
                                     style={{ width: `${phase.progress}%` }}
                                   />
@@ -289,7 +289,7 @@ export function ExecutionTracker() {
                                   return (
                                     <div 
                                       key={mIndex}
-                                      className={`flex items-center justify-between p-3 rounded-lg ${milestoneColors.bg} border ${milestoneColors.border}`}
+                                      className={`flex items-center justify-between p-3 rounded-[var(--radius)] ${milestoneColors.bg} border ${milestoneColors.border}`}
                                     >
                                       <div className="flex items-center gap-3">
                                         {milestone.status === 'completed' ? (
@@ -300,18 +300,18 @@ export function ExecutionTracker() {
                                           <div className={`w-4 h-4 rounded-full border-2 ${milestoneColors.border}`}></div>
                                         )}
                                         <div>
-                                          <div className={`text-[13px] font-medium ${milestone.status === 'pending' ? 'text-black/40 dark:text-white/40' : 'text-black dark:text-white/95'}`}>
+                                          <div className={`text-small font-medium ${milestone.status === 'pending' ? 'text-muted-foreground dark:text-neutral-300/60' : 'text-foreground dark:text-neutral-0/95'}`}>
                                             {milestone.name}
                                           </div>
                                           {milestone.completedDate && (
-                                            <div className="text-[11px] text-black/40 dark:text-white/40">
+                                            <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                                               Completed: {milestone.completedDate}
                                             </div>
                                           )}
                                         </div>
                                       </div>
                                       {milestone.status === 'active' && (
-                                        <div className="text-[11px] font-medium text-blue-600 dark:text-blue-400">
+                                        <div className="text-caption font-medium text-blue-600 dark:text-blue-400">
                                           In Progress
                                         </div>
                                       )}
@@ -326,7 +326,7 @@ export function ExecutionTracker() {
 
                       {/* Connector Line */}
                       {index < phases.length - 1 && (
-                        <div className="ml-6 h-8 w-0.5 bg-black/10 dark:bg-white/10"></div>
+                        <div className="ml-6 h-8 w-0.5 bg-neutral-900/10 dark:bg-card/10"></div>
                       )}
                     </div>
                   );
@@ -338,67 +338,67 @@ export function ExecutionTracker() {
           {/* Right Column: Sticky Sidebar */}
           <div className="space-y-6 sticky top-8 self-start">
             {/* Core Team */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden">
               <div className="px-6 py-5 border-b border-black/5 dark:border-white/5">
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-black/40 dark:text-white/40" />
-                  <h3 className="text-[15px] tracking-tight text-black dark:text-white/95 font-medium">
+                  <Users className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
+                  <h3 className="text-[15px] tracking-tight text-foreground dark:text-neutral-0/95 font-medium">
                     Core Team
                   </h3>
                 </div>
               </div>
               <div className="p-6 space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="text-[13px] text-black/60 dark:text-white/60">Project Manager</div>
-                  <div className="text-[13px] font-medium text-black dark:text-white/95">Rajesh Malhotra</div>
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">Project Manager</div>
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0/95">Rajesh Malhotra</div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-[13px] text-black/60 dark:text-white/60">Architect</div>
-                  <div className="text-[13px] font-medium text-black dark:text-white/95">Assigned</div>
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">Architect</div>
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0/95">Assigned</div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-[13px] text-black/60 dark:text-white/60">Legal Counsel</div>
-                  <div className="text-[13px] font-medium text-black dark:text-white/95">Assigned</div>
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">Legal Counsel</div>
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0/95">Assigned</div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-[13px] text-black/60 dark:text-white/60">Contractor</div>
-                  <div className="text-[13px] font-medium text-black/40 dark:text-white/40">Pending</div>
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">Contractor</div>
+                  <div className="text-small font-medium text-muted-foreground dark:text-neutral-300/60">Pending</div>
                 </div>
               </div>
             </div>
 
             {/* Performance Metrics */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden">
               <div className="px-6 py-5 border-b border-black/5 dark:border-white/5">
-                <h3 className="text-[15px] tracking-tight text-black dark:text-white/95 font-medium">
+                <h3 className="text-[15px] tracking-tight text-foreground dark:text-neutral-0/95 font-medium">
                   Performance Metrics
                 </h3>
               </div>
               <div className="p-6 space-y-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-[12px] text-black/60 dark:text-white/60">Budget Utilization</div>
-                    <div className="text-[13px] font-medium text-black dark:text-white/95">28%</div>
+                    <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Budget Utilization</div>
+                    <div className="text-small font-medium text-foreground dark:text-neutral-0/95">28%</div>
                   </div>
-                  <div className="h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: '28%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-[12px] text-black/60 dark:text-white/60">Timeline Adherence</div>
-                    <div className="text-[13px] font-medium text-emerald-600 dark:text-emerald-400">98%</div>
-                  </div>
-                  <div className="h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: '98%' }}></div>
+                  <div className="h-1.5 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary-700 rounded-full" style={{ width: '28%' }}></div>
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-[12px] text-black/60 dark:text-white/60">Quality Score</div>
-                    <div className="text-[13px] font-medium text-black dark:text-white/95">4.8/5</div>
+                    <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Timeline Adherence</div>
+                    <div className="text-small font-medium text-primary-700 dark:text-primary-400">98%</div>
                   </div>
-                  <div className="h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary-700 rounded-full" style={{ width: '98%' }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">Quality Score</div>
+                    <div className="text-small font-medium text-foreground dark:text-neutral-0/95">4.8/5</div>
+                  </div>
+                  <div className="h-1.5 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
                     <div className="h-full bg-blue-500 rounded-full" style={{ width: '96%' }}></div>
                   </div>
                 </div>
@@ -406,32 +406,32 @@ export function ExecutionTracker() {
             </div>
 
             {/* Execution Partner Contact Card */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden">
               <div className="p-6">
                 {/* Support Label - Glass-Data Label/Micro Style */}
-                <div className="text-[10px] tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-3 font-bold">
+                <div className="text-caption tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-3 font-medium">
                   Need Support?
                 </div>
                 
                 {/* Heading - Glass-Data Heading/H1 Style */}
-                <h4 className="text-[16px] font-medium text-black dark:text-white/95 mb-6 tracking-tight">
+                <h4 className="text-[16px] font-medium text-foreground dark:text-neutral-0/95 mb-6 tracking-tight">
                   Contact Execution Partner
                 </h4>
 
                 {/* Contact Info - Glass-Data Body/Main Style */}
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-black/40 dark:text-white/40" />
-                    <span className="text-[14px] text-black/60 dark:text-white/60">+91 98765 43210</span>
+                    <Phone className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
+                    <span className="text-small text-neutral-700/80 dark:text-neutral-300/80">+91 98765 43210</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-black/40 dark:text-white/40" />
-                    <span className="text-[14px] text-black/60 dark:text-white/60">partner@vybe.in</span>
+                    <Mail className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
+                    <span className="text-small text-neutral-700/80 dark:text-neutral-300/80">partner@vybe.in</span>
                   </div>
                 </div>
 
                 {/* Send Message Button - Institutional Style */}
-                <button className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl text-[13px] font-medium tracking-wide transition-all hover:bg-black/90 dark:hover:bg-white/90 inline-flex items-center justify-center gap-2 shadow-sm">
+                <button className="w-full bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground px-6 py-3 rounded-[var(--radius-card)] text-small font-medium tracking-wide transition-all hover:bg-neutral-900/90 dark:hover:bg-card/90 inline-flex items-center justify-center gap-2 shadow-sm">
                   <MessageCircle className="w-4 h-4" />
                   Send Message
                 </button>

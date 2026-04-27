@@ -5476,7 +5476,7 @@ function Container() {
 
 export default function HabuReport() {
   return (
-    <div className="bg-[#e5e7eb] content-stretch flex flex-col items-start pl-[392.648px] pr-[392.656px] pt-[32px] relative size-full" data-name="HABU report">
+    <div className="bg-border content-stretch flex flex-col items-start pl-[392.648px] pr-[392.656px] pt-[32px] relative size-full" data-name="HABU report">
       <Container />
     </div>
   );

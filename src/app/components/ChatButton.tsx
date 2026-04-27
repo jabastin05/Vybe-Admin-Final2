@@ -22,12 +22,12 @@ export function ChatButton({ propertyContext }: ChatButtonProps) {
         aria-label="Open Expert Advisor Chat"
       >
         {isOpen ? (
-          <X className="w-7 h-7 text-white transition-transform group-hover:rotate-90" />
+          <X className="w-7 h-7 text-neutral-0 transition-transform group-hover:rotate-90" />
         ) : (
           <div className="relative">
-            <MessageCircle className="w-7 h-7 text-white" />
+            <MessageCircle className="w-7 h-7 text-neutral-0" />
             {/* Pulsing indicator */}
-            <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white animate-pulse"></div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-primary-700 border-2 border-white animate-pulse"></div>
             {/* Sparkle effect */}
             <Sparkles className="absolute -top-2 -right-2 w-4 h-4 text-yellow-300 animate-pulse" style={{ animationDelay: '0.5s' }} />
           </div>

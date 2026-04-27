@@ -256,11 +256,11 @@ export function AdminCaseManagement() {
       case 'Property Service':
         return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
       case 'Lease & Rent':
-        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+        return 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20';
       case 'Sell or Liquidate':
         return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20';
       default:
-        return 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20';
+        return 'bg-neutral-500/10 text-neutral-500 dark:text-neutral-300 border-gray-500/20';
     }
   };
 
@@ -286,7 +286,7 @@ export function AdminCaseManagement() {
   const getMilestoneColor = (milestoneTitle: string) => {
     const title = milestoneTitle.toLowerCase();
     if (title.includes('closed')) {
-      return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+      return 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20';
     } else if (title.includes('submitted')) {
       return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
     } else if (title.includes('reviewed') || title.includes('filing')) {
@@ -334,7 +334,7 @@ export function AdminCaseManagement() {
       <div className="grid grid-cols-3 gap-[var(--space-4)] mb-[var(--space-6)]">
         {[
           { label: 'Total Cases',  value: cases.length,                            valueStyle: { color: 'var(--foreground)' } },
-          { label: 'Open Cases',   value: cases.filter(c => c.status === 'Open').length,   valueStyle: { color: '#2A9D62' } },
+          { label: 'Open Cases',   value: cases.filter(c => c.status === 'Open').length,   valueStyle: { color: '#1C75BC' } },
           { label: 'Closed Cases', value: cases.filter(c => c.status === 'Closed').length, valueStyle: { color: 'var(--muted-foreground)' } },
         ].map(({ label, value, valueStyle }) => (
           <div key={label} className="vybe-kpi-card">
@@ -544,7 +544,7 @@ export function AdminCaseManagement() {
                             {caseItem.subService || caseItem.serviceRequested}
                           </div>
                           {isOwnProperty(caseItem) && (
-                            <div className="inline-flex items-center gap-1 px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] border text-caption font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
+                            <div className="inline-flex items-center gap-1 px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] border text-caption font-medium bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20">
                               <Building2 className="w-3 h-3" />Own
                             </div>
                           )}
@@ -582,7 +582,7 @@ export function AdminCaseManagement() {
                         <div className="mb-1.5">
                           <div className={`inline-flex items-center gap-[var(--space-1)] px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] border text-caption font-medium ${
                             caseItem.status === 'Open'
-                              ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
+                              ? 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20'
                               : 'bg-muted text-muted-foreground border-border'
                           }`}>
                             {caseItem.status}
@@ -598,7 +598,7 @@ export function AdminCaseManagement() {
                                 strokeDasharray="56.55"
                                 strokeDashoffset={56.55 - ((caseItem.progress || 0) / 100) * 56.55}
                                 strokeLinecap="round"
-                                style={{ stroke: '#2A9D62', transition: 'stroke-dashoffset 0.5s' }}
+                                style={{ stroke: '#1C75BC', transition: 'stroke-dashoffset 0.5s' }}
                               />
                             </svg>
                           </div>
@@ -744,7 +744,7 @@ export function AdminCaseManagement() {
 
             {/* Success */}
             {successMessage && (
-              <div className="mb-[var(--space-4)] text-small" style={{ color: '#2A9D62' }}>
+              <div className="mb-[var(--space-4)] text-small" style={{ color: '#1C75BC' }}>
                 {successMessage}
               </div>
             )}
@@ -811,7 +811,7 @@ export function AdminCaseManagement() {
               {/* Unassign option */}
               <button
                 onClick={() => setNewPartnerName('')}
-                className={`w-full text-left p-3 rounded-[var(--radius)] border transition-all ${newPartnerName === '' ? 'border-emerald-500 bg-emerald-500/5' : 'border-border hover:bg-accent'}`}
+                className={`w-full text-left p-3 rounded-[var(--radius)] border transition-all ${newPartnerName === '' ? 'border-primary-700 bg-primary-700/5' : 'border-border hover:bg-accent'}`}
               >
                 <span className="text-small italic" style={{ color: 'var(--muted-foreground)' }}>Unassigned (Remove Partner)</span>
               </button>
@@ -830,7 +830,7 @@ export function AdminCaseManagement() {
                     <button
                       key={provider.id}
                       onClick={() => setNewPartnerName(name)}
-                      className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${newPartnerName === name ? 'border-emerald-500 bg-emerald-500/5' : 'border-border hover:bg-accent'}`}
+                      className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${newPartnerName === name ? 'border-primary-700 bg-primary-700/5' : 'border-border hover:bg-accent'}`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
@@ -840,7 +840,7 @@ export function AdminCaseManagement() {
                           {/* City coverage chips */}
                           <div className="flex flex-wrap gap-1 mb-1.5">
                             {provider.cityCoverage.map(city => (
-                              <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                              <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-caption font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                                 {city}
                               </span>
                             ))}
@@ -848,13 +848,13 @@ export function AdminCaseManagement() {
 
                           {/* Case load bar */}
                           <div className="flex items-center gap-2">
-                            <div className="h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ width: 80 }}>
+                            <div className="h-1.5 bg-neutral-900/10 dark:bg-card/10 rounded-full overflow-hidden" style={{ width: 80 }}>
                               <div
-                                className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-primary-700'}`}
                                 style={{ width: `${Math.min((currentLoad / provider.maxCaseload) * 100, 100)}%` }}
                               />
                             </div>
-                            <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : ''}`}
+                            <span className={`text-caption font-medium ${isFull ? 'text-red-500' : ''}`}
                               style={!isFull ? { color: 'var(--muted-foreground)' } : undefined}>
                               {currentLoad}/{provider.maxCaseload} cases{isFull ? ' · Full' : ''}
                             </span>
@@ -862,8 +862,8 @@ export function AdminCaseManagement() {
                         </div>
 
                         {newPartnerName === name && (
-                          <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <CheckCircle2 className="w-3 h-3 text-white" />
+                          <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <CheckCircle2 className="w-3 h-3 text-neutral-0" />
                           </div>
                         )}
                       </div>
@@ -874,7 +874,7 @@ export function AdminCaseManagement() {
 
             {/* Success */}
             {successMessage && (
-              <div className="mb-[var(--space-4)] text-small" style={{ color: '#2A9D62' }}>
+              <div className="mb-[var(--space-4)] text-small" style={{ color: '#1C75BC' }}>
                 {successMessage}
               </div>
             )}

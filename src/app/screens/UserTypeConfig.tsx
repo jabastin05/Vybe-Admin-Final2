@@ -22,7 +22,7 @@ const MODULES = [
 ];
 
 const PERMISSION_OPTIONS: { value: PermissionValue; label: string; color: string }[] = [
-  { value: 'full', label: 'Full Access', color: 'bg-emerald-500' },
+  { value: 'full', label: 'Full Access', color: 'bg-primary-700' },
   { value: 'denied', label: 'Denied', color: 'bg-red-500' },
   { value: 'assigned-clients', label: 'Assigned Clients', color: 'bg-blue-500' },
   { value: 'assigned-task-only', label: 'Assigned Task Only', color: 'bg-purple-500' },
@@ -163,7 +163,7 @@ export function UserTypeConfig() {
             onChange={(e) => handlePermissionChange(moduleId, userTypeId, e.target.value as PermissionValue)}
             onBlur={() => setEditingCell(null)}
             autoFocus
-            className="w-full px-3 py-2 bg-white dark:bg-white/5 border border-emerald-500 rounded-lg text-[14px] text-black dark:text-white focus:outline-none"
+            className="w-full px-3 py-2 bg-card dark:bg-card/5 border border-primary-700 rounded-[var(--radius)] text-small text-foreground dark:text-neutral-0 focus:outline-none"
           >
             {PERMISSION_OPTIONS.map(opt => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -176,28 +176,28 @@ export function UserTypeConfig() {
     return (
       <button
         onClick={() => setEditingCell({ moduleId, userTypeId })}
-        className="w-full text-center py-3 px-2 hover:bg-black/5 dark:hover:bg-white/5 transition-colors rounded-lg group"
+        className="w-full text-center py-3 px-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 transition-colors rounded-[var(--radius)] group"
       >
         {permission === 'full' && (
           <div className="flex items-center justify-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
-              <Check className="w-3 h-3 text-white" />
+            <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center">
+              <Check className="w-3 h-3 text-neutral-0" />
             </div>
           </div>
         )}
         {permission === 'denied' && (
           <div className="flex items-center justify-center gap-2">
             <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-              <X className="w-3 h-3 text-white" />
+              <X className="w-3 h-3 text-neutral-0" />
             </div>
           </div>
         )}
         {permission !== 'full' && permission !== 'denied' && (
-          <span className="text-[14px] text-black/80 dark:text-white/80">
+          <span className="text-small text-foreground/80 dark:text-neutral-0/80">
             {option?.label || permission}
           </span>
         )}
-        <ChevronDown className="w-3 h-3 mx-auto mt-1 text-black/40 dark:text-white/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <ChevronDown className="w-3 h-3 mx-auto mt-1 text-muted-foreground dark:text-neutral-300/60 opacity-0 group-hover:opacity-100 transition-opacity" />
       </button>
     );
   };
@@ -216,36 +216,36 @@ export function UserTypeConfig() {
   return (
     <AdminLayout>
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
       <div className="mb-8">
         <button
           onClick={() => navigate('/admin/master-data')}
-          className="flex items-center gap-2 text-[14px] text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors mb-4"
+          className="flex items-center gap-2 text-small text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground dark:hover:text-neutral-0 transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Master Data Management
         </button>
-        <h1 className="text-[24px] tracking-tight text-black dark:text-white/95 mb-1">User Types</h1>
-        <p className="text-[14px] text-black/60 dark:text-white/60">Define user access types and configure module permissions.</p>
+        <h1 className="text-h2 tracking-tight text-foreground dark:text-neutral-0/95 mb-1">User Types</h1>
+        <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">Define user access types and configure module permissions.</p>
       </div>
 
       <div className="flex items-start justify-between mb-6">
-        <div className="bg-white/85 dark:bg-white/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[24px] p-6 min-w-[200px]">
-          <div className="text-[10px] font-bold tracking-[0.05em] text-black/40 dark:text-white/40 uppercase mb-2">
+        <div className="bg-card/85 dark:bg-card/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-6 min-w-[200px]">
+          <div className="text-caption font-medium tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60 uppercase mb-2">
             TOTAL TYPES
           </div>
-          <div className="text-[32px] font-bold text-black dark:text-white/95 mb-1">
+          <div className="text-h1 font-medium text-foreground dark:text-neutral-0/95 mb-1">
             {userTypes.length}
           </div>
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-[12px] text-[14px] font-medium transition-all flex items-center gap-2 shadow-sm"
+          className="px-6 py-2.5 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all flex items-center gap-2 shadow-sm"
         >
           <Plus className="w-4 h-4" />
           Add User Type
@@ -254,33 +254,33 @@ export function UserTypeConfig() {
 
       <div className="mb-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 dark:text-white/40" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
           <input
             type="text"
             placeholder="Search user types..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
+            className="w-full pl-10 pr-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700/50"
           />
         </div>
       </div>
 
-      <div className="bg-white/85 dark:bg-white/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[24px] overflow-hidden">
+      <div className="bg-card/85 dark:bg-card/[0.02] backdrop-blur-[40px] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] overflow-hidden">
         <div className="divide-y divide-black/5 dark:divide-white/5">
           {filteredUserTypes.map((userType) => (
             <div
               key={userType.id}
-              className="flex items-center gap-4 p-6 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+              className="flex items-center gap-4 p-6 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-colors"
             >
-              <div className="p-3 bg-indigo-500/10 rounded-[12px]">
+              <div className="p-3 bg-indigo-500/10 rounded-[var(--radius-card)]">
                 <UserCog className="w-5 h-5 text-indigo-500" />
               </div>
 
               <div className="flex-1">
-                <h3 className="text-[16px] font-medium text-black dark:text-white/95 mb-0.5">
+                <h3 className="text-[16px] font-medium text-foreground dark:text-neutral-0/95 mb-0.5">
                   {userType.name}
                 </h3>
-                <p className="text-[14px] text-black/60 dark:text-white/60">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                   {userType.description}
                 </p>
               </div>
@@ -288,15 +288,15 @@ export function UserTypeConfig() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleOpenModal(userType)}
-                  className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                  className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                 >
-                  <Edit2 className="w-4 h-4 text-black/40 dark:text-white/40" />
+                  <Edit2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                 </button>
                 <button
                   onClick={() => handleDelete(userType.id)}
-                  className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group"
+                  className="p-2 hover:bg-red-500/10 rounded-[var(--radius)] transition-colors group"
                 >
-                  <Trash2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                  <Trash2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                 </button>
               </div>
             </div>
@@ -306,22 +306,22 @@ export function UserTypeConfig() {
 
       {/* Add/Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white dark:bg-gray-900 rounded-[24px] p-8 w-full max-w-3xl shadow-2xl border border-black/10 dark:border-white/10 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/50 backdrop-blur-sm p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] p-8 w-full max-w-3xl shadow-2xl border border-black/10 dark:border-white/10 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-[20px] font-semibold text-black dark:text-white">
+                <h2 className="text-h3 font-medium text-foreground dark:text-neutral-0">
                   {editingUserType ? 'Edit User Type' : 'Add User Type'}
                 </h2>
-                <p className="text-[12px] text-black/60 dark:text-white/60 mt-1">
+                <p className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mt-1">
                   {modalStep === 'details' ? 'Step 1 of 2: Basic Details' : 'Step 2 of 2: Access Control'}
                 </p>
               </div>
               <button
                 onClick={handleCloseModal}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
               >
-                <X className="w-5 h-5 text-black/60 dark:text-white/60" />
+                <X className="w-5 h-5 text-neutral-700/80 dark:text-neutral-300/80" />
               </button>
             </div>
 
@@ -330,34 +330,34 @@ export function UserTypeConfig() {
               <>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-1.5">
+                    <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-1.5">
                       User Type Name *
                     </label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                      className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                       placeholder="e.g., Admin"
                     />
                     {formErrors.name && (
-                      <p className="mt-1 text-[12px] text-red-500">{formErrors.name}</p>
+                      <p className="mt-1 text-caption text-red-500">{formErrors.name}</p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-[12px] font-medium text-black/60 dark:text-white/60 mb-1.5">
+                    <label className="block text-caption font-medium text-neutral-700/80 dark:text-neutral-300/80 mb-1.5">
                       Description *
                     </label>
                     <textarea
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[12px] text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50 resize-none"
+                      className="w-full px-4 py-2.5 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50 resize-none"
                       rows={3}
                       placeholder="Describe the permissions and access level"
                     />
                     {formErrors.description && (
-                      <p className="mt-1 text-[12px] text-red-500">{formErrors.description}</p>
+                      <p className="mt-1 text-caption text-red-500">{formErrors.description}</p>
                     )}
                   </div>
                 </div>
@@ -365,7 +365,7 @@ export function UserTypeConfig() {
                 <div className="flex items-center gap-3 mt-6">
                   <button
                     onClick={handleCloseModal}
-                    className="flex-1 px-4 py-2.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white rounded-[12px] text-[14px] font-medium transition-all"
+                    className="flex-1 px-4 py-2.5 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all"
                   >
                     Cancel
                   </button>
@@ -375,7 +375,7 @@ export function UserTypeConfig() {
                         setModalStep('permissions');
                       }
                     }}
-                    className="flex-1 px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-[12px] text-[14px] font-medium transition-all shadow-sm"
+                    className="flex-1 px-4 py-2.5 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm"
                   >
                     Next: Configure Permissions
                   </button>
@@ -387,16 +387,16 @@ export function UserTypeConfig() {
             {modalStep === 'permissions' && (
               <>
                 <div className="space-y-4">
-                  <div className="bg-black/5 dark:bg-white/5 rounded-[12px] p-4 mb-4">
-                    <p className="text-[14px] text-black/80 dark:text-white/80">
-                      Configure access permissions for <span className="font-semibold">{formData.name}</span>
+                  <div className="bg-neutral-900/5 dark:bg-card/5 rounded-[var(--radius-card)] p-4 mb-4">
+                    <p className="text-small text-foreground/80 dark:text-neutral-0/80">
+                      Configure access permissions for <span className="font-medium">{formData.name}</span>
                     </p>
                   </div>
 
                   <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-2">
                     {MODULES.map(module => (
-                      <div key={module.id} className="flex items-center justify-between gap-4 p-3 bg-black/[0.02] dark:bg-white/[0.02] rounded-lg">
-                        <span className="text-[14px] font-medium text-black dark:text-white">
+                      <div key={module.id} className="flex items-center justify-between gap-4 p-3 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius)]">
+                        <span className="text-small font-medium text-foreground dark:text-neutral-0">
                           {module.name}
                         </span>
                         <select
@@ -405,7 +405,7 @@ export function UserTypeConfig() {
                             ...tempPermissions,
                             [module.id]: e.target.value as PermissionValue
                           })}
-                          className="px-3 py-2 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg text-[14px] text-black dark:text-white focus:outline-none focus:border-emerald-500/50"
+                          className="px-3 py-2 bg-card dark:bg-card/5 border border-black/10 dark:border-white/10 rounded-[var(--radius)] text-small text-foreground dark:text-neutral-0 focus:outline-none focus:border-primary-700/50"
                         >
                           {PERMISSION_OPTIONS.map(opt => (
                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -416,15 +416,15 @@ export function UserTypeConfig() {
                   </div>
 
                   {/* Permission Legend */}
-                  <div className="mt-4 p-4 bg-black/[0.02] dark:bg-white/[0.02] rounded-[12px]">
-                    <h4 className="text-[12px] font-bold tracking-[0.05em] text-black/60 dark:text-white/60 uppercase mb-2">
+                  <div className="mt-4 p-4 bg-neutral-900/[0.02] dark:bg-card/[0.02] rounded-[var(--radius-card)]">
+                    <h4 className="text-caption font-medium tracking-[0.05em] text-neutral-700/80 dark:text-neutral-300/80 uppercase mb-2">
                       Permission Types
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
                       {PERMISSION_OPTIONS.map(option => (
                         <div key={option.value} className="flex items-center gap-2">
                           <div className={`w-3 h-3 rounded-full ${option.color}`}></div>
-                          <span className="text-[12px] text-black/80 dark:text-white/80">{option.label}</span>
+                          <span className="text-caption text-foreground/80 dark:text-neutral-0/80">{option.label}</span>
                         </div>
                       ))}
                     </div>
@@ -434,13 +434,13 @@ export function UserTypeConfig() {
                 <div className="flex items-center gap-3 mt-6">
                   <button
                     onClick={() => setModalStep('details')}
-                    className="px-4 py-2.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white rounded-[12px] text-[14px] font-medium transition-all"
+                    className="px-4 py-2.5 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleSubmit}
-                    className="flex-1 px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-[12px] text-[14px] font-medium transition-all shadow-sm"
+                    className="flex-1 px-4 py-2.5 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] text-small font-medium transition-all shadow-sm"
                   >
                     {editingUserType ? 'Update User Type' : 'Create User Type'}
                   </button>

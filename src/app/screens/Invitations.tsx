@@ -230,9 +230,9 @@ export function Invitations() {
     <AdminLayout>
       {/* Success Message */}
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -252,7 +252,7 @@ export function Invitations() {
           {[
             { label: 'Total Invitations', value: invitations.length,                                               valueStyle: { color: 'var(--foreground)' } },
             { label: 'Invited',           value: invitations.filter(i => i.status === 'INVITED').length,           valueStyle: { color: '#E49B0F' } },
-            { label: 'Completed',         value: invitations.filter(i => i.status === 'COMPLETED').length,         valueStyle: { color: '#2A9D62' } },
+            { label: 'Completed',         value: invitations.filter(i => i.status === 'COMPLETED').length,         valueStyle: { color: '#1C75BC' } },
           ].map(({ label, value, valueStyle }) => (
             <div key={label} className="vybe-kpi-card">
               <div className="vybe-kpi-label">{label}</div>
@@ -380,7 +380,7 @@ export function Invitations() {
                   <td className="px-6 py-4">
                     <button
                       onClick={() => handleCopyLink(invitation.invitationLink)}
-                      className="text-[14px] text-emerald-500 hover:text-emerald-600 transition-colors underline"
+                      className="text-small text-primary-700 hover:text-primary-700 transition-colors underline"
                     >
                       {invitation.invitationLink}
                     </button>
@@ -390,17 +390,17 @@ export function Invitations() {
                       <button 
                         onClick={() => handleResend(invitation)}
                         disabled={invitation.status === 'COMPLETED'}
-                        className={`px-3 py-1.5 text-[12px] transition-colors ${
+                        className={`px-3 py-1.5 text-caption transition-colors ${
                           invitation.status === 'COMPLETED'
-                            ? 'text-black/30 dark:text-white/30 cursor-not-allowed'
-                            : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                            ? 'text-foreground/30 dark:text-neutral-0/30 cursor-not-allowed'
+                            : 'text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground dark:hover:text-neutral-0'
                         }`}
                       >
                         Resend
                       </button>
                       <button 
                         onClick={() => handleCancel(invitation.id)}
-                        className="px-3 py-1.5 text-[12px] text-black/60 dark:text-white/60 hover:text-red-500 transition-colors"
+                        className="px-3 py-1.5 text-caption text-neutral-700/80 dark:text-neutral-300/80 hover:text-red-500 transition-colors"
                       >
                         Cancel
                       </button>
@@ -418,11 +418,11 @@ export function Invitations() {
             Showing {sortedInvitations.length} of {invitations.length} invitations
           </div>
           <div className="flex items-center gap-2">
-            <button className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors disabled:opacity-30" disabled>
-              <ChevronDown className="w-4 h-4 rotate-90 text-black/60 dark:text-white/60" />
+            <button className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors disabled:opacity-30" disabled>
+              <ChevronDown className="w-4 h-4 rotate-90 text-neutral-700/80 dark:text-neutral-300/80" />
             </button>
-            <button className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors disabled:opacity-30" disabled>
-              <ChevronDown className="w-4 h-4 -rotate-90 text-black/60 dark:text-white/60" />
+            <button className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors disabled:opacity-30" disabled>
+              <ChevronDown className="w-4 h-4 -rotate-90 text-neutral-700/80 dark:text-neutral-300/80" />
             </button>
           </div>
         </div>
@@ -434,7 +434,7 @@ export function Invitations() {
           <div className="vybe-modal w-full">
             {/* Modal Header */}
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-semibold text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 Create Invitation
               </h2>
               <button
@@ -528,7 +528,7 @@ export function Invitations() {
                   setFormData({ firstName: '', lastName: '', email: '', phone: '' });
                   setFormErrors({ firstName: '', lastName: '', email: '', phone: '' });
                 }}
-                className="flex-1 px-4 h-[var(--button-height-desktop)] bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
+                className="flex-1 px-4 h-[var(--button-height-desktop)] bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
               >
                 Cancel
               </button>

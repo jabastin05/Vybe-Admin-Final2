@@ -15,30 +15,30 @@ export function NotFound() {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex items-center justify-center px-8">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 flex items-center justify-center px-8">
       <div className="max-w-md w-full text-center">
-        <div className="bg-white dark:bg-[#111111] rounded-3xl p-12 border border-black/[0.06] dark:border-white/[0.08] shadow-lg">
-          <div className="text-[72px] font-bold text-black/10 dark:text-white/10 mb-4">
+        <div className="bg-card rounded-[var(--radius-card)] p-12 border border-black/[0.06] dark:border-white/[0.08] shadow-lg">
+          <div className="text-[72px] font-medium text-foreground/10 dark:text-neutral-0/10 mb-4">
             404
           </div>
-          <h1 className="text-[24px] font-medium text-black dark:text-white mb-3">
+          <h1 className="text-h2 font-medium text-foreground dark:text-neutral-0 mb-3">
             Page Not Found
           </h1>
-          <p className="text-[14px] text-black/60 dark:text-white/60 mb-8">
+          <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-8">
             The page you're looking for doesn't exist. Redirecting to dashboard in 3 seconds...
           </p>
           
           <div className="flex flex-col gap-3">
             <button
               onClick={() => navigate('/dashboard')}
-              className="w-full px-6 py-3 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-500 text-white text-[14px] font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              className="w-full px-6 py-3 rounded-[var(--radius-card)] bg-gradient-to-br from-primary-700 to-green-500 text-neutral-0 text-small font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
               Go to Dashboard
             </button>
             <button
               onClick={() => navigate(-1)}
-              className="w-full px-6 py-3 rounded-2xl bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 text-[14px] font-medium hover:bg-black/10 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+              className="w-full px-6 py-3 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 text-foreground/70 dark:text-neutral-0/70 text-small font-medium hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-all flex items-center justify-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Go Back

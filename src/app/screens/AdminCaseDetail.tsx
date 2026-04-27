@@ -93,10 +93,10 @@ export function AdminCaseDetail() {
       <AdminLayout>
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center">
-            <h2 className="text-[24px] text-black dark:text-white mb-4">Case not found</h2>
+            <h2 className="text-h2 text-foreground dark:text-neutral-0 mb-4">Case not found</h2>
             <Link 
               to="/admin/cases"
-              className="text-emerald-500 hover:text-emerald-400 text-[14px] font-medium"
+              className="text-primary-700 hover:text-primary-600 text-small font-medium"
             >
               Back to Case Management
             </Link>
@@ -294,11 +294,11 @@ export function AdminCaseDetail() {
       case 'Property Service':
         return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
       case 'Lease & Rent':
-        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+        return 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20';
       case 'Sell or Liquidate':
         return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20';
       default:
-        return 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20';
+        return 'bg-neutral-500/10 text-neutral-500 dark:text-neutral-300 border-gray-500/20';
     }
   };
 
@@ -306,7 +306,7 @@ export function AdminCaseDetail() {
     <AdminLayout>
       {/* Success Message */}
       {successMessage && (
-        <div className="fixed top-4 right-4 z-50 bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+        <div className="fixed top-4 right-4 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
           <CheckCircle2 className="w-5 h-5" />
           {successMessage}
         </div>
@@ -316,8 +316,8 @@ export function AdminCaseDetail() {
       <div className="mb-8">
         <Link
           to="/admin/cases"
-          className="inline-flex items-center gap-2 text-[14px] text-black/60 dark:text-white/60
-                     hover:text-black dark:hover:text-white transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-small text-neutral-700/80 dark:text-neutral-300/80
+                     hover:text-foreground dark:hover:text-neutral-0 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Case Management
@@ -345,15 +345,15 @@ export function AdminCaseDetail() {
             {/* Chat Button */}
             <button
               onClick={() => navigate(`/admin/cases/${id}/chat`)}
-              className="flex items-center gap-2 h-[var(--button-height-desktop)] px-[var(--space-5)] bg-emerald-500 hover:opacity-90
-                         text-white rounded-[var(--radius-button)] transition-all text-small font-medium
-                         shadow-[0_4px_12px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.4)]
+              className="flex items-center gap-2 h-[var(--button-height-desktop)] px-[var(--space-5)] bg-primary-700 hover:opacity-90
+                         text-neutral-0 rounded-[var(--radius-button)] transition-all text-small font-medium
+                         shadow-[0_4px_12px_rgba(28,117,188,0.3)] hover:shadow-[0_6px_16px_rgba(28,117,188,0.4)]
                          relative"
             >
               <MessageCircle className="w-4 h-4" />
               Chat
               {caseItem.unreadMessages && caseItem.unreadMessages > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold 
+                <span className="absolute -top-1 -right-1 bg-red-500 text-neutral-0 text-caption font-medium 
                                rounded-full w-5 h-5 flex items-center justify-center
                                shadow-lg animate-pulse">
                   {caseItem.unreadMessages}
@@ -364,8 +364,8 @@ export function AdminCaseDetail() {
             {/* Status Badge */}
             <div className={`vybe-badge flex items-center gap-2 px-[var(--space-5)] rounded-[var(--radius-sm)] border ${
               caseItem.status === 'Open'
-                ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
-                : 'bg-black/5 dark:bg-white/5 text-black/60 dark:text-white/60 border-black/10 dark:border-white/10'
+                ? 'bg-primary-700/10 text-primary-700 dark:text-primary-400 border-primary-700/20'
+                : 'bg-neutral-900/5 dark:bg-card/5 text-neutral-700/80 dark:text-neutral-300/80 border-black/10 dark:border-white/10'
             }`}>
               {caseItem.status === 'Open' ? (
                 <Clock className="w-5 h-5" />
@@ -383,11 +383,11 @@ export function AdminCaseDetail() {
         <div className="grid grid-cols-2 gap-[var(--space-4)] mb-[var(--space-6)]">
           <button
             onClick={handleStatusChange}
-            className="px-[var(--space-6)] py-[var(--space-4)] vybe-card hover:bg-emerald-500/5 hover:border-emerald-500/20 transition-all"
+            className="px-[var(--space-6)] py-[var(--space-4)] vybe-card hover:bg-primary-700/5 hover:border-primary-700/20 transition-all"
           >
             <div className="flex items-center gap-[var(--space-3)]">
-              <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-emerald-500" />
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center">
+                <Clock className="w-5 h-5 text-primary-700" />
               </div>
               <div className="text-left">
                 <div className="text-caption text-muted-foreground uppercase tracking-wide">
@@ -405,7 +405,7 @@ export function AdminCaseDetail() {
             className="px-[var(--space-6)] py-[var(--space-4)] vybe-card hover:bg-purple-500/5 hover:border-purple-500/20 transition-all"
           >
             <div className="flex items-center gap-[var(--space-3)]">
-              <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-[var(--radius)] bg-purple-500/10 flex items-center justify-center">
                 <Users className="w-5 h-5 text-purple-500" />
               </div>
               <div className="text-left">
@@ -440,11 +440,11 @@ export function AdminCaseDetail() {
             <div className="hidden lg:block">
               <div className="relative flex items-start justify-between mb-4">
                 {/* Background Line */}
-                <div className="absolute top-[12px] left-0 right-0 h-[2px] bg-black/5 dark:bg-white/5" />
+                <div className="absolute top-[12px] left-0 right-0 h-[2px] bg-neutral-900/5 dark:bg-card/5" />
                 
                 {/* Progress Line */}
                 <div 
-                  className="absolute top-[12px] left-0 h-[2px] bg-black dark:bg-white transition-all duration-500"
+                  className="absolute top-[12px] left-0 h-[2px] bg-neutral-900 dark:bg-card transition-all duration-500"
                   style={{ width: `${caseItem.progress || 0}%` }}
                 />
 
@@ -460,27 +460,27 @@ export function AdminCaseDetail() {
                       className={`
                         relative z-10 w-6 h-6 rounded-full flex-shrink-0 transition-all duration-300 mb-3
                         ${milestone.status === 'completed'
-                          ? 'bg-black dark:bg-white shadow-lg'
-                          : 'bg-white dark:bg-[#111111] border-2 border-black/10 dark:border-white/10'
+                          ? 'bg-neutral-900 dark:bg-card shadow-lg'
+                          : 'bg-card border-2 border-black/10 dark:border-white/10'
                         }
                       `}
                     >
                       {milestone.status === 'completed' && (
-                        <CheckCircle2 className="w-full h-full p-1 text-white dark:text-black" />
+                        <CheckCircle2 className="w-full h-full p-1 text-neutral-0 dark:text-foreground" />
                       )}
                     </div>
 
                     {/* Label */}
                     <div className="text-center px-2">
-                      <div className={`text-[12px] font-medium mb-1 ${
+                      <div className={`text-caption font-medium mb-1 ${
                         milestone.status === 'completed'
-                          ? 'text-black dark:text-white'
-                          : 'text-black/40 dark:text-white/40'
+                          ? 'text-foreground dark:text-neutral-0'
+                          : 'text-muted-foreground dark:text-neutral-300/60'
                       }`}>
                         {milestone.title}
                       </div>
                       {milestone.date && (
-                        <div className="text-[10px] text-black/40 dark:text-white/40">
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                           {milestone.date}
                         </div>
                       )}
@@ -496,7 +496,7 @@ export function AdminCaseDetail() {
                 <div key={milestone.id} className="relative flex items-start gap-4">
                   {/* Timeline Line */}
                   {index !== caseItem.milestones!.length - 1 && (
-                    <div className="absolute left-[11px] top-[28px] bottom-[-16px] w-[2px] bg-black/5 dark:bg-white/5" />
+                    <div className="absolute left-[11px] top-[28px] bottom-[-16px] w-[2px] bg-neutral-900/5 dark:bg-card/5" />
                   )}
 
                   {/* Status Circle */}
@@ -504,27 +504,27 @@ export function AdminCaseDetail() {
                     className={`
                       relative z-10 w-6 h-6 rounded-full flex-shrink-0 transition-all duration-300
                       ${milestone.status === 'completed'
-                        ? 'bg-black dark:bg-white shadow-lg'
-                        : 'bg-white dark:bg-[#111111] border-2 border-black/10 dark:border-white/10'
+                        ? 'bg-neutral-900 dark:bg-card shadow-lg'
+                        : 'bg-card border-2 border-black/10 dark:border-white/10'
                       }
                     `}
                   >
                     {milestone.status === 'completed' && (
-                      <CheckCircle2 className="w-full h-full p-1 text-white dark:text-black" />
+                      <CheckCircle2 className="w-full h-full p-1 text-neutral-0 dark:text-foreground" />
                     )}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 pb-4">
-                    <div className={`text-[13px] font-medium mb-1 ${
+                    <div className={`text-small font-medium mb-1 ${
                       milestone.status === 'completed'
-                        ? 'text-black dark:text-white'
-                        : 'text-black/40 dark:text-white/40'
+                        ? 'text-foreground dark:text-neutral-0'
+                        : 'text-muted-foreground dark:text-neutral-300/60'
                     }`}>
                       {milestone.title}
                     </div>
                     {milestone.date && (
-                      <div className="text-[11px] text-black/40 dark:text-white/40">
+                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60">
                         {milestone.date}
                       </div>
                     )}
@@ -552,25 +552,25 @@ export function AdminCaseDetail() {
                 <div key={change.id} className="relative flex gap-4">
                   {/* Timeline Line */}
                   {index !== caseItem.statusHistory!.length - 1 && (
-                    <div className="absolute left-[11px] top-[28px] bottom-[-16px] w-[2px] bg-black/5 dark:bg-white/5" />
+                    <div className="absolute left-[11px] top-[28px] bottom-[-16px] w-[2px] bg-neutral-900/5 dark:bg-card/5" />
                   )}
                   
                   {/* Icon */}
-                  <div className="relative z-10 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="relative z-10 w-6 h-6 rounded-full bg-primary-700 flex items-center justify-center flex-shrink-0 mt-0.5">
                     {change.changeType === 'status' && (
-                      <Clock className="w-3 h-3 text-white" />
+                      <Clock className="w-3 h-3 text-neutral-0" />
                     )}
                     {change.changeType === 'partner-assignment' && (
-                      <Users className="w-3 h-3 text-white" />
+                      <Users className="w-3 h-3 text-neutral-0" />
                     )}
                     {change.changeType === 'document-upload' && (
-                      <Upload className="w-3 h-3 text-white" />
+                      <Upload className="w-3 h-3 text-neutral-0" />
                     )}
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1 pb-[var(--space-4)]">
-                    <div className="bg-muted border border-border rounded-xl p-[var(--space-4)]">
+                    <div className="bg-muted border border-border rounded-[var(--radius-card)] p-[var(--space-4)]">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           {change.changeType === 'status' && (
@@ -599,7 +599,7 @@ export function AdminCaseDetail() {
                           </div>
                         </div>
                         
-                        <div className={`px-[var(--space-3)] py-1 rounded-lg text-caption font-medium ${
+                        <div className={`px-[var(--space-3)] py-1 rounded-[var(--radius)] text-caption font-medium ${
                           change.changedBy === 'admin'
                             ? 'vybe-badge-purple'
                             : 'vybe-badge-blue'
@@ -621,8 +621,8 @@ export function AdminCaseDetail() {
               ))
           ) : (
             <div className="flex items-start gap-[var(--space-3)]">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                <Calendar className="w-4 h-4 text-emerald-500" />
+              <div className="w-8 h-8 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                <Calendar className="w-4 h-4 text-primary-700" />
               </div>
               <div>
                 <div className="text-small text-foreground font-medium mb-1">
@@ -644,12 +644,12 @@ export function AdminCaseDetail() {
           {/* Show case closed if applicable */}
           {caseItem.dateClosed && (
             <div className="relative flex gap-[var(--space-4)]">
-              <div className="relative z-10 w-6 h-6 rounded-full bg-black dark:bg-white flex items-center justify-center flex-shrink-0 mt-0.5">
-                <CheckCircle2 className="w-3 h-3 text-white dark:text-black" />
+              <div className="relative z-10 w-6 h-6 rounded-full bg-neutral-900 dark:bg-card flex items-center justify-center flex-shrink-0 mt-0.5">
+                <CheckCircle2 className="w-3 h-3 text-neutral-0 dark:text-foreground" />
               </div>
 
               <div className="flex-1">
-                <div className="bg-muted border border-border rounded-xl p-[var(--space-4)]">
+                <div className="bg-muted border border-border rounded-[var(--radius-card)] p-[var(--space-4)]">
                   <div className="text-small font-medium text-foreground mb-1">
                     Case Closed
                   </div>
@@ -804,12 +804,12 @@ export function AdminCaseDetail() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-4)]">
             {caseDocuments.map((doc) => (
-              <div key={doc.id} className="relative group bg-muted border border-border rounded-[var(--radius)] p-[var(--space-4)] hover:border-emerald-500/30 transition-all">
+              <div key={doc.id} className="relative group bg-muted border border-border rounded-[var(--radius)] p-[var(--space-4)] hover:border-primary-700/30 transition-all">
                 <div className="flex items-start gap-[var(--space-3)]">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                  <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0 ${
                     doc.status === 'requested'
                       ? 'bg-amber-500/10 text-amber-500'
-                      : 'bg-emerald-500/10 text-emerald-500'
+                      : 'bg-primary-700/10 text-primary-700'
                   }`}>
                     <FileText className="w-5 h-5" />
                   </div>
@@ -826,14 +826,14 @@ export function AdminCaseDetail() {
                       </div>
                     )}
                     <div className="mt-[var(--space-3)] flex items-center justify-between gap-2">
-                      <span className="vybe-badge vybe-badge-green inline-flex items-center px-2 py-0.5 rounded-[var(--radius-sm)] text-caption font-bold uppercase tracking-wider">
+                      <span className="vybe-badge vybe-badge-green inline-flex items-center px-2 py-0.5 rounded-[var(--radius-sm)] text-caption font-medium uppercase tracking-wider">
                         {doc.status || 'uploaded'}
                       </span>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => doc.dataUrl && window.open(doc.dataUrl, '_blank')}
                           disabled={!doc.dataUrl}
-                          className="p-2 rounded-lg border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500/30 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="p-2 rounded-[var(--radius)] border border-border text-muted-foreground hover:text-primary-700 hover:border-primary-700/30 disabled:opacity-40 disabled:cursor-not-allowed"
                           aria-label={`Preview ${doc.name}`}
                         >
                           <Eye className="w-4 h-4" />
@@ -841,7 +841,7 @@ export function AdminCaseDetail() {
                         <button
                           onClick={() => handleDocumentDownload(doc.name, doc.dataUrl)}
                           disabled={!doc.dataUrl}
-                          className="p-2 rounded-lg border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500/30 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="p-2 rounded-[var(--radius)] border border-border text-muted-foreground hover:text-primary-700 hover:border-primary-700/30 disabled:opacity-40 disabled:cursor-not-allowed"
                           aria-label={`Download ${doc.name}`}
                         >
                           <Download className="w-4 h-4" />
@@ -1038,7 +1038,7 @@ export function AdminCaseDetail() {
                         onClick={() => setNewPartnerName(name)}
                         className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
                           newPartnerName === name
-                            ? 'border-emerald-500 bg-emerald-500/5'
+                            ? 'border-primary-700 bg-primary-700/5'
                             : 'border-border hover:bg-accent'
                         }`}
                       >
@@ -1050,7 +1050,7 @@ export function AdminCaseDetail() {
                             {/* City coverage chips */}
                             <div className="flex flex-wrap gap-1 mb-1.5">
                               {provider.cityCoverage.map(city => (
-                                <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-caption font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                                   {city}
                                 </span>
                               ))}
@@ -1058,21 +1058,21 @@ export function AdminCaseDetail() {
 
                             {/* Case load bar */}
                             <div className="flex items-center gap-2">
-                              <div className="h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ width: 80 }}>
+                              <div className="h-1.5 bg-neutral-900/10 dark:bg-card/10 rounded-full overflow-hidden" style={{ width: 80 }}>
                                 <div
-                                  className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                  className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-primary-700'}`}
                                   style={{ width: `${Math.min((currentLoad / provider.maxCaseload) * 100, 100)}%` }}
                                 />
                               </div>
-                              <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                              <span className={`text-caption font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
                                 {currentLoad}/{provider.maxCaseload} cases{isFull ? ' · Full' : ''}
                               </span>
                             </div>
                           </div>
 
                           {newPartnerName === name && (
-                            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <CheckCircle2 className="w-3 h-3 text-white" />
+                            <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle2 className="w-3 h-3 text-neutral-0" />
                             </div>
                           )}
                         </div>
@@ -1081,8 +1081,8 @@ export function AdminCaseDetail() {
                   })}
               </div>
 
-              <div className="p-[var(--space-4)] bg-emerald-500/5 border border-emerald-500/20 rounded-[var(--radius)]">
-                <p className="text-caption text-emerald-600 dark:text-emerald-400">
+              <div className="p-[var(--space-4)] bg-primary-700/5 border border-primary-700/20 rounded-[var(--radius)]">
+                <p className="text-caption text-primary-700 dark:text-primary-400">
                   Note: Assigning a service provider will automatically update the case status to &quot;Partner assigned&quot;
                 </p>
               </div>

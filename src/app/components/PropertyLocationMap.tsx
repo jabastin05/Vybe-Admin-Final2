@@ -107,11 +107,11 @@ export function PropertyLocationMap({ latitude, longitude, onLocationSelect }: P
       />
       
       {/* Instruction Overlay */}
-      <div className="absolute top-4 left-4 right-4 bg-white/95 dark:bg-black/95 backdrop-blur-md 
-                      border border-black/10 dark:border-white/10 rounded-lg px-4 py-2.5 
+      <div className="absolute top-4 left-4 right-4 bg-card/95 dark:bg-neutral-900/95 backdrop-blur-md 
+                      border border-black/10 dark:border-white/10 rounded-[var(--radius)] px-4 py-2.5 
                       shadow-lg pointer-events-none z-[1000]">
-        <p className="text-[12px] text-black/70 dark:text-white/70 flex items-center gap-2">
-          <span className="text-emerald-500 text-[14px]">📍</span>
+        <p className="text-caption text-foreground/70 dark:text-neutral-0/70 flex items-center gap-2">
+          <span className="text-primary-700 text-small">📍</span>
           Click anywhere on the map to set property location
         </p>
       </div>

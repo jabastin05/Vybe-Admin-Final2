@@ -75,25 +75,25 @@ export function HelpSupport() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header */}
-      <div className="border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A]">
+      <div className="border-b border-black/5 dark:border-white/10 bg-card dark:bg-neutral-900">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
               <Link 
                 to="/settings"
-                className="inline-flex items-center gap-2 text-[12px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-2 hover:text-black/60 dark:hover:text-white/60 transition-colors"
+                className="inline-flex items-center gap-2 text-caption tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-2 hover:text-neutral-700/80 dark:hover:text-neutral-300/80 transition-colors"
               >
                 <ArrowLeft className="w-3 h-3" />
                 Back to Settings
               </Link>
-              <div className="text-[32px] tracking-tight text-black dark:text-white">
+              <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">
                 Help & Support
               </div>
-              <p className="text-[14px] text-black/50 dark:text-white/50 mt-1">
+              <p className="text-small text-muted-foreground dark:text-neutral-0/50 mt-1">
                 Get help and find answers to common questions
               </p>
             </div>
@@ -108,38 +108,38 @@ export function HelpSupport() {
           {/* Contact Cards - Left Column */}
           <div className="lg:col-span-1 space-y-6">
             {/* Contact Us Card */}
-            <div className="rounded-[24px] bg-white/80 dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+            <div className="rounded-[var(--radius-card)] bg-card/80 dark:bg-neutral-900 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 dark:bg-emerald-500/10 flex items-center justify-center">
-                  <HeadphonesIcon className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                <div className="w-12 h-12 rounded-[var(--radius-card)] bg-primary-700/20 dark:bg-primary-700/10 flex items-center justify-center">
+                  <HeadphonesIcon className="w-6 h-6 text-primary-700 dark:text-primary-400" />
                 </div>
                 <div>
-                  <div className="text-[20px] tracking-tight font-medium text-black dark:text-white">
+                  <div className="text-h3 tracking-tight font-medium text-foreground dark:text-neutral-0">
                     Contact Us
                   </div>
-                  <div className="text-[13px] text-black/60 dark:text-white/60">
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                     We're here to help
                   </div>
                 </div>
               </div>
 
               {/* Email */}
-              <div className="mb-4 p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] border border-black/5 dark:border-white/5 backdrop-blur-sm">
+              <div className="mb-4 p-4 rounded-[var(--radius-card)] bg-card/60 dark:bg-card/[0.05] border border-black/5 dark:border-white/5 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-primary-700 dark:text-primary-400" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[11px] tracking-[0.05em] uppercase font-bold text-[#8E8E93] mb-1">
+                    <div className="text-caption tracking-[0.05em] uppercase font-medium text-neutral-500 mb-1">
                       Email Support
                     </div>
                     <a 
                       href="mailto:support@vybe.in"
-                      className="text-[14px] font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors break-all"
+                      className="text-small font-medium text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors break-all"
                     >
                       support@vybe.in
                     </a>
-                    <div className="text-[12px] text-black/50 dark:text-white/50 mt-1">
+                    <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-1">
                       24-48 hour response time
                     </div>
                   </div>
@@ -147,22 +147,22 @@ export function HelpSupport() {
               </div>
 
               {/* Phone */}
-              <div className="p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] border border-black/5 dark:border-white/5 backdrop-blur-sm">
+              <div className="p-4 rounded-[var(--radius-card)] bg-card/60 dark:bg-card/[0.05] border border-black/5 dark:border-white/5 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-primary-700 dark:text-primary-400" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-[11px] tracking-[0.05em] uppercase font-bold text-[#8E8E93] mb-1">
+                    <div className="text-caption tracking-[0.05em] uppercase font-medium text-neutral-500 mb-1">
                       Phone Support
                     </div>
                     <a 
                       href="tel:+918047182000"
-                      className="text-[14px] font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors font-mono"
+                      className="text-small font-medium text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors font-mono"
                     >
                       +91 80471 82000
                     </a>
-                    <div className="text-[12px] text-black/50 dark:text-white/50 mt-1">
+                    <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-1">
                       Mon-Fri, 9:00 AM - 6:00 PM IST
                     </div>
                   </div>
@@ -171,44 +171,44 @@ export function HelpSupport() {
             </div>
 
             {/* Resources Card */}
-            <div className="rounded-[24px] bg-white/80 dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-6 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+            <div className="rounded-[var(--radius-card)] bg-card/80 dark:bg-neutral-900 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-6 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
               <div className="flex items-center gap-2 mb-4">
-                <BookOpen className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                <div className="text-[16px] font-medium text-black dark:text-white">
+                <BookOpen className="w-5 h-5 text-primary-700 dark:text-primary-400" />
+                <div className="text-[16px] font-medium text-foreground dark:text-neutral-0">
                   Helpful Resources
                 </div>
               </div>
               <div className="space-y-2">
                 <a 
                   href="#" 
-                  className="block p-3 rounded-lg hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
+                  className="block p-3 rounded-[var(--radius)] hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-colors group"
                 >
-                  <div className="text-[13px] font-medium text-black dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">
                     Getting Started Guide
                   </div>
-                  <div className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+                  <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-0.5">
                     Learn the basics of VYBE
                   </div>
                 </a>
                 <a 
                   href="#" 
-                  className="block p-3 rounded-lg hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
+                  className="block p-3 rounded-[var(--radius)] hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-colors group"
                 >
-                  <div className="text-[13px] font-medium text-black dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">
                     Video Tutorials
                   </div>
-                  <div className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+                  <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-0.5">
                     Watch step-by-step guides
                   </div>
                 </a>
                 <a 
                   href="#" 
-                  className="block p-3 rounded-lg hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
+                  className="block p-3 rounded-[var(--radius)] hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-colors group"
                 >
-                  <div className="text-[13px] font-medium text-black dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">
                     API Documentation
                   </div>
-                  <div className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+                  <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-0.5">
                     For developers
                   </div>
                 </a>
@@ -218,24 +218,24 @@ export function HelpSupport() {
 
           {/* FAQ Section - Right Column */}
           <div className="lg:col-span-2">
-            <div className="rounded-[24px] bg-white/80 dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+            <div className="rounded-[var(--radius-card)] bg-card/80 dark:bg-neutral-900 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] p-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
               {/* FAQ Header */}
               <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                <div className="text-[24px] tracking-tight font-medium text-black dark:text-white">
+                <MessageSquare className="w-6 h-6 text-primary-700 dark:text-primary-400" />
+                <div className="text-h2 tracking-tight font-medium text-foreground dark:text-neutral-0">
                   Frequently Asked Questions
                 </div>
               </div>
 
               {/* Search Bar */}
               <div className="mb-6 relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 dark:text-white/40" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                 <input
                   type="text"
                   placeholder="Search questions..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white dark:bg-white/[0.02] border border-black/[0.08] dark:border-white/[0.08] rounded-xl pl-11 pr-4 py-3 text-[14px] text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full bg-card dark:bg-card/[0.02] border border-black/[0.08] dark:border-white/[0.08] rounded-[var(--radius-card)] pl-11 pr-4 py-3 text-small text-foreground dark:text-neutral-0 placeholder:text-muted-foreground dark:placeholder:text-neutral-300/60 focus:outline-none focus:border-primary-700 transition-all"
                 />
               </div>
 
@@ -245,10 +245,10 @@ export function HelpSupport() {
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
-                    className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all ${
+                    className={`px-4 py-2 rounded-[var(--radius)] text-small font-medium transition-all ${
                       selectedCategory === category.id
-                        ? 'bg-emerald-500 text-white shadow-[0_2px_8px_rgba(16,185,129,0.3)]'
-                        : 'bg-black/[0.02] dark:bg-white/[0.02] text-black/60 dark:text-white/60 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:text-black dark:hover:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_2px_8px_rgba(28,117,188,0.3)]'
+                        : 'bg-neutral-900/[0.02] dark:bg-card/[0.02] text-neutral-700/80 dark:text-neutral-300/80 hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] hover:text-foreground dark:hover:text-neutral-0'
                     }`}
                   >
                     {category.label}
@@ -262,29 +262,29 @@ export function HelpSupport() {
                   {filteredFAQs.map((faq) => (
                     <div
                       key={faq.id}
-                      className="rounded-xl bg-white/60 dark:bg-white/[0.02] border border-black/5 dark:border-white/5 overflow-hidden transition-all hover:border-emerald-500/30"
+                      className="rounded-[var(--radius-card)] bg-card/60 dark:bg-card/[0.02] border border-black/5 dark:border-white/5 overflow-hidden transition-all hover:border-primary-700/30"
                     >
                       <button
                         onClick={() => toggleFAQ(faq.id)}
-                        className="w-full flex items-start justify-between gap-4 p-5 text-left transition-colors hover:bg-black/[0.01] dark:hover:bg-white/[0.01]"
+                        className="w-full flex items-start justify-between gap-4 p-5 text-left transition-colors hover:bg-neutral-900/[0.01] dark:hover:bg-card/[0.01]"
                       >
                         <div className="flex-1">
-                          <div className="text-[14px] font-medium text-black dark:text-white">
+                          <div className="text-small font-medium text-foreground dark:text-neutral-0">
                             {faq.question}
                           </div>
                         </div>
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-700/10 flex items-center justify-center">
                           {expandedFAQ === faq.id ? (
-                            <ChevronUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                            <ChevronUp className="w-4 h-4 text-primary-700 dark:text-primary-400" />
                           ) : (
-                            <ChevronDown className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                            <ChevronDown className="w-4 h-4 text-primary-700 dark:text-primary-400" />
                           )}
                         </div>
                       </button>
                       
                       {expandedFAQ === faq.id && (
                         <div className="px-5 pb-5 pt-0">
-                          <div className="text-[14px] text-black/70 dark:text-white/70 leading-relaxed border-t border-black/5 dark:border-white/5 pt-4">
+                          <div className="text-small text-foreground/70 dark:text-neutral-0/70 leading-relaxed border-t border-black/5 dark:border-white/5 pt-4">
                             {faq.answer}
                           </div>
                         </div>
@@ -294,10 +294,10 @@ export function HelpSupport() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
-                    <Search className="w-8 h-8 text-black/40 dark:text-white/40" />
+                  <div className="w-16 h-16 rounded-full bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-8 h-8 text-muted-foreground dark:text-neutral-300/60" />
                   </div>
-                  <p className="text-[14px] text-black/60 dark:text-white/60">
+                  <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                     No questions found matching your search.
                   </p>
                   <button
@@ -305,7 +305,7 @@ export function HelpSupport() {
                       setSearchQuery('');
                       setSelectedCategory('all');
                     }}
-                    className="mt-4 px-4 py-2 text-[13px] font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                    className="mt-4 px-4 py-2 text-small font-medium text-primary-700 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
                   >
                     Clear filters
                   </button>
@@ -315,12 +315,12 @@ export function HelpSupport() {
               {/* Still Need Help */}
               <div className="mt-8 pt-6 border-t border-black/5 dark:border-white/5">
                 <div className="text-center">
-                  <div className="text-[14px] text-black/60 dark:text-white/60 mb-3">
+                  <div className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3">
                     Still need help? We're here for you.
                   </div>
                   <a
                     href="mailto:support@vybe.in"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-all text-[14px] font-medium shadow-[0_4px_12px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.4)]"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] transition-all text-small font-medium shadow-[0_4px_12px_rgba(28,117,188,0.3)] hover:shadow-[0_6px_16px_rgba(28,117,188,0.4)]"
                   >
                     <Mail className="w-4 h-4" />
                     Contact Support

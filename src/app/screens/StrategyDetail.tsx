@@ -11,7 +11,7 @@ export function StrategyDetail() {
   const strategy = mockStrategies.find(s => s.id === strategyId);
 
   if (!property || !strategy) {
-    return <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex items-center justify-center text-black/40 dark:text-white/40">Not found</div>;
+    return <div className="min-h-screen bg-background dark:bg-neutral-900 flex items-center justify-center text-muted-foreground dark:text-neutral-300/60">Not found</div>;
   }
 
   const assumptions = [
@@ -46,27 +46,27 @@ export function StrategyDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Main Content with equal padding for side nav */}
       <div className="px-8">
         {/* Header */}
-        <div className="border-b border-black/5 dark:border-white/5 bg-white dark:bg-black/40">
+        <div className="border-b border-black/5 dark:border-white/5 bg-card dark:bg-neutral-900/40">
           <div className="max-w-7xl mx-auto px-8 py-6">
-            <Link to={`/property/${id}/habu`} className="inline-flex items-center gap-2 text-black/40 dark:text-white/40 hover:text-black/60 dark:hover:text-white/60 transition-colors text-[14px] mb-4">
+            <Link to={`/property/${id}/habu`} className="inline-flex items-center gap-2 text-muted-foreground dark:text-neutral-300/60 hover:text-neutral-700/80 dark:hover:text-neutral-300/80 transition-colors text-small mb-4">
               <ArrowLeft className="w-4 h-4" />
               Back to HABU Report
             </Link>
             <div className="flex items-start justify-between">
               <div>
-                <div className="text-[12px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-2">
+                <div className="text-caption tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                   Strategy Analysis
                 </div>
-                <div className="text-[32px] tracking-tight text-black dark:text-white/95 mb-2">
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0/95 mb-2">
                   {strategy.name}
                 </div>
-                <p className="text-[14px] text-black/50 dark:text-white/50 max-w-2xl">
+                <p className="text-small text-muted-foreground dark:text-neutral-0/50 max-w-2xl">
                   {strategy.description}
                 </p>
               </div>
@@ -74,7 +74,7 @@ export function StrategyDetail() {
                 <ThemeToggle />
                 <Link
                   to={`/property/${id}/partner`}
-                  className="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-md hover:bg-black/90 dark:hover:bg-white/90 transition-colors text-[14px] tracking-wide"
+                  className="inline-flex items-center gap-2 bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground px-6 py-3 rounded-[var(--radius)] hover:bg-neutral-900/90 dark:hover:bg-card/90 transition-colors text-small tracking-wide"
                 >
                   Proceed with Strategy
                   <ArrowRight className="w-4 h-4" />
@@ -86,8 +86,8 @@ export function StrategyDetail() {
 
         <div className="max-w-7xl mx-auto px-8 py-12">
           {/* Financial Projections */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10 mb-6">
-            <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10 mb-6">
+            <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
               Financial Projections
             </h3>
             <div className="h-80 w-full">
@@ -135,8 +135,8 @@ export function StrategyDetail() {
 
           {/* Sensitivity Analysis */}
           <div className="grid grid-cols-2 gap-6 mb-6">
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10">
-              <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10">
+              <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
                 Sensitivity Analysis
               </h3>
               <div className="h-64 w-full">
@@ -168,15 +168,15 @@ export function StrategyDetail() {
             </div>
 
             {/* Key Assumptions */}
-            <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10">
-              <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+            <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10">
+              <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
                 Key Assumptions
               </h3>
               <div className="space-y-3">
                 {assumptions.map((assumption, index) => (
                   <div key={index} className="flex items-start gap-3 py-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                    <p className="text-[13px] text-black/70 dark:text-white/70 leading-relaxed">{assumption}</p>
+                    <p className="text-small text-foreground/70 dark:text-neutral-0/70 leading-relaxed">{assumption}</p>
                   </div>
                 ))}
               </div>
@@ -184,8 +184,8 @@ export function StrategyDetail() {
           </div>
 
           {/* Risk Breakdown */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10 mb-6">
-            <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8 flex items-center gap-2">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10 mb-6">
+            <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" />
               Risk Analysis & Mitigation
             </h3>
@@ -194,15 +194,15 @@ export function StrategyDetail() {
                 <div key={index}>
                   <div className="flex items-center justify-between mb-3">
                     <div>
-                      <div className="text-[14px] text-black/95 dark:text-white/95 mb-1">{risk.category}</div>
-                      <div className="text-[12px] text-black/50 dark:text-white/50">{risk.mitigation}</div>
+                      <div className="text-small text-foreground/95 dark:text-neutral-0/95 mb-1">{risk.category}</div>
+                      <div className="text-caption text-muted-foreground dark:text-neutral-0/50">{risk.mitigation}</div>
                     </div>
-                    <div className="text-[14px] text-black/70 dark:text-white/70">{risk.score}%</div>
+                    <div className="text-small text-foreground/70 dark:text-neutral-0/70">{risk.score}%</div>
                   </div>
-                  <div className="h-2 rounded-full bg-black/5 dark:bg-white/5 overflow-hidden">
+                  <div className="h-2 rounded-full bg-neutral-900/5 dark:bg-card/5 overflow-hidden">
                     <div
                       className={`h-full ${
-                        risk.score < 25 ? 'bg-emerald-500' : 
+                        risk.score < 25 ? 'bg-primary-700' : 
                         risk.score < 40 ? 'bg-yellow-500' : 
                         'bg-red-500'
                       }`}
@@ -215,22 +215,22 @@ export function StrategyDetail() {
           </div>
 
           {/* Execution Roadmap */}
-          <div className="bg-white dark:bg-[#111111] border border-black/5 dark:border-white/5 rounded-lg p-10 mb-6">
-            <h3 className="text-[14px] tracking-wider uppercase text-black/40 dark:text-white/40 mb-8">
+          <div className="bg-card border border-black/5 dark:border-white/5 rounded-[var(--radius)] p-10 mb-6">
+            <h3 className="text-small tracking-wider uppercase text-muted-foreground dark:text-neutral-300/60 mb-8">
               Execution Roadmap
             </h3>
             <div className="space-y-4">
               {milestones.map((milestone, index) => (
                 <div key={index} className="flex items-center gap-6 py-3">
-                  <div className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-[12px] text-black/50 dark:text-white/50 flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center text-caption text-muted-foreground dark:text-neutral-0/50 flex-shrink-0">
                     {index + 1}
                   </div>
                   <div className="flex-1">
-                    <div className="text-[14px] text-black/95 dark:text-white/95 mb-1">{milestone.phase}</div>
-                    <div className="text-[12px] text-black/40 dark:text-white/40">{milestone.duration}</div>
+                    <div className="text-small text-foreground/95 dark:text-neutral-0/95 mb-1">{milestone.phase}</div>
+                    <div className="text-caption text-muted-foreground dark:text-neutral-300/60">{milestone.duration}</div>
                   </div>
-                  <div className="h-1 w-32 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
-                    <div className={`h-full ${milestone.status === 'completed' ? 'bg-emerald-500 w-full' : 'bg-blue-500 w-0'}`} />
+                  <div className="h-1 w-32 bg-neutral-900/5 dark:bg-card/5 rounded-full overflow-hidden">
+                    <div className={`h-full ${milestone.status === 'completed' ? 'bg-primary-700 w-full' : 'bg-blue-500 w-0'}`} />
                   </div>
                 </div>
               ))}
@@ -238,29 +238,29 @@ export function StrategyDetail() {
           </div>
 
           {/* AI Rationale */}
-          <div className="bg-blue-500/5 border border-blue-500/10 rounded-lg p-10">
+          <div className="bg-blue-500/5 border border-blue-500/10 rounded-[var(--radius)] p-10">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-[var(--radius)] bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                 <Info className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h3 className="text-[16px] tracking-tight text-black/95 dark:text-white/95 mb-3">
+                <h3 className="text-[16px] tracking-tight text-foreground/95 dark:text-neutral-0/95 mb-3">
                   Why This Strategy?
                 </h3>
-                <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed mb-4">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed mb-4">
                   Our AI analysis identified this strategy as optimal based on several key factors:
                 </p>
                 <ul className="space-y-2">
-                  <li className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed flex items-start gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <li className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed flex items-start gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary-600 mt-0.5 flex-shrink-0" />
                     <span>Strong market demand for Grade-A office space in this micro-market, with 92% occupancy rates</span>
                   </li>
-                  <li className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed flex items-start gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <li className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed flex items-start gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary-600 mt-0.5 flex-shrink-0" />
                     <span>Favorable regulatory environment with fast-track approval process for commercial projects</span>
                   </li>
-                  <li className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed flex items-start gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <li className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed flex items-start gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary-600 mt-0.5 flex-shrink-0" />
                     <span>Lower execution risk compared to mixed-use, with proven contractor track record</span>
                   </li>
                 </ul>

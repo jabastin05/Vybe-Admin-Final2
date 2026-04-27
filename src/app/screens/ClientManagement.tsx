@@ -350,9 +350,9 @@ export function ClientManagement() {
     <AdminLayout>
       {/* Success Message */}
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2 animate-in slide-in-from-top">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -361,7 +361,7 @@ export function ClientManagement() {
         <div className="vybe-modal-overlay flex items-center justify-center p-4">
           <div className="vybe-modal w-full">
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-medium text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 Assign Relationship Manager
               </h2>
               <button
@@ -406,7 +406,7 @@ export function ClientManagement() {
                           onClick={() => setSelectedRM(rm.id)}
                           className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
                             selectedRM === rm.id
-                              ? 'border-emerald-500 bg-emerald-500/5'
+                              ? 'border-primary-700 bg-primary-700/5'
                               : 'border-border hover:bg-muted'
                           }`}
                         >
@@ -421,27 +421,27 @@ export function ClientManagement() {
                               {/* City Coverage */}
                               <div className="flex flex-wrap gap-1 mb-1.5">
                                 {rm.cityCoverage.map(city => (
-                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-caption font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                                     {city}
                                   </span>
                                 ))}
                               </div>
                               {/* Case Load */}
                               <div className="flex items-center gap-2">
-                                <div className="flex-1 h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
+                                <div className="flex-1 h-1.5 bg-neutral-900/10 dark:bg-card/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
                                   <div
-                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-primary-700'}`}
                                     style={{ width: `${Math.min((rm.currentCaseload / rm.maxCaseload) * 100, 100)}%` }}
                                   />
                                 </div>
-                                <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                                <span className={`text-caption font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
                                   {rm.currentCaseload}/{rm.maxCaseload} cases{isFull ? ' (Full)' : ''}
                                 </span>
                               </div>
                             </div>
                             {selectedRM === rm.id && (
-                              <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center ml-3 flex-shrink-0">
-                                <CheckCircle className="w-3 h-3 text-white" />
+                              <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center ml-3 flex-shrink-0">
+                                <CheckCircle className="w-3 h-3 text-neutral-0" />
                               </div>
                             )}
                           </div>
@@ -481,7 +481,7 @@ export function ClientManagement() {
         <div className="vybe-modal-overlay flex items-center justify-center p-4">
           <div className="vybe-modal w-full">
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-medium text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 {selectedClient.status === 'deactivated' ? 'Reactivate Client' : 'Change Relationship Manager'}
               </h2>
               <button
@@ -529,7 +529,7 @@ export function ClientManagement() {
                           onClick={() => setSelectedRM(rm.id)}
                           className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
                             selectedRM === rm.id
-                              ? 'border-emerald-500 bg-emerald-500/5'
+                              ? 'border-primary-700 bg-primary-700/5'
                               : 'border-border hover:bg-muted'
                           }`}
                         >
@@ -544,27 +544,27 @@ export function ClientManagement() {
                               {/* City Coverage */}
                               <div className="flex flex-wrap gap-1 mb-1.5">
                                 {rm.cityCoverage.map(city => (
-                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-caption font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                                     {city}
                                   </span>
                                 ))}
                               </div>
                               {/* Case Load */}
                               <div className="flex items-center gap-2">
-                                <div className="flex-1 h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
+                                <div className="flex-1 h-1.5 bg-neutral-900/10 dark:bg-card/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
                                   <div
-                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-primary-700'}`}
                                     style={{ width: `${Math.min((rm.currentCaseload / rm.maxCaseload) * 100, 100)}%` }}
                                   />
                                 </div>
-                                <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                                <span className={`text-caption font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
                                   {rm.currentCaseload}/{rm.maxCaseload} cases{isFull ? ' (Full)' : ''}
                                 </span>
                               </div>
                             </div>
                             {selectedRM === rm.id && (
-                              <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center ml-3 flex-shrink-0">
-                                <CheckCircle className="w-3 h-3 text-white" />
+                              <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center ml-3 flex-shrink-0">
+                                <CheckCircle className="w-3 h-3 text-neutral-0" />
                               </div>
                             )}
                           </div>
@@ -657,7 +657,7 @@ export function ClientManagement() {
           </button>
           
           {isSortDropdownOpen && (
-            <div className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-[#1a1a1a] border border-black/10 dark:border-white/10 rounded-[12px] shadow-lg z-10 overflow-hidden">
+            <div className="absolute right-0 top-full mt-2 w-48 bg-card dark:bg-neutral-900 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] shadow-lg z-10 overflow-hidden">
               {[
                 { value: 'recent' as SortOption, label: 'Most Recent' },
                 { value: 'name-asc' as SortOption, label: 'Name (A-Z)' },
@@ -669,10 +669,10 @@ export function ClientManagement() {
                     setSortBy(option.value);
                     setIsSortDropdownOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-2.5 text-[14px] hover:bg-black/5 dark:hover:bg-white/5 transition-colors ${
+                  className={`w-full text-left px-4 py-2.5 text-small hover:bg-neutral-900/5 dark:hover:bg-card/5 transition-colors ${
                     sortBy === option.value 
-                      ? 'text-emerald-500 bg-emerald-500/5' 
-                      : 'text-black dark:text-white'
+                      ? 'text-primary-700 bg-primary-700/5' 
+                      : 'text-foreground dark:text-neutral-0'
                   }`}
                 >
                   {option.label}
@@ -840,22 +840,22 @@ export function ClientManagement() {
 
             {/* Pagination */}
             <div className="px-6 py-4 border-t border-border flex items-center justify-between">
-              <div className="text-[14px] text-black/60 dark:text-white/60">
+              <div className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                 Page 1 of 1
               </div>
               <div className="flex items-center gap-2">
-                <button className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors disabled:opacity-30" disabled>
-                  <ChevronDown className="w-4 h-4 rotate-90 text-black/60 dark:text-white/60" />
+                <button className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors disabled:opacity-30" disabled>
+                  <ChevronDown className="w-4 h-4 rotate-90 text-neutral-700/80 dark:text-neutral-300/80" />
                 </button>
-                <button className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors disabled:opacity-30" disabled>
-                  <ChevronDown className="w-4 h-4 -rotate-90 text-black/60 dark:text-white/60" />
+                <button className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors disabled:opacity-30" disabled>
+                  <ChevronDown className="w-4 h-4 -rotate-90 text-neutral-700/80 dark:text-neutral-300/80" />
                 </button>
               </div>
             </div>
           </>
         ) : (
           <div className="px-6 py-12 text-center">
-            <p className="text-[14px] text-black/40 dark:text-white/40">
+            <p className="text-small text-muted-foreground dark:text-neutral-300/60">
               No clients found in this category
             </p>
           </div>

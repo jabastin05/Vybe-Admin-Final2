@@ -164,9 +164,9 @@ export function UserManagement() {
   return (
     <AdminLayout>
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -183,7 +183,7 @@ export function UserManagement() {
           </div>
           <div className="vybe-kpi-card min-w-[200px]">
             <div className="vybe-kpi-label">ACTIVE USERS</div>
-            <div className="vybe-kpi-value" style={{ color: '#10B981' }}>{users.filter(u => u.enabled).length}</div>
+            <div className="vybe-kpi-value" style={{ color: '#1C75BC' }}>{users.filter(u => u.enabled).length}</div>
           </div>
         </div>
         <button onClick={() => handleOpenModal()} className="h-[var(--button-height-desktop)] px-[var(--space-5)] bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius-button)] text-small font-medium transition-colors flex items-center gap-[var(--space-2)] shadow-sm">
@@ -231,14 +231,14 @@ export function UserManagement() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <button onClick={() => handleToggleEnabled(user.id)} className={`p-2 rounded-lg transition-colors ${user.enabled ? 'bg-emerald-500/10 hover:bg-emerald-500/20' : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10'}`}>
-                        {user.enabled ? <Power className="w-4 h-4 text-emerald-500" /> : <PowerOff className="w-4 h-4 text-black/40 dark:text-white/40" />}
+                      <button onClick={() => handleToggleEnabled(user.id)} className={`p-2 rounded-[var(--radius)] transition-colors ${user.enabled ? 'bg-primary-700/10 hover:bg-primary-700/20' : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10'}`}>
+                        {user.enabled ? <Power className="w-4 h-4 text-primary-700" /> : <PowerOff className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />}
                       </button>
-                      <button onClick={() => handleOpenModal(user)} className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors">
-                        <Edit2 className="w-4 h-4 text-black/40 dark:text-white/40" />
+                      <button onClick={() => handleOpenModal(user)} className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors">
+                        <Edit2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                       </button>
-                      <button onClick={() => handleDelete(user.id)} className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group">
-                        <Trash2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                      <button onClick={() => handleDelete(user.id)} className="p-2 hover:bg-red-500/10 rounded-[var(--radius)] transition-colors group">
+                        <Trash2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                       </button>
                     </div>
                   </td>
@@ -254,7 +254,7 @@ export function UserManagement() {
         <div className="vybe-modal-overlay">
           <div className="vybe-modal">
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-semibold text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 {editingUser ? 'Edit User' : 'Add User'}
               </h2>
               <button onClick={handleCloseModal} className="vybe-icon-btn">
@@ -273,7 +273,7 @@ export function UserManagement() {
                   ))}
                 </select>
                 {formErrors.userType && (
-                  <p className="mt-1 text-[12px] text-red-500">{formErrors.userType}</p>
+                  <p className="mt-1 text-caption text-red-500">{formErrors.userType}</p>
                 )}
               </div>
 
@@ -283,7 +283,7 @@ export function UserManagement() {
                   <input type="text" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     className="vybe-input w-full" />
                   {formErrors.firstName && (
-                    <p className="mt-1 text-[12px] text-red-500">{formErrors.firstName}</p>
+                    <p className="mt-1 text-caption text-red-500">{formErrors.firstName}</p>
                   )}
                 </div>
                 <div>
@@ -291,7 +291,7 @@ export function UserManagement() {
                   <input type="text" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     className="vybe-input w-full" />
                   {formErrors.lastName && (
-                    <p className="mt-1 text-[12px] text-red-500">{formErrors.lastName}</p>
+                    <p className="mt-1 text-caption text-red-500">{formErrors.lastName}</p>
                   )}
                 </div>
               </div>
@@ -302,7 +302,7 @@ export function UserManagement() {
                   className="vybe-input w-full"
                   placeholder="+91 9876543210" />
                 {formErrors.phone && (
-                  <p className="mt-1 text-[12px] text-red-500">{formErrors.phone}</p>
+                  <p className="mt-1 text-caption text-red-500">{formErrors.phone}</p>
                 )}
               </div>
 
@@ -312,13 +312,13 @@ export function UserManagement() {
                   className="vybe-input w-full"
                   placeholder="user@example.com" />
                 {formErrors.email && (
-                  <p className="mt-1 text-[12px] text-red-500">{formErrors.email}</p>
+                  <p className="mt-1 text-caption text-red-500">{formErrors.email}</p>
                 )}
               </div>
             </div>
 
             <div className="flex items-center gap-3 mt-6">
-              <button onClick={handleCloseModal} className="flex-1 px-4 py-2.5 bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">
+              <button onClick={handleCloseModal} className="flex-1 px-4 py-2.5 bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors">
                 Cancel
               </button>
               <button onClick={handleSubmit} className="flex-1 h-[var(--button-height-desktop)] px-4 bg-primary hover:opacity-90 text-primary-foreground rounded-[var(--radius)] text-small font-medium transition-colors shadow-sm">

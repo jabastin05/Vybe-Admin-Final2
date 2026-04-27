@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { ArrowRight, Mail, Lock, AlertCircle, Shield, Users, UserCheck, Briefcase } from 'lucide-react';
-import vybeLogoImage from '../../assets/34582dcf9f86202dc7291352c31dcbccf4aff8ac.png';
+import vybeLogoImage from '../../assets/vybe-logo.svg';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { MOCK_SERVICE_PROVIDERS, resolveServiceProviderIdentity } from '../data/mockServiceProviders';
 
@@ -183,8 +183,8 @@ export function AdminSignIn() {
       <header className="fixed top-0 inset-x-0 z-50 h-16 bg-card/90 backdrop-blur-xl border-b border-border">
         <div className="h-full max-w-screen-xl mx-auto px-[var(--padding-desktop)] flex items-center justify-between">
           <Link to="/" className="flex items-center gap-[var(--space-2)]">
-            <img src={vybeLogoImage} alt="VYBE" className="w-8 h-8 object-contain" />
-            <span className="text-small font-semibold tracking-tight text-foreground">VYBE</span>
+            <img src={vybeLogoImage} alt="VYBE" className="h-8 w-auto object-contain" />
+            <span className="text-small font-medium tracking-tight text-foreground">VYBE</span>
           </Link>
           <ThemeToggle />
         </div>

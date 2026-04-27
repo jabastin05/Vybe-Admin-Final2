@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import vybeLogoImage from '../../assets/vybe-logo.svg';
 import { ArrowLeft, Upload, FileText, CheckCircle2, AlertCircle, MapPin, Map as MapIcon, Info, Edit2, TrendingUp, Shield, Target, Navigation, Building2, Sparkles, Lock } from 'lucide-react';
 import { Link } from 'react-router';
 import { SideNav } from '../components/SideNav';
@@ -362,36 +363,36 @@ export function PropertyUpload() {
   const currentStepNumber = getStepNumber(step);
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header - Full Width */}
-      <div className="border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A]">
+      <div className="border-b border-black/5 dark:border-white/10 bg-card dark:bg-neutral-900">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link 
                 to="/dashboard" 
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
               >
                 <ArrowLeft className="w-4 h-4" />
               </Link>
               <div>
-                <h1 className="text-[12px] tracking-wider uppercase text-black/40 dark:text-white/50 mb-2">
+                <h1 className="text-caption tracking-wider uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">
                   Upload
                 </h1>
-                <div className="text-[32px] tracking-tight text-black dark:text-white">
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">
                   New Property Case
                 </div>
-                <p className="text-[14px] text-black/50 dark:text-white/60 mt-1">
+                <p className="text-small text-muted-foreground dark:text-neutral-300/80 mt-1">
                   Submit property details and documents for intelligent HABU analysis
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="text-right">
-                <div className="text-[12px] text-black/40 dark:text-white/50 mb-1 tracking-wider uppercase">Step</div>
-                <div className="text-[32px] tracking-tight text-black dark:text-white">{currentStepNumber}/3</div>
+                <div className="text-caption text-muted-foreground dark:text-neutral-0/50 mb-1 tracking-wider uppercase">Step</div>
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">{currentStepNumber}/3</div>
               </div>
               <ThemeToggle />
             </div>
@@ -402,7 +403,7 @@ export function PropertyUpload() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Progress Indicator */}
-        <div className="mb-16">
+        <div className="mb-[var(--space-12)]">
           <div className="flex items-center gap-3">
             {(['details', 'documents', 'review'] as Step[]).map((stepName, index) => {
               const stepNum = index + 1;
@@ -414,17 +415,17 @@ export function PropertyUpload() {
                   <div className={`flex items-center gap-3 flex-1 ${
                     isActive ? 'opacity-100' : isCompleted ? 'opacity-60' : 'opacity-30'
                   }`}>
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-medium transition-all ${
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-small font-medium transition-all ${
                       isActive 
-                        ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg' 
+                        ? 'bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground shadow-lg' 
                         : isCompleted
-                        ? 'bg-emerald-500/20 text-emerald-400'
-                        : 'bg-black/5 dark:bg-white/5 text-black/40 dark:text-white/40'
+                        ? 'bg-primary-700/20 text-primary-600'
+                        : 'bg-neutral-900/5 dark:bg-card/5 text-muted-foreground dark:text-neutral-300/60'
                     }`}>
                       {isCompleted ? <CheckCircle2 className="w-5 h-5" /> : stepNum}
                     </div>
                     <div className="flex-1">
-                      <div className={`text-[13px] tracking-wide ${isActive ? 'text-black dark:text-white/95' : 'text-black/50 dark:text-white/50'}`}>
+                      <div className={`text-small tracking-wide ${isActive ? 'text-foreground dark:text-neutral-0/95' : 'text-muted-foreground dark:text-neutral-0/50'}`}>
                         {stepName === 'details' && 'Details'}
                         {stepName === 'documents' && 'Documents'}
                         {stepName === 'review' && 'Review'}
@@ -433,7 +434,7 @@ export function PropertyUpload() {
                   </div>
                   {index < 2 && (
                     <div className={`w-full h-px mx-3 ${
-                      isCompleted ? 'bg-emerald-500/30' : 'bg-black/10 dark:bg-white/5'
+                      isCompleted ? 'bg-primary-700/30' : 'bg-neutral-900/10 dark:bg-card/5'
                     }`} />
                   )}
                 </div>
@@ -445,16 +446,16 @@ export function PropertyUpload() {
         {/* Step 1: Location Details */}
         {step === 'details' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-10 shadow-lg">
+            <div className="bg-card dark:bg-neutral-900 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[var(--radius-card)] p-10 shadow-lg">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-gradient-to-br dark:from-emerald-500/20 dark:to-blue-500/20 flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-emerald-500 dark:text-emerald-400" />
+                <div className="w-12 h-12 rounded-[var(--radius-card)] bg-primary-700/10 dark:bg-gradient-to-br dark:from-primary-700/20 dark:to-blue-500/20 flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-primary-700 dark:text-primary-400" />
                 </div>
                 <div>
-                  <h2 className="text-[20px] tracking-tight text-black dark:text-white/95">
+                  <h2 className="text-h3 tracking-tight text-foreground dark:text-neutral-0/95">
                     Property Details
                   </h2>
-                  <p className="text-[13px] text-black/40 dark:text-white/40">
+                  <p className="text-small text-muted-foreground dark:text-neutral-300/60">
                     Provide essential property information to begin analysis
                   </p>
                 </div>
@@ -463,7 +464,7 @@ export function PropertyUpload() {
               <div className="space-y-6">
                 {/* Building Type - Card Selection */}
                 <div>
-                  <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                  <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                     Building Type <span className="text-red-400">*</span>
                   </label>
                   <div className="flex gap-4 max-w-xl">
@@ -471,28 +472,28 @@ export function PropertyUpload() {
                     <button
                       type="button"
                       onClick={() => setPropertyData({ ...propertyData, buildingType: 'residential', propertyType: '' })}
-                      className={`relative p-6 rounded-[20px] border transition-all duration-300 group overflow-hidden w-64 ${
+                      className={`relative p-6 rounded-[var(--radius-card)] border transition-all duration-300 group overflow-hidden w-64 ${
                         propertyData.buildingType === 'residential'
-                          ? 'border-emerald-500/50 bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/40 dark:to-emerald-900/20 shadow-xl shadow-emerald-500/20'
-                          : 'border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:border-emerald-500/30 hover:bg-white/80 dark:hover:bg-white/10 hover:shadow-lg'
+                          ? 'border-primary-700/50 bg-gradient-to-br from-primary-100 to-primary-100/50 dark:from-primary-900/40 dark:to-primary-800/20 shadow-xl shadow-primary-700/20'
+                          : 'border-black/10 dark:border-white/10 bg-card/50 dark:bg-card/5 hover:border-primary-700/30 hover:bg-card/80 dark:hover:bg-card/10 hover:shadow-lg'
                       }`}
                     >
                       {/* Background Gradient Orb */}
                       <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl transition-opacity duration-300 ${
                         propertyData.buildingType === 'residential' ? 'opacity-30' : 'opacity-0 group-hover:opacity-10'
-                      }`} style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%)' }} />
+                      }`} style={{ background: 'radial-gradient(circle, rgba(28, 117, 188, 0.4) 0%, transparent 70%)' }} />
                       
                       {/* Selection Indicator */}
                       {propertyData.buildingType === 'residential' && (
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-700 to-transparent" />
                       )}
                       
                       <div className="relative z-10 flex flex-col items-start gap-5">
                         {/* Icon Container */}
-                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                        <div className={`w-14 h-14 rounded-[var(--radius-card)] flex items-center justify-center transition-all duration-300 ${
                           propertyData.buildingType === 'residential' 
-                            ? 'bg-emerald-500/20 shadow-lg shadow-emerald-500/20' 
-                            : 'bg-black/5 dark:bg-white/5 group-hover:bg-emerald-500/10'
+                            ? 'bg-primary-700/20 shadow-lg shadow-primary-700/20' 
+                            : 'bg-neutral-900/5 dark:bg-card/5 group-hover:bg-primary-700/10'
                         }`}>
                           <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                             <path 
@@ -516,17 +517,17 @@ export function PropertyUpload() {
                         
                         {/* Text Content */}
                         <div className="text-left">
-                          <h3 className={`text-[16px] font-semibold mb-2 transition-colors duration-300 ${
+                          <h3 className={`text-[16px] font-medium mb-2 transition-colors duration-300 ${
                             propertyData.buildingType === 'residential' 
-                              ? 'text-emerald-700 dark:text-emerald-400' 
-                              : 'text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white'
+                              ? 'text-primary-700 dark:text-primary-400' 
+                              : 'text-foreground/80 dark:text-neutral-0/80 group-hover:text-foreground dark:group-hover:text-neutral-0'
                           }`}>
                             Residential
                           </h3>
-                          <p className={`text-[12px] leading-relaxed transition-colors duration-300 ${
+                          <p className={`text-caption leading-relaxed transition-colors duration-300 ${
                             propertyData.buildingType === 'residential' 
-                              ? 'text-emerald-600/80 dark:text-emerald-500/70' 
-                              : 'text-black/50 dark:text-white/50 group-hover:text-black/70 dark:group-hover:text-white/70'
+                              ? 'text-primary-700/80 dark:text-primary-700/70' 
+                              : 'text-muted-foreground dark:text-neutral-0/50 group-hover:text-foreground/70 dark:group-hover:text-neutral-0/70'
                           }`}>
                             Apartments, villas, houses & residential plots
                           </p>
@@ -538,28 +539,28 @@ export function PropertyUpload() {
                     <button
                       type="button"
                       onClick={() => setPropertyData({ ...propertyData, buildingType: 'commercial', propertyType: '' })}
-                      className={`relative p-6 rounded-[20px] border transition-all duration-300 group overflow-hidden w-64 ${
+                      className={`relative p-6 rounded-[var(--radius-card)] border transition-all duration-300 group overflow-hidden w-64 ${
                         propertyData.buildingType === 'commercial'
-                          ? 'border-emerald-500/50 bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/40 dark:to-emerald-900/20 shadow-xl shadow-emerald-500/20'
-                          : 'border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:border-emerald-500/30 hover:bg-white/80 dark:hover:bg-white/10 hover:shadow-lg'
+                          ? 'border-primary-700/50 bg-gradient-to-br from-primary-100 to-primary-100/50 dark:from-primary-900/40 dark:to-primary-800/20 shadow-xl shadow-primary-700/20'
+                          : 'border-black/10 dark:border-white/10 bg-card/50 dark:bg-card/5 hover:border-primary-700/30 hover:bg-card/80 dark:hover:bg-card/10 hover:shadow-lg'
                       }`}
                     >
                       {/* Background Gradient Orb */}
                       <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl transition-opacity duration-300 ${
                         propertyData.buildingType === 'commercial' ? 'opacity-30' : 'opacity-0 group-hover:opacity-10'
-                      }`} style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%)' }} />
+                      }`} style={{ background: 'radial-gradient(circle, rgba(28, 117, 188, 0.4) 0%, transparent 70%)' }} />
                       
                       {/* Selection Indicator */}
                       {propertyData.buildingType === 'commercial' && (
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-700 to-transparent" />
                       )}
 
                       <div className="relative z-10 flex flex-col items-start gap-5">
                         {/* Icon Container */}
-                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                        <div className={`w-14 h-14 rounded-[var(--radius-card)] flex items-center justify-center transition-all duration-300 ${
                           propertyData.buildingType === 'commercial' 
-                            ? 'bg-emerald-500/20 shadow-lg shadow-emerald-500/20' 
-                            : 'bg-black/5 dark:bg-white/5 group-hover:bg-emerald-500/10'
+                            ? 'bg-primary-700/20 shadow-lg shadow-primary-700/20' 
+                            : 'bg-neutral-900/5 dark:bg-card/5 group-hover:bg-primary-700/10'
                         }`}>
                           <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                             <path 
@@ -582,17 +583,17 @@ export function PropertyUpload() {
                         
                         {/* Text Content */}
                         <div className="text-left">
-                          <h3 className={`text-[16px] font-semibold mb-2 transition-colors duration-300 ${
+                          <h3 className={`text-[16px] font-medium mb-2 transition-colors duration-300 ${
                             propertyData.buildingType === 'commercial' 
-                              ? 'text-emerald-700 dark:text-emerald-400' 
-                              : 'text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white'
+                              ? 'text-primary-700 dark:text-primary-400' 
+                              : 'text-foreground/80 dark:text-neutral-0/80 group-hover:text-foreground dark:group-hover:text-neutral-0'
                           }`}>
                             Commercial
                           </h3>
-                          <p className={`text-[12px] leading-relaxed transition-colors duration-300 ${
+                          <p className={`text-caption leading-relaxed transition-colors duration-300 ${
                             propertyData.buildingType === 'commercial' 
-                              ? 'text-emerald-600/80 dark:text-emerald-500/70' 
-                              : 'text-black/50 dark:text-white/50 group-hover:text-black/70 dark:group-hover:text-white/70'
+                              ? 'text-primary-700/80 dark:text-primary-700/70' 
+                              : 'text-muted-foreground dark:text-neutral-0/50 group-hover:text-foreground/70 dark:group-hover:text-neutral-0/70'
                           }`}>
                             Offices, retail spaces, warehouses & plots
                           </p>
@@ -604,12 +605,12 @@ export function PropertyUpload() {
 
                 {/* Property Type - Card Selection */}
                 <div>
-                  <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                  <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                     Property Type <span className="text-red-400">*</span>
                   </label>
                   {!propertyData.buildingType ? (
-                    <div className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-12 text-center">
-                      <p className="text-[14px] text-black/30 dark:text-white/30">
+                    <div className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-12 text-center">
+                      <p className="text-small text-foreground/30 dark:text-neutral-0/30">
                         Please select a building type first
                       </p>
                     </div>
@@ -620,41 +621,41 @@ export function PropertyUpload() {
                           key={type}
                           type="button"
                           onClick={() => setPropertyData({ ...propertyData, propertyType: type })}
-                          className={`relative p-5 rounded-[16px] border transition-all duration-300 group overflow-hidden text-left ${ 
+                          className={`relative p-5 rounded-[var(--radius-card)] border transition-all duration-300 group overflow-hidden text-left ${ 
                             propertyData.propertyType === type
-                              ? 'border-emerald-500/50 bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/40 dark:to-emerald-900/20 shadow-lg shadow-emerald-500/10'
-                              : 'border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:border-emerald-500/30 hover:bg-white/80 dark:hover:bg-white/10 hover:shadow-md'
+                              ? 'border-primary-700/50 bg-gradient-to-br from-primary-100 to-primary-100/50 dark:from-primary-900/40 dark:to-primary-800/20 shadow-lg shadow-primary-700/10'
+                              : 'border-black/10 dark:border-white/10 bg-card/50 dark:bg-card/5 hover:border-primary-700/30 hover:bg-card/80 dark:hover:bg-card/10 hover:shadow-md'
                           }`}
                         >
                           {/* Background Gradient Orb */}
                           <div className={`absolute -top-8 -right-8 w-24 h-24 rounded-full blur-2xl transition-opacity duration-300 ${ 
                             propertyData.propertyType === type ? 'opacity-30' : 'opacity-0 group-hover:opacity-10'
-                          }`} style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%)' }} />
+                          }`} style={{ background: 'radial-gradient(circle, rgba(28, 117, 188, 0.4) 0%, transparent 70%)' }} />
                           
                           {/* Selection Indicator */}
                           {propertyData.propertyType === type && (
-                            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary-700 to-transparent" />
                           )}
                           
                           <div className="relative z-10">
                             {/* Icon Container */}
-                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 ${ 
+                            <div className={`w-10 h-10 rounded-[var(--radius-card)] flex items-center justify-center mb-3 transition-all duration-300 ${ 
                               propertyData.propertyType === type
-                                ? 'bg-emerald-500/20 shadow-md shadow-emerald-500/20'
-                                : 'bg-black/5 dark:bg-white/5 group-hover:bg-emerald-500/10'
+                                ? 'bg-primary-700/20 shadow-md shadow-primary-700/20'
+                                : 'bg-neutral-900/5 dark:bg-card/5 group-hover:bg-primary-700/10'
                             }`}>
                               <Building2 className={`w-5 h-5 transition-colors duration-300 ${ 
                                 propertyData.propertyType === type
-                                  ? 'text-emerald-500'
-                                  : 'text-black/40 dark:text-white/40 group-hover:text-emerald-500/60'
+                                  ? 'text-primary-700'
+                                  : 'text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700/60'
                               }`} />
                             </div>
                             
                             {/* Text Content */}
-                            <h3 className={`text-[14px] font-medium transition-colors duration-300 ${ 
+                            <h3 className={`text-small font-medium transition-colors duration-300 ${ 
                               propertyData.propertyType === type
-                                ? 'text-emerald-700 dark:text-emerald-400'
-                                : 'text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white'
+                                ? 'text-primary-700 dark:text-primary-400'
+                                : 'text-foreground/80 dark:text-neutral-0/80 group-hover:text-foreground dark:group-hover:text-neutral-0'
                             }`}>
                               {type}
                             </h3>
@@ -667,7 +668,7 @@ export function PropertyUpload() {
 
                 {/* Property Name - Full Width */}
                 <div>
-                  <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                  <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                     Property Name <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -675,9 +676,9 @@ export function PropertyUpload() {
                     value={propertyData.name}
                     onChange={(e) => setPropertyData({ ...propertyData, name: e.target.value })}
                     placeholder="e.g., Whitefield Prime Land"
-                    className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                    className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                   />
-                  <p className="text-[12px] text-black/30 dark:text-white/30 mt-2">
+                  <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                     Give your property a memorable name for easy identification
                   </p>
                 </div>
@@ -691,7 +692,7 @@ export function PropertyUpload() {
                       <>
                         {/* Plot Size / Land Area */}
                         <div>
-                          <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                          <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                             {fieldConfig.plotSizeLabel}
                           </label>
                           <input
@@ -699,9 +700,9 @@ export function PropertyUpload() {
                             value={propertyData.plotSize}
                             onChange={(e) => setPropertyData({ ...propertyData, plotSize: e.target.value })}
                             placeholder="e.g., 5000 sq ft"
-                            className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                            className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                           />
-                          <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                          <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                             Purpose: HABU calculation
                           </p>
                         </div>
@@ -709,7 +710,7 @@ export function PropertyUpload() {
                         {/* Built-up Area - Conditionally rendered */}
                         {fieldConfig.showBuiltUpArea && (
                           <div>
-                            <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                            <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                               Built-up Area
                             </label>
                             <input
@@ -717,9 +718,9 @@ export function PropertyUpload() {
                               value={propertyData.builtUpArea}
                               onChange={(e) => setPropertyData({ ...propertyData, builtUpArea: e.target.value })}
                               placeholder="e.g., 3000 sq ft"
-                              className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                              className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                             />
-                            <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                            <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                               Purpose: Development potential
                             </p>
                           </div>
@@ -727,13 +728,13 @@ export function PropertyUpload() {
 
                         {/* Year of Construction / Purchase / Acquisition */}
                         <div>
-                          <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                          <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                             {fieldConfig.yearLabel}
                           </label>
                           <select
                             value={propertyData.yearOfConstruction}
                             onChange={(e) => setPropertyData({ ...propertyData, yearOfConstruction: e.target.value })}
-                            className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all appearance-none cursor-pointer"
+                            className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all appearance-none cursor-pointer"
                             style={{
                               backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                               backgroundRepeat: 'no-repeat',
@@ -745,7 +746,7 @@ export function PropertyUpload() {
                               <option key={year} value={year}>{year}</option>
                             ))}
                           </select>
-                          <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                          <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                             Purpose: {fieldConfig.yearLabel === 'Year of Construction' ? 'Redevelopment feasibility' : 'Ownership history'}
                           </p>
                         </div>
@@ -753,7 +754,7 @@ export function PropertyUpload() {
                         {/* Number of Floors - Conditionally rendered */}
                         {fieldConfig.showNumberOfFloors && (
                           <div>
-                            <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                            <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                               Number of Floors
                             </label>
                             <input
@@ -761,9 +762,9 @@ export function PropertyUpload() {
                               value={propertyData.numberOfFloors}
                               onChange={(e) => setPropertyData({ ...propertyData, numberOfFloors: e.target.value })}
                               placeholder="e.g., G+2"
-                              className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                              className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                             />
-                            <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                            <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                               Purpose: Density evaluation
                             </p>
                           </div>
@@ -771,7 +772,7 @@ export function PropertyUpload() {
 
                         {/* Survey Number */}
                         <div>
-                          <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                          <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                             Survey Number
                           </label>
                           <input
@@ -779,22 +780,22 @@ export function PropertyUpload() {
                             value={propertyData.surveyNumber}
                             onChange={(e) => setPropertyData({ ...propertyData, surveyNumber: e.target.value })}
                             placeholder="e.g., 42/1A"
-                            className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                            className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                           />
-                          <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                          <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                             Purpose: Land registry lookup
                           </p>
                         </div>
 
                         {/* Current Usage / Cultivation Type */}
                         <div>
-                          <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                          <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                             {fieldConfig.currentUsageLabel}
                           </label>
                           <select
                             value={propertyData.currentUsage}
                             onChange={(e) => setPropertyData({ ...propertyData, currentUsage: e.target.value })}
-                            className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all appearance-none cursor-pointer"
+                            className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all appearance-none cursor-pointer"
                             style={{
                               backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                               backgroundRepeat: 'no-repeat',
@@ -806,14 +807,14 @@ export function PropertyUpload() {
                               <option key={option.value} value={option.value}>{option.label}</option>
                             ))}
                           </select>
-                          <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                          <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                             Purpose: {fieldConfig.currentUsageLabel === 'Cultivation Type' ? 'Agricultural classification' : 'Usage classification'}
                           </p>
                         </div>
 
                         {/* Rental Income */}
                         <div>
-                          <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                          <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                             Rental Income
                           </label>
                           <input
@@ -821,9 +822,9 @@ export function PropertyUpload() {
                             value={propertyData.rentalIncome}
                             onChange={(e) => setPropertyData({ ...propertyData, rentalIncome: e.target.value })}
                             placeholder="e.g., ₹50,000/month"
-                            className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                            className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                           />
-                          <p className="text-[11px] text-black/30 dark:text-white/30 mt-2">
+                          <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                             Purpose: Yield estimation
                           </p>
                         </div>
@@ -838,7 +839,7 @@ export function PropertyUpload() {
                 <div>
                   <button
                     onClick={handlePinOnMap}
-                    className="flex items-center gap-2 bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 rounded-lg px-4 py-3 text-[14px] text-black/80 dark:text-white/80 transition-all"
+                    className="flex items-center gap-2 bg-neutral-900/5 hover:bg-neutral-900/10 dark:bg-card/5 dark:hover:bg-card/10 border border-black/10 dark:border-white/10 rounded-[var(--radius)] px-4 py-3 text-small text-foreground/80 dark:text-neutral-0/80 transition-all"
                   >
                     <Navigation className="w-4 h-4" />
                     Pin on Interactive Map
@@ -847,12 +848,12 @@ export function PropertyUpload() {
                   {showMap && (
                     <div 
                       onClick={handleMapClick}
-                      className="mt-4 bg-black/5 dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl overflow-hidden h-64 flex items-center justify-center cursor-pointer hover:border-emerald-500/30 transition-all group"
+                      className="mt-4 bg-neutral-900/5 dark:bg-neutral-900/40 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] overflow-hidden h-64 flex items-center justify-center cursor-pointer hover:border-primary-700/30 transition-all group"
                     >
                       <div className="text-center">
-                        <MapIcon className="w-12 h-12 text-black/20 dark:text-white/20 group-hover:text-emerald-400 mx-auto mb-3 transition-colors" />
-                        <p className="text-[13px] text-black/40 dark:text-white/40 group-hover:text-emerald-400 transition-colors">Interactive map will load here</p>
-                        <p className="text-[11px] text-emerald-400 mt-2">📍 Click anywhere on the map to set location</p>
+                        <MapIcon className="w-12 h-12 text-foreground/20 dark:text-neutral-0/20 group-hover:text-primary-600 mx-auto mb-3 transition-colors" />
+                        <p className="text-small text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-600 transition-colors">Interactive map will load here</p>
+                        <p className="text-caption text-primary-600 mt-2">📍 Click anywhere on the map to set location</p>
                       </div>
                     </div>
                   )}
@@ -862,7 +863,7 @@ export function PropertyUpload() {
                 <div className="grid grid-cols-3 gap-6">
                   {/* Country */}
                   <div>
-                    <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                    <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                       Country <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -870,13 +871,13 @@ export function PropertyUpload() {
                       value={propertyData.country}
                       onChange={(e) => setPropertyData({ ...propertyData, country: e.target.value })}
                       placeholder="e.g., India"
-                      className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                     />
                   </div>
 
                   {/* State */}
                   <div>
-                    <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                    <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                       State <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -884,13 +885,13 @@ export function PropertyUpload() {
                       value={propertyData.state}
                       onChange={(e) => setPropertyData({ ...propertyData, state: e.target.value })}
                       placeholder="e.g., Karnataka"
-                      className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                     />
                   </div>
 
                   {/* City */}
                   <div>
-                    <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                    <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                       City <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -898,14 +899,14 @@ export function PropertyUpload() {
                       value={propertyData.city}
                       onChange={(e) => setPropertyData({ ...propertyData, city: e.target.value })}
                       placeholder="e.g., Bangalore"
-                      className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Address Search */}
                 <div>
-                  <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                  <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                     Property Address <span className="text-red-400">*</span>
                   </label>
                   <div className="relative">
@@ -914,20 +915,20 @@ export function PropertyUpload() {
                       value={propertyData.address}
                       onChange={(e) => setPropertyData({ ...propertyData, address: e.target.value })}
                       placeholder="e.g., Survey No. 42, Whitefield Main Road"
-                      className="w-full bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 focus:bg-neutral-900/[0.04] dark:focus:bg-neutral-900/40 transition-all"
                     />
                     <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                      <MapPin className="w-5 h-5 text-black/30 dark:text-white/30" />
+                      <MapPin className="w-5 h-5 text-foreground/30 dark:text-neutral-0/30" />
                     </div>
                   </div>
-                  <p className="text-[12px] text-black/30 dark:text-white/30 mt-2">
+                  <p className="text-caption text-foreground/30 dark:text-neutral-0/30 mt-2">
                     Street address, survey number, or landmark
                   </p>
                 </div>
 
                 {/* Coordinates (Optional) */}
                 <div>
-                  <label className="block text-[13px] text-black/60 dark:text-white/60 mb-3 tracking-wide">
+                  <label className="block text-small text-neutral-700/80 dark:text-neutral-300/80 mb-3 tracking-wide">
                     Have coordinates? Enter here (optional)
                   </label>
                   <div className="grid grid-cols-2 gap-4">
@@ -936,51 +937,51 @@ export function PropertyUpload() {
                       value={propertyData.latitude}
                       onChange={(e) => setPropertyData({ ...propertyData, latitude: e.target.value })}
                       placeholder="Latitude (e.g., 12.9716)"
-                      className="bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 transition-all"
+                      className="bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 transition-all"
                     />
                     <input
                       type="text"
                       value={propertyData.longitude}
                       onChange={(e) => setPropertyData({ ...propertyData, longitude: e.target.value })}
                       placeholder="Longitude (e.g., 77.5946)"
-                      className="bg-black/[0.02] dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white/95 text-[14px] placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-emerald-500/50 transition-all"
+                      className="bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 focus:outline-none focus:border-primary-700/50 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Auto-detected Info */}
                 {(propertyData.latitude && propertyData.longitude) && (
-                  <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-6">
+                  <div className="bg-primary-700/5 border border-primary-700/20 rounded-[var(--radius-card)] p-6">
                     <div className="flex items-start gap-3 mb-4">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-[13px] text-black dark:text-white/95 mb-1">Location Pinned Successfully</div>
-                        <p className="text-[12px] text-black/50 dark:text-white/50">
+                        <div className="text-small text-foreground dark:text-neutral-0/95 mb-1">Location Pinned Successfully</div>
+                        <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                           Address details auto-populated from map coordinates
                         </p>
                       </div>
                     </div>
                     <div className="grid grid-cols-4 gap-4">
                       <div>
-                        <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">Country</div>
-                        <div className="text-[14px] text-black dark:text-white/95">{propertyData.country}</div>
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">Country</div>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">{propertyData.country}</div>
                       </div>
                       <div>
-                        <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">State</div>
-                        <div className="text-[14px] text-black dark:text-white/95">{propertyData.state}</div>
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">State</div>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">{propertyData.state}</div>
                       </div>
                       <div>
-                        <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">City</div>
-                        <div className="text-[14px] text-black dark:text-white/95">{propertyData.city}</div>
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">City</div>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">{propertyData.city}</div>
                       </div>
                       <div>
-                        <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">District</div>
-                        <div className="text-[14px] text-black dark:text-white/95">{propertyData.district}</div>
+                        <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">District</div>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">{propertyData.district}</div>
                       </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-emerald-500/10">
-                      <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">Coordinates</div>
-                      <div className="text-[13px] text-black/70 dark:text-white/70 font-mono">
+                    <div className="mt-4 pt-4 border-t border-primary-700/10">
+                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">Coordinates</div>
+                      <div className="text-small text-foreground/70 dark:text-neutral-0/70 font-mono">
                         {propertyData.latitude}, {propertyData.longitude}
                       </div>
                     </div>
@@ -992,7 +993,7 @@ export function PropertyUpload() {
                 <button
                   onClick={handleLocationContinue}
                   disabled={!propertyData.name || !propertyData.propertyType || !propertyData.country || !propertyData.state || !propertyData.city || !propertyData.address}
-                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 px-8 py-4 rounded-xl text-[14px] font-medium tracking-wide disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg disabled:shadow-none"
+                  className="bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground hover:bg-neutral-900/90 dark:hover:bg-card/90 px-8 py-4 rounded-[var(--radius-card)] text-small font-medium tracking-wide disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg disabled:shadow-none"
                 >
                   Continue to Documents
                 </button>
@@ -1005,23 +1006,23 @@ export function PropertyUpload() {
         {step === 'documents' && (
           <div className="space-y-6">
             {/* Document Requirements - Compact */}
-            <div className="bg-white/85 dark:bg-[#1A1A1A]/85 backdrop-blur-[30px] border border-black/5 dark:border-white/10 rounded-[24px] p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/85 dark:bg-neutral-900/85 backdrop-blur-[30px] border border-black/5 dark:border-white/10 rounded-[var(--radius-card)] p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               {/* Subtle glass highlight */}
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 dark:via-white/10 to-transparent" />
               
               {/* Header with Integrated Score Ring */}
               <div className="flex items-start justify-between mb-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-[12px] bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-inner">
+                  <div className="w-10 h-10 rounded-[var(--radius-card)] bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-inner">
                     <FileText className="w-5 h-5 text-blue-500" />
                   </div>
                   <div>
                     {/* Property Type Header */}
                     <div className="mb-4">
-                      <h3 className="text-[24px] font-normal tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                      <h3 className="text-h2 font-normal tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                         {propertyData.buildingType === 'residential' ? 'Residential' : 'Commercial'} {propertyData.propertyType}
                       </h3>
-                      <p className="text-[14px] font-normal text-black/60 dark:text-white/60 leading-relaxed">
+                      <p className="text-small font-normal text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                         Submit documentation for comprehensive due diligence and institutional-grade analysis. 
                         All files are encrypted and securely stored in your AI Vault with automatic backup.
                       </p>
@@ -1029,43 +1030,43 @@ export function PropertyUpload() {
 
                     {/* Security Features Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
-                        <div className="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500/10">
-                          <Shield className="w-3.5 h-3.5 text-emerald-500" strokeWidth={2} />
+                      <div className="flex items-center gap-2 bg-card/85 dark:bg-card/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[var(--radius-card)] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
+                        <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary-700/10">
+                          <Shield className="w-3.5 h-3.5 text-primary-700" strokeWidth={2} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Security</div>
-                          <div className="text-[12px] font-medium text-black dark:text-white/90">Bank-Grade</div>
+                          <div className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Security</div>
+                          <div className="text-caption font-medium text-foreground dark:text-neutral-0/90">Bank-Grade</div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
+                      <div className="flex items-center gap-2 bg-card/85 dark:bg-card/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[var(--radius-card)] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
                         <div className="flex items-center justify-center w-7 h-7 rounded-full bg-purple-500/10">
                           <Sparkles className="w-3.5 h-3.5 text-purple-500" strokeWidth={2} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Storage</div>
-                          <div className="text-[12px] font-medium text-black dark:text-white/90">AI Vault</div>
+                          <div className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Storage</div>
+                          <div className="text-caption font-medium text-foreground dark:text-neutral-0/90">AI Vault</div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
+                      <div className="flex items-center gap-2 bg-card/85 dark:bg-card/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[var(--radius-card)] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
                         <div className="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/10">
                           <Lock className="w-3.5 h-3.5 text-blue-500" strokeWidth={2} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Privacy</div>
-                          <div className="text-[12px] font-medium text-black dark:text-white/90">Encrypted</div>
+                          <div className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Privacy</div>
+                          <div className="text-caption font-medium text-foreground dark:text-neutral-0/90">Encrypted</div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
+                      <div className="flex items-center gap-2 bg-card/85 dark:bg-card/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[var(--radius-card)] px-3 py-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]">
                         <div className="flex items-center justify-center w-7 h-7 rounded-full bg-indigo-500/10">
                           <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500" strokeWidth={2} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Backup</div>
-                          <div className="text-[12px] font-medium text-black dark:text-white/90">Automatic</div>
+                          <div className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Backup</div>
+                          <div className="text-caption font-medium text-foreground dark:text-neutral-0/90">Automatic</div>
                         </div>
                       </div>
                     </div>
@@ -1074,7 +1075,7 @@ export function PropertyUpload() {
                 
                 {/* Score Ring moved to top right */}
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-full border-[3px] border-black/5 dark:border-white/5 flex items-center justify-center relative shadow-inner bg-white/50 dark:bg-black/50">
+                  <div className="w-14 h-14 rounded-full border-[3px] border-black/5 dark:border-white/5 flex items-center justify-center relative shadow-inner bg-card/50 dark:bg-neutral-900/50">
                     {(() => {
                       let totalScore = 0;
                       Object.entries(documentRequirements.categories).forEach(([key, cat]) => {
@@ -1088,14 +1089,14 @@ export function PropertyUpload() {
                       return (
                         <>
                           <svg className="absolute inset-0 w-full h-full -rotate-90 scale-[1.05]" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="46" className="stroke-emerald-500 transition-all duration-1000" strokeWidth="6" fill="none" strokeDasharray="289.02" strokeDashoffset={289.02 - (289.02 * currentScore) / 100} strokeLinecap="round" />
+                            <circle cx="50" cy="50" r="46" className="stroke-primary-700 transition-all duration-1000" strokeWidth="6" fill="none" strokeDasharray="289.02" strokeDashoffset={289.02 - (289.02 * currentScore) / 100} strokeLinecap="round" />
                           </svg>
-                          <span className="text-[13px] font-bold text-emerald-600 dark:text-emerald-400">{currentScore}%</span>
+                          <span className="text-small font-medium text-primary-700 dark:text-primary-400">{currentScore}%</span>
                         </>
                       );
                     })()}
                   </div>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Document Score</span>
+                  <span className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Document Score</span>
                 </div>
               </div>
 
@@ -1114,16 +1115,16 @@ export function PropertyUpload() {
                       onClick={() => setActiveCategoryIndex(idx)}
                       className={`flex items-center gap-2 pb-3 border-b-2 transition-colors whitespace-nowrap relative top-[1px] ${
                         isActive 
-                          ? 'border-emerald-500 text-black dark:text-white' 
+                          ? 'border-primary-700 text-foreground dark:text-neutral-0' 
                           : isComplete
-                            ? 'border-transparent text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white'
-                            : 'border-transparent text-black/40 dark:text-white/40 hover:text-black/70 dark:hover:text-white/70'
+                            ? 'border-transparent text-foreground/80 dark:text-neutral-0/80 hover:text-foreground dark:hover:text-neutral-0'
+                            : 'border-transparent text-muted-foreground dark:text-neutral-300/60 hover:text-foreground/70 dark:hover:text-neutral-0/70'
                       }`}
                     >
-                      <span className={`text-[13px] tracking-wide ${isActive ? 'font-semibold' : 'font-medium'}`}>
+                      <span className={`text-small tracking-wide ${isActive ? 'font-medium' : 'font-medium'}`}>
                         {cat.title}
                       </span>
-                      {isComplete && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                      {isComplete && <div className="w-1.5 h-1.5 rounded-full bg-primary-700" />}
                     </button>
                   );
                 })}
@@ -1142,7 +1143,7 @@ export function PropertyUpload() {
                   
                   // Category colors
                   const categoryColors: Record<string, { bg: string; text: string; border: string; dot: string }> = {
-                    ownership: { bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/20', dot: 'bg-emerald-500' },
+                    ownership: { bg: 'bg-primary-700/10', text: 'text-primary-700 dark:text-primary-400', border: 'border-primary-700/20', dot: 'bg-primary-700' },
                     legalCompliance: { bg: 'bg-blue-500/10', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-500/20', dot: 'bg-blue-500' },
                     landRecords: { bg: 'bg-purple-500/10', text: 'text-purple-600 dark:text-purple-400', border: 'border-purple-500/20', dot: 'bg-purple-500' },
                     financial: { bg: 'bg-amber-500/10', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/20', dot: 'bg-amber-500' },
@@ -1153,22 +1154,22 @@ export function PropertyUpload() {
                   const colors = categoryColors[categoryKey] || categoryColors.ownership;
                   
                   return (
-                    <div key={categoryKey} className="p-6 rounded-[16px] bg-white/40 dark:bg-black/20 border border-white/60 dark:border-white/5 shadow-sm relative overflow-hidden animate-in fade-in slide-in-from-right-4 duration-300">
-                      {isComplete && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />}
+                    <div key={categoryKey} className="p-6 rounded-[var(--radius-card)] bg-card/40 dark:bg-neutral-900/20 border border-white/60 dark:border-white/5 shadow-sm relative overflow-hidden animate-in fade-in slide-in-from-right-4 duration-300">
+                      {isComplete && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-700/50 to-transparent" />}
                       
                       {/* Section Header */}
                       <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center gap-3">
                           <div className={`w-2 h-2 rounded-full ${colors.dot} shadow-[0_0_8px_currentColor]`} />
-                          <span className={`text-[12px] uppercase tracking-[0.05em] font-bold text-black dark:text-white`}>
+                          <span className={`text-caption uppercase tracking-[0.05em] font-medium text-foreground dark:text-neutral-0`}>
                             {category.title} Documents
                           </span>
                           <div className="flex-1 w-12 h-px bg-gradient-to-r from-black/5 to-transparent dark:from-white/5" />
                         </div>
                         {/* Completion Badge */}
-                        <div className={`px-2.5 py-1 rounded-[4px] text-[10px] font-bold uppercase tracking-[0.05em] ${
+                        <div className={`px-2.5 py-1 rounded-[4px] text-caption font-medium uppercase tracking-[0.05em] ${
                           isComplete 
-                            ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' 
+                            ? 'bg-primary-700/20 text-primary-700 dark:text-primary-400 border border-primary-700/20' 
                             : `${colors.bg} ${colors.text} border ${colors.border}`
                         }`}>
                           {isComplete ? '✔ Complete' : `${completionPercentage}%`}
@@ -1182,43 +1183,43 @@ export function PropertyUpload() {
                           const uploaded = !!uploadedDoc;
                           return (
                             <div key={index}>
-                              <label className="block text-[13px] font-medium text-black/80 dark:text-white/80 mb-2 tracking-wide">
+                              <label className="block text-small font-medium text-foreground/80 dark:text-neutral-0/80 mb-2 tracking-wide">
                                 {doc}
                               </label>
-                              <div className={`relative border rounded-[12px] transition-all duration-300 overflow-hidden ${
+                              <div className={`relative border rounded-[var(--radius-card)] transition-all duration-300 overflow-hidden ${
                                 uploaded 
-                                  ? 'border-solid border-emerald-500/30 bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.05)]' 
-                                  : 'border-dashed border-black/15 dark:border-white/15 bg-white/50 dark:bg-black/20 hover:border-emerald-500/40 hover:bg-emerald-500/5 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)]'
+                                  ? 'border-solid border-primary-700/30 bg-primary-700/5 shadow-[0_0_20px_rgba(28,117,188,0.05)]' 
+                                  : 'border-dashed border-black/15 dark:border-white/15 bg-card/50 dark:bg-neutral-900/20 hover:border-primary-700/40 hover:bg-primary-700/5 hover:shadow-[0_0_20px_rgba(28,117,188,0.1)]'
                               }`}>
                                 <label className="flex items-center justify-between p-4 cursor-pointer group">
                                   <div className="flex items-center gap-4">
-                                    <div className={`w-10 h-10 rounded-[8px] flex items-center justify-center transition-all duration-300 ${
+                                    <div className={`w-10 h-10 rounded-[var(--radius)] flex items-center justify-center transition-all duration-300 ${
                                       uploaded 
-                                        ? 'bg-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.2)]' 
-                                        : 'bg-black/5 dark:bg-white/5 group-hover:bg-emerald-500/10'
+                                        ? 'bg-primary-700/20 shadow-[0_0_12px_rgba(28,117,188,0.2)]' 
+                                        : 'bg-neutral-900/5 dark:bg-card/5 group-hover:bg-primary-700/10'
                                     }`}>
                                       {uploaded ? (
-                                        <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={2.5} />
+                                        <CheckCircle2 className="w-5 h-5 text-primary-700" strokeWidth={2.5} />
                                       ) : (
-                                        <Upload className="w-5 h-5 text-black/40 dark:text-white/40 group-hover:text-emerald-500/70 transition-colors" />
+                                        <Upload className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60 group-hover:text-primary-700/70 transition-colors" />
                                       )}
                                     </div>
                                     <div>
-                                      <p className={`text-[14px] font-semibold mb-0.5 transition-colors ${
+                                      <p className={`text-small font-medium mb-0.5 transition-colors ${
                                         uploaded 
-                                          ? 'text-emerald-600 dark:text-emerald-400' 
-                                          : 'text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white'
+                                          ? 'text-primary-700 dark:text-primary-400' 
+                                          : 'text-foreground/80 dark:text-neutral-0/80 group-hover:text-foreground dark:group-hover:text-neutral-0'
                                       }`}>
                                         {uploaded ? '✓ Document uploaded successfully' : 'Upload document'}
                                       </p>
-                                      <p className="text-[12px] text-black/50 dark:text-white/50">
+                                      <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                                         {uploaded && uploadedDoc ? uploadedDoc.name + ' • ' + uploadedDoc.size : 'PDF, JPG, PNG • Max 10MB'}
                                       </p>
                                     </div>
                                   </div>
                                   {!uploaded && (
-                                    <div className="px-3.5 py-1.5 rounded-[6px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-all duration-300">
-                                      <span className="text-[12px] font-medium text-black/70 dark:text-white/70 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                    <div className="px-3.5 py-1.5 rounded-[var(--radius)] bg-neutral-900/5 dark:bg-card/5 border border-black/10 dark:border-white/10 group-hover:bg-primary-700/10 group-hover:border-primary-700/30 transition-all duration-300">
+                                      <span className="text-caption font-medium text-foreground/70 dark:text-neutral-0/70 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">
                                         Choose file
                                       </span>
                                     </div>
@@ -1245,7 +1246,7 @@ export function PropertyUpload() {
                 {activeCategoryIndex > 0 ? (
                   <button
                     onClick={() => setActiveCategoryIndex(prev => prev - 1)}
-                    className="text-black/60 dark:text-white/60 hover:text-black/90 dark:hover:text-white/90 text-[13px] font-medium tracking-wide transition-colors flex items-center gap-2"
+                    className="text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground/90 dark:hover:text-neutral-0/90 text-small font-medium tracking-wide transition-colors flex items-center gap-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Previous Section
@@ -1253,7 +1254,7 @@ export function PropertyUpload() {
                 ) : (
                   <button
                     onClick={() => setStep('details')}
-                    className="text-black/60 dark:text-white/60 hover:text-black/90 dark:hover:text-white/90 text-[13px] font-medium tracking-wide transition-colors flex items-center gap-2"
+                    className="text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground/90 dark:hover:text-neutral-0/90 text-small font-medium tracking-wide transition-colors flex items-center gap-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Details
@@ -1263,7 +1264,7 @@ export function PropertyUpload() {
                 {activeCategoryIndex < Object.keys(documentRequirements.categories).length - 1 ? (
                   <button
                     onClick={() => setActiveCategoryIndex(prev => prev + 1)}
-                    className="bg-black/5 dark:bg-white/10 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/20 px-6 py-2.5 rounded-[10px] text-[13px] font-semibold tracking-wide transition-all flex items-center gap-2"
+                    className="bg-neutral-900/5 dark:bg-card/10 text-foreground dark:text-neutral-0 hover:bg-neutral-900/10 dark:hover:bg-card/20 px-6 py-2.5 rounded-[10px] text-small font-medium tracking-wide transition-all flex items-center gap-2"
                   >
                     Next Section
                     <ArrowLeft className="w-4 h-4 rotate-180" />
@@ -1272,7 +1273,7 @@ export function PropertyUpload() {
                   <button
                     onClick={handleExtractData}
                     disabled={uploadedDocs.filter(d => d.status === 'verified' && documentRequirements.categories.ownership.documents.includes(d.documentType || '')).length < documentRequirements.categories.ownership.documents.length}
-                    className="bg-emerald-500 text-white hover:bg-emerald-400 px-8 py-3.5 rounded-[12px] text-[14px] font-semibold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.3)] disabled:shadow-none flex items-center gap-2 group"
+                    className="bg-primary-700 text-neutral-0 hover:bg-primary-600 px-8 py-3.5 rounded-[var(--radius-card)] text-small font-medium tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_20px_rgba(28,117,188,0.2)] hover:shadow-[0_0_25px_rgba(28,117,188,0.3)] disabled:shadow-none flex items-center gap-2 group"
                   >
                     Continue to Review
                     <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
@@ -1292,22 +1293,22 @@ export function PropertyUpload() {
             {/* Main Content - Single Column Layout */}
             <div className="space-y-6">
               {/* Property Overview Card */}
-              <div className="bg-white/90 dark:bg-[#1A1A1A]/90 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+              <div className="bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-700/40 to-transparent" />
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-emerald-400" />
+                    <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/20 flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-primary-600" />
                     </div>
-                    <h3 className="text-[16px] tracking-tight text-black dark:text-white/95">Location Snapshot</h3>
+                    <h3 className="text-[16px] tracking-tight text-foreground dark:text-neutral-0/95">Location Snapshot</h3>
                   </div>
 
                   {/* Mini Map Preview */}
-                  <div className="bg-black/5 dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl overflow-hidden h-48 mb-6 flex items-center justify-center">
+                  <div className="bg-neutral-900/5 dark:bg-neutral-900/40 border border-black/10 dark:border-white/10 rounded-[var(--radius-card)] overflow-hidden h-48 mb-6 flex items-center justify-center">
                     <div className="text-center">
-                      <MapIcon className="w-10 h-10 text-black/20 dark:text-white/20 mx-auto mb-2" />
-                      <p className="text-[12px] text-black/30 dark:text-white/30">Map Preview: {propertyData.address || 'Whitefield, Bangalore'}</p>
+                      <MapIcon className="w-10 h-10 text-foreground/20 dark:text-neutral-0/20 mx-auto mb-2" />
+                      <p className="text-caption text-foreground/30 dark:text-neutral-0/30">Map Preview: {propertyData.address || 'Whitefield, Bangalore'}</p>
                       {propertyData.latitude && propertyData.longitude && (
-                        <p className="text-[11px] text-black/20 dark:text-white/20 mt-1">
+                        <p className="text-caption text-foreground/20 dark:text-neutral-0/20 mt-1">
                           {propertyData.latitude}, {propertyData.longitude}
                         </p>
                       )}
@@ -1315,33 +1316,33 @@ export function PropertyUpload() {
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 rounded-xl p-4">
-                      <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">Country</div>
-                      <div className="text-[15px] text-black dark:text-white/95">{propertyData.country || 'India'}</div>
+                    <div className="bg-neutral-900/[0.02] dark:bg-card/[0.03] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-4">
+                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">Country</div>
+                      <div className="text-[15px] text-foreground dark:text-neutral-0/95">{propertyData.country || 'India'}</div>
                     </div>
-                    <div className="bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 rounded-xl p-4">
-                      <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">State</div>
-                      <div className="text-[15px] text-black dark:text-white/95">{propertyData.state || 'Karnataka'}</div>
+                    <div className="bg-neutral-900/[0.02] dark:bg-card/[0.03] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-4">
+                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">State</div>
+                      <div className="text-[15px] text-foreground dark:text-neutral-0/95">{propertyData.state || 'Karnataka'}</div>
                     </div>
-                    <div className="bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 rounded-xl p-4">
-                      <div className="text-[11px] text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase">City</div>
-                      <div className="text-[15px] text-black dark:text-white/95">{propertyData.city || 'Bangalore'}</div>
+                    <div className="bg-neutral-900/[0.02] dark:bg-card/[0.03] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-4">
+                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 tracking-wider uppercase">City</div>
+                      <div className="text-[15px] text-foreground dark:text-neutral-0/95">{propertyData.city || 'Bangalore'}</div>
                     </div>
                   </div>
               </div>
 
               {/* Property Details */}
-              <div className="bg-white dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-8 shadow-lg dark:shadow-2xl">
+              <div className="bg-card dark:bg-neutral-900 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[var(--radius-card)] p-8 shadow-lg dark:shadow-2xl">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-[var(--radius)] bg-blue-500/20 flex items-center justify-center">
                         <Building2 className="w-5 h-5 text-blue-400" />
                       </div>
-                      <h3 className="text-[16px] tracking-tight text-black dark:text-white/95">Property Details</h3>
+                      <h3 className="text-[16px] tracking-tight text-foreground dark:text-neutral-0/95">Property Details</h3>
                     </div>
                     <button
                       onClick={() => setStep('details')}
-                      className="text-[13px] text-emerald-400 hover:text-emerald-300 flex items-center gap-2 transition-colors"
+                      className="text-small text-primary-600 hover:text-primary-400 flex items-center gap-2 transition-colors"
                     >
                       <Edit2 className="w-4 h-4" />
                       Edit
@@ -1351,8 +1352,8 @@ export function PropertyUpload() {
                   <div className="space-y-4">
                     {/* Property Name */}
                     <div>
-                      <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Property Name</label>
-                      <div className="text-[15px] text-black dark:text-white/95 font-medium">
+                      <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Property Name</label>
+                      <div className="text-[15px] text-foreground dark:text-neutral-0/95 font-medium">
                         {propertyData.name || 'Not provided'}
                       </div>
                     </div>
@@ -1360,14 +1361,14 @@ export function PropertyUpload() {
                     {/* Building Type & Property Type */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Building Type</label>
-                        <div className="text-[14px] text-black dark:text-white/95 capitalize">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Building Type</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95 capitalize">
                           {propertyData.buildingType || 'Not specified'}
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Property Type</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Property Type</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.propertyType || 'Not specified'}
                         </div>
                       </div>
@@ -1376,14 +1377,14 @@ export function PropertyUpload() {
                     {/* Plot Size & Built-up Area */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Plot Size</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Plot Size</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.plotSize ? `${propertyData.plotSize} sq ft` : 'Not provided'}
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Built-up Area</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Built-up Area</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.builtUpArea ? `${propertyData.builtUpArea} sq ft` : 'Not provided'}
                         </div>
                       </div>
@@ -1392,14 +1393,14 @@ export function PropertyUpload() {
                     {/* Year of Construction & Number of Floors */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Year of Construction</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Year of Construction</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.yearOfConstruction || 'Not provided'}
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Number of Floors</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Number of Floors</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.numberOfFloors || 'Not provided'}
                         </div>
                       </div>
@@ -1407,8 +1408,8 @@ export function PropertyUpload() {
 
                     {/* Survey Number */}
                     <div>
-                      <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Survey Number</label>
-                      <div className="text-[14px] text-black dark:text-white/95">
+                      <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Survey Number</label>
+                      <div className="text-small text-foreground dark:text-neutral-0/95">
                         {propertyData.surveyNumber || 'Not provided'}
                       </div>
                     </div>
@@ -1416,14 +1417,14 @@ export function PropertyUpload() {
                     {/* Current Usage & Rental Income */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Current Usage</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Current Usage</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.currentUsage || 'Not specified'}
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Rental Income</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Rental Income</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.rentalIncome ? `₹${propertyData.rentalIncome}/month` : 'Not provided'}
                         </div>
                       </div>
@@ -1431,8 +1432,8 @@ export function PropertyUpload() {
 
                     {/* Full Address */}
                     <div>
-                      <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Property Address</label>
-                      <div className="text-[14px] text-black dark:text-white/95">
+                      <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Property Address</label>
+                      <div className="text-small text-foreground dark:text-neutral-0/95">
                         {propertyData.address || 'Not provided'}
                       </div>
                     </div>
@@ -1440,8 +1441,8 @@ export function PropertyUpload() {
                     {/* Coordinates (if provided) */}
                     {propertyData.latitude && propertyData.longitude && (
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">Coordinates</label>
-                        <div className="text-[13px] text-black/60 dark:text-white/60 font-mono">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">Coordinates</label>
+                        <div className="text-small text-neutral-700/80 dark:text-neutral-300/80 font-mono">
                           {propertyData.latitude}, {propertyData.longitude}
                         </div>
                       </div>
@@ -1450,8 +1451,8 @@ export function PropertyUpload() {
                     {/* District (if provided) */}
                     {propertyData.district && (
                       <div>
-                        <label className="block text-[12px] text-black/50 dark:text-white/50 mb-2 tracking-wide uppercase">District</label>
-                        <div className="text-[14px] text-black dark:text-white/95">
+                        <label className="block text-caption text-muted-foreground dark:text-neutral-0/50 mb-2 tracking-wide uppercase">District</label>
+                        <div className="text-small text-foreground dark:text-neutral-0/95">
                           {propertyData.district}
                         </div>
                       </div>
@@ -1460,13 +1461,13 @@ export function PropertyUpload() {
               </div>
 
               {/* Uploaded Documents */}
-              <div className="bg-white dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-8 shadow-lg dark:shadow-2xl">
+              <div className="bg-card dark:bg-neutral-900 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[var(--radius-card)] p-8 shadow-lg dark:shadow-2xl">
                   <div className="flex items-center justify-between gap-3 mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-[var(--radius)] bg-purple-500/20 flex items-center justify-center">
                         <FileText className="w-5 h-5 text-purple-400" />
                       </div>
-                      <h3 className="text-[16px] tracking-tight text-black dark:text-white/95">Uploaded Documents</h3>
+                      <h3 className="text-[16px] tracking-tight text-foreground dark:text-neutral-0/95">Uploaded Documents</h3>
                     </div>
                     {/* Score display */}
                     {(() => {
@@ -1482,10 +1483,10 @@ export function PropertyUpload() {
                       
                       return (
                         <div className="flex flex-col items-end">
-                          <span className="text-[12px] text-black/40 dark:text-white/40 mb-1 font-medium tracking-wide uppercase">Trust Score</span>
+                          <span className="text-caption text-muted-foreground dark:text-neutral-300/60 mb-1 font-medium tracking-wide uppercase">Trust Score</span>
                           <div className="flex items-end gap-1">
-                            <span className="text-2xl font-bold leading-none text-black dark:text-white">{currentScore}</span>
-                            <span className="text-[14px] text-black/60 dark:text-white/60 mb-0.5">/ 100</span>
+                            <span className="text-2xl font-medium leading-none text-foreground dark:text-neutral-0">{currentScore}</span>
+                            <span className="text-small text-neutral-700/80 dark:text-neutral-300/80 mb-0.5">/ 100</span>
                           </div>
                         </div>
                       );
@@ -1505,11 +1506,11 @@ export function PropertyUpload() {
                               onClick={() => setReviewCategoryIndex(idx)}
                               className={`flex items-center gap-2 pb-3 border-b-2 transition-colors whitespace-nowrap relative top-[1px] ${
                                 isActive 
-                                  ? 'border-emerald-500 text-emerald-500' 
-                                  : 'border-transparent text-black/40 dark:text-white/40 hover:text-black/60 dark:hover:text-white/60'
+                                  ? 'border-primary-700 text-primary-700' 
+                                  : 'border-transparent text-muted-foreground dark:text-neutral-300/60 hover:text-neutral-700/80 dark:hover:text-neutral-300/80'
                               }`}
                             >
-                              <span className="text-[13px] font-medium tracking-wide">
+                              <span className="text-small font-medium tracking-wide">
                                 {cat.title}
                               </span>
                             </button>
@@ -1535,11 +1536,11 @@ export function PropertyUpload() {
                               onClick={() => setReviewCategoryIndex(idx)}
                               className={`flex items-center gap-2 pb-3 border-b-2 transition-colors whitespace-nowrap relative top-[1px] ${
                                 isActive 
-                                  ? 'border-emerald-500 text-emerald-500' 
-                                  : 'border-transparent text-black/40 dark:text-white/40 hover:text-black/60 dark:hover:text-white/60'
+                                  ? 'border-primary-700 text-primary-700' 
+                                  : 'border-transparent text-muted-foreground dark:text-neutral-300/60 hover:text-neutral-700/80 dark:hover:text-neutral-300/80'
                               }`}
                             >
-                              <span className="text-[13px] font-medium tracking-wide">
+                              <span className="text-small font-medium tracking-wide">
                                 Other
                               </span>
                             </button>
@@ -1575,8 +1576,8 @@ export function PropertyUpload() {
                           if (docsToShow.length === 0) {
                             return (
                               <div className="text-center py-8">
-                                <FileText className="w-12 h-12 text-black/20 dark:text-white/20 mx-auto mb-3" />
-                                <p className="text-[14px] text-black/40 dark:text-white/40">No documents uploaded for this category</p>
+                                <FileText className="w-12 h-12 text-foreground/20 dark:text-neutral-0/20 mx-auto mb-3" />
+                                <p className="text-small text-muted-foreground dark:text-neutral-300/60">No documents uploaded for this category</p>
                               </div>
                             );
                           }
@@ -1586,25 +1587,25 @@ export function PropertyUpload() {
                               {docsToShow.map((doc) => (
                                 <div 
                                   key={doc.id}
-                                  className="flex items-center justify-between bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 rounded-xl p-4 hover:bg-black/[0.04] dark:hover:bg-white/[0.05] transition-all"
+                                  className="flex items-center justify-between bg-neutral-900/[0.02] dark:bg-card/[0.03] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-4 hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.05] transition-all"
                                 >
                                   <div className="flex items-center gap-3 flex-1">
-                                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                                      <FileText className="w-5 h-5 text-emerald-400" />
+                                    <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center flex-shrink-0">
+                                      <FileText className="w-5 h-5 text-primary-600" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <div className="text-[14px] text-black dark:text-white/95 truncate">
+                                      <div className="text-small text-foreground dark:text-neutral-0/95 truncate">
                                         {doc.documentType || doc.name}
                                       </div>
-                                      <div className="text-[12px] text-black/40 dark:text-white/40 mt-0.5">
+                                      <div className="text-caption text-muted-foreground dark:text-neutral-300/60 mt-0.5">
                                         {doc.documentType ? `${doc.name} • ${doc.size}` : doc.size}
                                       </div>
                                     </div>
                                   </div>
                                   <div className="flex items-center gap-2">
-                                    <div className={`px-3 py-1 rounded-lg text-[11px] tracking-wide uppercase ${
+                                    <div className={`px-3 py-1 rounded-[var(--radius)] text-caption tracking-wide uppercase ${
                                       doc.status === 'verified' 
-                                        ? 'bg-emerald-500/10 text-emerald-400' 
+                                        ? 'bg-primary-700/10 text-primary-600' 
                                         : doc.status === 'processing'
                                         ? 'bg-yellow-500/10 text-yellow-400'
                                         : 'bg-blue-500/10 text-blue-400'
@@ -1612,7 +1613,7 @@ export function PropertyUpload() {
                                       {doc.status}
                                     </div>
                                     {doc.status === 'verified' && (
-                                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                                      <CheckCircle2 className="w-4 h-4 text-primary-600" />
                                     )}
                                   </div>
                                 </div>
@@ -1624,26 +1625,26 @@ export function PropertyUpload() {
                     </div>
                   ) : (
                     <div className="text-center py-8">
-                      <FileText className="w-12 h-12 text-black/20 dark:text-white/20 mx-auto mb-3" />
-                      <p className="text-[14px] text-black/40 dark:text-white/40">No documents uploaded yet</p>
+                      <FileText className="w-12 h-12 text-foreground/20 dark:text-neutral-0/20 mx-auto mb-3" />
+                      <p className="text-small text-muted-foreground dark:text-neutral-300/60">No documents uploaded yet</p>
                     </div>
                   )}
                 </div>
             </div>
 
             {/* Action Footer */}
-            <div className="bg-white dark:bg-[#1A1A1A] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-6 shadow-lg dark:shadow-2xl">
+            <div className="bg-card dark:bg-neutral-900 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[var(--radius-card)] p-6 shadow-lg dark:shadow-2xl">
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => setStep('documents')}
-                  className="text-black/60 dark:text-white/60 hover:text-black/90 dark:hover:text-white/90 text-[14px] tracking-wide transition-colors"
+                  className="text-neutral-700/80 dark:text-neutral-300/80 hover:text-foreground/90 dark:hover:text-neutral-0/90 text-small tracking-wide transition-colors"
                 >
                   ← Back to Documents
                 </button>
                 
                 {/* VYBE Logo */}
                 <div className="flex-shrink-0">
-                  
+                  <img src={vybeLogoImage} alt="VYBE" className="h-7 w-auto object-contain" />
                 </div>
 
                 <button
@@ -1693,7 +1694,7 @@ export function PropertyUpload() {
                     localStorage.setItem('vybeHasProperties', 'true');
                     navigate('/my-properties');
                   }}
-                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 px-10 py-4 rounded-xl text-[15px] font-medium tracking-wide transition-all shadow-lg"
+                  className="bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground hover:bg-neutral-900/90 dark:hover:bg-card/90 px-10 py-4 rounded-[var(--radius-card)] text-[15px] font-medium tracking-wide transition-all shadow-lg"
                 >
                   Finish
                 </button>

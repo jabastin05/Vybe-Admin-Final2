@@ -194,9 +194,9 @@ export function WorkflowTemplateConfig() {
   return (
     <AdminLayout>
       {successMessage && (
-        <div className="fixed top-24 right-8 z-50 bg-emerald-500 text-white px-6 py-3 rounded-[12px] shadow-lg flex items-center gap-2">
+        <div className="fixed top-24 right-8 z-50 bg-primary-700 text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] shadow-lg flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
-          <span className="text-[14px] font-medium">{successMessage}</span>
+          <span className="text-small font-medium">{successMessage}</span>
         </div>
       )}
 
@@ -247,7 +247,7 @@ export function WorkflowTemplateConfig() {
                 <div className="flex items-start gap-4 flex-1">
                   <button
                     onClick={() => toggleTemplate(template.id)}
-                    className="p-2 hover:bg-muted rounded-lg transition-colors"
+                    className="p-2 hover:bg-muted rounded-[var(--radius)] transition-colors"
                   >
                     {expandedTemplates.includes(template.id) ? (
                       <ChevronDown className="w-5 h-5 text-muted-foreground" />
@@ -256,7 +256,7 @@ export function WorkflowTemplateConfig() {
                     )}
                   </button>
 
-                  <div className="p-3 bg-purple-500/10 rounded-[12px]">
+                  <div className="p-3 bg-purple-500/10 rounded-[var(--radius-card)]">
                     <GitBranch className="w-5 h-5 text-purple-500" />
                   </div>
 
@@ -278,22 +278,22 @@ export function WorkflowTemplateConfig() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleOpenStatusModal(template.id)}
-                    className="px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 rounded-[8px] text-[13px] font-medium transition-all flex items-center gap-1.5"
+                    className="px-3 py-1.5 bg-primary-700/10 hover:bg-primary-700/20 text-primary-700 rounded-[var(--radius)] text-small font-medium transition-all flex items-center gap-1.5"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     Add Status
                   </button>
                   <button
                     onClick={() => handleOpenTemplateModal(template)}
-                    className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                    className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                   >
-                    <Edit2 className="w-4 h-4 text-black/40 dark:text-white/40" />
+                    <Edit2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60" />
                   </button>
                   <button
                     onClick={() => handleDeleteTemplate(template.id)}
-                    className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group"
+                    className="p-2 hover:bg-red-500/10 rounded-[var(--radius)] transition-colors group"
                   >
-                    <Trash2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                    <Trash2 className="w-4 h-4 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                   </button>
                 </div>
               </div>
@@ -330,15 +330,15 @@ export function WorkflowTemplateConfig() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleOpenStatusModal(template.id, index)}
-                            className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                            className="p-2 hover:bg-neutral-900/5 dark:hover:bg-card/5 rounded-[var(--radius)] transition-colors"
                           >
-                            <Edit2 className="w-3.5 h-3.5 text-black/40 dark:text-white/40" />
+                            <Edit2 className="w-3.5 h-3.5 text-muted-foreground dark:text-neutral-300/60" />
                           </button>
                           <button
                             onClick={() => handleDeleteStatus(template.id, index)}
-                            className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group"
+                            className="p-2 hover:bg-red-500/10 rounded-[var(--radius)] transition-colors group"
                           >
-                            <Trash2 className="w-3.5 h-3.5 text-black/40 dark:text-white/40 group-hover:text-red-500" />
+                            <Trash2 className="w-3.5 h-3.5 text-muted-foreground dark:text-neutral-300/60 group-hover:text-red-500" />
                           </button>
                         </div>
                       </div>
@@ -355,7 +355,7 @@ export function WorkflowTemplateConfig() {
         <div className="vybe-modal-overlay">
           <div className="vybe-modal">
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-semibold text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 {editingTemplate ? 'Edit Template' : 'Add Template'}
               </h2>
               <button
@@ -397,7 +397,7 @@ export function WorkflowTemplateConfig() {
             <div className="flex items-center gap-3 mt-6">
               <button
                 onClick={handleCloseTemplateModal}
-                className="flex-1 px-4 py-2.5 bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
+                className="flex-1 px-4 py-2.5 bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
               >
                 Cancel
               </button>
@@ -417,7 +417,7 @@ export function WorkflowTemplateConfig() {
         <div className="vybe-modal-overlay">
           <div className="vybe-modal">
             <div className="vybe-modal-header">
-              <h2 className="text-[20px] font-semibold text-foreground">
+              <h2 className="text-h3 font-medium text-foreground">
                 {editingStatusIndex !== null ? 'Edit Status' : 'Add Status'}
               </h2>
               <button
@@ -466,7 +466,7 @@ export function WorkflowTemplateConfig() {
                       onClick={() => setStatusFormData({ ...statusFormData, name: color.name })}
                       className={`p-3 rounded-[var(--radius)] transition-all ${
                         statusFormData.name === color.name
-                          ? 'ring-2 ring-emerald-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900'
+                          ? 'ring-2 ring-primary-700 ring-offset-2 ring-offset-white dark:ring-offset-gray-900'
                           : 'hover:scale-110'
                       }`}
                       style={{ backgroundColor: color.value }}
@@ -480,7 +480,7 @@ export function WorkflowTemplateConfig() {
             <div className="flex items-center gap-3 mt-6">
               <button
                 onClick={handleCloseStatusModal}
-                className="flex-1 px-4 py-2.5 bg-muted hover:bg-black/10 dark:hover:bg-white/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
+                className="flex-1 px-4 py-2.5 bg-muted hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground rounded-[var(--radius)] text-small font-medium transition-colors"
               >
                 Cancel
               </button>

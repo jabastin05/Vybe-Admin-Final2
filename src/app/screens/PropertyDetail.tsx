@@ -23,22 +23,22 @@ export function PropertyDetail() {
 
   if (!property) {
     return (
-      <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F] transition-colors duration-300">
+      <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
         <SideNav />
         <div className="max-w-7xl mx-auto px-8 py-12">
-          <div className="bg-white/90 dark:bg-[#1A1A1A]/90 backdrop-blur-xl rounded-[24px] border border-black/5 dark:border-white/10 p-16 text-center shadow-lg">
-            <div className="w-20 h-20 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-6">
-              <Building2 className="w-10 h-10 text-black/30 dark:text-white/30" />
+          <div className="bg-card/90 dark:bg-neutral-900/90 backdrop-blur-xl rounded-[var(--radius-card)] border border-black/5 dark:border-white/10 p-16 text-center shadow-lg">
+            <div className="w-20 h-20 rounded-full bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-6">
+              <Building2 className="w-10 h-10 text-foreground/30 dark:text-neutral-0/30" />
             </div>
-            <h2 className="text-[24px] tracking-tight text-black dark:text-white/95 mb-3">
+            <h2 className="text-h2 tracking-tight text-foreground dark:text-neutral-0/95 mb-3">
               Property Not Found
             </h2>
-            <p className="text-[14px] text-black/60 dark:text-white/60 max-w-md mx-auto mb-8">
+            <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 max-w-md mx-auto mb-8">
               The property you're looking for doesn't exist or has been removed.
             </p>
             <Link
               to="/properties"
-              className="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="inline-flex items-center gap-2 bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground px-6 py-3 rounded-[var(--radius-card)] transition-all text-small font-medium"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Case Management
@@ -106,7 +106,7 @@ export function PropertyDetail() {
   const getStatusColor = (status: 'uploading' | 'verified' | 'processing' | 'error') => {
     switch (status) {
       case 'verified':
-        return 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400';
+        return 'bg-primary-700/10 text-primary-700 dark:text-primary-400';
       case 'processing':
         return 'bg-yellow-500/10 text-yellow-500 dark:text-yellow-400';
       case 'error':
@@ -167,7 +167,7 @@ export function PropertyDetail() {
   ];
 
   const getOpportunityColor = (score: number) => {
-    if (score >= 90) return { bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/20' };
+    if (score >= 90) return { bg: 'bg-primary-700/10', text: 'text-primary-700 dark:text-primary-400', border: 'border-primary-700/20' };
     if (score >= 80) return { bg: 'bg-blue-500/10', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-500/20' };
     return { bg: 'bg-purple-500/10', text: 'text-purple-600 dark:text-purple-400', border: 'border-purple-500/20' };
   };
@@ -289,28 +289,28 @@ export function PropertyDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0F0F0F] transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-neutral-900 transition-colors duration-300">
       <SideNav />
       
       {/* Header */}
-      <div className="border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A]">
+      <div className="border-b border-black/5 dark:border-white/10 bg-card dark:bg-neutral-900">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link 
                 to="/properties" 
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-colors text-neutral-700/80 dark:text-neutral-300/80"
               >
                 <ArrowLeft className="w-4 h-4" />
               </Link>
               <div>
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-2">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">
                   Property Details
                 </div>
-                <div className="text-[32px] tracking-tight text-black dark:text-white">
+                <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0">
                   {property.name}
                 </div>
-                <div className="flex items-center gap-4 mt-2 text-[13px] text-black/50 dark:text-white/50">
+                <div className="flex items-center gap-4 mt-2 text-small text-muted-foreground dark:text-neutral-0/50">
                   <span className="inline-flex items-center gap-1">
                     <FileText className="w-3.5 h-3.5" />
                     {property.type}
@@ -336,23 +336,23 @@ export function PropertyDetail() {
           {/* Left Column - Property Details */}
           <div className="lg:col-span-2 space-y-6">
             {/* Property Information Card */}
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-[20px] tracking-tight text-black dark:text-white/95">
+                <h2 className="text-h3 tracking-tight text-foreground dark:text-neutral-0/95">
                   Property Information
                 </h2>
               </div>
 
               {/* Address Section */}
               <div className="mb-6">
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                   Address
                 </div>
-                <div className="flex items-start gap-3 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-xl p-4">
-                  <MapPin className="w-5 h-5 text-black/40 dark:text-white/40 flex-shrink-0 mt-0.5" />
-                  <div className="text-[14px] text-black/70 dark:text-white/70">
+                <div className="flex items-start gap-3 bg-neutral-900/[0.02] dark:bg-card/[0.02] border border-black/5 dark:border-white/5 rounded-[var(--radius-card)] p-4">
+                  <MapPin className="w-5 h-5 text-muted-foreground dark:text-neutral-300/60 flex-shrink-0 mt-0.5" />
+                  <div className="text-small text-foreground/70 dark:text-neutral-0/70">
                     {property.address}
                   </div>
                 </div>
@@ -362,60 +362,60 @@ export function PropertyDetail() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {property.country && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Country
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.country}
                     </div>
                   </div>
                 )}
                 {property.state && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       State
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.state}
                     </div>
                   </div>
                 )}
                 {property.city && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       City
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.city}
                     </div>
                   </div>
                 )}
                 {property.district && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       District
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.district}
                     </div>
                   </div>
                 )}
                 {property.latitude && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Latitude
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.latitude}
                     </div>
                   </div>
                 )}
                 {property.longitude && (
                   <div>
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Longitude
                     </div>
-                    <div className="text-[14px] text-black dark:text-white/95">
+                    <div className="text-small text-foreground dark:text-neutral-0/95">
                       {property.longitude}
                     </div>
                   </div>
@@ -425,10 +425,10 @@ export function PropertyDetail() {
               {/* Zoning */}
               {property.zoning && (
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Zoning
                   </div>
-                  <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 px-4 py-2 rounded-lg text-[13px] font-medium">
+                  <div className="inline-flex items-center gap-2 bg-primary-700/10 text-primary-700 dark:text-primary-400 px-4 py-2 rounded-[var(--radius)] text-small font-medium">
                     {property.zoning}
                   </div>
                 </div>
@@ -436,84 +436,84 @@ export function PropertyDetail() {
             </div>
 
             {/* Property Specifications Card */}
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
-              <h2 className="text-[20px] tracking-tight text-black dark:text-white/95 mb-6">
+              <h2 className="text-h3 tracking-tight text-foreground dark:text-neutral-0/95 mb-6">
                 Property Specifications
               </h2>
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Building Type
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95 capitalize">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95 capitalize">
                     {property.buildingType || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Property Type
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.type || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Plot Size
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.plotSize || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Built-up Area
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.builtUpArea || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Year of Construction
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.yearOfConstruction || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Number of Floors
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.numberOfFloors || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Survey Number
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.surveyNumber || 'Not specified'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                  <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                     Current Usage
                   </div>
-                  <div className="text-[16px] text-black dark:text-white/95">
+                  <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                     {property.currentUsage || 'Not specified'}
                   </div>
                 </div>
                 {property.rentalIncome && (
                   <div className="col-span-2">
-                    <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-2">
+                    <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-2">
                       Rental Income
                     </div>
-                    <div className="text-[16px] text-black dark:text-white/95">
+                    <div className="text-[16px] text-foreground dark:text-neutral-0/95">
                       ₹{property.rentalIncome}/month
                     </div>
                   </div>
@@ -522,20 +522,20 @@ export function PropertyDetail() {
             </div>
 
             {/* Connectivity & Nearby Landmarks */}
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
-              <h2 className="text-[20px] tracking-tight text-black dark:text-white/95 mb-6">
+              <h2 className="text-h3 tracking-tight text-foreground dark:text-neutral-0/95 mb-6">
                 Nearby Landmarks - {property.city || 'Area'}
               </h2>
 
               {/* Map Preview Placeholder */}
               <div 
-                className="bg-black/5 dark:bg-white/5 rounded-xl h-48 mb-6 flex items-center justify-center relative overflow-hidden cursor-pointer group hover:bg-black/10 dark:hover:bg-white/10 transition-all"
+                className="bg-neutral-900/5 dark:bg-card/5 rounded-[var(--radius-card)] h-48 mb-6 flex items-center justify-center relative overflow-hidden cursor-pointer group hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-all"
                 onClick={() => setShowMapModal(true)}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5" />
-                <button className="relative inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-[12px] text-[13px] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.15)] group-hover:shadow-[0_4px_16px_rgba(0,0,0,0.25)] group-hover:-translate-y-0.5 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-700/5 to-blue-500/5" />
+                <button className="relative inline-flex items-center gap-2 bg-neutral-900 dark:bg-card text-neutral-0 dark:text-foreground px-6 py-3 rounded-[var(--radius-card)] text-small font-medium shadow-[0_2px_8px_rgba(0,0,0,0.15)] group-hover:shadow-[0_4px_16px_rgba(0,0,0,0.25)] group-hover:-translate-y-0.5 transition-all duration-300">
                   <MapPin className="w-4 h-4" />
                   View on Map
                 </button>
@@ -545,10 +545,10 @@ export function PropertyDetail() {
               <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
                 <button 
                   onClick={() => setSelectedLandmarkCategory('schools')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'schools'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <School className="w-4 h-4" />
@@ -556,10 +556,10 @@ export function PropertyDetail() {
                 </button>
                 <button 
                   onClick={() => setSelectedLandmarkCategory('busStops')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'busStops'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <Bus className="w-4 h-4" />
@@ -567,10 +567,10 @@ export function PropertyDetail() {
                 </button>
                 <button 
                   onClick={() => setSelectedLandmarkCategory('hospitals')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'hospitals'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <Building className="w-4 h-4" />
@@ -578,10 +578,10 @@ export function PropertyDetail() {
                 </button>
                 <button 
                   onClick={() => setSelectedLandmarkCategory('banks')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'banks'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <Banknote className="w-4 h-4" />
@@ -589,10 +589,10 @@ export function PropertyDetail() {
                 </button>
                 <button 
                   onClick={() => setSelectedLandmarkCategory('temples')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'temples'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <Church className="w-4 h-4" />
@@ -600,10 +600,10 @@ export function PropertyDetail() {
                 </button>
                 <button 
                   onClick={() => setSelectedLandmarkCategory('shopping')}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-[12px] font-bold whitespace-nowrap transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-card)] text-caption font-medium whitespace-nowrap transition-all ${
                     selectedLandmarkCategory === 'shopping'
-                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                      : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                      ? 'bg-primary-700 hover:bg-primary-900 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                      : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                   }`}
                 >
                   <ShoppingBag className="w-4 h-4" />
@@ -613,7 +613,7 @@ export function PropertyDetail() {
 
               {/* Landmarks List */}
               <div className="space-y-3 mb-4">
-                <h3 className="text-[14px] font-bold tracking-tight text-black dark:text-white/95">
+                <h3 className="text-small font-medium tracking-tight text-foreground dark:text-neutral-0/95">
                   {selectedLandmarkCategory === 'schools' && 'Schools'}
                   {selectedLandmarkCategory === 'busStops' && 'Bus Stops'}
                   {selectedLandmarkCategory === 'hospitals' && 'Hospitals'}
@@ -630,12 +630,12 @@ export function PropertyDetail() {
                       setSelectedLandmark(landmark);
                       setShowMapModal(true);
                     }}
-                    className="w-full flex items-center justify-between py-3 border-b border-black/5 dark:border-white/5 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all group"
+                    className="w-full flex items-center justify-between py-3 border-b border-black/5 dark:border-white/5 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-all group"
                   >
-                    <span className="text-[14px] font-semibold text-black dark:text-white/90 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                    <span className="text-small font-medium text-foreground dark:text-neutral-0/90 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">
                       {landmark.name}
                     </span>
-                    <div className="inline-flex items-center gap-1.5 text-[13px] text-black/60 dark:text-white/60">
+                    <div className="inline-flex items-center gap-1.5 text-small text-neutral-700/80 dark:text-neutral-300/80">
                       <Navigation className="w-3.5 h-3.5" />
                       {landmark.distance}
                     </div>
@@ -645,24 +645,24 @@ export function PropertyDetail() {
 
               <button 
                 onClick={() => setShowMapModal(true)}
-                className="w-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white px-6 py-3 rounded-[12px] text-[13px] font-bold transition-all"
+                className="w-full bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0 px-6 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all"
               >
                 View All on Map
               </button>
             </div>
 
             {/* Locality Insights */}
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
-              <h2 className="text-[16px] tracking-tight text-black dark:text-white/95 mb-4">
+              <h2 className="text-[16px] tracking-tight text-foreground dark:text-neutral-0/95 mb-4">
                 Locality Insights: {property.city || property.district || 'Area'}
               </h2>
 
               {/* Description */}
-              <p className="text-[12px] text-black/70 dark:text-white/70 leading-relaxed mb-5">
+              <p className="text-caption text-foreground/70 dark:text-neutral-0/70 leading-relaxed mb-5">
                 The upscale neighbourhood of {property.city || property.district || 'this area'} is located in {property.state || property.country}. There are more than {localityData.rentalCount} rental houses and over {localityData.saleCount} available for purchase in this area. Residents of {property.city || 'this area'} gave this area a safety rating of {localityData.safetyRating}{' '}
-                <button className="text-emerald-500 dark:text-emerald-400 font-bold hover:underline text-[12px]">
+                <button className="text-primary-700 dark:text-primary-400 font-medium hover:underline text-caption">
                   Read More
                 </button>
               </p>
@@ -670,64 +670,64 @@ export function PropertyDetail() {
               {/* Insights Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {/* Price Insights */}
-                <div className="bg-gradient-to-br from-blue-50/50 to-indigo-50/30 dark:from-blue-950/20 dark:to-indigo-950/10 border border-blue-500/20 rounded-[16px] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(59,130,246,0.15)] transition-all duration-300">
+                <div className="bg-gradient-to-br from-blue-50/50 to-indigo-50/30 dark:from-blue-950/20 dark:to-indigo-950/10 border border-blue-500/20 rounded-[var(--radius-card)] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(59,130,246,0.15)] transition-all duration-300">
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
                   
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-8 h-8 rounded-[10px] bg-blue-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400" strokeWidth={2} />
                     </div>
-                    <h3 className="text-[12px] font-bold text-black dark:text-white/95">Price Insights</h3>
+                    <h3 className="text-caption font-medium text-foreground dark:text-neutral-0/95">Price Insights</h3>
                   </div>
-                  <div className="mb-1.5 text-[9px] font-bold tracking-[0.05em] uppercase text-black/50 dark:text-white/50">
+                  <div className="mb-1.5 text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50">
                     Average Asking Price in {property.city || 'Area'}
                   </div>
-                  <div className="text-[20px] font-bold tracking-tight text-black dark:text-white/95 mb-1">
-                    ₹{localityData.avgPrice}<span className="text-[12px] text-emerald-500 dark:text-emerald-400">{localityData.priceUnit}</span>
+                  <div className="text-h3 font-medium tracking-tight text-foreground dark:text-neutral-0/95 mb-1">
+                    ₹{localityData.avgPrice}<span className="text-caption text-primary-700 dark:text-primary-400">{localityData.priceUnit}</span>
                   </div>
-                  <div className="text-[11px] text-black/60 dark:text-white/60">
+                  <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                     Based on active listings and recent trends
                   </div>
                 </div>
 
                 {/* Locality Rank */}
-                <div className="bg-gradient-to-br from-pink-50/50 to-rose-50/30 dark:from-pink-950/20 dark:to-rose-950/10 border border-pink-500/20 rounded-[16px] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(236,72,153,0.15)] transition-all duration-300">
+                <div className="bg-gradient-to-br from-pink-50/50 to-rose-50/30 dark:from-pink-950/20 dark:to-rose-950/10 border border-pink-500/20 rounded-[var(--radius-card)] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(236,72,153,0.15)] transition-all duration-300">
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-pink-500/30 to-transparent" />
                   
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-8 h-8 rounded-[10px] bg-pink-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Award className="w-4 h-4 text-pink-600 dark:text-pink-400" strokeWidth={2} />
                     </div>
-                    <h3 className="text-[12px] font-bold text-black dark:text-white/95">Locality Rank</h3>
+                    <h3 className="text-caption font-medium text-foreground dark:text-neutral-0/95">Locality Rank</h3>
                   </div>
-                  <div className="text-[16px] font-bold tracking-tight text-black dark:text-white/95 mb-1.5">
+                  <div className="text-[16px] font-medium tracking-tight text-foreground dark:text-neutral-0/95 mb-1.5">
                     #{localityData.localityRank} in {localityData.state}
                   </div>
-                  <div className="text-[11px] text-black/60 dark:text-white/60 mb-3">
+                  <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mb-3">
                     Based on demand, livability, and activity
                   </div>
-                  <button className="text-[11px] font-bold text-black dark:text-white/95 underline hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+                  <button className="text-caption font-medium text-foreground dark:text-neutral-0/95 underline hover:text-primary-700 dark:hover:text-primary-600 transition-colors">
                     Know More About {property.city || 'Area'}
                   </button>
                 </div>
 
                 {/* Demographics */}
-                <div className="bg-gradient-to-br from-purple-50/50 to-violet-50/30 dark:from-purple-950/20 dark:to-violet-950/10 border border-purple-500/20 rounded-[16px] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(168,85,247,0.15)] transition-all duration-300">
+                <div className="bg-gradient-to-br from-purple-50/50 to-violet-50/30 dark:from-purple-950/20 dark:to-violet-950/10 border border-purple-500/20 rounded-[var(--radius-card)] p-4 relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(168,85,247,0.15)] transition-all duration-300">
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
                   
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-8 h-8 rounded-[10px] bg-purple-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Users className="w-4 h-4 text-purple-600 dark:text-purple-400" strokeWidth={2} />
                     </div>
-                    <h3 className="text-[12px] font-bold text-black dark:text-white/95">Demographics</h3>
+                    <h3 className="text-caption font-medium text-foreground dark:text-neutral-0/95">Demographics</h3>
                   </div>
-                  <div className="text-[20px] font-bold tracking-tight text-black dark:text-white/95 mb-1">
+                  <div className="text-h3 font-medium tracking-tight text-foreground dark:text-neutral-0/95 mb-1">
                     {localityData.demographicType}
                   </div>
-                  <div className="text-[11px] text-black/60 dark:text-white/60 mb-2">
+                  <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 mb-2">
                     {localityData.demographicDesc}
                   </div>
-                  <div className="text-[11px] font-bold text-emerald-500 dark:text-emerald-400">
+                  <div className="text-caption font-medium text-primary-700 dark:text-primary-400">
                     Safety Rating: {localityData.safetyRating}
                   </div>
                 </div>
@@ -735,17 +735,17 @@ export function PropertyDetail() {
             </div>
 
             {/* AI Insights */}
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
-              <h2 className="text-[18px] font-normal tracking-[-0.01em] text-black dark:text-white/95 mb-5">
+              <h2 className="text-h3 font-normal tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-5">
                 AI Market Intelligence
               </h2>
 
               {/* Opportunities */}
               <div className="space-y-2.5">
                 {aiOpportunities.map((opp) => (
-                  <div key={opp.id} className="bg-gradient-to-br from-green-50/50 to-lime-50/30 dark:from-green-950/20 dark:to-lime-950/10 border border-green-500/20 rounded-[16px] p-4 relative overflow-hidden hover:shadow-[0_4px_16px_rgba(34,197,94,0.12)] transition-all">
+                  <div key={opp.id} className="bg-gradient-to-br from-green-50/50 to-lime-50/30 dark:from-green-950/20 dark:to-lime-950/10 border border-green-500/20 rounded-[var(--radius-card)] p-4 relative overflow-hidden hover:shadow-[0_4px_16px_rgba(34,197,94,0.12)] transition-all">
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
                     
                     <div className="flex items-start justify-between gap-3 mb-3">
@@ -754,30 +754,30 @@ export function PropertyDetail() {
                           <Lightbulb className="w-4.5 h-4.5 text-green-600 dark:text-green-400" strokeWidth={2} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-[13px] font-bold text-black dark:text-white/95 mb-0.5">{opp.title}</h3>
-                          <p className="text-[9px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">{opp.category}</p>
+                          <h3 className="text-small font-medium text-foreground dark:text-neutral-0/95 mb-0.5">{opp.title}</h3>
+                          <p className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">{opp.category}</p>
                         </div>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="text-[20px] font-bold text-green-600 dark:text-green-400 leading-none mb-1">{opp.opportunityScore}</div>
-                        <div className="text-[8px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Score</div>
+                        <div className="text-h3 font-medium text-green-600 dark:text-green-400 leading-none mb-1">{opp.opportunityScore}</div>
+                        <div className="text-[8px] font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Score</div>
                       </div>
                     </div>
 
-                    <div className="text-[12px] leading-relaxed text-black/70 dark:text-white/70 mb-3">
+                    <div className="text-caption leading-relaxed text-foreground/70 dark:text-neutral-0/70 mb-3">
                       {opp.insight}
                     </div>
 
                     <div className="flex flex-wrap gap-1.5">
-                      <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-md text-[10px] font-bold">
+                      <div className="inline-flex items-center gap-1.5 bg-primary-700/10 text-primary-700 dark:text-primary-400 px-2.5 py-1 rounded-[var(--radius)] text-caption font-medium">
                         <IndianRupee className="w-3 h-3" strokeWidth={2.5} />
                         {opp.potentialValue}
                       </div>
-                      <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-md text-[10px] font-bold">
+                      <div className="inline-flex items-center gap-1.5 bg-primary-700/10 text-primary-700 dark:text-primary-400 px-2.5 py-1 rounded-[var(--radius)] text-caption font-medium">
                         <Target className="w-3 h-3" strokeWidth={2.5} />
                         {opp.confidence}
                       </div>
-                      <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-md text-[10px] font-bold">
+                      <div className="inline-flex items-center gap-1.5 bg-primary-700/10 text-primary-700 dark:text-primary-400 px-2.5 py-1 rounded-[var(--radius)] text-caption font-medium">
                         <Clock className="w-3 h-3" strokeWidth={2.5} />
                         {getUrgencyLabel(opp.urgency).label}
                       </div>
@@ -789,7 +789,7 @@ export function PropertyDetail() {
               {/* Risks */}
               <div className="space-y-2.5 mt-3">
                 {aiRisks.map((risk) => (
-                  <div key={risk.id} className="bg-gradient-to-br from-red-50/50 to-rose-50/30 dark:from-red-950/20 dark:to-rose-950/10 border border-red-500/20 rounded-[16px] p-4 relative overflow-hidden hover:shadow-[0_4px_16px_rgba(239,68,68,0.12)] transition-all">
+                  <div key={risk.id} className="bg-gradient-to-br from-red-50/50 to-rose-50/30 dark:from-red-950/20 dark:to-rose-950/10 border border-red-500/20 rounded-[var(--radius-card)] p-4 relative overflow-hidden hover:shadow-[0_4px_16px_rgba(239,68,68,0.12)] transition-all">
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
                     
                     <div className="flex items-start justify-between gap-3 mb-3">
@@ -798,21 +798,21 @@ export function PropertyDetail() {
                           <AlertCircle className="w-4.5 h-4.5 text-red-600 dark:text-red-400" strokeWidth={2} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-[13px] font-bold text-black dark:text-white/95 mb-0.5">{risk.title}</h3>
-                          <p className="text-[9px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">{risk.category}</p>
+                          <h3 className="text-small font-medium text-foreground dark:text-neutral-0/95 mb-0.5">{risk.title}</h3>
+                          <p className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">{risk.category}</p>
                         </div>
                       </div>
-                      <div className="px-2.5 py-1 rounded-md bg-red-500/15 flex-shrink-0">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.05em] text-red-600 dark:text-red-400">{risk.severity}</div>
+                      <div className="px-2.5 py-1 rounded-[var(--radius)] bg-red-500/15 flex-shrink-0">
+                        <div className="text-caption font-medium uppercase tracking-[0.05em] text-red-600 dark:text-red-400">{risk.severity}</div>
                       </div>
                     </div>
 
-                    <div className="text-[12px] leading-relaxed text-black/70 dark:text-white/70 mb-3">
+                    <div className="text-caption leading-relaxed text-foreground/70 dark:text-neutral-0/70 mb-3">
                       {risk.description}
                     </div>
 
                     <div className="flex flex-wrap gap-1.5">
-                      <div className="inline-flex items-center gap-1.5 bg-red-500/10 text-red-600 dark:text-red-400 px-2.5 py-1 rounded-md text-[10px] font-bold">
+                      <div className="inline-flex items-center gap-1.5 bg-red-500/10 text-red-600 dark:text-red-400 px-2.5 py-1 rounded-[var(--radius)] text-caption font-medium">
                         <AlertTriangle className="w-3 h-3" strokeWidth={2.5} />
                         {risk.impact}
                       </div>
@@ -825,17 +825,17 @@ export function PropertyDetail() {
 
           {/* Right Column - Documents */}
           <div className="lg:col-span-1">
-            <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] rounded-[24px] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden sticky top-8">
+            <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/40 dark:border-white/10 p-8 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden sticky top-8">
               {/* Subtle glass highlight */}
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
               
               {/* Header with Trust Score */}
               <div className="flex items-start justify-between mb-8">
                 <div>
-                  <h2 className="text-[24px] font-normal tracking-[-0.01em] text-black dark:text-white/95 mb-2">
+                  <h2 className="text-h2 font-normal tracking-[-0.01em] text-foreground dark:text-neutral-0/95 mb-2">
                     Document Vault
                   </h2>
-                  <p className="text-[12px] text-black/50 dark:text-white/50">
+                  <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                     {propertyDocuments?.length || 0} files • Bank-grade security
                   </p>
                 </div>
@@ -857,19 +857,19 @@ export function PropertyDetail() {
                         return (
                           <>
                             <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                              <circle cx="50" cy="50" r="44" className="stroke-emerald-500 transition-all duration-1000" strokeWidth="5" fill="none" strokeDasharray="276.46" strokeDashoffset={276.46 - (276.46 * currentScore) / 100} strokeLinecap="round" />
+                              <circle cx="50" cy="50" r="44" className="stroke-primary-700 transition-all duration-1000" strokeWidth="5" fill="none" strokeDasharray="276.46" strokeDashoffset={276.46 - (276.46 * currentScore) / 100} strokeLinecap="round" />
                             </svg>
                             <div className="flex flex-col items-center">
-                              <span className="text-[16px] font-bold text-emerald-600 dark:text-emerald-400">{currentScore}</span>
-                              <span className="text-[8px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Score</span>
+                              <span className="text-[16px] font-medium text-primary-700 dark:text-primary-400">{currentScore}</span>
+                              <span className="text-[8px] font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Score</span>
                             </div>
                           </>
                         );
                       })()}
                     </div>
                     <div className="text-center">
-                      <div className="text-[9px] font-bold uppercase tracking-[0.05em] text-black/40 dark:text-white/40">Trust Level</div>
-                      <div className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 mt-0.5">
+                      <div className="text-caption font-medium uppercase tracking-[0.05em] text-muted-foreground dark:text-neutral-300/60">Trust Level</div>
+                      <div className="text-caption font-medium text-primary-700 dark:text-primary-400 mt-0.5">
                         {(() => {
                           let totalScore = 0;
                           Object.entries(docCategoryTabs).forEach(([key, cat]) => {
@@ -894,15 +894,15 @@ export function PropertyDetail() {
 
               {/* Add Documents CTA */}
               {/* Debug Banner - Remove after testing */}
-              <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-[12px]">
-                <p className="text-[11px] font-bold text-yellow-700 dark:text-yellow-400">
+              <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-[var(--radius-card)]">
+                <p className="text-caption font-medium text-yellow-700 dark:text-yellow-400">
                   DEBUG: {propertyDocuments?.length || 0} documents loaded
                 </p>
               </div>
 
               <Link
                 to={`/property/${id}/documents/upload`}
-                className="w-full mb-8 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 rounded-[12px] text-[14px] font-bold transition-all shadow-[0_4px_12px_rgba(16,185,129,0.25)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.35)] hover:-translate-y-0.5 flex items-center justify-center gap-2.5"
+                className="w-full mb-8 bg-primary-700 hover:bg-primary-900 text-neutral-0 px-6 py-4 rounded-[var(--radius-card)] text-small font-medium transition-all shadow-[0_4px_12px_rgba(28,117,188,0.25)] hover:shadow-[0_6px_20px_rgba(28,117,188,0.35)] hover:-translate-y-0.5 flex items-center justify-center gap-2.5"
               >
                 <Plus className="w-5 h-5" strokeWidth={2.5} />
                 Upload Documents
@@ -931,22 +931,22 @@ export function PropertyDetail() {
                     }
                     
                     return (
-                      <div key={key} className="bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] overflow-hidden transition-all">
+                      <div key={key} className="bg-card/85 dark:bg-card/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[var(--radius-card)] overflow-hidden transition-all">
                         {/* Accordion Header */}
                         <button
                           onClick={() => setExpandedDocCategory(isExpanded ? null : key)}
-                          className="w-full p-4 flex items-center justify-between hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+                          className="w-full p-4 flex items-center justify-between hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-colors"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-500/15 to-emerald-600/10 flex items-center justify-center">
-                              <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" strokeWidth={2} />
+                            <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-primary-700/15 to-primary-900/10 flex items-center justify-center">
+                              <FileText className="w-5 h-5 text-primary-700 dark:text-primary-400" strokeWidth={2} />
                             </div>
                             <div className="text-left">
                               <div className="flex items-center gap-2">
-                                <h3 className="text-[13px] font-bold text-black dark:text-white/95">{cat.title}</h3>
-                                {isComplete && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />}
+                                <h3 className="text-small font-medium text-foreground dark:text-neutral-0/95">{cat.title}</h3>
+                                {isComplete && <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse" />}
                               </div>
-                              <p className="text-[10px] text-black/50 dark:text-white/50 mt-0.5">
+                              <p className="text-caption text-muted-foreground dark:text-neutral-0/50 mt-0.5">
                                 {uploaded} of {cat.documents.length} uploaded
                               </p>
                             </div>
@@ -954,11 +954,11 @@ export function PropertyDetail() {
                           
                           <div className="flex items-center gap-3">
                             <div className="text-right">
-                              <div className="text-[16px] font-bold text-emerald-600 dark:text-emerald-400">
+                              <div className="text-[16px] font-medium text-primary-700 dark:text-primary-400">
                                 {percentage}%
                               </div>
                             </div>
-                            <ChevronDown className={`w-5 h-5 text-black/40 dark:text-white/40 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                            <ChevronDown className={`w-5 h-5 text-muted-foreground dark:text-neutral-300/60 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                           </div>
                         </button>
 
@@ -969,27 +969,27 @@ export function PropertyDetail() {
                               categoryDocs.map((doc: any) => (
                                 <div
                                   key={doc.id}
-                                  className="bg-white/50 dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[10px] p-3 hover:bg-black/[0.02] dark:hover:bg-white/[0.04] transition-all group"
+                                  className="bg-card/50 dark:bg-card/[0.02] border border-black/5 dark:border-white/5 rounded-[10px] p-3 hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.04] transition-all group"
                                 >
                                   <div className="flex items-center gap-2.5">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-[8px] bg-gradient-to-br from-emerald-500/15 to-emerald-600/10 flex items-center justify-center">
-                                      <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" strokeWidth={2} />
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] bg-gradient-to-br from-primary-700/15 to-primary-900/10 flex items-center justify-center">
+                                      <FileText className="w-4 h-4 text-primary-700 dark:text-primary-400" strokeWidth={2} />
                                     </div>
                                     
                                     <div className="flex-1 min-w-0">
-                                      <div className="text-[12px] font-medium text-black dark:text-white/95 mb-0.5 truncate">
+                                      <div className="text-caption font-medium text-foreground dark:text-neutral-0/95 mb-0.5 truncate">
                                         {doc.name}
                                       </div>
-                                      <div className="flex items-center gap-2 text-[10px]">
-                                        <span className="text-black/50 dark:text-white/50">{doc.size}</span>
+                                      <div className="flex items-center gap-2 text-caption">
+                                        <span className="text-muted-foreground dark:text-neutral-0/50">{doc.size}</span>
                                       </div>
                                     </div>
 
                                     <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                                      <button className="w-7 h-7 rounded-[6px] hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center text-black/60 dark:text-white/60">
+                                      <button className="w-7 h-7 rounded-[var(--radius)] hover:bg-neutral-900/5 dark:hover:bg-card/5 flex items-center justify-center text-neutral-700/80 dark:text-neutral-300/80">
                                         <Eye className="w-3.5 h-3.5" strokeWidth={2} />
                                       </button>
-                                      <button className="w-7 h-7 rounded-[6px] hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center text-black/60 dark:text-white/60">
+                                      <button className="w-7 h-7 rounded-[var(--radius)] hover:bg-neutral-900/5 dark:hover:bg-card/5 flex items-center justify-center text-neutral-700/80 dark:text-neutral-300/80">
                                         <Download className="w-3.5 h-3.5" strokeWidth={2} />
                                       </button>
                                     </div>
@@ -997,11 +997,11 @@ export function PropertyDetail() {
                                 </div>
                               ))
                             ) : (
-                              <div className="text-center py-8 bg-black/[0.01] dark:bg-white/[0.01] rounded-[10px] border border-dashed border-black/10 dark:border-white/10">
-                                <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-2">
-                                  <Upload className="w-5 h-5 text-black/30 dark:text-white/30" strokeWidth={2} />
+                              <div className="text-center py-8 bg-neutral-900/[0.01] dark:bg-card/[0.01] rounded-[10px] border border-dashed border-black/10 dark:border-white/10">
+                                <div className="w-10 h-10 rounded-full bg-neutral-900/5 dark:bg-card/5 flex items-center justify-center mx-auto mb-2">
+                                  <Upload className="w-5 h-5 text-foreground/30 dark:text-neutral-0/30" strokeWidth={2} />
                                 </div>
-                                <p className="text-[11px] text-black/50 dark:text-white/50">
+                                <p className="text-caption text-muted-foreground dark:text-neutral-0/50">
                                   No documents uploaded
                                 </p>
                               </div>
@@ -1013,14 +1013,14 @@ export function PropertyDetail() {
                   })}
                 </div>
               ) : (
-                <div className="text-center py-16 px-6 bg-gradient-to-br from-black/[0.01] to-black/[0.02] dark:from-white/[0.01] dark:to-white/[0.02] rounded-[16px] border-2 border-dashed border-black/10 dark:border-white/10">
+                <div className="text-center py-[var(--space-12)] px-6 bg-gradient-to-br from-black/[0.01] to-black/[0.02] dark:from-white/[0.01] dark:to-white/[0.02] rounded-[var(--radius-card)] border-2 border-dashed border-black/10 dark:border-white/10">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-black/5 to-black/10 dark:from-white/5 dark:to-white/10 flex items-center justify-center mx-auto mb-5 shadow-inner">
-                    <Upload className="w-8 h-8 text-black/30 dark:text-white/30" strokeWidth={2} />
+                    <Upload className="w-8 h-8 text-foreground/30 dark:text-neutral-0/30" strokeWidth={2} />
                   </div>
-                  <h3 className="text-[16px] font-bold text-black dark:text-white/95 mb-2">
+                  <h3 className="text-[16px] font-medium text-foreground dark:text-neutral-0/95 mb-2">
                     No Documents Yet
                   </h3>
-                  <p className="text-[12px] text-black/50 dark:text-white/50 max-w-xs mx-auto">
+                  <p className="text-caption text-muted-foreground dark:text-neutral-0/50 max-w-xs mx-auto">
                     Upload property documents to activate AI analysis and build your trust score
                   </p>
                 </div>
@@ -1028,34 +1028,34 @@ export function PropertyDetail() {
 
               {/* Quick Actions */}
               <div className="mt-6 pt-6 border-t border-black/5 dark:border-white/10">
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-3">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-3">
                   Quick Actions
                 </div>
                 <div className="space-y-2">
                   <Link
                     to={`/property/${property.id}/habu`}
-                    className="flex items-center justify-between w-full bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-lg px-4 py-3 text-[13px] text-black dark:text-white/95 transition-all group"
+                    className="flex items-center justify-between w-full bg-neutral-900/[0.02] dark:bg-card/[0.02] hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] border border-black/5 dark:border-white/5 rounded-[var(--radius)] px-4 py-3 text-small text-foreground dark:text-neutral-0/95 transition-all group"
                   >
                     <span>HABU Report</span>
                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link
                     to="/services?service=lease-rent"
-                    className="flex items-center justify-between w-full bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-lg px-4 py-3 text-[13px] text-black dark:text-white/95 transition-all group"
+                    className="flex items-center justify-between w-full bg-neutral-900/[0.02] dark:bg-card/[0.02] hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] border border-black/5 dark:border-white/5 rounded-[var(--radius)] px-4 py-3 text-small text-foreground dark:text-neutral-0/95 transition-all group"
                   >
                     <span>Lease & Rent</span>
                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link
                     to="/services?service=sell-liquidate"
-                    className="flex items-center justify-between w-full bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-lg px-4 py-3 text-[13px] text-black dark:text-white/95 transition-all group"
+                    className="flex items-center justify-between w-full bg-neutral-900/[0.02] dark:bg-card/[0.02] hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] border border-black/5 dark:border-white/5 rounded-[var(--radius)] px-4 py-3 text-small text-foreground dark:text-neutral-0/95 transition-all group"
                   >
                     <span>Sell or Liquidate</span>
                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link
                     to="/services?service=property-service"
-                    className="flex items-center justify-between w-full bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-lg px-4 py-3 text-[13px] text-black dark:text-white/95 transition-all group"
+                    className="flex items-center justify-between w-full bg-neutral-900/[0.02] dark:bg-card/[0.02] hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04] border border-black/5 dark:border-white/5 rounded-[var(--radius)] px-4 py-3 text-small text-foreground dark:text-neutral-0/95 transition-all group"
                   >
                     <span>Property Service</span>
                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -1069,21 +1069,21 @@ export function PropertyDetail() {
 
       {/* Document Upload Modal */}
       {showDocumentModal && (
-        <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1A1A1A] rounded-[24px] border border-black/10 dark:border-white/10 max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+        <div className="fixed inset-0 bg-neutral-900/60 dark:bg-neutral-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
             {/* Modal Header */}
             <div className="border-b border-black/5 dark:border-white/10 p-6 flex items-center justify-between">
               <div>
-                <h2 className="text-[24px] tracking-tight text-black dark:text-white/95 mb-1">
+                <h2 className="text-h2 tracking-tight text-foreground dark:text-neutral-0/95 mb-1">
                   Upload Documents
                 </h2>
-                <p className="text-[13px] text-black/60 dark:text-white/60">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                   Add required documents for {property.name}
                 </p>
               </div>
               <button
                 onClick={() => setShowDocumentModal(false)}
-                className="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-black/60 dark:text-white/60 transition-all"
+                className="w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 flex items-center justify-center text-neutral-700/80 dark:text-neutral-300/80 transition-all"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1092,14 +1092,14 @@ export function PropertyDetail() {
             {/* Modal Content */}
             <div className="overflow-y-auto max-h-[calc(90vh-180px)] p-6">
               {/* Property Type Info */}
-              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-[12px] p-4 mb-6">
+              <div className="bg-primary-700/10 border border-primary-700/20 rounded-[var(--radius-card)] p-4 mb-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Building2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                  <div className="text-[14px] font-bold text-black dark:text-white/95">
+                  <Building2 className="w-5 h-5 text-primary-700 dark:text-primary-400" />
+                  <div className="text-small font-medium text-foreground dark:text-neutral-0/95">
                     {property.buildingType} - {property.type}
                   </div>
                 </div>
-                <div className="text-[12px] text-black/70 dark:text-white/70">
+                <div className="text-caption text-foreground/70 dark:text-neutral-0/70">
                   Document requirements are based on your property type
                 </div>
               </div>
@@ -1107,10 +1107,10 @@ export function PropertyDetail() {
               {/* Mandatory Documents */}
               <div className="mb-8">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="text-[14px] font-bold tracking-tight text-black dark:text-white/95">
+                  <div className="text-small font-medium tracking-tight text-foreground dark:text-neutral-0/95">
                     Mandatory Documents
                   </div>
-                  <div className="bg-red-500/10 text-red-600 dark:text-red-400 px-2 py-1 rounded-md text-[10px] font-bold tracking-[0.05em] uppercase">
+                  <div className="bg-red-500/10 text-red-600 dark:text-red-400 px-2 py-1 rounded-[var(--radius)] text-caption font-medium tracking-[0.05em] uppercase">
                     Required
                   </div>
                 </div>
@@ -1118,23 +1118,23 @@ export function PropertyDetail() {
                   {documentCategories.mandatory.map((docType, index) => (
                     <div
                       key={index}
-                      className="bg-white dark:bg-[#0F0F0F] border-2 border-dashed border-black/10 dark:border-white/10 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 rounded-[12px] p-4 transition-all cursor-pointer group"
+                      className="bg-card dark:bg-neutral-900 border-2 border-dashed border-black/10 dark:border-white/10 hover:border-primary-700/30 dark:hover:border-primary-700/30 rounded-[var(--radius-card)] p-4 transition-all cursor-pointer group"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
-                            <Upload className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                          <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center group-hover:bg-primary-700/20 transition-all">
+                            <Upload className="w-5 h-5 text-primary-700 dark:text-primary-400" />
                           </div>
                           <div>
-                            <div className="text-[13px] font-bold text-black dark:text-white/95">
+                            <div className="text-small font-medium text-foreground dark:text-neutral-0/95">
                               {docType}
                             </div>
-                            <div className="text-[11px] text-black/50 dark:text-white/50">
+                            <div className="text-caption text-muted-foreground dark:text-neutral-0/50">
                               Click to upload or drag and drop
                             </div>
                           </div>
                         </div>
-                        <div className="text-[11px] text-red-600 dark:text-red-400 font-bold">
+                        <div className="text-caption text-red-600 dark:text-red-400 font-medium">
                           Required
                         </div>
                       </div>
@@ -1143,10 +1143,10 @@ export function PropertyDetail() {
                       {groupedDocuments[docType] && groupedDocuments[docType].length > 0 && (
                         <div className="mt-3 pt-3 border-t border-black/5 dark:border-white/5 space-y-2">
                           {groupedDocuments[docType].map((doc) => (
-                            <div key={doc.id} className="flex items-center gap-2 text-[11px]">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                              <span className="text-black/70 dark:text-white/70">{doc.name}</span>
-                              <span className="text-black/40 dark:text-white/40">({doc.size})</span>
+                            <div key={doc.id} className="flex items-center gap-2 text-caption">
+                              <CheckCircle2 className="w-4 h-4 text-primary-700" />
+                              <span className="text-foreground/70 dark:text-neutral-0/70">{doc.name}</span>
+                              <span className="text-muted-foreground dark:text-neutral-300/60">({doc.size})</span>
                             </div>
                           ))}
                         </div>
@@ -1159,10 +1159,10 @@ export function PropertyDetail() {
               {/* Optional Documents */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="text-[14px] font-bold tracking-tight text-black dark:text-white/95">
+                  <div className="text-small font-medium tracking-tight text-foreground dark:text-neutral-0/95">
                     Optional Documents
                   </div>
-                  <div className="bg-blue-500/10 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-md text-[10px] font-bold tracking-[0.05em] uppercase">
+                  <div className="bg-blue-500/10 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-[var(--radius)] text-caption font-medium tracking-[0.05em] uppercase">
                     Recommended
                   </div>
                 </div>
@@ -1170,23 +1170,23 @@ export function PropertyDetail() {
                   {documentCategories.optional.map((docType, index) => (
                     <div
                       key={index}
-                      className="bg-white dark:bg-[#0F0F0F] border-2 border-dashed border-black/10 dark:border-white/10 hover:border-blue-500/30 dark:hover:border-blue-500/30 rounded-[12px] p-4 transition-all cursor-pointer group"
+                      className="bg-card dark:bg-neutral-900 border-2 border-dashed border-black/10 dark:border-white/10 hover:border-blue-500/30 dark:hover:border-blue-500/30 rounded-[var(--radius-card)] p-4 transition-all cursor-pointer group"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all">
+                          <div className="w-10 h-10 rounded-[var(--radius)] bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all">
                             <Upload className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                           </div>
                           <div>
-                            <div className="text-[13px] font-bold text-black dark:text-white/95">
+                            <div className="text-small font-medium text-foreground dark:text-neutral-0/95">
                               {docType}
                             </div>
-                            <div className="text-[11px] text-black/50 dark:text-white/50">
+                            <div className="text-caption text-muted-foreground dark:text-neutral-0/50">
                               Click to upload or drag and drop
                             </div>
                           </div>
                         </div>
-                        <div className="text-[11px] text-blue-600 dark:text-blue-400 font-bold">
+                        <div className="text-caption text-blue-600 dark:text-blue-400 font-medium">
                           Optional
                         </div>
                       </div>
@@ -1195,10 +1195,10 @@ export function PropertyDetail() {
                       {groupedDocuments[docType] && groupedDocuments[docType].length > 0 && (
                         <div className="mt-3 pt-3 border-t border-black/5 dark:border-white/5 space-y-2">
                           {groupedDocuments[docType].map((doc) => (
-                            <div key={doc.id} className="flex items-center gap-2 text-[11px]">
+                            <div key={doc.id} className="flex items-center gap-2 text-caption">
                               <CheckCircle2 className="w-4 h-4 text-blue-500" />
-                              <span className="text-black/70 dark:text-white/70">{doc.name}</span>
-                              <span className="text-black/40 dark:text-white/40">({doc.size})</span>
+                              <span className="text-foreground/70 dark:text-neutral-0/70">{doc.name}</span>
+                              <span className="text-muted-foreground dark:text-neutral-300/60">({doc.size})</span>
                             </div>
                           ))}
                         </div>
@@ -1210,20 +1210,20 @@ export function PropertyDetail() {
             </div>
 
             {/* Modal Footer */}
-            <div className="border-t border-black/5 dark:border-white/10 p-6 flex items-center justify-between bg-black/[0.01] dark:bg-white/[0.01]">
-              <div className="text-[12px] text-black/60 dark:text-white/60">
+            <div className="border-t border-black/5 dark:border-white/10 p-6 flex items-center justify-between bg-neutral-900/[0.01] dark:bg-card/[0.01]">
+              <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80">
                 Supported formats: PDF, JPG, PNG (Max 10MB per file)
               </div>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setShowDocumentModal(false)}
-                  className="px-6 py-2.5 rounded-[12px] text-[13px] font-bold text-black dark:text-white/95 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all"
+                  className="px-6 py-2.5 rounded-[var(--radius-card)] text-small font-medium text-foreground dark:text-neutral-0/95 bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={() => setShowDocumentModal(false)}
-                  className="px-6 py-2.5 rounded-[12px] text-[13px] font-bold text-white bg-emerald-500 hover:bg-emerald-600 transition-all shadow-[0_4px_12px_rgba(16,185,129,0.25)]"
+                  className="px-6 py-2.5 rounded-[var(--radius-card)] text-small font-medium text-neutral-0 bg-primary-700 hover:bg-primary-900 transition-all shadow-[0_4px_12px_rgba(28,117,188,0.25)]"
                 >
                   Done
                 </button>
@@ -1235,15 +1235,15 @@ export function PropertyDetail() {
 
       {/* Map Modal */}
       {showMapModal && (
-        <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#1A1A1A] rounded-[24px] border border-black/10 dark:border-white/10 max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+        <div className="fixed inset-0 bg-neutral-900/60 dark:bg-neutral-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card dark:bg-neutral-900 rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
             {/* Modal Header */}
             <div className="border-b border-black/5 dark:border-white/10 p-6 flex items-center justify-between">
               <div>
-                <h2 className="text-[24px] tracking-tight text-black dark:text-white/95 mb-1">
+                <h2 className="text-h2 tracking-tight text-foreground dark:text-neutral-0/95 mb-1">
                   Nearby Landmarks Map
                 </h2>
-                <p className="text-[13px] text-black/60 dark:text-white/60">
+                <p className="text-small text-neutral-700/80 dark:text-neutral-300/80">
                   {property.address}
                 </p>
               </div>
@@ -1252,7 +1252,7 @@ export function PropertyDetail() {
                   setShowMapModal(false);
                   setSelectedLandmark(null);
                 }}
-                className="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-black/60 dark:text-white/60 transition-all"
+                className="w-10 h-10 rounded-[var(--radius-card)] bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 flex items-center justify-center text-neutral-700/80 dark:text-neutral-300/80 transition-all"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1262,7 +1262,7 @@ export function PropertyDetail() {
             <div className="grid grid-cols-1 lg:grid-cols-3 h-[calc(90vh-140px)]">
               {/* Landmarks List - Left Side */}
               <div className="lg:col-span-1 border-r border-black/5 dark:border-white/10 overflow-y-auto p-6">
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-4">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-4">
                   Category
                 </div>
                 
@@ -1270,92 +1270,92 @@ export function PropertyDetail() {
                 <div className="space-y-2 mb-6">
                   <button 
                     onClick={() => setSelectedLandmarkCategory('schools')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'schools'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <School className="w-5 h-5" />
                     <span>Schools</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.schools.length}
                     </span>
                   </button>
                   <button 
                     onClick={() => setSelectedLandmarkCategory('busStops')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'busStops'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <Bus className="w-5 h-5" />
                     <span>Bus Stops</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.busStops.length}
                     </span>
                   </button>
                   <button 
                     onClick={() => setSelectedLandmarkCategory('hospitals')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'hospitals'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <Building className="w-5 h-5" />
                     <span>Hospitals</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.hospitals.length}
                     </span>
                   </button>
                   <button 
                     onClick={() => setSelectedLandmarkCategory('banks')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'banks'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <Banknote className="w-5 h-5" />
                     <span>Banks</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.banks.length}
                     </span>
                   </button>
                   <button 
                     onClick={() => setSelectedLandmarkCategory('temples')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'temples'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <Church className="w-5 h-5" />
                     <span>Temples</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.temples.length}
                     </span>
                   </button>
                   <button 
                     onClick={() => setSelectedLandmarkCategory('shopping')}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[12px] text-[13px] font-bold transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius-card)] text-small font-medium transition-all ${
                       selectedLandmarkCategory === 'shopping'
-                        ? 'bg-emerald-500 text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]'
-                        : 'bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white'
+                        ? 'bg-primary-700 text-neutral-0 shadow-[0_4px_12px_rgba(28,117,188,0.25)]'
+                        : 'bg-neutral-900/5 dark:bg-card/5 hover:bg-neutral-900/10 dark:hover:bg-card/10 text-foreground dark:text-neutral-0'
                     }`}
                   >
                     <ShoppingBag className="w-5 h-5" />
                     <span>Shopping</span>
-                    <span className="ml-auto text-[11px] opacity-70">
+                    <span className="ml-auto text-caption opacity-70">
                       {localityData.nearbyLandmarks.shopping.length}
                     </span>
                   </button>
                 </div>
 
                 {/* Landmarks in Selected Category */}
-                <div className="text-[10px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-4">
+                <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-4">
                   Nearby Locations
                 </div>
                 <div className="space-y-2">
@@ -1363,16 +1363,16 @@ export function PropertyDetail() {
                     <button
                       key={index}
                       onClick={() => setSelectedLandmark(landmark)}
-                      className={`w-full text-left px-4 py-3 rounded-[12px] transition-all ${
+                      className={`w-full text-left px-4 py-3 rounded-[var(--radius-card)] transition-all ${
                         selectedLandmark?.name === landmark.name
-                          ? 'bg-emerald-500/10 border-2 border-emerald-500/30'
-                          : 'bg-black/[0.02] dark:bg-white/[0.02] border-2 border-transparent hover:bg-black/[0.04] dark:hover:bg-white/[0.04]'
+                          ? 'bg-primary-700/10 border-2 border-primary-700/30'
+                          : 'bg-neutral-900/[0.02] dark:bg-card/[0.02] border-2 border-transparent hover:bg-neutral-900/[0.04] dark:hover:bg-card/[0.04]'
                       }`}
                     >
-                      <div className="text-[13px] font-bold text-black dark:text-white/95 mb-1">
+                      <div className="text-small font-medium text-foreground dark:text-neutral-0/95 mb-1">
                         {landmark.name}
                       </div>
-                      <div className="flex items-center gap-2 text-[11px] text-black/60 dark:text-white/60">
+                      <div className="flex items-center gap-2 text-caption text-neutral-700/80 dark:text-neutral-300/80">
                         <Navigation className="w-3 h-3" />
                         {landmark.distance}
                       </div>
@@ -1382,7 +1382,7 @@ export function PropertyDetail() {
               </div>
 
               {/* Map Display - Right Side */}
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-emerald-50/30 to-blue-50/20 dark:from-emerald-950/10 dark:to-blue-950/5">
+              <div className="lg:col-span-2 relative bg-gradient-to-br from-primary-100/30 to-blue-50/20 dark:from-primary-900/10 dark:to-blue-950/5">
                 {/* Map Placeholder with Property and Landmark Markers */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Grid Pattern Background */}
@@ -1398,13 +1398,13 @@ export function PropertyDetail() {
                     {/* Property Location (Center) */}
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                       <div className="relative">
-                        <div className="absolute inset-0 bg-emerald-500 rounded-full blur-xl opacity-30 animate-pulse" />
-                        <div className="relative bg-emerald-500 text-white p-4 rounded-[16px] shadow-[0_8px_24px_rgba(16,185,129,0.3)] border-4 border-white dark:border-[#1A1A1A]">
+                        <div className="absolute inset-0 bg-primary-700 rounded-full blur-xl opacity-30 animate-pulse" />
+                        <div className="relative bg-primary-700 text-neutral-0 p-4 rounded-[var(--radius-card)] shadow-[0_8px_24px_rgba(28,117,188,0.3)] border-4 border-white dark:border-neutral-900">
                           <Building2 className="w-8 h-8" />
                         </div>
                         <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                          <div className="bg-white dark:bg-[#1A1A1A] px-3 py-2 rounded-lg shadow-lg border border-black/10 dark:border-white/10">
-                            <div className="text-[11px] font-bold text-black dark:text-white/95">
+                          <div className="bg-card dark:bg-neutral-900 px-3 py-2 rounded-[var(--radius)] shadow-lg border border-black/10 dark:border-white/10">
+                            <div className="text-caption font-medium text-foreground dark:text-neutral-0/95">
                               {property.name}
                             </div>
                           </div>
@@ -1417,7 +1417,7 @@ export function PropertyDetail() {
                       <div className="absolute top-1/4 right-1/4 transform -translate-x-1/2 -translate-y-1/2">
                         <div className="relative">
                           <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-30 animate-pulse" />
-                          <div className="relative bg-blue-500 text-white p-3 rounded-[12px] shadow-[0_8px_24px_rgba(59,130,246,0.3)] border-4 border-white dark:border-[#1A1A1A]">
+                          <div className="relative bg-blue-500 text-neutral-0 p-3 rounded-[var(--radius-card)] shadow-[0_8px_24px_rgba(59,130,246,0.3)] border-4 border-white dark:border-neutral-900">
                             {selectedLandmarkCategory === 'schools' && <School className="w-6 h-6" />}
                             {selectedLandmarkCategory === 'busStops' && <Bus className="w-6 h-6" />}
                             {selectedLandmarkCategory === 'hospitals' && <Building className="w-6 h-6" />}
@@ -1426,11 +1426,11 @@ export function PropertyDetail() {
                             {selectedLandmarkCategory === 'shopping' && <ShoppingBag className="w-6 h-6" />}
                           </div>
                           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                            <div className="bg-white dark:bg-[#1A1A1A] px-3 py-2 rounded-lg shadow-lg border border-black/10 dark:border-white/10">
-                              <div className="text-[11px] font-bold text-black dark:text-white/95 mb-1">
+                            <div className="bg-card dark:bg-neutral-900 px-3 py-2 rounded-[var(--radius)] shadow-lg border border-black/10 dark:border-white/10">
+                              <div className="text-caption font-medium text-foreground dark:text-neutral-0/95 mb-1">
                                 {selectedLandmark.name}
                               </div>
-                              <div className="text-[10px] text-black/60 dark:text-white/60 flex items-center gap-1">
+                              <div className="text-caption text-neutral-700/80 dark:text-neutral-300/80 flex items-center gap-1">
                                 <Navigation className="w-3 h-3" />
                                 {selectedLandmark.distance}
                               </div>
@@ -1443,7 +1443,7 @@ export function PropertyDetail() {
                               y1="192"
                               x2="320"
                               y2="320"
-                              stroke="rgba(16,185,129,0.3)"
+                              stroke="rgba(28,117,188,0.3)"
                               strokeWidth="2"
                               strokeDasharray="8 4"
                             />
@@ -1454,20 +1454,20 @@ export function PropertyDetail() {
 
                     {/* Info Box */}
                     <div className="absolute bottom-8 left-8 right-8">
-                      <div className="bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-xl rounded-[16px] border border-black/10 dark:border-white/10 p-4 shadow-lg">
+                      <div className="bg-card/95 dark:bg-neutral-900/95 backdrop-blur-xl rounded-[var(--radius-card)] border border-black/10 dark:border-white/10 p-4 shadow-lg">
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                            <MapPin className="w-5 h-5 text-emerald-500" />
+                          <div className="w-10 h-10 rounded-[var(--radius)] bg-primary-700/10 flex items-center justify-center">
+                            <MapPin className="w-5 h-5 text-primary-700" />
                           </div>
                           <div className="flex-1">
-                            <div className="text-[11px] font-bold tracking-[0.05em] uppercase text-black/40 dark:text-white/40 mb-1">
+                            <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-300/60 mb-1">
                               Interactive Map Preview
                             </div>
-                            <div className="text-[13px] text-black/70 dark:text-white/70">
+                            <div className="text-small text-foreground/70 dark:text-neutral-0/70">
                               Select a landmark from the list to view its location relative to your property
                             </div>
                           </div>
-                          <button className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-[12px] text-[12px] font-bold transition-all shadow-[0_4px_12px_rgba(16,185,129,0.25)]">
+                          <button className="px-4 py-2 bg-primary-700 hover:bg-primary-900 text-neutral-0 rounded-[var(--radius-card)] text-caption font-medium transition-all shadow-[0_4px_12px_rgba(28,117,188,0.25)]">
                             Get Directions
                           </button>
                         </div>

@@ -168,7 +168,7 @@ function getServiceBadge(service: string) {
     case 'Sell or Liquidate':
       return 'bg-[#FFE3EA] text-[#FF4E6A]';
     default:
-      return 'bg-black/5 text-black/60 dark:bg-white/5 dark:text-white/60';
+      return 'bg-neutral-900/5 text-neutral-700/80 dark:bg-card/5 dark:text-neutral-300/80';
   }
 }
 
@@ -236,15 +236,15 @@ function WidgetCard({ title, onClick, children, className = '' }: WidgetCardProp
 function SummaryChip({ label, value, tone }: { label: string; value: string; tone: 'green' | 'amber' | 'rose' }) {
   const chipClass =
     tone === 'green'
-      ? 'bg-[#E8FAEF] text-[#2A9D62]'
+      ? 'bg-[#E8FAEF] text-primary-700'
       : tone === 'amber'
         ? 'bg-[#FFF4DB] text-[#C49300]'
         : 'bg-[#FFE8EA] text-[#E16A74]';
 
   return (
-    <div className={`rounded-[12px] px-4 py-3 min-w-[96px] ${chipClass}`}>
-      <div className="text-[10px] uppercase tracking-wide opacity-80 mb-1">{label}</div>
-      <div className="text-[18px] font-semibold">{value}</div>
+    <div className={`rounded-[var(--radius-card)] px-4 py-3 min-w-[96px] ${chipClass}`}>
+      <div className="text-caption uppercase tracking-wide opacity-80 mb-1">{label}</div>
+      <div className="text-h3 font-medium">{value}</div>
     </div>
   );
 }
@@ -315,7 +315,7 @@ function PartnerPerformanceSection({ onClick }: { onClick: () => void }) {
                 </td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)] text-small" style={{ color: 'var(--muted-foreground)' }}>{row.averageDelay}</td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)]">
-                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#E8FAEF] text-[#2A9D62]">
+                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#E8FAEF] text-primary-700">
                     {row.onTatPct}
                   </span>
                 </td>
@@ -423,7 +423,7 @@ function MissingRequiredDocumentsCard({ onClick }: { onClick: () => void }) {
             <div key={segment.label} className="flex items-center gap-[var(--space-3)]">
               <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: segment.color }} />
               <div className="flex-1 text-small" style={{ color: 'var(--muted-foreground)' }}>{segment.label}</div>
-              <div className={`text-caption font-medium ${index < 3 ? 'text-[#E16A74]' : 'text-[#2A9D62]'}`}>
+              <div className={`text-caption font-medium ${index < 3 ? 'text-[#E16A74]' : 'text-primary-700'}`}>
                 {index < 3 ? `${segment.value} Breached` : `${segment.value} Within`}
               </div>
             </div>
@@ -442,7 +442,7 @@ function RecentActivityCard({ items }: { items: RecentActivityItem[] }) {
         {items.map((item) => {
           const toneColor =
             item.tone === 'success'
-              ? '#2A9D62'
+              ? '#1C75BC'
               : item.tone === 'warning'
                 ? '#C49300'
                 : 'var(--muted-foreground)';
@@ -508,12 +508,12 @@ function RmPerformanceCard({ rows, onClick }: { rows: RmCardRow[]; onClick: () =
                 {/* Closed (success) — solid emerald */}
                 <div
                   className="absolute inset-y-0 left-0 rounded-full"
-                  style={{ width: `${successBarPct}%`, background: '#10B981' }}
+                  style={{ width: `${successBarPct}%`, background: '#1C75BC' }}
                 />
                 {/* Open — faint emerald */}
                 <div
                   className="absolute inset-y-0 rounded-full"
-                  style={{ left: `${successBarPct}%`, width: `${openBarPct}%`, background: 'rgba(16,185,129,0.22)' }}
+                  style={{ left: `${successBarPct}%`, width: `${openBarPct}%`, background: 'rgba(28,117,188,0.22)' }}
                 />
               </div>
               {/* Sub-label row */}
@@ -521,7 +521,7 @@ function RmPerformanceCard({ rows, onClick }: { rows: RmCardRow[]; onClick: () =
                 <span className="text-caption" style={{ color: 'var(--muted-foreground)' }}>
                   {row.partners} providers
                 </span>
-                <span className="text-caption font-semibold" style={{ color: '#10B981' }}>
+                <span className="text-caption font-medium" style={{ color: '#1C75BC' }}>
                   {successPct}% closed
                 </span>
               </div>
@@ -536,11 +536,11 @@ function RmPerformanceCard({ rows, onClick }: { rows: RmCardRow[]; onClick: () =
         style={{ borderTop: '1px solid var(--border)' }}
       >
         <div className="flex items-center gap-[var(--space-2)]">
-          <div className="w-2.5 h-2 rounded-full" style={{ background: '#10B981' }} />
+          <div className="w-2.5 h-2 rounded-full" style={{ background: '#1C75BC' }} />
           <span className="vybe-card-note">Closed</span>
         </div>
         <div className="flex items-center gap-[var(--space-2)]">
-          <div className="w-2.5 h-2 rounded-full" style={{ background: 'rgba(16,185,129,0.22)' }} />
+          <div className="w-2.5 h-2 rounded-full" style={{ background: 'rgba(28,117,188,0.22)' }} />
           <span className="vybe-card-note">Open</span>
         </div>
       </div>
