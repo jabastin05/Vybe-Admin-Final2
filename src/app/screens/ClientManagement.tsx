@@ -7,6 +7,9 @@ interface RM {
   firstName: string;
   lastName: string;
   email: string;
+  cityCoverage: string[];
+  maxCaseload: number;
+  currentCaseload: number;
 }
 
 interface Client {
@@ -25,12 +28,12 @@ interface Client {
   documentUrl?: string;
 }
 
-// Mock RMs
+// Mock RMs — city coverage & caseload set during onboarding
 const mockRMs: RM[] = [
-  { id: 1, firstName: 'Rajesh', lastName: 'Kumar', email: 'rajesh.k@vybe.com' },
-  { id: 2, firstName: 'Priya', lastName: 'Sharma', email: 'priya.s@vybe.com' },
-  { id: 3, firstName: 'Aditya', lastName: 'Patel', email: 'aditya.p@vybe.com' },
-  { id: 4, firstName: 'Sneha', lastName: 'Reddy', email: 'sneha.r@vybe.com' },
+  { id: 1, firstName: 'Rajesh', lastName: 'Kumar', email: 'rajesh.k@vybe.com', cityCoverage: ['Mumbai', 'Pune', 'Thane'], maxCaseload: 10, currentCaseload: 2 },
+  { id: 2, firstName: 'Priya', lastName: 'Sharma', email: 'priya.s@vybe.com', cityCoverage: ['Delhi', 'Gurugram', 'Noida'], maxCaseload: 10, currentCaseload: 7 },
+  { id: 3, firstName: 'Aditya', lastName: 'Patel', email: 'aditya.p@vybe.com', cityCoverage: ['Bangalore', 'Chennai'], maxCaseload: 8, currentCaseload: 8 },
+  { id: 4, firstName: 'Sneha', lastName: 'Reddy', email: 'sneha.r@vybe.com', cityCoverage: ['Hyderabad', 'Secunderabad'], maxCaseload: 12, currentCaseload: 3 },
 ];
 
 const mockClients: Client[] = [
@@ -395,33 +398,56 @@ export function ClientManagement() {
                 <div className="space-y-2 max-h-[300px] overflow-y-auto">
                   {mockRMs
                     .filter(rm => rm.firstName.toLowerCase().includes(rmSearchQuery.toLowerCase()) || rm.lastName.toLowerCase().includes(rmSearchQuery.toLowerCase()))
-                    .map((rm) => (
-                      <button
-                        key={rm.id}
-                        onClick={() => setSelectedRM(rm.id)}
-                        className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
-                          selectedRM === rm.id
-                            ? 'border-emerald-500 bg-emerald-500/5'
-                            : 'border-border hover:bg-muted'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="text-small font-medium text-foreground">
-                              {rm.firstName} {rm.lastName}
-                            </p>
-                            <p className="text-caption text-muted-foreground">
-                              {rm.email}
-                            </p>
-                          </div>
-                          {selectedRM === rm.id && (
-                            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
-                              <CheckCircle className="w-3 h-3 text-white" />
+                    .map((rm) => {
+                      const isFull = rm.currentCaseload >= rm.maxCaseload;
+                      return (
+                        <button
+                          key={rm.id}
+                          onClick={() => setSelectedRM(rm.id)}
+                          className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
+                            selectedRM === rm.id
+                              ? 'border-emerald-500 bg-emerald-500/5'
+                              : 'border-border hover:bg-muted'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-small font-medium text-foreground">
+                                {rm.firstName} {rm.lastName}
+                              </p>
+                              <p className="text-caption text-muted-foreground mb-1.5">
+                                {rm.email}
+                              </p>
+                              {/* City Coverage */}
+                              <div className="flex flex-wrap gap-1 mb-1.5">
+                                {rm.cityCoverage.map(city => (
+                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                    {city}
+                                  </span>
+                                ))}
+                              </div>
+                              {/* Case Load */}
+                              <div className="flex items-center gap-2">
+                                <div className="flex-1 h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
+                                  <div
+                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                    style={{ width: `${Math.min((rm.currentCaseload / rm.maxCaseload) * 100, 100)}%` }}
+                                  />
+                                </div>
+                                <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                                  {rm.currentCaseload}/{rm.maxCaseload} cases{isFull ? ' (Full)' : ''}
+                                </span>
+                              </div>
                             </div>
-                          )}
-                        </div>
-                      </button>
-                    ))}
+                            {selectedRM === rm.id && (
+                              <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center ml-3 flex-shrink-0">
+                                <CheckCircle className="w-3 h-3 text-white" />
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -495,33 +521,56 @@ export function ClientManagement() {
                 <div className="space-y-2 max-h-[300px] overflow-y-auto">
                   {mockRMs
                     .filter(rm => rm.firstName.toLowerCase().includes(rmSearchQuery.toLowerCase()) || rm.lastName.toLowerCase().includes(rmSearchQuery.toLowerCase()))
-                    .map((rm) => (
-                      <button
-                        key={rm.id}
-                        onClick={() => setSelectedRM(rm.id)}
-                        className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
-                          selectedRM === rm.id
-                            ? 'border-emerald-500 bg-emerald-500/5'
-                            : 'border-border hover:bg-muted'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="text-small font-medium text-foreground">
-                              {rm.firstName} {rm.lastName}
-                            </p>
-                            <p className="text-caption text-muted-foreground">
-                              {rm.email}
-                            </p>
-                          </div>
-                          {selectedRM === rm.id && (
-                            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
-                              <CheckCircle className="w-3 h-3 text-white" />
+                    .map((rm) => {
+                      const isFull = rm.currentCaseload >= rm.maxCaseload;
+                      return (
+                        <button
+                          key={rm.id}
+                          onClick={() => setSelectedRM(rm.id)}
+                          className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
+                            selectedRM === rm.id
+                              ? 'border-emerald-500 bg-emerald-500/5'
+                              : 'border-border hover:bg-muted'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-small font-medium text-foreground">
+                                {rm.firstName} {rm.lastName}
+                              </p>
+                              <p className="text-caption text-muted-foreground mb-1.5">
+                                {rm.email}
+                              </p>
+                              {/* City Coverage */}
+                              <div className="flex flex-wrap gap-1 mb-1.5">
+                                {rm.cityCoverage.map(city => (
+                                  <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                    {city}
+                                  </span>
+                                ))}
+                              </div>
+                              {/* Case Load */}
+                              <div className="flex items-center gap-2">
+                                <div className="flex-1 h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ maxWidth: 80 }}>
+                                  <div
+                                    className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                    style={{ width: `${Math.min((rm.currentCaseload / rm.maxCaseload) * 100, 100)}%` }}
+                                  />
+                                </div>
+                                <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                                  {rm.currentCaseload}/{rm.maxCaseload} cases{isFull ? ' (Full)' : ''}
+                                </span>
+                              </div>
                             </div>
-                          )}
-                        </div>
-                      </button>
-                    ))}
+                            {selectedRM === rm.id && (
+                              <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center ml-3 flex-shrink-0">
+                                <CheckCircle className="w-3 h-3 text-white" />
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -650,7 +699,9 @@ export function ClientManagement() {
                   {activeTab !== 'active' && (
                     <th className="vybe-table-head">Identity Doc</th>
                   )}
-                  <th className="vybe-table-head">Action</th>
+                  {currentUser.role !== 'rm' && (
+                    <th className="vybe-table-head">Action</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -718,7 +769,8 @@ export function ClientManagement() {
                         )}
                       </td>
                     )}
-                    {/* Action */}
+                    {/* Action — hidden for RM role */}
+                    {currentUser.role !== 'rm' && (
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-1">
                         {activeTab === 'lead' && (
@@ -780,6 +832,7 @@ export function ClientManagement() {
                         )}
                       </div>
                     </td>
+                    )}
                   </tr>
                 ))}
               </tbody>

@@ -24,7 +24,7 @@ const SERVICE_PROVIDERS = MOCK_SERVICE_PROVIDERS.map((provider) => ({
 export function AdminCaseDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { getCase, updateCase } = useCases();
+  const { cases, getCase, updateCase } = useCases();
   const { getProperty } = useProperties();
   const [isUpdating, setIsUpdating] = useState(false);
   
@@ -37,7 +37,7 @@ export function AdminCaseDetail() {
   const [isPartnerAssignmentModalOpen, setIsPartnerAssignmentModalOpen] = useState(false);
   const [newPartnerName, setNewPartnerName] = useState('');
   const [partnerSearchQuery, setPartnerSearchQuery] = useState('');
-  const [isPartnerDropdownOpen, setIsPartnerDropdownOpen] = useState(false);
+
   
   // Document section states
   const [isUploadDocumentModalOpen, setIsUploadDocumentModalOpen] = useState(false);
@@ -188,7 +188,6 @@ export function AdminCaseDetail() {
   const handlePartnerAssignment = () => {
     setNewPartnerName(caseItem.partnerName || '');
     setPartnerSearchQuery('');
-    setIsPartnerDropdownOpen(false);
     setIsPartnerAssignmentModalOpen(true);
   };
 
@@ -229,7 +228,6 @@ export function AdminCaseDetail() {
     setIsPartnerAssignmentModalOpen(false);
     setNewPartnerName('');
     setPartnerSearchQuery('');
-    setIsPartnerDropdownOpen(false);
     showSuccess('Service Provider assigned successfully');
   };
 
@@ -420,6 +418,7 @@ export function AdminCaseDetail() {
               </div>
             </div>
           </button>
+
         </div>
       )}
 
@@ -1008,68 +1007,78 @@ export function AdminCaseDetail() {
 
             <div className="overflow-y-auto flex-1" style={{ padding: 'var(--card-padding-desktop)' }}>
             <div className="space-y-[var(--space-4)]">
-              <div>
-                <label className="vybe-label mb-2">
-                  Service Provider Name *
-                </label>
-                <div className="relative">
-                  <button
-                    onClick={() => setIsPartnerDropdownOpen(!isPartnerDropdownOpen)}
-                    className="vybe-input w-full flex items-center justify-between h-[var(--input-height)]"
-                  >
-                    <span className={!newPartnerName ? 'text-muted-foreground' : ''}>
-                      {newPartnerName || 'Select a service provider...'}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${isPartnerDropdownOpen ? 'rotate-180' : ''}`} />
-                  </button>
 
-                  {isPartnerDropdownOpen && (
-                    <>
-                      {/* Search input */}
-                      <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-[var(--radius)] shadow-lg z-10 overflow-hidden">
-                        <div className="p-[var(--space-3)] border-b border-border">
-                          <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                            <input
-                              type="text"
-                              value={partnerSearchQuery}
-                              onChange={(e) => setPartnerSearchQuery(e.target.value)}
-                              placeholder="Search service providers..."
-                              className="vybe-search w-full pl-10"
-                              autoFocus
-                            />
+              {/* Search */}
+              <div className="relative">
+                <Search className="absolute left-[var(--space-3)] top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                <input
+                  type="text"
+                  value={partnerSearchQuery}
+                  onChange={(e) => setPartnerSearchQuery(e.target.value)}
+                  placeholder="Search by name or role…"
+                  className="w-full h-[var(--input-height)] pl-10 pr-[var(--space-4)] bg-input-background border border-border rounded-[var(--radius)] text-small text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring/40"
+                />
+              </div>
+
+              {/* Provider cards */}
+              <div className="space-y-2 max-h-[380px] overflow-y-auto">
+                {MOCK_SERVICE_PROVIDERS
+                  .filter(p => {
+                    const name = getServiceProviderName(p);
+                    return name.toLowerCase().includes(partnerSearchQuery.toLowerCase()) ||
+                      p.role.toLowerCase().includes(partnerSearchQuery.toLowerCase());
+                  })
+                  .map(provider => {
+                    const name = getServiceProviderName(provider);
+                    const currentLoad = cases.filter(c => c.partnerName === name).length;
+                    const isFull = currentLoad >= provider.maxCaseload;
+                    return (
+                      <button
+                        key={provider.id}
+                        onClick={() => setNewPartnerName(name)}
+                        className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${
+                          newPartnerName === name
+                            ? 'border-emerald-500 bg-emerald-500/5'
+                            : 'border-border hover:bg-accent'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-small font-medium text-foreground">{name}</p>
+                            <p className="text-caption text-muted-foreground mb-1.5">{provider.role}</p>
+
+                            {/* City coverage chips */}
+                            <div className="flex flex-wrap gap-1 mb-1.5">
+                              {provider.cityCoverage.map(city => (
+                                <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                  {city}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Case load bar */}
+                            <div className="flex items-center gap-2">
+                              <div className="h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ width: 80 }}>
+                                <div
+                                  className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                  style={{ width: `${Math.min((currentLoad / provider.maxCaseload) * 100, 100)}%` }}
+                                />
+                              </div>
+                              <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : 'text-muted-foreground'}`}>
+                                {currentLoad}/{provider.maxCaseload} cases{isFull ? ' · Full' : ''}
+                              </span>
+                            </div>
                           </div>
-                        </div>
 
-                        <div className="max-h-[240px] overflow-y-auto">
-                          {SERVICE_PROVIDERS
-                            .filter(partner =>
-                              partner.name.toLowerCase().includes(partnerSearchQuery.toLowerCase()) ||
-                              partner.role.toLowerCase().includes(partnerSearchQuery.toLowerCase())
-                            )
-                            .map(partner => (
-                              <button
-                                key={partner.id}
-                                onClick={() => {
-                                  setNewPartnerName(partner.name);
-                                  setIsPartnerDropdownOpen(false);
-                                  setPartnerSearchQuery('');
-                                }}
-                                className={`w-full px-[var(--space-4)] py-[var(--space-3)] text-left hover:bg-accent transition-colors ${newPartnerName === partner.name ? 'bg-emerald-500/10' : ''}`}
-                              >
-                                <div className="text-small font-medium text-foreground">
-                                  {partner.name}
-                                </div>
-                                <div className="text-caption text-muted-foreground">
-                                  {partner.role}
-                                </div>
-                              </button>
-                            ))}
+                          {newPartnerName === name && (
+                            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle2 className="w-3 h-3 text-white" />
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    </>
-                  )}
-                </div>
+                      </button>
+                    );
+                  })}
               </div>
 
               <div className="p-[var(--space-4)] bg-emerald-500/5 border border-emerald-500/20 rounded-[var(--radius)]">

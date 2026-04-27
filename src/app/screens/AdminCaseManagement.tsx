@@ -5,6 +5,7 @@ import { AdminLayout } from '../components/AdminLayout';
 import { useCases } from '../contexts/CasesContext';
 import { MOCK_SERVICE_PROVIDERS, getServiceProviderName, resolveServiceProviderIdentity } from '../data/mockServiceProviders';
 
+
 type TabType = 'all' | 'open' | 'closed' | 'unassigned';
 type SortOption = 'recent' | 'case-id-asc' | 'case-id-desc' | 'property-asc';
 
@@ -31,6 +32,7 @@ export function AdminCaseManagement() {
   // Partner assignment modal states
   const [isPartnerAssignmentModalOpen, setIsPartnerAssignmentModalOpen] = useState(false);
   const [newPartnerName, setNewPartnerName] = useState('');
+  const [partnerSearchQuery, setPartnerSearchQuery] = useState('');
   
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -199,6 +201,7 @@ export function AdminCaseManagement() {
   const handlePartnerAssignment = (caseItem: any) => {
     setSelectedCase(caseItem);
     setNewPartnerName(caseItem.partnerName || '');
+    setPartnerSearchQuery('');
     setIsPartnerAssignmentModalOpen(true);
   };
 
@@ -228,6 +231,7 @@ export function AdminCaseManagement() {
     setIsPartnerAssignmentModalOpen(false);
     setSelectedCase(null);
     setNewPartnerName('');
+    setPartnerSearchQuery('');
     showSuccess(isUnassigning ? 'Partner unassigned successfully' : 'Partner assigned successfully');
   };
 
@@ -770,48 +774,102 @@ export function AdminCaseManagement() {
       {/* ── Partner Assignment Modal ── */}
       {isPartnerAssignmentModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50" style={{ background: 'rgba(0,0,0,0.5)' }}>
-          <div className="bg-card border border-border rounded-[var(--radius-card)] p-[var(--card-padding-desktop)] w-[420px] max-h-[80vh] overflow-y-auto shadow-xl">
+          <div className="bg-card border border-border rounded-[var(--radius-card)] p-[var(--card-padding-desktop)] w-[480px] max-h-[80vh] overflow-y-auto shadow-xl">
 
             {/* Modal header */}
-            <div className="flex items-center justify-between mb-[var(--space-5)]">
-              <h2 className="text-h3 text-foreground">Assign Partner to Case</h2>
+            <div className="flex items-center justify-between mb-[var(--space-4)]">
+              <h2 className="text-h3 text-foreground">Assign Service Provider</h2>
               <button
-                onClick={() => setIsPartnerAssignmentModalOpen(false)}
+                onClick={() => { setIsPartnerAssignmentModalOpen(false); setPartnerSearchQuery(''); }}
                 className="p-[var(--space-2)] rounded-[var(--radius)] hover:bg-accent transition-colors"
               >
                 <X className="w-4 h-4" style={{ color: 'var(--muted-foreground)' }} />
               </button>
             </div>
 
-            {/* Read-only fields */}
-            {[
-              { label: 'Case ID', value: selectedCase?.caseId },
-              { label: 'Current Partner', value: selectedCase?.partnerName || 'Unassigned' },
-            ].map(({ label, value }) => (
-              <div key={label} className="mb-[var(--space-4)]">
-                <label className="block text-caption text-muted-foreground uppercase tracking-wider mb-[var(--space-1)]">{label}</label>
-                <input
-                  type="text"
-                  value={value}
-                  readOnly
-                  className="w-full h-[var(--input-height)] px-[var(--space-3)] bg-input-background border border-border rounded-[var(--radius)] text-small text-foreground focus:outline-none disabled:opacity-60"
-                />
-              </div>
-            ))}
+            {/* Case ID read-only */}
+            <div className="mb-[var(--space-4)]">
+              <label className="block text-caption text-muted-foreground uppercase tracking-wider mb-[var(--space-1)]">Case ID</label>
+              <input type="text" value={selectedCase?.caseId} readOnly
+                className="w-full h-[var(--input-height)] px-[var(--space-3)] bg-input-background border border-border rounded-[var(--radius)] text-small text-foreground focus:outline-none disabled:opacity-60" />
+            </div>
 
-            <div className="mb-[var(--space-5)]">
-              <label className="block text-caption text-muted-foreground uppercase tracking-wider mb-[var(--space-1)]">New Partner</label>
-              <select
-                value={newPartnerName}
-                onChange={(e) => setNewPartnerName(e.target.value)}
-                className="w-full h-[var(--input-height)] px-[var(--space-3)] bg-input-background border border-border rounded-[var(--radius)] text-small text-foreground focus:outline-none focus:ring-2 focus:ring-ring/40"
+            {/* Search */}
+            <div className="relative mb-[var(--space-3)]">
+              <Search className="absolute left-[var(--space-3)] top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style={{ color: 'var(--muted-foreground)' }} />
+              <input
+                type="text"
+                placeholder="Search service provider…"
+                value={partnerSearchQuery}
+                onChange={e => setPartnerSearchQuery(e.target.value)}
+                className="w-full h-[var(--input-height)] pl-10 pr-[var(--space-4)] bg-input-background border border-border rounded-[var(--radius)] text-small text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-ring/40"
+              />
+            </div>
+
+            {/* Provider cards */}
+            <div className="space-y-2 max-h-[340px] overflow-y-auto mb-[var(--space-5)]">
+              {/* Unassign option */}
+              <button
+                onClick={() => setNewPartnerName('')}
+                className={`w-full text-left p-3 rounded-[var(--radius)] border transition-all ${newPartnerName === '' ? 'border-emerald-500 bg-emerald-500/5' : 'border-border hover:bg-accent'}`}
               >
-                <option value="">Select Partner</option>
-                <option value="Unassigned">Unassigned (Remove Partner)</option>
-                {availablePartners.map(partner => (
-                  <option key={partner} value={partner}>{partner}</option>
-                ))}
-              </select>
+                <span className="text-small italic" style={{ color: 'var(--muted-foreground)' }}>Unassigned (Remove Partner)</span>
+              </button>
+
+              {MOCK_SERVICE_PROVIDERS
+                .filter(p => {
+                  const name = getServiceProviderName(p);
+                  return name.toLowerCase().includes(partnerSearchQuery.toLowerCase()) ||
+                    p.role.toLowerCase().includes(partnerSearchQuery.toLowerCase());
+                })
+                .map(provider => {
+                  const name = getServiceProviderName(provider);
+                  const currentLoad = cases.filter(c => c.partnerName === name).length;
+                  const isFull = currentLoad >= provider.maxCaseload;
+                  return (
+                    <button
+                      key={provider.id}
+                      onClick={() => setNewPartnerName(name)}
+                      className={`w-full text-left p-4 rounded-[var(--radius)] border transition-all ${newPartnerName === name ? 'border-emerald-500 bg-emerald-500/5' : 'border-border hover:bg-accent'}`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-small font-medium" style={{ color: 'var(--foreground)' }}>{name}</p>
+                          <p className="text-caption mb-1.5" style={{ color: 'var(--muted-foreground)' }}>{provider.role}</p>
+
+                          {/* City coverage chips */}
+                          <div className="flex flex-wrap gap-1 mb-1.5">
+                            {provider.cityCoverage.map(city => (
+                              <span key={city} className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                {city}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Case load bar */}
+                          <div className="flex items-center gap-2">
+                            <div className="h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden" style={{ width: 80 }}>
+                              <div
+                                className={`h-full rounded-full transition-all ${isFull ? 'bg-red-500' : 'bg-emerald-500'}`}
+                                style={{ width: `${Math.min((currentLoad / provider.maxCaseload) * 100, 100)}%` }}
+                              />
+                            </div>
+                            <span className={`text-[10px] font-medium ${isFull ? 'text-red-500' : ''}`}
+                              style={!isFull ? { color: 'var(--muted-foreground)' } : undefined}>
+                              {currentLoad}/{provider.maxCaseload} cases{isFull ? ' · Full' : ''}
+                            </span>
+                          </div>
+                        </div>
+
+                        {newPartnerName === name && (
+                          <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <CheckCircle2 className="w-3 h-3 text-white" />
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
             </div>
 
             {/* Success */}
