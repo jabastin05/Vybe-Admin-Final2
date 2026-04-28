@@ -39,7 +39,7 @@ export function MyProperties() {
             <div className="flex items-center gap-3">
               <Link
                 to="/upload"
-                className="inline-flex items-center gap-2 bg-[#FFC700] hover:bg-[#F2BD00] text-foreground px-6 py-3 rounded-[var(--radius-card)] transition-all text-small font-medium shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#F59E0B] text-foreground px-6 py-3 rounded-[var(--radius-card)] transition-all text-small font-medium shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5"
               >
                 <Plus className="w-4 h-4" />
                 Add Property
@@ -67,7 +67,7 @@ export function MyProperties() {
             </p>
             <Link
               to="/upload"
-              className="inline-flex items-center gap-2 bg-[#FFC700] hover:bg-[#F2BD00] text-foreground px-8 py-4 rounded-[var(--radius-card)] transition-all text-small font-medium shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#F59E0B] text-foreground px-8 py-4 rounded-[var(--radius-card)] transition-all text-small font-medium shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5"
             >
               <Plus className="w-5 h-5" />
               Add Your First Property
@@ -81,8 +81,8 @@ export function MyProperties() {
               <div className="bg-card/90 dark:bg-neutral-900/90 backdrop-blur-[40px] rounded-[var(--radius-card)] border border-white/60 dark:border-white/10 p-6 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-12 h-12 rounded-[var(--radius-card)] bg-[#FFC700]/10 flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-[#FFC700]" strokeWidth={2} />
+                  <div className="w-12 h-12 rounded-[var(--radius-card)] bg-[#F59E0B]/10 flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-[#B45309]" strokeWidth={2} />
                   </div>
                 </div>
                 <div className="text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-2">

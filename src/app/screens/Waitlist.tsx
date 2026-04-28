@@ -113,8 +113,8 @@ export function Waitlist() {
 
                 {/* Step 2 */}
                 <div className="bg-neutral-900/[0.02] dark:bg-card/[0.02] border-[0.5px] border-black/10 dark:border-white/10 rounded-[var(--radius-card)] p-5 text-center">
-                  <div className="w-10 h-10 rounded-[var(--radius)] bg-[#28FF6E]/10 flex items-center justify-center mb-3 mx-auto">
-                    <Shield className="w-5 h-5 text-[#28FF6E]" strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-[var(--radius)] bg-[#22C55E]/10 flex items-center justify-center mb-3 mx-auto">
+                    <Shield className="w-5 h-5 text-[#15803D]" strokeWidth={1.5} />
                   </div>
                   <div className="text-small font-medium text-neutral-900 dark:text-neutral-0 mb-1">
                     Verification
@@ -148,7 +148,7 @@ export function Waitlist() {
 
             {/* Support Contact */}
             <p className="text-caption text-neutral-500 mt-6">
-              Questions? <a href="mailto:support@vybe.com" className="text-[#FFC700] hover:underline font-medium">support@vybe.com</a>
+              Questions? <a href="mailto:support@vybe.com" className="text-[#B45309] hover:underline font-medium">support@vybe.com</a>
             </p>
           </div>
         </div>

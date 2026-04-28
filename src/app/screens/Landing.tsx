@@ -20,6 +20,7 @@ import imgFeatureImage from "../../assets/397239ff589337d49f2a8b636ff48636b27285
 import imgFrame2147226939 from "../../assets/1aeff24c674b79adba967aede60511b86130bfd0.png";
 import imgContainer from "../../assets/416fb8c9d20bd839952c747395d8ee0d8eacc8ab.png";
 import imgContainer1 from "../../assets/58665f74873e4fead26ffe62f0a458269d541f64.png";
+import vybeLogo from "../../assets/vybe-logo.svg";
 
 export function Landing() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -57,8 +58,8 @@ export function Landing() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-primary-700/30">
       {/* Navbar */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl bg-card/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-medium tracking-tight text-slate-900">
-          VYBE
+        <Link to="/" className="flex items-center">
+          <img src={vybeLogo} alt="VYBE" className="h-7 w-auto object-contain" />
         </Link>
 
         {/* Desktop Links */}
@@ -295,7 +296,7 @@ export function Landing() {
             {/* Casual User Card */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-[#42D2B7] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#42D2B7]/20 flex flex-col h-full"
+              className="bg-[#00B6BD] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#42D2B7]/20 flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
                 <Eye className="w-8 h-8 text-neutral-0/90" strokeWidth={1.5} />
@@ -311,7 +312,7 @@ export function Landing() {
             {/* Asset Owner Card */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-[#479E8E] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#479E8E]/20 flex flex-col h-full"
+              className="bg-[#008E93] p-8 rounded-[var(--radius-card)] text-neutral-0 relative cursor-pointer shadow-lg shadow-[#479E8E]/20 flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
                 <Building2 className="w-8 h-8 text-neutral-0/90" strokeWidth={1.5} />
@@ -426,12 +427,12 @@ export function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#030213] text-neutral-0 pt-24 pb-12 px-6">
+      <footer className="bg-neutral-900 text-neutral-0 pt-24 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
             <div className="col-span-2">
-              <Link to="/" className="text-3xl font-medium tracking-tight mb-6 inline-block">
-                VYBE
+              <Link to="/" className="inline-block mb-6">
+                <img src={vybeLogo} alt="VYBE" className="h-8 w-auto object-contain" />
               </Link>
               <p className="text-slate-400 max-w-sm mb-8">
                 Premium intelligence-first real estate platform empowering UHNIs with strategy and execution.

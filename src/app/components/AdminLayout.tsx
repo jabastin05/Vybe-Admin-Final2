@@ -133,7 +133,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
           {/* ── Left: logo + portal badge ─────────────────── */}
           <div className="flex items-center gap-[var(--space-3)] shrink-0">
             {/* Logo */}
-            <img src={vybeLogoImage} alt="VYBE" className="h-7 w-auto object-contain" />
+            <img src={vybeLogoImage} alt="VYBE" className="h-9 w-auto object-contain" />
 
             {/* Divider */}
             <div className="w-px h-5 bg-border" />

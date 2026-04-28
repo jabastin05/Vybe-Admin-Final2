@@ -160,9 +160,8 @@ export function SignUp() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-card/70 dark:bg-neutral-900/70 backdrop-blur-[30px] border-b border-black/5 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-8 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center">
               <img src={vybeLogoImage} alt="VYBE" className="h-8 w-auto object-contain" />
-              <span className="text-[16px] font-medium tracking-tight text-foreground dark:text-neutral-0">VYBE</span>
             </Link>
             <ThemeToggle />
           </div>

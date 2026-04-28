@@ -420,7 +420,7 @@ export function CaseDetail() {
                         };
                       default:
                         return {
-                          bg: 'bg-neutral-50/80 dark:bg-gray-950/20',
+                          bg: 'bg-neutral-50/80 dark:bg-neutral-900/20',
                           border: 'border-neutral-200/50 dark:border-gray-800/30',
                           iconBg: 'bg-neutral-500/10',
                           iconColor: 'text-neutral-500 dark:text-neutral-300',

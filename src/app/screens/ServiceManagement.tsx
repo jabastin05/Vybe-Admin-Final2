@@ -487,8 +487,8 @@ export function ServiceManagement() {
                     {/* Badge */}
                     {service.badge && (
                       <div className="absolute top-6 right-6">
-                        <div className="px-3 py-1.5 bg-[#FFC700]/20 rounded-full border border-[#FFC700]/30">
-                          <span className="text-caption font-medium tracking-[0.05em] uppercase text-[#FFC700]">
+                        <div className="px-3 py-1.5 bg-[#F59E0B]/20 rounded-full border border-[#F59E0B]/30">
+                          <span className="text-caption font-medium tracking-[0.05em] uppercase text-[#B45309]">
                             {service.badge}
                           </span>
                         </div>
@@ -698,7 +698,7 @@ export function ServiceManagement() {
                              shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                              border border-white/60 dark:border-white/10
                              hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
-                             hover:border-[#FFC700]/30
+                             hover:border-[#F59E0B]/30
                              transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
                 >
                   {/* Top subtle highlight */}
@@ -721,7 +721,7 @@ export function ServiceManagement() {
                              shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                              border border-white/60 dark:border-white/10
                              hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)]
-                             hover:border-[#FFC700]/30
+                             hover:border-[#F59E0B]/30
                              transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
                 >
                   {/* Top subtle highlight */}
@@ -755,7 +755,7 @@ export function ServiceManagement() {
                     shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                     transition-all duration-300 overflow-hidden
                     ${selectedProperty?.id === property.id
-                      ? 'border-2 border-[#FFC700] shadow-[0_8px_32px_rgba(255,199,0,0.2)]'
+                      ? 'border-2 border-[#F59E0B] shadow-[0_8px_32px_rgba(255,199,0,0.2)]'
                       : 'border border-white/60 dark:border-white/10 hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-0.5'
                     }
                   `}
@@ -765,7 +765,7 @@ export function ServiceManagement() {
                   
                   {selectedProperty?.id === property.id && (
                     <div className="absolute top-6 right-6">
-                      <div className="w-8 h-8 rounded-full bg-[#FFC700] flex items-center justify-center shadow-[0_4px_12px_rgba(255,199,0,0.3)]">
+                      <div className="w-8 h-8 rounded-full bg-[#F59E0B] flex items-center justify-center shadow-[0_4px_12px_rgba(255,199,0,0.3)]">
                         <CheckCircle2 className="w-5 h-5 text-foreground" strokeWidth={2.5} />
                       </div>
                     </div>
@@ -792,7 +792,7 @@ export function ServiceManagement() {
               <button
                 onClick={handleOwnPropertyContinue}
                 disabled={!selectedProperty}
-                className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-foreground py-4 rounded-[var(--radius-card)]
+                className="w-full bg-[#F59E0B] hover:bg-[#F59E0B] text-foreground py-4 rounded-[var(--radius-card)]
                            transition-all duration-300 text-small font-medium tracking-tight
                            shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                            hover:-translate-y-0.5 active:translate-y-0
@@ -819,14 +819,14 @@ export function ServiceManagement() {
                 {/* Relationship to Property */}
                 <div>
                   <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
-                    Relationship to Property <span className="text-[#FFC700]">*</span>
+                    Relationship to Property <span className="text-[#B45309]">*</span>
                   </label>
                   <select
                     value={nonOwnedPropertyData.relationship}
                     onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, relationship: e.target.value })}
                     className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
                                rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
-                               focus:outline-none focus:border-[#FFC700]/50 transition-all appearance-none cursor-pointer"
+                               focus:outline-none focus:border-[#F59E0B]/50 transition-all appearance-none cursor-pointer"
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                       backgroundRepeat: 'no-repeat',
@@ -851,11 +851,11 @@ export function ServiceManagement() {
                       id="ownerAuthorization"
                       checked={nonOwnedPropertyData.ownerAuthorization}
                       onChange={(e) => setNonOwnedPropertyData({ ...nonOwnedPropertyData, ownerAuthorization: e.target.checked })}
-                      className="mt-0.5 w-5 h-5 rounded border-2 border-blue-500/30 text-[#FFC700] focus:ring-[#FFC700] focus:ring-offset-0 cursor-pointer"
+                      className="mt-0.5 w-5 h-5 rounded border-2 border-blue-500/30 text-[#B45309] focus:ring-[#FFC700] focus:ring-offset-0 cursor-pointer"
                     />
                     <label htmlFor="ownerAuthorization" className="flex-1 cursor-pointer">
                       <div className="text-small text-foreground dark:text-neutral-0/95 mb-1">
-                        Owner Authorization Confirmation <span className="text-[#FFC700]">*</span>
+                        Owner Authorization Confirmation <span className="text-[#B45309]">*</span>
                       </div>
                       <p className="text-small text-neutral-700/80 dark:text-neutral-300/80 leading-relaxed">
                         I confirm that I have authorization from the property owner to request this service on their behalf
@@ -867,7 +867,7 @@ export function ServiceManagement() {
                 {/* Property Name */}
                 <div>
                   <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
-                    Property Name <span className="text-[#FFC700]">*</span>
+                    Property Name <span className="text-[#B45309]">*</span>
                   </label>
                   <input
                     type="text"
@@ -877,14 +877,14 @@ export function ServiceManagement() {
                     className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
                                rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
                                placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
-                               focus:outline-none focus:border-[#FFC700]/50 transition-all"
+                               focus:outline-none focus:border-[#F59E0B]/50 transition-all"
                   />
                 </div>
 
                 {/* Property Location */}
                 <div>
                   <label className="block text-caption font-medium tracking-[0.05em] uppercase text-muted-foreground dark:text-neutral-0/50 mb-3">
-                    Property Location <span className="text-[#FFC700]">*</span>
+                    Property Location <span className="text-[#B45309]">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -895,7 +895,7 @@ export function ServiceManagement() {
                       className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
                                  rounded-[var(--radius-card)] px-5 py-4 pr-12 text-foreground dark:text-neutral-0/95 text-small 
                                  placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
-                                 focus:outline-none focus:border-[#FFC700]/50 transition-all"
+                                 focus:outline-none focus:border-[#F59E0B]/50 transition-all"
                     />
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                       <MapPin className="w-5 h-5 text-foreground/30 dark:text-neutral-0/30" />
@@ -944,7 +944,7 @@ export function ServiceManagement() {
                     className="w-full bg-neutral-900/[0.02] dark:bg-neutral-900/30 border border-black/10 dark:border-white/10 
                                rounded-[var(--radius-card)] px-5 py-4 text-foreground dark:text-neutral-0/95 text-small 
                                placeholder:text-foreground/30 dark:placeholder:text-neutral-0/30 
-                               focus:outline-none focus:border-[#FFC700]/50 transition-all"
+                               focus:outline-none focus:border-[#F59E0B]/50 transition-all"
                   />
                 </div>
 
@@ -960,7 +960,7 @@ export function ServiceManagement() {
                     <p className="text-small text-foreground/70 dark:text-neutral-0/70 mb-2">
                       Upload authorization letter or proof of relationship
                     </p>
-                    <label className="inline-block text-small text-[#FFC700] cursor-pointer hover:text-[#F2BD00] transition-colors">
+                    <label className="inline-block text-small text-[#B45309] cursor-pointer hover:text-[#B45309] transition-colors">
                       Browse files
                       <input
                         type="file"
@@ -985,7 +985,7 @@ export function ServiceManagement() {
                 <button
                   onClick={handleNonOwnPropertySubmit}
                   disabled={!nonOwnedPropertyData.relationship || !nonOwnedPropertyData.ownerAuthorization || !nonOwnedPropertyData.propertyName || !nonOwnedPropertyData.propertyLocation}
-                  className="w-full bg-[#FFC700] hover:bg-[#F2BD00] text-foreground py-4 rounded-[var(--radius-card)]
+                  className="w-full bg-[#F59E0B] hover:bg-[#F59E0B] text-foreground py-4 rounded-[var(--radius-card)]
                              transition-all duration-300 text-small font-medium tracking-tight
                              shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                              hover:-translate-y-0.5 active:translate-y-0
@@ -1082,7 +1082,7 @@ export function ServiceManagement() {
                 </button>
                 <button
                   onClick={() => navigate('/properties')}
-                  className="flex-1 bg-[#FFC700] hover:bg-[#F2BD00] text-foreground px-8 py-4 rounded-[var(--radius-card)]
+                  className="flex-1 bg-[#F59E0B] hover:bg-[#F59E0B] text-foreground px-8 py-4 rounded-[var(--radius-card)]
                              transition-all duration-300 text-small font-medium tracking-tight
                              shadow-[0_8px_24px_rgba(255,199,0,0.25)] hover:shadow-[0_8px_32px_rgba(255,199,0,0.4)]
                              hover:-translate-y-0.5 active:translate-y-0

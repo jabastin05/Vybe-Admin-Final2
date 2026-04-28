@@ -879,8 +879,8 @@ export function Settings() {
                                   }}
                                   className="w-full flex items-center gap-3 px-4 py-3 rounded-[var(--radius)] hover:bg-neutral-900/[0.02] dark:hover:bg-card/[0.02] transition-all text-left"
                                 >
-                                  <div className="w-10 h-10 rounded-[var(--radius)] bg-[#25D366]/10 flex items-center justify-center">
-                                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                                  <div className="w-10 h-10 rounded-[var(--radius)] bg-[#22C55E]/10 flex items-center justify-center">
+                                    <MessageCircle className="w-5 h-5 text-[#15803D]" />
                                   </div>
                                   <div>
                                     <div className="text-small font-medium text-foreground dark:text-neutral-0">

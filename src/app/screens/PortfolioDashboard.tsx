@@ -124,7 +124,7 @@ export function PortfolioDashboard() {
               </div>
             ) : (
               <div>
-                <div className="text-caption tracking-wider uppercase text-[#FFC700] mb-2 font-medium">
+                <div className="text-caption tracking-wider uppercase text-[#B45309] mb-2 font-medium">
                   Command Center
                 </div>
                 <div className="text-h1 tracking-tight text-foreground dark:text-neutral-0 font-medium">
@@ -159,10 +159,10 @@ export function PortfolioDashboard() {
         {!hasProperties ? (
           <div className="max-w-6xl mx-auto">
             {/* Hero Add Property CTA */}
-            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#FFC700]/20 via-white/90 to-white/50 dark:from-[#FFC700]/10 dark:via-[#1A1A1A]/90 dark:to-[#1A1A1A]/50 border-2 border-[#FFC700]/30 dark:border-[#FFC700]/20 p-16 text-center shadow-[0_20px_60px_rgba(255,199,0,0.25)] dark:shadow-[0_20px_60px_rgba(255,199,0,0.15)] backdrop-blur-xl mb-20">
+            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#FFC700]/20 via-white/90 to-white/50 dark:from-[#FFC700]/10 dark:via-[#1A1A1A]/90 dark:to-[#1A1A1A]/50 border-2 border-[#F59E0B]/30 dark:border-[#F59E0B]/20 p-16 text-center shadow-[0_20px_60px_rgba(255,199,0,0.25)] dark:shadow-[0_20px_60px_rgba(255,199,0,0.15)] backdrop-blur-xl mb-20">
               {/* Animated background accents */}
-              <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#FFC700]/20 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-              <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FFD633]/15 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#F59E0B]/20 rounded-full blur-[120px] pointer-events-none animate-pulse" />
+              <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FEF3C7]/15 rounded-full blur-[100px] pointer-events-none" />
               
               <div className="relative z-10">
                 {/* Icon */}
@@ -210,7 +210,7 @@ export function PortfolioDashboard() {
               {/* Section Header */}
               <div className="text-center mb-[var(--space-12)]">
                 <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-neutral-900/5 dark:bg-card/5 border border-black/10 dark:border-white/10 mb-6">
-                  <Zap className="w-4 h-4 text-[#FFC700]" />
+                  <Zap className="w-4 h-4 text-[#B45309]" />
                   <span className="text-caption tracking-[0.15em] uppercase text-neutral-700/80 dark:text-neutral-300/80 font-medium">
                     Platform Capabilities
                   </span>
@@ -229,7 +229,7 @@ export function PortfolioDashboard() {
                 <div className="group relative bg-card/80 dark:bg-neutral-900 backdrop-blur-xl border border-black/[0.06] dark:border-white/[0.08] rounded-[var(--radius-card)] p-10 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_48px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
                   {/* Gradient accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FFC700] via-amber-400 to-[#FFD633]" />
-                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFC700]/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
+                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#F59E0B]/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
                   
                   <div className="relative z-10">
                     {/* Icon & Badge */}
@@ -237,8 +237,8 @@ export function PortfolioDashboard() {
                       <div className="w-16 h-16 rounded-[var(--radius-card)] bg-gradient-to-br from-[#FFC700] to-[#FFD633] flex items-center justify-center shadow-[0_8px_24px_rgba(255,199,0,0.3)]">
                         <FileText className="w-8 h-8 text-foreground" strokeWidth={2.5} />
                       </div>
-                      <div className="px-3 py-1.5 rounded-[var(--radius)] bg-[#FFC700]/10 border border-[#FFC700]/20">
-                        <span className="text-caption tracking-wider uppercase text-[#FFC700] font-medium">
+                      <div className="px-3 py-1.5 rounded-[var(--radius)] bg-[#F59E0B]/10 border border-[#F59E0B]/20">
+                        <span className="text-caption tracking-wider uppercase text-[#B45309] font-medium">
                           AI-Powered
                         </span>
                       </div>
@@ -260,7 +260,7 @@ export function PortfolioDashboard() {
                         'Regulatory compliance roadmap',
                       ].map((item, i) => (
                         <div key={i} className="flex items-start gap-2.5">
-                          <div className="w-1 h-1 rounded-full bg-[#FFC700] mt-2 flex-shrink-0" />
+                          <div className="w-1 h-1 rounded-full bg-[#F59E0B] mt-2 flex-shrink-0" />
                           <span className="text-small text-neutral-700/80 dark:text-neutral-300/80">{item}</span>
                         </div>
                       ))}
@@ -445,7 +445,7 @@ export function PortfolioDashboard() {
               <div className="text-center pt-12 border-t border-black/5 dark:border-white/10">
                 <Link
                   to="/upload"
-                  className="inline-flex items-center gap-3 bg-[#FFC700] hover:bg-[#FFD633] text-foreground px-10 py-4 rounded-[var(--radius-card)] transition-all text-[15px] font-medium shadow-[0_8px_24px_rgba(255,199,0,0.3)] hover:shadow-[0_12px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5 group"
+                  className="inline-flex items-center gap-3 bg-[#F59E0B] hover:bg-[#FEF3C7] text-foreground px-10 py-4 rounded-[var(--radius-card)] transition-all text-[15px] font-medium shadow-[0_8px_24px_rgba(255,199,0,0.3)] hover:shadow-[0_12px_32px_rgba(255,199,0,0.4)] hover:-translate-y-0.5 group"
                 >
                   <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" strokeWidth={3} />
                   <span>Get Started Now</span>

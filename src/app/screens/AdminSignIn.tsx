@@ -182,9 +182,8 @@ export function AdminSignIn() {
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className="fixed top-0 inset-x-0 z-50 h-16 bg-card/90 backdrop-blur-xl border-b border-border">
         <div className="h-full max-w-screen-xl mx-auto px-[var(--padding-desktop)] flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-[var(--space-2)]">
+          <Link to="/" className="flex items-center">
             <img src={vybeLogoImage} alt="VYBE" className="h-8 w-auto object-contain" />
-            <span className="text-small font-medium tracking-tight text-foreground">VYBE</span>
           </Link>
           <ThemeToggle />
         </div>

@@ -160,13 +160,13 @@ function formatNumber(value: number) {
 function getServiceBadge(service: string) {
   switch (service) {
     case 'HABU Report':
-      return 'bg-[#E9EAFE] text-[#5660C8]';
+      return 'bg-[#EDF5FB] text-[#1C75BC]';
     case 'Property Service':
-      return 'bg-[#FFF4DB] text-[#C49300]';
+      return 'bg-[#FEF3C7] text-[#B45309]';
     case 'Lease & Rent':
-      return 'bg-[#DFF6EF] text-[#109B77]';
+      return 'bg-[#DCFCE7] text-[#008E93]';
     case 'Sell or Liquidate':
-      return 'bg-[#FFE3EA] text-[#FF4E6A]';
+      return 'bg-[#FEE2E2] text-[#EF4444]';
     default:
       return 'bg-neutral-900/5 text-neutral-700/80 dark:bg-card/5 dark:text-neutral-300/80';
   }
@@ -174,10 +174,10 @@ function getServiceBadge(service: string) {
 
 function getStatusBadge(status: string) {
   if (status.toLowerCase().includes('closed')) {
-    return 'bg-[#FFE3EA] text-[#FF4E6A]';
+    return 'bg-[#FEE2E2] text-[#EF4444]';
   }
 
-  return 'bg-[#FFF4DB] text-[#C49300]';
+  return 'bg-[#FEF3C7] text-[#B45309]';
 }
 
 function DashboardHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title: string; subtitle: string }) {
@@ -236,10 +236,10 @@ function WidgetCard({ title, onClick, children, className = '' }: WidgetCardProp
 function SummaryChip({ label, value, tone }: { label: string; value: string; tone: 'green' | 'amber' | 'rose' }) {
   const chipClass =
     tone === 'green'
-      ? 'bg-[#E8FAEF] text-primary-700'
+      ? 'bg-[#DCFCE7] text-primary-700'
       : tone === 'amber'
-        ? 'bg-[#FFF4DB] text-[#C49300]'
-        : 'bg-[#FFE8EA] text-[#E16A74]';
+        ? 'bg-[#FEF3C7] text-[#B45309]'
+        : 'bg-[#FEE2E2] text-[#EF4444]';
 
   return (
     <div className={`rounded-[var(--radius-card)] px-4 py-3 min-w-[96px] ${chipClass}`}>
@@ -271,8 +271,8 @@ function PartnerPerformanceSection({ onClick }: { onClick: () => void }) {
         {PARTNER_BAR_DATA.map((item) => (
           <div key={item.label} className="flex flex-col items-center gap-[var(--space-3)]">
             <div className="h-[170px] flex items-end gap-[var(--space-2)]">
-              <div className="w-3 rounded-full bg-[#28C76F]" style={{ height: `${item.onTat * 3.2}px` }} />
-              <div className="w-3 rounded-full bg-[#FF5B6E]"  style={{ height: `${item.breached * 3.2}px` }} />
+              <div className="w-3 rounded-full bg-[#22C55E]" style={{ height: `${item.onTat * 3.2}px` }} />
+              <div className="w-3 rounded-full bg-[#EF4444]"  style={{ height: `${item.breached * 3.2}px` }} />
             </div>
             <div className="vybe-card-note">{item.label}</div>
           </div>
@@ -281,11 +281,11 @@ function PartnerPerformanceSection({ onClick }: { onClick: () => void }) {
 
       <div className="flex items-center justify-center gap-[var(--space-6)] mt-[var(--space-4)] mb-[var(--space-4)]">
         <div className="flex items-center gap-[var(--space-2)]">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#28C76F]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
           <span className="vybe-card-note">On-TAT</span>
         </div>
         <div className="flex items-center gap-[var(--space-2)]">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5B6E]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
           <span className="vybe-card-note">Breached</span>
         </div>
       </div>
@@ -309,13 +309,13 @@ function PartnerPerformanceSection({ onClick }: { onClick: () => void }) {
                 <td className="px-[var(--space-4)] py-[var(--space-3)] text-small" style={{ color: 'var(--muted-foreground)' }}>{row.onTat}</td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)] text-small" style={{ color: 'var(--muted-foreground)' }}>{row.breached}</td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)]">
-                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#FFE8EA] text-[#E16A74]">
+                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#FEE2E2] text-[#EF4444]">
                     {row.breachedPct}
                   </span>
                 </td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)] text-small" style={{ color: 'var(--muted-foreground)' }}>{row.averageDelay}</td>
                 <td className="px-[var(--space-4)] py-[var(--space-3)]">
-                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#E8FAEF] text-primary-700">
+                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#DCFCE7] text-primary-700">
                     {row.onTatPct}
                   </span>
                 </td>
@@ -423,7 +423,7 @@ function MissingRequiredDocumentsCard({ onClick }: { onClick: () => void }) {
             <div key={segment.label} className="flex items-center gap-[var(--space-3)]">
               <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: segment.color }} />
               <div className="flex-1 text-small" style={{ color: 'var(--muted-foreground)' }}>{segment.label}</div>
-              <div className={`text-caption font-medium ${index < 3 ? 'text-[#E16A74]' : 'text-primary-700'}`}>
+              <div className={`text-caption font-medium ${index < 3 ? 'text-[#EF4444]' : 'text-primary-700'}`}>
                 {index < 3 ? `${segment.value} Breached` : `${segment.value} Within`}
               </div>
             </div>
@@ -607,7 +607,7 @@ function RmWorkQueue({
                 </div>
                 <div className="text-right shrink-0">
                   <div className="text-caption mb-[var(--space-1)]" style={{ color: 'var(--muted-foreground)' }}>{row.preferredTime}</div>
-                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#FFF4DB] text-[#C49300]">
+                  <span className="inline-flex px-[var(--space-2)] py-[var(--space-1)] rounded-[var(--radius-sm)] text-caption font-medium bg-[#FEF3C7] text-[#B45309]">
                     {row.status}
                   </span>
                 </div>
